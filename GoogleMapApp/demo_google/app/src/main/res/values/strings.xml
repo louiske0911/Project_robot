@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">demo_google</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="display_message">Hello World!</string>
+    <string name="button_gps_click">click</string>
+</resources>
