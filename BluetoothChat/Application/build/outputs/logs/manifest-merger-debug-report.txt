@@ -1,0 +1,75 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:18:1-53:12
+	package
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:19:5-48
+	android:versionName
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:22:5-30
+		INJECTED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml
+	android:versionCode
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:21:5-28
+		INJECTED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:20:5-63
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:26:5-73
+	android:name
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:26:22-71
+uses-permission#android.permission.BLUETOOTH
+ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:27:5-67
+	android:name
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:27:22-65
+application
+ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:29:5-51:19
+MERGED from [com.android.support:gridlayout-v7:23.3.0] /Users/robert/.android/build-cache/60b210b36f1e7c8eaf2d8d28a0499dc6ef9a697b/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.3.0] /Users/robert/.android/build-cache/27bc017f8970fed8a316de4d221271ee871a705b/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:cardview-v7:23.3.0] /Users/robert/.android/build-cache/8c333747d9a81b5a03af5d0d5abc1539ef662623/output/AndroidManifest.xml:22:5-20
+	android:label
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:32:9-41
+	android:allowBackup
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:30:9-35
+	android:icon
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:31:9-45
+	android:theme
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:33:9-40
+activity#com.example.android.bluetoothchat.MainActivity
+ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:35:9-43:20
+	android:label
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:38:13-45
+	android:configChanges
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:37:13-63
+	android:name
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:36:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:39:13-42:29
+action#android.intent.action.MAIN
+ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:40:17-68
+	android:name
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:40:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:41:17-76
+	android:name
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:41:27-74
+activity#com.example.android.bluetoothchat.DeviceListActivity
+ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:45:9-49:63
+	android:label
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:48:13-50
+	android:configChanges
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:47:13-63
+	android:theme
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:49:13-61
+	android:name
+		ADDED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml:46:13-47
+uses-sdk
+INJECTED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:gridlayout-v7:23.3.0] /Users/robert/.android/build-cache/60b210b36f1e7c8eaf2d8d28a0499dc6ef9a697b/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.3.0] /Users/robert/.android/build-cache/27bc017f8970fed8a316de4d221271ee871a705b/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:23.3.0] /Users/robert/.android/build-cache/8c333747d9a81b5a03af5d0d5abc1539ef662623/output/AndroidManifest.xml:20:5-43
+	android:targetSdkVersion
+		INJECTED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/robert/Project_robot/BluetoothChat/Application/src/main/AndroidManifest.xml

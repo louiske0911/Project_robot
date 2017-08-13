@@ -1,0 +1,28 @@
+[
+    {
+        "outputFile": "/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 4,
+                    "endColumn": 12,
+                    "endOffset": 200
+                },
+                "from": {
+                    "file": "/Users/robert/.android/build-cache/8c333747d9a81b5a03af5d0d5abc1539ef662623/output/res/values-v23/values-v23.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 4,
+                        "endColumn": 12,
+                        "endOffset": 200
+                    }
+                }
+            }
+        ]
+    }
+]
