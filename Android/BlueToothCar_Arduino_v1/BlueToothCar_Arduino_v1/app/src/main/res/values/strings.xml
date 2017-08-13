@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BlueToothCar_Arduino_v1</string>
+    <string name="tvPt_Paired">請選擇藍芽裝置</string>
+</resources>
