@@ -1,0 +1,4 @@
+[gerrit]
+host=http://10.209.60.1/
+port=8080
+project=taas_nodejs.git

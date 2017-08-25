@@ -1,0 +1,17 @@
+FROM node:6.9
+
+# Notes:
+# 1. Before the image is built, files for archive api server should be under the current directory.
+# 2. API server will be listening at port 3000
+# 3. Run the container with command `python makecfg.py` to generate config files.
+# 4. Mount the generated config file as /src/default.json or set the correlated environment variables to change api server settings.
+
+WORKDIR /src
+COPY ./ ./
+
+RUN npm install
+
+ENV PORT=3000
+EXPOSE 3000
+
+CMD ["npm", "start"]

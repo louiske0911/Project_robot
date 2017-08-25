@@ -1,0 +1,17 @@
+taas_web_test:
+  #restart: always
+  container_name: taas_web_test
+  build: ./..
+  dockerfile: Dockerfile.physical
+  links:
+   - taas_maindb_test:mongodb
+  ports:
+   - "81:81"
+  environment:
+   - TAAS_ENV=default
+taas_maindb_test:
+  #restart: always
+  container_name: taas_maindb_test
+  image: mongo:3.2
+  #volumes:
+  # - ./db:/data/db

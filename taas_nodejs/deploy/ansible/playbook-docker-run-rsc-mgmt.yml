@@ -1,0 +1,72 @@
+- hosts: docker-host-rsc-mgmt
+  roles:
+      - include_taas_vars
+      - { role: docker_on_openstack, become: True }
+  vars:
+      # docker_registry_url
+      docker_image: "{{ core_services.rsc_mgmt.image.name }}" 
+      docker_container: "{{ core_services.rsc_mgmt.container.base_name }}" 
+      docker_port: "{{ core_services.rsc_mgmt.container.port }}" 
+      force_pull: False
+      force_recreate: False
+      force_restart: False
+  tasks:
+      - name: set image src as localhost
+        set_fact:
+            docker_image_src: "{{ docker_image }}"
+
+      - name: set image src as registry
+        set_fact:
+            docker_image_src: "{{ docker_registry_url }}/{{ docker_image }}"
+        when: docker_registry_url | default('') != ''
+
+#       - name: set server options
+#         set_fact:
+#             server_opts: "{{ server_opts | default('') }} -e \"{{ item }}={{ hostvars[inventory_hostname][item] | mandatory }}\""
+#         with_items:
+#             - NOVA_API_URL
+#             - HEAT_API_URL
+#             - KEYSTONE_API_URL
+#             - GLANCE_API_URL
+#             - AUTH_USERNAME
+#             - AUTH_PASSWORD
+#             - TENANT_ID
+#             - NETWORK_PRIVATE
+#             - NETWORK_PUBLIC
+#             - IMAGE
+#             - KEY_NAME
+
+      - name: set server env
+        set_fact:
+            server_opts:
+                NOVA_API_URL: "{{ NOVA_API_URL }}"
+                HEAT_API_URL: "{{ HEAT_API_URL }}"
+                KEYSTONE_API_URL: "{{ KEYSTONE_API_URL }}"
+                GLANCE_API_URL: "{{ GLANCE_API_URL }}"
+                AUTH_USERNAME: "{{ AUTH_USERNAME }}"
+                AUTH_PASSWORD: "{{ AUTH_PASSWORD }}"
+                TENANT_ID: "{{ TENANT_ID }}"
+                NETWORK_PRIVATE: "{{ NETWORK_PRIVATE }}"
+                NETWORK_PUBLIC: "{{ NETWORK_PUBLIC }}"
+                IMAGE: "{{ IMAGE }}"
+                KEY_NAME: "{{ KEY_NAME }}"
+
+      - debug:
+          var: server_opts
+          verbosity: 2
+
+      - name: ensure rsc mgmt server container is running
+        become: True
+        docker_container:
+            name: "{{ docker_container }}"
+            image: "{{ docker_image_src }}"
+            env: "{{ server_opts }}"
+            restart_policy: always
+            detach: True
+            ports:
+                - "{{ docker_port }}:3000"
+            state: started
+            pull: "{{ force_pull }}"
+            restart: "{{ force_restart }}"
+            recreate: "{{ force_recreate }}"
+

@@ -1,0 +1,9 @@
+- hosts: all
+  gather_facts: False
+  become: True
+  tasks:
+      - name: apt-get update
+        raw: apt-get update -qq
+
+      - name: apt-get install
+        raw: apt-get install -qq python2.7

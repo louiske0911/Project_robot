@@ -1,0 +1,16 @@
+{
+ "vm_spec": [
+   {
+     "name" : "main_server",
+     "init_script" : "deploy_TaaS_Aio.sh"
+   }
+     ],
+ "deploy_step" : [
+    {
+      "vm_spec_name" : "main_server",
+      "instance" : 1
+    }
+
+   ]
+ }
+

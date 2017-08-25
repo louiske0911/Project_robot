@@ -1,0 +1,5 @@
+---
+force_install_docker: False
+
+# insecure_registries are separated by commas
+insecure_registries: ""

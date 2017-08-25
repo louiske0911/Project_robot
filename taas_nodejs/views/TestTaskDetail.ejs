@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><%= title %></title>
+  <%- include partial/head.ejs %>
+</head>
+<body> 
+  <div class="container">
+        <div class="row">
+          <div class="col-xs-3 lbltaskdetail">
+            <label>Task Name :</label>
+          </div>
+          <div class="col-sm-9">
+            <%= testtask_name %>
+          </div>
+        </div>    
+       
+      
+
+         <div class="row">
+          <div class="col-xs-3 lbltaskdetail">
+            <label>Repository Url :</label>
+          </div>
+          <div class="col-sm-9">
+            <%= testtask_repoURL %>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-3 lbltaskdetail">
+            <label>Repository Branch:</label>
+          </div>
+          <div class="col-sm-9">
+            <%= testtask_repoBranch %>
+          </div>
+        </div>
+          <div class="row">
+          <div class="col-xs-3 lbltaskdetail">
+            <label>Script Path :</label>
+          </div>
+          <div class="col-sm-9">
+           <%=testtask_startScriptPath %>
+          </div>
+        </div>
+
+            <div class="row">
+          <div class="col-xs-3 lbltaskdetail">
+            <label>TargetBaseURL :</label>
+          </div>
+          <div class="col-sm-9">
+           <%=testtask_targetBaseURL %>
+          </div>
+        </div>
+       
+        <div class="row">
+          <div class="col-xs-3 lbltaskdetail">
+            <label>Browser :</label>
+          </div>
+          <div class="col-sm-9">
+           <%=testtask_browser %>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-3 lbltaskdetail">
+            <label>CreateTime :</label>
+          </div>
+          <div class="col-sm-9">
+            <%= testtask_createtime %>
+          </div>
+        </div>
+         
+        
+
+        </div>
+
+        
+    </div> 
+</body>
+
+</html>

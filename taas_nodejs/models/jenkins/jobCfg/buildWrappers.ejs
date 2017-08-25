@@ -1,0 +1,46 @@
+<% if (!vars.buildWrappers) { %>
+    <buildWrappers />
+<% } else { %>
+    <buildWrappers>
+    <% vars.buildWrappers.forEach(function(bw) { %>
+        <% if (bw.type == 'archive') { %>
+        <jenkins.plugins.publish__over__ssh.BapSshPostBuildWrapper plugin="publish-over-ssh">
+            <postBuild>
+                <consolePrefix>SSH:</consolePrefix>
+                <delegate>
+                    <publishers>
+                        <jenkins.plugins.publish__over__ssh.BapSshPublisher>
+                            <configName><%= bw.configName? bw.configName : 'Archive server' %></configName>
+                            <verbose>false</verbose>
+                            <transfers>
+                                <jenkins.plugins.publish__over__ssh.BapSshTransfer>
+                                    <remoteDirectory><%= bw.remoteDirectory? bw.remoteDirectory : 'archive_root/${JOB_NAME}/${BUILD_NUMBER}' %></remoteDirectory>
+                                    <sourceFiles><%= bw.sourceFiles? bw.sourceFiles : '' %></sourceFiles>
+                                    <excludes/>
+                                    <removePrefix/>
+                                    <remoteDirectorySDF>false</remoteDirectorySDF>
+                                    <flatten>false</flatten>
+                                    <cleanRemote>false</cleanRemote>
+                                    <noDefaultExcludes>false</noDefaultExcludes>
+                                    <makeEmptyDirs>false</makeEmptyDirs>
+                                    <patternSeparator>[, ]+</patternSeparator>
+                                    <execCommand/>
+                                    <execTimeout><%= bw.execTimeout? bw.execTimeout : 120000 %></execTimeout>
+                                    <usePty>false</usePty>
+                                </jenkins.plugins.publish__over__ssh.BapSshTransfer>
+                            </transfers>
+                            <useWorkspaceInPromotion>false</useWorkspaceInPromotion>
+                            <usePromotionTimestamp>false</usePromotionTimestamp>
+                        </jenkins.plugins.publish__over__ssh.BapSshPublisher>
+                    </publishers>
+                    <continueOnError>false</continueOnError>
+                    <failOnError>false</failOnError>
+                    <alwaysPublishFromMaster>false</alwaysPublishFromMaster>
+                    <hostConfigurationAccess class="jenkins.plugins.publish_over_ssh.BapSshAlwaysRunPublisherPlugin" reference="../.."/>
+                </delegate>
+            </postBuild>
+        </jenkins.plugins.publish__over__ssh.BapSshPostBuildWrapper>
+        <% } %>
+    <% }); %>
+    </buildWrappers>
+<% } %>

@@ -1,0 +1,9 @@
+.nyc_output/*
+coverage/*
+deploy/*
+doc/*
+htmlcov/*
+log/*
+node_modules/
+public/*
+pydoc/*

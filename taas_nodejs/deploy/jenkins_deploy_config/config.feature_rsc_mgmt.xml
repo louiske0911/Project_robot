@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <actions/>
+  <description/>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>BRANCH</name>
+          <description/>
+          <defaultValue>feature/rsc_mgmt</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TAAS_WEBPORTAL_PORT</name>
+          <description/>
+          <defaultValue>86</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_COMPOSE_FILE</name>
+          <description/>
+          <defaultValue>docker-compose.default.yml</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DOCKER_TEST_COMPOSE_FILE</name>
+          <description/>
+          <defaultValue>docker-compose.default_test.yml</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.BooleanParameterDefinition>
+          <name>RESET_MAINDB_VOLUME</name>
+          <description/>
+          <defaultValue>false</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TAAS_MAIN_DB</name>
+          <description/>
+          <defaultValue>mongodb://mongodb/TaaS</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TAAS_JENKINS_MASTER</name>
+          <description/>
+          <defaultValue>http://10.206.20.5:8080</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TAAS_ARCHIVE_FILE_SERVER</name>
+          <description/>
+          <defaultValue>http://10.206.20.8:8500</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TAAS_ARCHIVE_FILE_LISTING_SERVER</name>
+          <description/>
+          <defaultValue>http://10.206.20.8:8501</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TAAS_RSC_MGMT_SERVER</name>
+          <description/>
+          <defaultValue>http://10.206.20.8:3000</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TAAS_HOST_ADDRESS</name>
+          <description/>
+          <defaultValue>http://10.206.20.3</defaultValue>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>30</daysToKeep>
+        <numToKeep>30</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.4.2">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>http://140.96.27.78:10080/taas/taas_nodejs.git</url>
+        <credentialsId>5549df89-fecf-4a15-9341-c6f9bdd8e888</credentialsId>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/${BRANCH}</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>50 0 * * *</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+echo ${WORKSPACE}
+export COMPOSE_PROJECT_NAME=${JOB_NAME}
+
+# Update config file
+set +x
+echo "===================="
+echo "UPDATE CONFIG"
+echo "===================="
+set -x
+cd "${WORKSPACE}/config"
+mv -f default.json default.json.orig
+
+touch default.json
+python makecfg.py \
+  --main_db="${TAAS_MAIN_DB}" \
+  --jenkins_master="${TAAS_JENKINS_MASTER}" \
+  --archive_file_server="${TAAS_ARCHIVE_FILE_SERVER}" \
+  --archive_file_listing_server="${TAAS_ARCHIVE_FILE_LISTING_SERVER}" \
+  --resource_management_server="${TAAS_RSC_MGMT_SERVER}" \
+  --host_address="${TAAS_HOST_ADDRESS}" \
+  &gt; default.json
+
+echo 'Original config:'
+cat default.json.orig
+
+echo 'Updated config:'
+cat default.json
+
+cd "${WORKSPACE}/deploy"
+if [ -f ${DOCKER_COMPOSE_FILE} ]; then
+    cp -f ${DOCKER_COMPOSE_FILE} ${DOCKER_COMPOSE_FILE}.old
+    SED_PATTERN = 
+    sed -i "s/\"[0-9]\\+:81\"/\"${TAAS_WEBPORTAL_PORT}:81\"/" ${DOCKER_COMPOSE_FILE}
+    sed -i '/container_name:/d' ${DOCKER_COMPOSE_FILE}
+    
+    echo -e '\nOriginal docker compose config:'
+    cat ${DOCKER_COMPOSE_FILE}.old
+    echo -e '\nUpdated docker compose config:'
+    cat ${DOCKER_COMPOSE_FILE}
+fi
+if [ -f ${DOCKER_TEST_COMPOSE_FILE} ]; then
+    cp -f ${DOCKER_TEST_COMPOSE_FILE} ${DOCKER_TEST_COMPOSE_FILE}.old
+    sed -i "s/\"[0-9]\\+:81\"/\"${TAAS_WEBPORTAL_PORT}:81\"/" ${DOCKER_TEST_COMPOSE_FILE}
+    sed -i '/container_name:/d' ${DOCKER_TEST_COMPOSE_FILE}
+    
+    echo -e '\nOriginal docker compose test config:'
+    cat ${DOCKER_TEST_COMPOSE_FILE}.old
+    echo -e '\nUpdated docker compose test config:'
+    cat ${DOCKER_TEST_COMPOSE_FILE}
+fi
+
+# test
+set +x
+echo "===================="
+echo "TEST &amp; COVERAGE"
+echo "===================="
+set -x
+cd "${WORKSPACE}/deploy"
+if [ -f ${DOCKER_TEST_COMPOSE_FILE} ]; then    
+    sudo -E docker-compose -f ${DOCKER_COMPOSE_FILE} stop
+    sudo -E docker-compose -f ${DOCKER_TEST_COMPOSE_FILE} stop
+    sudo -E docker-compose -f ${DOCKER_TEST_COMPOSE_FILE} rm -f -v
+    sudo -E docker-compose -f ${DOCKER_TEST_COMPOSE_FILE} build
+    # don't run this in detached mode, so that Jenkins will wait until all the tests are done
+    sudo -E docker-compose -f ${DOCKER_TEST_COMPOSE_FILE} run --service-ports --rm taas_web_test npm run-script covcheck
+    # db container is not removed in the last command
+    sudo -E docker-compose -f ${DOCKER_TEST_COMPOSE_FILE} stop
+    sudo -E docker-compose -f ${DOCKER_TEST_COMPOSE_FILE} rm -f -v
+fi
+
+# deployment
+set +x
+echo "===================="
+echo "DEPLOYMENT"
+echo "===================="
+set -x
+cd "${WORKSPACE}/deploy"
+sudo -E docker-compose -f ${DOCKER_COMPOSE_FILE} stop
+if [ ${RESET_MAINDB_VOLUME} == true ]; then
+    sudo -E docker-compose -f ${DOCKER_COMPOSE_FILE} rm -f -v
+    sudo -E rm -rf ../volumes
+else
+    sudo -E docker-compose -f ${DOCKER_COMPOSE_FILE} rm -f
+fi
+sudo -E docker-compose -f ${DOCKER_COMPOSE_FILE} build
+sudo -E docker-compose -f ${DOCKER_COMPOSE_FILE} up -d</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

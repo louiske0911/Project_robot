@@ -1,0 +1,3 @@
+---
+
+deployment_lib_dir: "{{ ansible_env.HOME }}/{{ slave_lib_path.deployment_lib }}"

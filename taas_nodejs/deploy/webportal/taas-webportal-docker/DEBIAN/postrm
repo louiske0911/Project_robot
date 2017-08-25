@@ -1,0 +1,10 @@
+#!/bin/bash
+
+WEBPORTAL_INSTALL_BASE=/usr/local/lib/taas-webportal
+WEBPORTAL_VAR_BASE=/var/taas-webportal
+WEBPORTAL_ETC_BASE=/etc/taas-webportal
+
+cd
+rm -rf $WEBPORTAL_INSTALL_BASE
+rm -rf $WEBPORTAL_VAR_BASE
+rm -rf $WEBPORTAL_ETC_BASE

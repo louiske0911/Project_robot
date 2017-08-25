@@ -1,0 +1,24 @@
+- hosts: all
+  become: True
+  roles:
+      - docker_on_openstack
+      - geerlingguy.java
+  vars:
+      - java_packages:
+          - openjdk-8-jdk
+
+
+- hosts: all
+  become: False
+  roles:
+      - jenkins_master
+
+
+- hosts: all
+  become: False
+  tasks:
+      - name: ensure Jenkins slave directory exists
+        file:
+            path: "{{ ansible_env.HOME }}/jenkins"
+            state: directory
+

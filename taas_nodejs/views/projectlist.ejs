@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%- include partial/head.ejs %>
+	<link rel="stylesheet" href="/tab/bootstrap/css/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="/datatables/datatables.min.css" type="text/css"/>
+	<script type="text/javascript" src="/datatables/datatables.min.js"></script>
+	<script type="text/javascript" src="/project/js/copyProject.js"></script>
+	<script type="text/javascript" src="/project/js/createProject.js"></script>
+	<script type="text/javascript" src="/project/js/dataTable.js"></script> 
+	<script type="text/javascript" src="/project/js/delProject.js"></script>
+	<script type="text/javascript" src="/project/js/status.js"></script>
+</head>
+<body> 
+	<%- include partial/header.ejs %>
+	<%- include partial/dialogYesNo.ejs %>
+	<%- include partial/dialogTextbox.ejs %>
+
+	<div class="section-nav">
+		<div class="container">
+			<div class="title-tasklist">
+				<div class="row">
+					<div class="col-md-10">
+						<div>
+							<h3>
+								<ul class="breadcrumb">
+									Project List
+								</ul>
+							</h3>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="title-btn">
+							<button type="button" class="btn btn-primary" name="createTask" onclick="location.href = '/projectCreate';">Create Project</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr class="titleline">
+	</div>
+	<div class="container">
+		<table id="table" class="table table-hover">
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Project Name</th>
+					<th>Project Description</th>
+					<th>Create Time</th>
+					<th>Update Time</th>
+					<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% projs.forEach( function ( proj ){ %>
+				<tr class="<%= proj._id %>">
+					<td onclick="window.document.location='/tasklistByProjID/<%= proj._id %>';">
+						<span class="statusLight" id="<%= proj._id %>"/></span>
+						<span class="statusText" id="text<%= proj._id %>"></span>
+					</td> 
+					<td onclick="window.document.location='/tasklistByProjID/<%= proj._id %>';">
+						<div class="projName"><%= proj.proj_name %></div>
+					</td>
+					<td onclick="window.document.location='/tasklistByProjID/<%= proj._id %>';">
+						<div class="tblrow"><%= proj.proj_description %></div>
+					</td>
+					<td onclick="window.document.location='/tasklistByProjID/<%= proj._id %>';">
+						<div class="tblrow"><%= timeLib.formatTime(proj.createtime) %></div>
+					</td>
+					<td onclick="window.document.location='/tasklistByProjID/<%= proj._id %>';">
+						<div class="tblrow"><%= timeLib.formatTime(proj.updatetime) %></div>
+					</td>
+					<td>
+						<div class="hover-btn">
+							<a href='' title='Copy this proj' class="copyProjBtn" id="copyProj<%= proj._id %>" onclick="askCopyProj('<%= proj.proj_name %>','<%= proj._id %>')" data-toggle="modal" data-target="#textboxModal"><img class="btnimage" src="/images/copy.png"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href='/projectEdit/<%= proj._id %>' title='Edit this proj' class="editProjBtn" id="editProj<%= proj._id %>"><img class="btnimage" src="/images/edit.png"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href='' title='Delete this proj' class="delProjBtn" id="delProj<%= proj._id %>" onclick="askDelProj('<%= proj.proj_name %>','<%= proj._id %>')" data-toggle="modal" data-target="#yesnoModal">
+								<img class="btnimage" src="/images/delete.png"/>
+							</a>
+						</div>
+					</td>
+				</tr>
+				<% }); %>	
+			</tbody>
+		</table> 
+	</div>
+</body>
+</html>

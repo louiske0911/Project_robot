@@ -1,0 +1,58 @@
+# Commands for manually setting up archive services (obselete)
+
+    1  nvm install 4.4.2
+    2  nvm alias lts 4.4.2
+    3  nvm use lts
+    4  ls
+    5  npm install
+    6  mkdir -p ~/archive
+    7  screen -U -S archive_http_server
+    8  ls archive/
+    9  rm -r archive
+   10  ls
+   11  mkdir -p ~/archive_root
+   12  screen -r a
+   13  screen -U -S archive-file_listing_server
+   14  screen -ls
+   15  screen -r archive_http_server
+   16  exit
+   17  sudo apt-get upgrade
+   18  exit
+   19  screen -ls
+   20  screen -U -S archive_http_server
+   21  screen -U -S archive_file_listing_server
+   22  exit
+   23  nvm use lts
+   24  node listFiles.js 
+   25  sudo apt-get update
+   26  sudo apt-get upgrade
+   27  sudo reboot NOW
+   28  nvm use lts
+   29  ./node_modules/.bin/http-server -p 8500 archive_root/
+   30  exit
+   31  screen -ls
+   32  history | grep screen
+   33  screen -U -S archive_http_server
+   34  history | grep screen
+   35  screen -U -S archive-file_listing_server
+   36  exit
+   37  ls
+   38  sudo ls /root/
+   39  history
+   40  exit
+   41  nvm use lts
+   42  node listFiles.js 
+   43  nvm use lts
+   44  ./node_modules/.bin/http-server -p 8500 archive_root/
+   45  sudo sync
+   46  sudo shutdown -h now
+   47  sudo apt-get update
+   48  sudo apt-get upgrade
+   49  screen ls
+   50  exit
+   51  screen -ls
+   52  screen -U -S archive_http_server
+   53  screen -U -S archive_file_listing_server
+   54  exit
+   55  history
+   56  history > history.txt

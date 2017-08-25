@@ -1,0 +1,108 @@
+- hosts: docker-build-server
+  roles:
+      - { role: docker_on_openstack, become: True}
+      - ansible_docker
+      - deployment_lib
+      - test_lib
+      - selenium_lib
+      - test_mgmt_lib
+  vars:
+      docker_rel_dir: docker
+      docker_dir: "{{ ansible_env.HOME }}/{{ docker_rel_dir }}"
+      dockerfile_prefix: Dockerfile.slave_
+      image_prefix: taas_slave_
+      slave_names:
+          - base
+      slave_version_to_build: latest
+      force_rebuild_slaves: False
+  tasks:
+      - name: ensure docker directory exists
+        file:
+            path: "{{ docker_dir }}"
+            state: directory
+
+      - name: transfer docker utility files to remote host
+        copy:
+            src: "{{ playbook_dir }}/../docker/{{ item }}"
+            dest: "{{ docker_dir }}/{{ item }}"
+            mode: 0644
+            force: yes
+        with_items:
+            - apply_version.py
+            - gen_dockerfile.py
+            - run_swarm.py
+            - swarm-client-2.2-jar-with-dependencies.jar
+
+      - name: prepare links to tools of latest releases
+        file:
+            # must make relative symbolic links and the link targets should fall
+            # within build context, or docker build will fail!
+            src: "{{ item.src }}"
+            dest: "{{ ansible_env.HOME }}/{{ item.dst }}"
+            state: link
+            force: yes
+        with_items:
+            - src: "{{ docker_rel_dir }}/swarm-client-2.2-jar-with-dependencies.jar"
+              dst: swarm-client.jar
+            - src: "{{ docker_rel_dir }}/run_swarm.py"
+              dst: run_swarm.py
+
+      - name: transfer settings files to remote host
+        copy:
+            src: "{{ playbook_dir }}/../slave_lib_path.json"
+            dest: "{{ ansible_env.HOME }}/slave_lib_path.json"
+            mode: 0444
+            force: yes
+
+      - name: transfer docker template files to remote host
+        copy:
+            src: "{{ playbook_dir }}/../docker/{{ dockerfile_prefix }}{{ item }}.template"
+            dest: "{{ docker_dir }}/{{ dockerfile_prefix }}{{ item }}.template"
+            mode: 0444
+            force: yes
+        with_items: "{{ slave_names }}"
+        register: docker_template_results
+
+      - name: transfer version database file to remote host
+        copy:
+            src: "{{ playbook_dir }}/../docker/slave.{{ slave_version_to_build }}.json"
+            dest: "{{ docker_dir }}/slave.{{ slave_version_to_build }}.json"
+            mode: 0444
+            force: yes
+        register: version_database_results
+
+      - name: apply slave version to build
+        command: >
+            python3 apply_version.py
+            "slave.{{ slave_version_to_build }}.json"
+            "{{ dockerfile_prefix }}{{ item }}.template"
+            "{{ dockerfile_prefix }}{{ item }}.{{ slave_version_to_build }}.template"
+        args:
+            chdir: "{{ docker_dir }}"
+        with_items: "{{ slave_names }}"
+        when: docker_template_results|changed or version_database_results|changed
+
+      - name: generate docker files
+        command: >
+            python3 gen_dockerfile.py
+            "{{ dockerfile_prefix }}{{ item }}.{{ slave_version_to_build }}.template"
+            "{{ ansible_env.HOME }}/{{ dockerfile_prefix }}{{ item }}.{{ slave_version_to_build }}"
+        args:
+            chdir: "{{ docker_dir }}"
+        with_items: "{{ slave_names }}"
+        when: docker_template_results|changed or version_database_results|changed
+
+      - name: build and push docker images
+        become: True
+        docker_image:
+            path: "{{ ansible_env.HOME }}"
+            dockerfile: "{{ dockerfile_prefix }}{{ item }}.{{ slave_version_to_build }}"
+            name: "{{ docker_registry_url }}{{ (docker_registry_url == '') | ternary('','/')}}{{ image_prefix }}{{ item }}:{{ slave_version_to_build }}"
+            push: "{{ (docker_registry_url == '') | ternary('no', 'yes') }}"
+            tls: False
+            state: present
+            force: "{{ force_rebuild_slaves }}"
+        with_items: "{{ slave_names }}"
+        tags:
+            - skip_me
+
