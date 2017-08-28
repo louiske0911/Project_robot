@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <%- include partial/head.ejs %>
+  <script src="/javascripts/jquery-1.11.3.min.js"></script>
+  <script src="/task/js/descriptorType.js"></script>
+  <script src="/javascripts/addTestTask_Page.js"></script>
+  <script src="/task/js/editTask.js"></script>
+  <script src="/task/js/testFormMaker.js"></script>
+  <script src="/task/js/testManagement.js"></script>
+  <script src="/task/js/editTestFormMaker.js"></script>
+  <script src="/task/js/check.js"></script>
+</head>
+<body> 
+  <%- include partial/header.ejs %>
+  <div class="section-nav">
+    <div class="container">
+      <div class="pro_hvcenter_title">
+        <h3>
+          <ul class="breadcrumb">
+            <li><a href="/projectList">Project List</a></li>      
+            <li><a href="#" onClick="javascript:history.back(1)"><%= projname %></a></li>
+            <li class="active"><%= title %></li>
+          </ul>
+        </h3>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div class="container">
+    <p class="sysMsg_red" id="alertBar"></p>
+    <div class="form-field">
+      <form class="form-horizontal" id="teskForm">
+        <fieldset id="taskFieldset"></fieldset>
+        <div class="form-group">
+          <div class="col-lg-12">
+            <div class="form-btn">
+              <button type="button" onClick="javascript:history.back(1)" id="cancelTestTaskBtn" class="btn btn-primary">Cancel</button> 
+              <button type="submit" value="submit" id="finishTestTaskBtnEdit" class="btn btn-primary">Finish</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <input type="text" class="form-control" id="formaction" name="formaction" value="/updateTestTask/<%= testTask._id %>" style="display:none">
+
+  <div class="support">
+    <input type="text" id="projID" value="<%= testTask.proj_id %>" style="display:none"></p>
+    <input type="text" id="taskID" value="<%= testTask._id %>" style="display:none"></p>
+    <input type="text" id="jobType" value="<%= testTask.jobtype %>" style="display:none"></p>
+  </div>
+
+  <!--<script>
+  if($("#testtool").find(":selected").val()==0){
+    JMeterThreshold.style.display = "";
+  } else {
+    JMeterThreshold.style.display = "none";
+  }
+  </script>-->
+
+  <script src="/javascripts/addTestTask_Page.js"></script>
+
+</body>
+</html>

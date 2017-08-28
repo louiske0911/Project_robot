@@ -1,0 +1,8 @@
+Package: taas-webportal-docker
+Version: 1.0.0-3
+Architecture: amd64
+Maintainer: Kuan-Li Peng <George.Peng@itri.org.tw>
+Depends: taas-webportal-docker-dep (>= 1.0.0)
+Description: ITRI Test-as-a-Service (TaaS) Web Portal (containerized)
+ This package contains the ITRI Test-as-a-Service (TaaS) Web Portal files.
+ The service is packaged and run as Docker containers.

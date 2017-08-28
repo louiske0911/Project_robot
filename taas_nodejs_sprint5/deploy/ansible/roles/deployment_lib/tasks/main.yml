@@ -1,0 +1,16 @@
+---
+
+- name: ensure deployment lib directories exist
+  file: path={{ deployment_lib_dir }}/{{ item }} state=directory
+  with_items:
+      - ""
+      - ssh_key
+
+- name: transfer deployment lib files to remote host
+  copy: >
+      src={{ role_path }}/../../../deployment-lib/{{ item.path }}
+      dest={{ deployment_lib_dir }}/{{ item.dest }}
+      force=yes mode={{ item.mode }}
+  with_items:
+      - { path: 'AutoDeploy.sh', dest: '', mode: '0555' }
+      - { path: 'ssh_key/sit_taas_heat.pem', dest: 'ssh_key', mode: '0400' }

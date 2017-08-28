@@ -1,0 +1,18 @@
+<% if (!vars.properties) { %>
+    <properties />
+<% } else { %>
+    <properties>
+    <% vars.properties.forEach(function(prop) { %>
+        <% if (prop.type == 'buildDiscarder') { %>
+        <jenkins.model.BuildDiscarderProperty>
+            <strategy class="hudson.tasks.LogRotator">
+                <daysToKeep><%= prop.daysToKeep? prop.daysToKeep : 30 %></daysToKeep>
+                <numToKeep><%= prop.numToKeep? prop.numToKeep : 30 %></numToKeep>
+                <artifactDaysToKeep><%= prop.artifactDaysToKeep? prop.artifactDaysToKeep : -1 %></artifactDaysToKeep>
+                <artifactNumToKeep><%= prop.artifactNumToKeep? prop.artifactNumToKeep : -1 %></artifactNumToKeep>
+            </strategy>
+        </jenkins.model.BuildDiscarderProperty>
+        <% } %>
+    <% }); %>
+    </properties>
+<% } %>

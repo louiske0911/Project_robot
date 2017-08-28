@@ -1,0 +1,31 @@
+---
+
+- name: transfer files to server
+  copy: >
+      src={{ role_path }}/files/{{ item }}
+      dest={{ ansible_env.HOME }}
+      force=yes mode=0444
+  with_items:
+      - docker-compose.jenkins.yml
+      - Dockerfile.jenkins
+      - plugins.txt
+
+- name: ensure Jenkins volume directory exists with correct owner/group settings
+  file: >
+      path={{ ansible_env.HOME }}/docker/vol/jenkins
+      state=directory recurse=yes owner=1000 group=1000
+  become: True
+
+- name: build Jenkins Docker image
+  command: docker-compose -f docker-compose.jenkins.yml build
+  become: True
+  register: build_result
+  until: build_result.rc == 0
+  retries: 10
+  delay: 5
+
+- name: run Jenkins Docker container
+  command: docker-compose -f docker-compose.jenkins.yml up -d
+  become: True
+  environment:
+      HOME: '/home/ubuntu'

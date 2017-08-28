@@ -1,0 +1,15 @@
+FROM node:6.9
+
+# Notes:
+# 1. Create a (data) volume that points to /archive_root
+# 2. API server will be listening at port 8501
+
+WORKDIR /src
+COPY ./ ./
+
+RUN npm install && \
+	mkdir /archive_root
+
+EXPOSE 8501
+
+CMD ["npm", "start"]

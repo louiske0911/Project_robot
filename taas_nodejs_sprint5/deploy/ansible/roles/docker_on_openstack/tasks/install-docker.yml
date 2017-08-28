@@ -1,0 +1,90 @@
+---
+
+- name: add apt key for Docker repository
+  apt_key: >
+      keyserver=hkp://p80.pool.sks-keyservers.net:80
+      id=58118E89F3A912897C070ADBF76221572C52609D
+
+- name: add Docker repository
+  apt_repository: >
+      repo="deb https://apt.dockerproject.org/repo ubuntu-{{ ansible_distribution_release }} main"
+      filename="docker"
+
+- name: update apt cache
+  apt: update_cache=yes
+
+- name: get kernel release
+  command: uname -r
+  register: kernel_rel
+  changed_when: False
+
+- name: get kernel name
+  command: uname -s
+  register: kernel_name
+  changed_when: False
+
+- name: get machine hardware name
+  command: uname -m
+  register: machine_name
+  changed_when: False
+
+- name: install suggested packages for installing Docker
+  apt: name={{ item }} state=present
+  with_items:
+      - linux-image-extra-{{ kernel_rel.stdout }}
+      - linux-image-extra-virtual
+
+- name: install docker engine
+  apt: name=docker-engine
+
+- name: ensure docker unit file exists
+  copy: >
+      src=/lib/systemd/system/docker.service
+      dest=/etc/systemd/system/docker.service
+      mode=644
+      remote_src=True
+      force=no
+
+- name: set basic docker options
+  set_fact:
+      docker_options: -H fd:// --mtu=1200
+  changed_when: False
+
+- debug:
+    var: insecure_registries
+    verbosity: 2
+
+- name: set insecure registry docker option (list)
+  set_fact:
+      docker_options: "{{ docker_options }} --insecure-registry {{ insecure_registries }}"
+  when: insecure_registries != ""
+  changed_when: False
+
+- debug:
+    var: docker_options
+    verbosity: 2
+
+- name: ensure docker unit file has desired settings
+  ini_file:
+      dest: /etc/systemd/system/docker.service
+      section: Service
+      option: ExecStart
+      value: /usr/bin/dockerd {{ docker_options }}
+      no_extra_spaces: yes
+  register: docker_cfg
+
+- name: reload docker settings & restart docker service
+  systemd: >
+      name=docker
+      state=restarted
+      daemon_reload=yes
+  when: docker_cfg|changed
+
+- name: install docker-compose (v1.8.0)
+  get_url: >
+      url=https://github.com/docker/compose/releases/download/1.8.0/docker-compose-{{ kernel_name.stdout }}-{{ machine_name.stdout }}
+      dest=/usr/local/bin/docker-compose
+      mode=0555
+
+- name: ensure Docker service is running
+  systemd: name=docker state=started

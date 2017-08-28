@@ -1,0 +1,17 @@
+---
+
+- name: ensure test_lib directories exist
+  file: path={{ test_lib_dir }}/{{ item }} state=directory
+  with_items:
+      - ""
+      - python
+
+- name: transfer test_lib files to remote host
+  copy: >
+      src={{ role_path }}/../../../test-lib/{{ item.path }}
+      dest={{ test_lib_dir }}/{{ item.path }}
+      force=yes mode={{ item.mode }}
+  with_items:
+      - { path: 'python/HTMLTestRunner.py', mode: '0444' }
+      - { path: 'python/runtest.py', mode: '0444' }
+

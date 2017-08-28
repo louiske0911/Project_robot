@@ -1,0 +1,20 @@
+<% if (!vars.triggers) { %>
+    <triggers />
+<% } else { %>
+    <triggers>
+    <% vars.triggers.forEach(function(trigger) { %>
+        <% if (trigger.type == 'parentJob') { %>
+        <jenkins.triggers.ReverseBuildTrigger>
+            <spec/>
+            <upstreamProjects><%= trigger.upstreamProjects %></upstreamProjects>
+            <threshold>
+                <name><%= trigger.threshold_name? trigger.threshold_name : 'UNSTABLE' %></name>
+                <ordinal><%= trigger.threshold_ordinal? trigger.threshold_ordinal : '1' %></ordinal>
+                <color><%= trigger.threshold_color? trigger.threshold_color : 'YELLOW' %></color>
+                <completeBuild>true</completeBuild>
+            </threshold>
+        </jenkins.triggers.ReverseBuildTrigger>
+        <% } %>
+    <% }); %>
+    </triggers>
+<% } %>

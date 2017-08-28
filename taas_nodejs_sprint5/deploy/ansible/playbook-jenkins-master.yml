@@ -1,0 +1,10 @@
+- hosts: all
+  become: True
+  roles:
+      - docker_on_openstack
+
+
+- hosts: all
+  become: False
+  roles:
+      - jenkins_master

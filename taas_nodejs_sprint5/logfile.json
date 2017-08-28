@@ -1,0 +1,40 @@
+{
+
+"appenders": [
+{ "type": "file",  
+      "filename": "log/Routes/Routes_log.log",
+      "maxLogSize": 20480,
+      "backups": 10,   
+      "category": "Routes"
+},
+
+{ "type": "file",  
+      "filename": "log/Jenkins/Jenkins_log.log",
+      "maxLogSize": 20480,
+      "backups": 10,   
+      "category": "Jenkins"
+},
+{ "type": "file",  
+      "filename": "log/Dashboard/Dashboard_log.log",
+      "pattern": "-yyyy-MM-dd hh:mm:ss -O",
+      "maxLogSize": 20480,
+      "backups": 10,   
+      "category": "Dashboard"
+},
+{ "type": "file",  
+      "filename": "log/Session/Session_log.log",
+      "maxLogSize": 20480,
+      "backups": 10,   
+      "category": "Session"
+},
+{ "type": "file",
+      "filename": "log/Openstack/Openstack_log.log",
+      "maxLogSize": 20480,
+      "backups": 10,   
+      "category": "Openstack"
+
+
+}
+
+      ]
+}

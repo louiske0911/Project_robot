@@ -1,0 +1,7 @@
+{
+  "main_db": "mongodb://mongodb/TaaS",
+  "jenkins_master": "http://10.206.15.187:8080",
+  "archive_file_server": "http://10.206.15.192:8500",
+  "archive_file_listing_server": "http://10.206.15.192:8501",
+  "host_address": "http://140.96.27.78:90"
+}

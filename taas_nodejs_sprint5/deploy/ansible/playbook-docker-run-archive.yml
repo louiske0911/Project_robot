@@ -1,0 +1,137 @@
+# Playbook for running archive service containers on a host
+#
+# Run this playbook with the `--ask-vault-pass` option. Ansible will prompt you to
+# enter the password to decrypt the public key for the SSH server.
+#
+# Args:
+#   docker_registry_url (string): pulls Docker images from this url;
+#                                 by default, it assumes the images are present locally
+#   force_pull_api (bool): whether to pull the latest matched API server image
+#                          even when it is present; defafult is False
+#   force_pull_http (bool): equivalent arg for HTTP server image
+#   force_pull_sftp (bool): equivalent arg for SFTP server image
+#   force_recreate_api (bool): whether to re-create the API server container
+#                              even when there is one with the matched config;
+#                              default is False
+#   force_recreate_http (bool): equivalent arg for HTTP server container
+#   force_recreate_sftp (bool): equivalent arg for SFTP server container
+#   force_restart_api (bool): whether to restart the API server container
+#                             even when there is one with the matched config running;
+#                             default is False
+#   force_recreate_http (bool): equivalent arg for HTTP server container
+#   force_recreate_sftp (bool): equivalent arg for SFTP server container
+
+- hosts: docker-host-archive
+  roles:
+      - include_taas_vars
+      - { role: docker_on_openstack, become: True }
+      - ansible_docker
+  vars:
+      # docker_registry_url
+      docker_api_image: "{{ core_services.archive_api.image.name }}"
+      docker_api_container: "{{ core_services.archive_api.container.base_name }}"
+      docker_api_port: "{{ core_services.archive_api.container.port }}"
+      docker_http_image: "{{ core_services.archive_http.image.name }}"
+      docker_http_container: "{{ core_services.archive_http.container.base_name }}"
+      docker_http_port: "{{ core_services.archive_http.container.port }}"
+      docker_sftp_image: "{{ core_services.archive_sftp.image.name }}"
+      docker_sftp_container: "{{ core_services.archive_sftp.container.base_name }}"
+      docker_sftp_port: "{{ core_services.archive_sftp.container.port }}"
+      archive_root_dir: "{{ ansible_env.HOME }}/archive_root"
+      sftp_public_key_file: "{{ ansible_env.HOME }}/.ssh/keys/taas-ci.key.pub"
+      # flags that can be switched on
+      force_pull_api: False
+      force_pull_http: False
+      force_pull_sftp: False
+      force_recreate_api: False
+      force_recreate_http: False
+      force_recreate_sftp: False
+      force_restart_api: False
+      force_restart_http: False
+      force_restart_sftp: False
+  vars_files:
+      - vault_creds.yml
+  tasks:
+      - name: set image src as localhost
+        set_fact:
+            docker_api_image_src: "{{ docker_api_image }}"
+            docker_http_image_src: "{{ docker_http_image }}"
+
+      - name: set image src as registry
+        set_fact:
+            docker_api_image_src: "{{ docker_registry_url }}/{{ docker_api_image }}"
+            docker_http_image_src: "{{ docker_registry_url }}/{{ docker_http_image }}"
+        when: docker_registry_url | default('') != ''
+
+      # FIXME: save credentials in a protected place, such as Ansible vault or hashi vault
+      # TODO: ensure uid & gid are used consistently on the host machine and archive containers
+      - name: ensure credentials directory exists
+        file:
+            path: "{{ sftp_public_key_file | dirname }}"
+            state: directory
+
+      - name: ensure public key for sftp server exists
+        copy:
+            content: "{{ taas_ci_public_key }}"
+            dest: "{{ sftp_public_key_file }}"
+            force: yes
+            mode: 0400
+
+      - name: ensure archive root directory exists
+        file:
+            path: "{{ archive_root_dir }}"
+            state: directory
+
+      - name: ensure api server container is running
+        become: True
+        docker_container:
+            name: "{{ docker_api_container }}"
+            image: "{{ docker_api_image_src }}"
+            restart_policy: always
+            detach: True
+            ports:
+                - "{{ docker_api_port }}:{{ docker_api_port }}"
+            volumes:
+                - "{{ archive_root_dir }}:/archive_root:ro"
+            keep_volumes: True
+            state: started
+            pull: "{{ force_pull_api }}"
+            restart: "{{ force_restart_api }}"
+            recreate: "{{ force_recreate_api }}"
+
+      - name: ensure http server container is running
+        become: True
+        docker_container:
+            name: "{{ docker_http_container }}"
+            image: "{{ docker_http_image_src }}"
+            restart_policy: always
+            detach: True
+            ports:
+                - "{{ docker_http_port }}:{{ docker_http_port }}"
+            volumes:
+                - "{{ archive_root_dir }}:/archive_root:ro"
+            keep_volumes: True
+            state: started
+            pull: "{{ force_pull_http }}"
+            restart: "{{ force_restart_http }}"
+            recreate: "{{ force_recreate_http }}"
+
+      - name: ensure sftp server container is running
+        become: True
+        docker_container:
+            name: "{{ docker_sftp_container }}"
+            image: "{{ docker_sftp_image }}"
+            restart_policy: always
+            detach: True
+            ports:
+                - "{{ docker_sftp_port }}:22"
+            volumes:
+                - "{{ sftp_public_key_file }}:/home/taas/.ssh/keys/taas-ci.key.pub:ro"
+                - "{{ archive_root_dir }}:/home/taas/archive_root"
+            keep_volumes: True
+            command: taas::1000:1000
+            state: started
+            pull: "{{ force_pull_sftp }}"
+            restart: "{{ force_restart_sftp }}"
+            recreate: "{{ force_recreate_sftp }}"
+

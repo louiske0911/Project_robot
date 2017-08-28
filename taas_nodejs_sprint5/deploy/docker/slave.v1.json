@@ -1,0 +1,27 @@
+{
+  "apt": {
+	  "build-essential": "",
+	  "chromium-browser": "=55.0.2883.87-0ubuntu0.16.04.1263",
+    "chromium-chromedriver": "=55.0.2883.87-0ubuntu0.16.04.1263",
+	  "firefox": "=50.1.0+build2-0ubuntu0.16.04.1",
+	  "git": "",
+	  "jq": "",
+	  "openjdk-8-jdk-headless": "=8u111-b14-2ubuntu0.16.04.2",
+	  "python-dev": "",
+	  "python-pip": "",
+	  "python2.7": "",
+	  "python3-dev": "",
+	  "python3-pip": "",
+	  "python3.5": "",
+	  "sshpass": "",
+	  "subversion": "",
+	  "sudo": "",
+	  "xvfb": ""
+  },
+  "pip": {
+    "TestLink-API-Python-client": "==0.6.2",
+    "beautifulsoup4": "==4.4.1",
+    "selenium": "==3.0.2",
+    "underscore.py": "==0.1.6"
+  }
+}

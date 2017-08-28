@@ -1,0 +1,60 @@
+{
+  "system": {
+    "host": "mongodb",
+    "port": 80,
+    "systemPath": "C:\\tmp"
+  },  
+  "database": {
+    "host": "localhost",
+    "username": "root",
+    "password": "itrin400",
+    "dbName": "softwaretesting"
+  },
+  "page": {
+    "index.login": "Sign up / Login",
+    "login.username": "Username：",
+    "login.password": "Password：",
+    "login.signup": "Sign up",
+    "login.ldaplogin": "LDAP Login",
+    "login.login": "Login",
+    "menu.introduction": "Introduction                   ",
+    "menu.dashboard": "             Dashboard                   ",
+    "menu.project": "             Project                   ",
+    "menu.task": "               Task",
+    "menu.management": "Management",
+    "menu.create": "Create",
+    "menu.logout": "Logout"      
+  },
+  "jmeter": {
+    "username": "oolab",
+    "password": "oolaboolab",
+    "threadMax": 100,
+    "inputDir": "uploads/",
+    "outputDir": "results/",
+    "jmeterRunDir": "exe/jmeter/bin/",
+    "systemDir": "./",
+    "clientJmeterDir": "~/TaaS/exe/jmeter/bin/jmeter",
+    "clientUploadDir": "~/TaaS/uploads/",
+    "clientResultDir": "~/TaaS/results/"
+  },
+  "selenium": {
+    "port": 7777,
+    "testBrowser": "firefox"
+  },
+  "jenkins": {
+    "host": "127.0.0.1",
+    "port": 8080,
+    "username": "user",
+    "password": "password"
+  },
+  "taskStatus": {
+    "new": "0",
+    "run": "1",
+    "success": "2",
+    "failure": "3"
+  },
+  "crypto":{
+    "algorithm": "rc4",
+    "key": "ITRI number 1"
+  }
+}

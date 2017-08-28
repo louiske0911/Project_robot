@@ -1,0 +1,77 @@
+heat_template_version: 2014-10-16
+
+parameters:
+  key_name:
+    type: string
+    description: Name of an existing keypair to enable SSH access to the instances
+    default: default
+    constraints:
+      - custom_constraint: nova.keypair
+        description: Must already exist on your cloud
+  flavor:
+    type: string
+    description: The flavor that the application uses
+    default: m1.small
+    constraints:
+      - custom_constraint: nova.flavor
+        description:  Must be a valid flavor provided by your cloud provider.
+  image_id:
+    type: string
+    description: The ID of the image to use to create the instance
+    default: ubuntu14.04
+    constraints:
+      - custom_constraint: glance.image
+        description: Must be a valid image on your cloud
+  faafo_source:
+    type: string
+    description: The location of the faafo application install script on the Internet
+    # allows you to clone and play with the faafo code if you like
+    default: https://git.openstack.org/cgit/openstack/faafo/plain/contrib/install.sh
+
+resources:
+  flasky_port:
+    type: OS::Neutron::Port
+    properties:
+      network: taas_rsc_mgmt
+      security_groups: [default]
+
+  instance:
+    # The database and AMPQ services run on this instance.
+    type: OS::Nova::Server
+    properties:
+      name: test
+      image: { get_param: image_id }
+      flavor: { get_param: flavor }
+      key_name: { get_param: key_name }
+      networks:
+        - port: { get_resource: flasky_port }
+      metadata: {"metering.stack": {get_param: "OS::stack_id"}}
+      user_data_format: RAW
+      user_data:
+        str_replace:
+          template: |
+            #!/usr/bin/env bash
+            passwd ubuntu<<EOF
+            ubuntu
+            ubuntu
+            EOF
+            sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+            service ssh restart
+            sudo apt-get install stress
+            #stress -c 1 &
+          params:
+            faafo_installer: { get_param: faafo_source }
+
+  floating_ip:
+    type: OS::Neutron::FloatingIP
+    properties:
+      floating_network: public
+
+  floating_ip_assoc:
+    type: OS::Neutron::FloatingIPAssociation
+    properties:
+      floatingip_id: { get_resource: floating_ip }
+      port_id: { get_resource: flasky_port }
+
+
+

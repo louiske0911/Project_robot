@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <%- include partial/head.ejs %>
+  <script src="/javascripts/jquery-1.11.3.min.js"></script>
+  <!--<script src="/javascripts/addTestTask_Page.js"></script>-->
+  <script src="/task/js/descriptorType.js"></script>
+  <script src="/task/js/addTask.js"></script>
+  <script src="/task/js/testManagement.js"></script>
+  <script src="/task/js/addTestFormMaker.js"></script>
+  <script src="/task/js/check.js"></script>
+</head>
+<body>
+  <%- include partial/header.ejs %>
+  <div class="section-nav">
+    <div class="container">
+      <div class="pro_hvcenter_title">
+        <h3>
+          <ul class="breadcrumb">
+            <li><a href="/projectList">Project List</a></li>      
+            <li><a href="#" onClick="javascript:history.back(1)"><%=projname%></a></li>
+            <li class="active"><%=title%></li>
+          </ul>
+        </h3>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div class="container">
+    <p class="sysMsg_red" id="alertBar"></p>
+    <div class="form-field">
+      <form class="form-horizontal" id="teskForm">
+        <fieldset>
+          <div class="form-group" id="taskTypeDiv">
+            <label class="col-lg-3 control-label">Task type:</label>
+            <fieldset>
+              <div class="col-lg-4">
+              <select id="taskType" class="form-control"></select>
+              </div>
+            </fieldset>
+          </div>
+        </fieldset>
+        <fieldset id="taskFieldset">
+        </fieldset>
+        <div class="form-group">
+          <div class="col-lg-12">
+            <div class="form-btn">
+              <button type="button" onClick="javascript:history.back(1)" id="cancelTestTaskBtn" class="btn btn-primary">Cancel</button> 
+              <button type="submit" value="submit" id="finishTestTaskBtn" class="btn btn-primary">Finish</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="support">
+    <input type="text" id="TaskID" value="" style="display:none"/>
+    <input type="text" class="hiddenfields" id="projid" name="projid" value="<%=projid%>"/>
+  </div>
+</body>
+</html>

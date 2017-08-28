@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%- include partial/head.ejs %>
+	<link rel="stylesheet" href="/stylesheets/loader.css" type="text/css">
+	<link rel="stylesheet" href="/tab/bootstrap/css/bootstrap.css" type="text/css"/>
+	<link rel="stylesheet" href="/datatables/datatables.min.css" type="text/css"/>
+	<script type="text/javascript" src="/datatables/datatables.min.js"></script>
+	<script type="text/javascript" src="/task/js/dataTable.js"></script> 
+	<script type="text/javascript" src="/task/js/descriptorType.js"></script> 
+	<script type="text/javascript" src="/task/js/delTask.js"></script>
+	<script type="text/javascript" src="/task/js/resourceManagement.js"></script>
+	<script type="text/javascript" src="/task/js/consoleLog.js"></script>
+	<script type="text/javascript" src="/task/js/detailTask.js"></script>	
+	<script type="text/javascript" src="/task/js/level.js"></script>
+	<!-- <script type="text/javascript" src="/task/js/runStop.js"></script> merge to statusLight.js -->
+	<script type="text/javascript" src="/task/js/statusLight.js"></script>
+
+</head>
+<body> 
+	<%- include partial/header.ejs %>
+	<%- include partial/dialogInfo.ejs %>
+	<%- include partial/dialogYesNo.ejs %>
+	<%- include partial/dialogWarning.ejs %>
+
+	<div class="section-nav">
+		<div class="container">
+			<div class="title-tasklist">
+				<div class="row">
+					<div class="col-md-10">
+						<div>
+							<h3>
+								<ul class="breadcrumb">
+									<% if(selectProj){ %>
+									<li><a href="/projectList">Project List</a></li>
+									<li class="active"><%=selectProj%></li>
+									<% } %>
+								</ul>
+							</h3>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="title-btn">
+							<button type="button" id="createTaskBtn" class="btn btn-primary" name="createTask" onclick="createTestTask()">Create Task</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr class="titleline">
+	</div>
+
+	<div class="container">
+		<table id="table" class="table table-hover">
+			<thead>
+				<tr>
+					<th>Status&nbsp;&nbsp;&nbsp;&nbsp;</th>
+					<th>Task Name&nbsp;&nbsp;</th>
+					<th>Create Time</th>
+					<th>Update Time</th>
+					<th>Level</th>
+					<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<% tstask.forEach( function ( tsk ){ %>
+				<tr class="<%= tsk._id %>">
+					<td onclick="window.document.onclick=detailTask('<%= tsk._id %>')"  data-toggle="modal" data-target="#infoModal">
+						<img class="statusLight" id="<%= tsk._id %>" src=""/>
+						<span class="statusLightText" id="text<%= tsk._id %>"></span>
+					</td> 
+					<td onclick="window.document.onclick=detailTask('<%= tsk._id %>')"  data-toggle="modal" data-target="#infoModal">
+						<div class="taskName"><%= tsk.testtaskname %></div>
+					</td>
+					<td onclick="window.document.onclick=detailTask('<%= tsk._id %>')"  data-toggle="modal" data-target="#infoModal">
+						<div class="tblrow"><%= timeLib.formatTime(tsk.createtime) %></div>
+					</td>
+					<td onclick="window.document.onclick=detailTask('<%= tsk._id %>')"  data-toggle="modal" data-target="#infoModal">
+						<div class="tblrow"><%= timeLib.formatTime(tsk.updatetime) %></div>
+					</td>
+					<td>
+						<div class="tblrow level" id="level<%= tsk._id %>">
+							<span><%= tsk.level %></span>&nbsp;&nbsp;&nbsp;
+							<a href='' title='move task up' id="upLvBtn<%= tsk._id %>" onclick="upLevel('<%= tsk._id %>'); return false;"><img class="btnimage" src="/images/up.png" style="margin:0;"/></a>&nbsp;
+							<a href='' title='move task down' id="downLvBtn<%= tsk._id %>" onclick="downLevel('<%= tsk._id %>'); return false;"><img class="btnimage" src="/images/down.png" style="margin:0;"/></a>&nbsp;
+							<% if(tsk.contdownstream) { %><a href='' title='continue pipeline even when this task fails (click to disable)' id="contDownstream<%= tsk._id %>" onclick="enableContDownstream('<%= tsk._id %>', false); return false;"><img class="btnimage" src="/images/contdownstream.png" style="margin:0;"/></a>
+							<% } else { %><a href='' title='continue pipeline even when this task fails (click to enable)' id="contDownstream<%= tsk._id %>" onclick="enableContDownstream('<%= tsk._id %>', true); return false;"><img class="btnimage" src="/images/nocontdownstream.png" style="margin:0;"/></a>
+							<% } %>&nbsp;
+							<a href='' class="triggerSleep" id="triggerSleep<%= tsk._id %>" onclick="triggerSleep('<%= tsk._id %>', <%= tsk.level %>); return false;"><% if(tsk.level==0){ %><span class="glyphicon glyphicon-import" title="Add in pipeline"></span><% } else { %><span class="glyphicon glyphicon-export" title="Leave from pipeline"><% } %></span></a>
+						</div>
+					</td>
+					<td>
+						<div class="hover-btn">
+							<a href='/editTestTask/<%= tsk._id %>' title='Edit this task' id="editTask<%= tsk._id %>" ><img class="btnimage" src="/images/edit.png"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+							<a href='' title='Delete this task' id="delTask<%= tsk._id %>" data-toggle="modal" data-target="#yesnoModal"><img class="btnimage" src="/images/delete.png"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+							<a href='/runTask/<%= tsk._id %>' title='' class="runStopBtn" id="runStop<%= tsk._id %>" ><img class="btnimage" src=""/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+							<a href='' title='Task log Info' onclick="buildLogInterface('<%= tsk._id %>')" data-toggle="modal" data-target="#infoModal"><img class="btnimage" src="/images/log-file-icon.png"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<% if(tsk.jobtype == "deploy/generic"){ %>
+							<a href='' title='Stack Info' onclick="loader($('#infoModal'), function(){refreshStackStatus('<%= projid %>');});$('.loadermessage').html('Loading..');" data-toggle="modal" data-target="#infoModal"><img class="btnimage" src="/images/cloud.png"/></a>
+							<% } %>
+						</div>
+					</td>
+				</tr>
+				<% }); %>
+			</tbody>
+		</table> 
+	</div>
+	<div class="support">
+		<input type="text" class="hiddenfields" id="projid" name="projid" value="<%= projid %>"/>
+	</div>
+</div>						
+</body>
+</html>
