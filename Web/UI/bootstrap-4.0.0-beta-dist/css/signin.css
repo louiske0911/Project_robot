@@ -1,0 +1,60 @@
+
+        body {
+            padding-top: 100px;
+            padding-bottom: 40px;
+            background-color: #43a286;
+           
+        }
+       
+        form {
+            max-width: 440px;
+            padding: 15px;
+            margin: 0 auto;
+           
+        }
+        form h2,
+        form .checkbox {
+           margin-bottom: 10px;
+           
+       }
+       
+
+        form .checkbox {
+            font-weight: normal;
+        }
+
+        form .form-control {
+            position: relative;
+            height: auto;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        form .form-control
+        :focus {
+            /* z-index: 1; */
+            border: 2px #3247E5 solid;
+        }
+
+        form 
+        input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        form 
+        input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+         @media screen and (max-width: 600px) {
+            body {
+                padding-top: 40px; 
+                padding-bottom: 40px;
+                background-color: #97A243;   
+            }
+        }
