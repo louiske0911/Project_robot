@@ -1,0 +1,117 @@
+        /* * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        } */
+
+        body {          
+            margin: 0;
+            padding: 0;
+            /* height: 100vh; */
+        }
+
+        /*---body-main(The biggest flex Container in this page)---*/
+         #body-main {
+
+            display: flex;
+            flex-direction: column;
+            background-color: #A5E9DB;
+            /* height: 100vh; */
+            padding:20px 20px;
+        }
+        #body-main .header {
+            background-color: #00795f;
+            color: white;
+            /* width: 100%; */
+            text-align: center;
+            padding: 40px 0 ;
+            margin:20px 0px;
+            font-family: sans-serif;
+            
+        }
+
+        #body-main #main {            
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+
+        /*---Content---*/
+        #body-main #main #content {
+            display: flex;
+            order:1;
+            padding: 20px 20px;
+            flex-direction:column;
+        }
+        #body-main #main #content .Header-Container{
+            display: flex;
+            background-color: #12cc94;
+            text-align: center;
+            font-size: 30px;
+            
+            padding:5px 0;
+            /* justify-content: center; */
+            
+            border:1px solid rgba(255, 0, 0, .3);
+        }
+        #body-main #main #content .Header-Container a{
+           
+            /* line-height:35px; */
+            margin:0 10px 0 0;
+            /* height:35px; */
+            color:white;
+            flex:1 1 auto;
+            text-decoration: none;
+            
+        }
+        #body-main #main #content .Top-Container {
+            margin:20px 0 0 0;
+            padding:20px 20px;
+            background-color: #7ecba1;
+            order:1;
+        }
+        #body-main #main #content .Bottom-Container{
+            background-color: #466551;
+            order:2;
+        }
+
+        /*---Sidebar---*/
+        #body-main #main #sidebar {
+            background-color: #43a286;
+            padding:20px 20px;
+            
+        }
+        #body-main #main #sidebar .a {
+            order:2;
+        }
+
+        #body-main #main #sidebar .b {
+            order: 3;
+        }
+
+
+        /*---Footer---*/
+        footer {
+            padding: 30px;
+            background-color: #333;
+            text-align: center;
+            color: white;
+        }
+
+        @media screen and (min-width:600px) {
+            #sidebar {
+                flex: 0 0 200px;
+                background-color: #43a286;
+            }
+            #content {
+                flex: 1;
+                order: 2;
+            }
+            #sidebar .a {
+                flex: 1;
+                order: 1;
+            }
+            #sodebar .b {
+                order: 3;
+            }
+
+        }
