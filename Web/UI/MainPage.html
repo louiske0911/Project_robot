@@ -5,17 +5,39 @@
     <meta charset="utf-8">
     <link href="bootstrap-4.0.0-beta-dist/css/MainPage.css" rel="stylesheet">
     <link href="bootstrap-4.0.0-beta-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://i.icomoon.io/public/temp/9fb7700790/UntitledProject/style.css" rel="stylesheet" >
+    <link href="https://i.icomoon.io/public/temp/9fb7700790/UntitledProject/style.css" rel="stylesheet">
     <!-- will be switch the glyphicons icon which can use on loacl -->
-    
+
     <!-- <script src="bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+    <script>
+        function show() {
+            document.getElementById("block").style.visibility = "visible";
+            document.getElementById("dialog").style.visibility = "visible";
+        }
+        function back() {
+            document.getElementById("block").style.visibility = "hidden";
+            document.getElementById("dialog").style.visibility = "hidden";
+        }
+    </script>
 </head>
 
 <body>
+    <div id="block" onclick="back()">
+        <div class="p-4" id="dialog">
+            <p>Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat malesuada
+                justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris. Et proin ut quis
+                luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula. Massa ut tellus ante
+                augue viverra ullamcorper aenean lorem. Platea volutpat porttitor. Turpis viverra non quis lorem et. Eu wisi
+                erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing suscipit amet tincidunt sed felis enim nulla.
+                Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictum
+            </p>
+        </div>
+    </div>
     <div class="d-lg-flex flex-row" id="fcu_background">
         <div class="d-lg-flex flex-column col-lg-1.5">
-            <a class="p-4 px-5 logo" href="#"><img src="FCU_mascot.svg.png" alt="" /></a>                  
+            <a class="p-4 px-5 logo" href="#"><img src="FCU_mascot.svg.png" alt="" /></a>
             <nav class="p-4 nav nav-tab nav-justified flex-column" id="navBar">
                 <a class="p-2 nav-link" href="#"><span class="icon-compass pr-2"></span>現在位置</a>
                 <a class="p-2 nav-link" href="#"><span class="icon-location2 pr-2"></span>校園地圖</a>
@@ -29,13 +51,13 @@
             <div class="p-3 d-lg-flex flex-column" id="content">
                 <div class="p-4 d-lg-flex justify-content-center Header-Container">
                     <nav class="p-4 nav nav-tab nav-justified flex-row">
-                        <a class="p-2 nav-link" href="#"><span class="icon-book pr-2"></span>學院介紹</a>
-                        <a class="p-2 nav-link" href="#"><span class="icon-office pr-2"></span>大樓簡介</a>
-                        <a class="p-2 nav-link" href="#"><span class="icon-library pr-2"></span>景點介紹</a>
+                        <a class="p-2 nav-link" href="#" onclick="show()"><span class="icon-book pr-2"></span>學院介紹</a>
+                        <a class="p-2 nav-link" href="#" onclick="show()"><span class="icon-office pr-2"></span>大樓簡介</a>
+                        <a class="p-2 nav-link" href="#" onclick="show()"><span class="icon-library pr-2"></span>景點介紹</a>
                     </nav>
                 </div>
                 <div class="p-5 mt-5 d-lg-flex Top-Container">
-                    <h2>Content</h2>
+                    <!-- <h2>Content</h2> -->
                     <p>Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat
                         malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris.
                         Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula.
@@ -52,8 +74,8 @@
                         non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing suscipit
                     </p>
                 </div>
-            </div>    
-        </div>                
+            </div>
+        </div>
     </div>
 </body>
 
