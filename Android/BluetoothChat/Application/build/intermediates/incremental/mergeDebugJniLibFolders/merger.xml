@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/robert/Project_robot/BluetoothChat/Application/src/main/jniLibs"/></dataSet><dataSet config="debug"><source path="/Users/robert/Project_robot/BluetoothChat/Application/src/debug/jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/jniLibs"/></dataSet><dataSet config="debug"><source path="/Users/robert/Project_robot/Android/BluetoothChat/Application/src/debug/jniLibs"/></dataSet></merger>

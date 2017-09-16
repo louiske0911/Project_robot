@@ -50,6 +50,7 @@ import com.example.android.common.logger.Log;
 public class BluetoothChatFragment extends Fragment {
 
     private static final String TAG = "BluetoothChatFragment";
+    public Button btIdForward,btIdLeft,btIdStop,btIdRight,btIdBack;
 
     // Intent request codes
     private static final int REQUEST_CONNECT_DEVICE_SECURE = 1;
@@ -59,7 +60,7 @@ public class BluetoothChatFragment extends Fragment {
     // Layout Views
     private ListView mConversationView;
     private EditText mOutEditText;
-    private Button mSendButton;
+//    private Button mSendButton;
 
     /**
      * Name of the connected device
@@ -150,7 +151,13 @@ public class BluetoothChatFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         mConversationView = (ListView) view.findViewById(R.id.in);
         mOutEditText = (EditText) view.findViewById(R.id.edit_text_out);
-        mSendButton = (Button) view.findViewById(R.id.button_send);
+//        mSendButton = (Button) view.findViewById(R.id.button_send);
+        btIdForward = (Button)view.findViewById(R.id.btIdForward) ;
+        btIdBack = (Button)view.findViewById(R.id.btIdBack);
+        btIdRight = (Button)view.findViewById(R.id.btIdRight);
+        btIdLeft = (Button)view.findViewById(R.id.btIdLeft);
+        btIdStop = (Button)view.findViewById(R.id.btIdStop);
+
     }    //   For fragment_bluetooth_chat view ,this is initialization .
 
     /**
@@ -168,17 +175,63 @@ public class BluetoothChatFragment extends Fragment {
         mOutEditText.setOnEditorActionListener(mWriteListener);
 
         // Initialize the send button with a listener that for click events
-        mSendButton.setOnClickListener(new View.OnClickListener() {    //use btn to pass the message.
+//        mSendButton.setOnClickListener(new View.OnClickListener() {    //use btn to pass the message.
+//            public void onClick(View v) {
+//                // Send a message using content of the edit text widget
+//                View view = getView();
+//                if (view != null) {
+//                    TextView textView = (TextView) view.findViewById(R.id.edit_text_out);
+//                    String message = textView.getText().toString();
+//                    sendMessage(message);
+//                }
+//            }
+//        });
+
+        btIdForward.setOnClickListener(new View.OnClickListener() {    //use btn to pass the message.
             public void onClick(View v) {
                 // Send a message using content of the edit text widget
-                View view = getView();
-                if (view != null) {
-                    TextView textView = (TextView) view.findViewById(R.id.edit_text_out);
-                    String message = textView.getText().toString();
-                    sendMessage(message);
-                }
+                sendMessage("1");
+
             }
         });
+        btIdBack.setOnClickListener(new View.OnClickListener() {    //use btn to pass the message.
+            public void onClick(View v) {
+                // Send a message using content of the edit text widget
+                sendMessage("2");
+
+            }
+        });btIdRight.setOnClickListener(new View.OnClickListener() {    //use btn to pass the message.
+            public void onClick(View v) {
+                // Send a message using content of the edit text widget
+                sendMessage("3");
+
+            }
+        });btIdLeft.setOnClickListener(new View.OnClickListener() {    //use btn to pass the message.
+            public void onClick(View v) {
+                // Send a message using content of the edit text widget
+                sendMessage("4");
+
+            }
+        });btIdStop.setOnClickListener(new View.OnClickListener() {    //use btn to pass the message.
+            public void onClick(View v) {
+                // Send a message using content of the edit text widget
+                sendMessage("5");
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // Initialize the BluetoothChatService to perform bluetooth connections
         mChatService = new BluetoothChatService(getActivity(), mHandler);

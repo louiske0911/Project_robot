@@ -1,16 +1,16 @@
-#Sun Aug 06 00:27:20 CST 2017
+#Thu Sep 14 14:51:42 CST 2017
 renamed.4=classes.dex
-renamed.3=classes5.dex
-renamed.2=classes4.dex
-renamed.1=classes3.dex
-base.4=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_295fcce5aa4f3a5b9bdcfa99a3ac65cdcdea9c85
-renamed.0=classes2.dex
-base.3=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.3.0_d943b007bbc334ec4cf7faa4bedffea1a1bc9f95
-base.2=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.3.0_2dde5d9e8279251ceb0e04ccaefae77f1f92c524
-base.1=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b62484e9f24b1c0a7a79f227bc9b86c6ca3b0031
-base.0=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b14ef023e8d399179eb5c9d417e93dc192c654bc
-file.4=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_295fcce5aa4f3a5b9bdcfa99a3ac65cdcdea9c85/classes.dex
-file.3=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.3.0_d943b007bbc334ec4cf7faa4bedffea1a1bc9f95/classes.dex
-file.2=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.3.0_2dde5d9e8279251ceb0e04ccaefae77f1f92c524/classes.dex
-file.1=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b62484e9f24b1c0a7a79f227bc9b86c6ca3b0031/classes.dex
-file.0=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b14ef023e8d399179eb5c9d417e93dc192c654bc/classes.dex
+renamed.3=classes4.dex
+renamed.2=classes5.dex
+renamed.1=classes2.dex
+base.4=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_295fcce5aa4f3a5b9bdcfa99a3ac65cdcdea9c85
+renamed.0=classes3.dex
+base.3=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.3.0_2dde5d9e8279251ceb0e04ccaefae77f1f92c524
+base.2=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.3.0_d943b007bbc334ec4cf7faa4bedffea1a1bc9f95
+base.1=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b14ef023e8d399179eb5c9d417e93dc192c654bc
+base.0=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b62484e9f24b1c0a7a79f227bc9b86c6ca3b0031
+file.4=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_295fcce5aa4f3a5b9bdcfa99a3ac65cdcdea9c85/classes.dex
+file.3=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.3.0_2dde5d9e8279251ceb0e04ccaefae77f1f92c524/classes.dex
+file.2=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.3.0_d943b007bbc334ec4cf7faa4bedffea1a1bc9f95/classes.dex
+file.1=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b14ef023e8d399179eb5c9d417e93dc192c654bc/classes.dex
+file.0=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b62484e9f24b1c0a7a79f227bc9b86c6ca3b0031/classes.dex

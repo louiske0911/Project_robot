@@ -1,4 +1,4 @@
-#Sun Aug 06 00:27:20 CST 2017
-base.0=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7
+#Thu Sep 14 14:51:42 CST 2017
+base.0=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7
 renamed.0=classes.dex
-file.0=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex
+file.0=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex
