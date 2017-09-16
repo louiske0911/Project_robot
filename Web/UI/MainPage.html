@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link href="bootstrap-4.0.0-beta-dist/css/MainPage.css" rel="stylesheet">
     <link href="bootstrap-4.0.0-beta-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://i.icomoon.io/public/temp/9fb7700790/UntitledProject/style.css" rel="stylesheet">
+    <link href="https://i.icomoon.io/public/temp/4c4752bd46/UntitledProject/style.css" rel="stylesheet">
     <!-- will be switch the glyphicons icon which can use on loacl -->
 
     <!-- <script src="bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
@@ -58,9 +58,10 @@
         </div>
     </div>
     <div class="d-lg-flex flex-row container-fluid" id="fcu_background">
+        <!------------------------------Sidebar------------------------------>
         <div class="d-lg-flex flex-column col-lg-1.5">
             <a class="p-4 px-5 logo" href="#"><img src="FCU_mascot.svg.png" alt="" /></a>
-            <nav class="p-4 nav nav-tab nav-justified  flex-column" id="navBar">
+            <nav class="p-4 nav nav-tab nav-justified  flex-column" id="nav_bar">
                 <a class="p-2 nav-link" href="#"><span class="icon-compass pr-2"></span>現在位置</a>
                 <a class="p-2 nav-link" href="#"><span class="icon-location2 pr-2"></span>校園地圖</a>
                 <a class="p-2 nav-link" href="#"><span class="icon-info pr-2"></span>近日活動</a>
@@ -71,24 +72,16 @@
         </div>
         <div class="d-lg-flex col-lg">
             <div class="p-3 d-lg-flex flex-column" id="content">
-                <div class="p-1 d-lg-flex Header-Container header">
-                    <nav class="navbar  navbar-dark bg-primary">
-                        <div class="Dropdown-Menu">
-                            <!-- <a class="p-2 navbar-brand" href="#"> -->
-                            <span tabindex="0" class="icon-book pr-2" onclick="return true">菜單</span>
-                            <ul>
-                                <li><a href="#" onclick="alert('click 1')">Item 1</a></li>
-                                <li><a href="#" onclick="alert('click 2')">Item 2</a></li>
-                                <li><a href="#" onclick="alert('click 3')">Last Item</a></li>
-                            </ul>
-                            </a>
-                        </div>
-                        <a class="p-2 navbar-brand" href="#" onclick="show()"><span class="icon-book pr-2"></span>學院介紹</a>
-                        <a class="p-2 navbar-brand" href="#" onclick="show()"><span class="icon-office pr-2"></span>大樓簡介</a>
-                        <a class="p-2 navbar-brand" href="#" onclick="show()"><span class="icon-library pr-2"></span>景點介紹</a>
-                    </nav>
+                <div class="p-4 mt-5 d-lg-flex justify-content-around header_container">
+                    <!-- <nav class="p-4 nav nav-tab nav-justified flex-row"> -->
+                    <div class="">
+                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()">學院介紹</button>
+                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()">大樓簡介</button>
+                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()">景點介紹</button>
+                    </div>
+                    <!-- </nav> -->
                 </div>
-                <div class="p-5 mt-5 d-lg-flex Main-Container-Inner rounded">
+                <div class="p-5 mt-5 d-lg-flex main_container_inner rounded">
                     <p>Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat
                         malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris.
                         Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula.
