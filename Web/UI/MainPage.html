@@ -25,8 +25,30 @@
 
 <body>
     <div id="block" onclick="back()">
-        <div class="p-4" id="dialog">
+        <div class="p-4 rounded" id="dialog">
             <p>Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat malesuada
+                justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris. Et proin ut quis
+                luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula. Massa ut tellus ante
+                augue viverra ullamcorper aenean lorem. Platea volutpat porttitor. Turpis viverra non quis lorem et. Eu wisi
+                erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing suscipit amet tincidunt sed felis enim nulla.
+                Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictum Lorem ipsum dolor sit amet integer sem reiciendis
+                placerat mattis at elementum. Ultrices eu luctus erat malesuada justo. Eget ut venenatis. A aliquam ullamcorper
+                interdum ligula per. Integer donec mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed.
+                Mauris at arcu orci metus vehicula. Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat
+                porttitor. Turpis viverra non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing
+                suscipit amet tincidunt sed felis enim nulla. Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictumLorem
+                ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat malesuada
+                justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris. Et proin ut quis
+                luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula. Massa ut tellus ante
+                augue viverra ullamcorper aenean lorem. Platea volutpat porttitor. Turpis viverra non quis lorem et. Eu wisi
+                erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing suscipit amet tincidunt sed felis enim nulla.
+                Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictumLorem ipsum dolor sit amet integer sem reiciendis
+                placerat mattis at elementum. Ultrices eu luctus erat malesuada justo. Eget ut venenatis. A aliquam ullamcorper
+                interdum ligula per. Integer donec mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed.
+                Mauris at arcu orci metus vehicula. Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat
+                porttitor. Turpis viverra non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing
+                suscipit amet tincidunt sed felis enim nulla. Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictumLorem
+                ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat malesuada
                 justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris. Et proin ut quis
                 luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula. Massa ut tellus ante
                 augue viverra ullamcorper aenean lorem. Platea volutpat porttitor. Turpis viverra non quis lorem et. Eu wisi
@@ -35,10 +57,10 @@
             </p>
         </div>
     </div>
-    <div class="d-lg-flex flex-row" id="fcu_background">
+    <div class="d-lg-flex flex-row container-fluid" id="fcu_background">
         <div class="d-lg-flex flex-column col-lg-1.5">
             <a class="p-4 px-5 logo" href="#"><img src="FCU_mascot.svg.png" alt="" /></a>
-            <nav class="p-4 nav nav-tab nav-justified flex-column" id="navBar">
+            <nav class="p-4 nav nav-tab nav-justified  flex-column" id="navBar">
                 <a class="p-2 nav-link" href="#"><span class="icon-compass pr-2"></span>現在位置</a>
                 <a class="p-2 nav-link" href="#"><span class="icon-location2 pr-2"></span>校園地圖</a>
                 <a class="p-2 nav-link" href="#"><span class="icon-info pr-2"></span>近日活動</a>
@@ -49,29 +71,56 @@
         </div>
         <div class="d-lg-flex col-lg">
             <div class="p-3 d-lg-flex flex-column" id="content">
-                <div class="p-4 d-lg-flex justify-content-center Header-Container">
-                    <nav class="p-4 nav nav-tab nav-justified flex-row">
-                        <a class="p-2 nav-link" href="#" onclick="show()"><span class="icon-book pr-2"></span>學院介紹</a>
-                        <a class="p-2 nav-link" href="#" onclick="show()"><span class="icon-office pr-2"></span>大樓簡介</a>
-                        <a class="p-2 nav-link" href="#" onclick="show()"><span class="icon-library pr-2"></span>景點介紹</a>
+                <div class="p-1 d-lg-flex Header-Container header">
+                    <nav class="navbar  navbar-dark bg-primary">
+                        <div class="Dropdown-Menu">
+                            <!-- <a class="p-2 navbar-brand" href="#"> -->
+                            <span tabindex="0" class="icon-book pr-2" onclick="return true">菜單</span>
+                            <ul>
+                                <li><a href="#" onclick="alert('click 1')">Item 1</a></li>
+                                <li><a href="#" onclick="alert('click 2')">Item 2</a></li>
+                                <li><a href="#" onclick="alert('click 3')">Last Item</a></li>
+                            </ul>
+                            </a>
+                        </div>
+                        <a class="p-2 navbar-brand" href="#" onclick="show()"><span class="icon-book pr-2"></span>學院介紹</a>
+                        <a class="p-2 navbar-brand" href="#" onclick="show()"><span class="icon-office pr-2"></span>大樓簡介</a>
+                        <a class="p-2 navbar-brand" href="#" onclick="show()"><span class="icon-library pr-2"></span>景點介紹</a>
                     </nav>
                 </div>
-                <div class="p-5 mt-5 d-lg-flex Top-Container">
-                    <!-- <h2>Content</h2> -->
+                <div class="p-5 mt-5 d-lg-flex Main-Container-Inner rounded">
                     <p>Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat
                         malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris.
                         Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula.
                         Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat porttitor. Turpis viverra
                         non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing suscipit
                         amet tincidunt sed felis enim nulla. Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictum
-                    </p>
-                </div>
-                <div class="p-5 d-lg-flex Bottom-Container">
-                    <p>Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat
-                        malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris.
+                        Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus
+                        erat malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec
+                        mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus
+                        vehicula. Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat porttitor.
+                        Turpis viverra non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing
+                        suscipitLorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices
+                        eu luctus erat malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer
+                        donec mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci
+                        metus vehicula. Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat porttitor.
+                        Turpis viverra non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing
+                        suscipitLorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices
+                        eu luctus erat malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer
+                        donec mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci
+                        metus vehicula.Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris.
+                        Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula.Eget
+                        ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris. Et proin ut quis luctus
+                        purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula.Eget ut venenatis. A
+                        aliquam ullamcorper interdum ligula per. Integer donec mauris. Et proin ut quis luctus purus ut eget
+                        quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula.Eget ut venenatis. A aliquam ullamcorper
+                        interdum ligula per. Integer donec mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada
+                        mi sed. Mauris at arcu orci metus vehicula.Eget ut venenatis. A aliquam ullamcorper interdum ligula
+                        per. Integer donec mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris
+                        at arcu orci metus vehicula.Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer
+                        donec mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci
+                        metus vehicula.Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris.
                         Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula.
-                        Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat porttitor. Turpis viverra
-                        non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing suscipit
                     </p>
                 </div>
             </div>

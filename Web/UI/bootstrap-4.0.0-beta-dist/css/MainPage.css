@@ -11,7 +11,7 @@ li.logo a:link, li.logo a:visited {
   }
 
   #fcu_background {
-      background-color: #B0EACB;
+      background-color:rgb(255, 255, 255);
       height: 100%;
   }
   
@@ -74,7 +74,6 @@ li.logo a:link, li.logo a:visited {
       
   }
   
-  
   #body-main #main #content .Top-Container {
       margin:20px 0 0 0;
       padding:20px 20px;
@@ -98,8 +97,9 @@ li.logo a:link, li.logo a:visited {
       opacity: 0.9;
       
    }
+   
      #dialog{
-      position: relative;
+      position: absolute;
       top: 10%;
       left: 10%;
       width:80%;
@@ -108,30 +108,48 @@ li.logo a:link, li.logo a:visited {
       z-index: 999;
       visibility: hidden;
       opacity: 1.0;
-      border-radius: 2em;
-      /* padding:20px 20px; */
+      overflow-y:scroll;
+    }
+
+    /* #dialog p{
+      position: relative;
+    } */
+
+   .header{
+       /* top:0; */
+       background-color: rgb(246, 246, 246);
+       color:white;
+       text-decoration: none;
    }
-      #dialog p{
-          position: relative;
-      }
   
-  
-   .Top-Container { 
-      background-color: #f5b553;
+   .Main-Container-Inner { 
+      background-color: rgb(246, 246, 246);
+      overflow-y: scroll;
       /* order:2; */
-  }
+   }
+
   .Header-Container a{   
-      font-size: 30px;    
-      height:35px;
+      font-size: 20px;    
       color:#120C0C;
       text-decoration: none;
       font-family: "Times New Roman", Times, serif;    
   }
-  .Bottom-Container{
-      background-color: #466551;
-      order:1;
-  }   
+/*-----------------------------Header-Menu-----------------------------*/
+   .Dropdown-Menu{
+       positive: relative;
+   }
+
+   .Dropdown-Menu > ul{
+       positive: absolute;
+       z-index: 1;
+       display: none;
+   }
+   
+   .Dropdown-Menu > span:focus ~ ul{
+       display:block;
+   }
   
+   
   /*-----------------------------Sidebar-----------------------------*/
   
   #navBar {
