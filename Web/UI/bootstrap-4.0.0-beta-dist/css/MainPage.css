@@ -1,130 +1,82 @@
 element.style {
       cursor : pointer;
-  }
-
- li.logo a:link,
- li.logo a:visited {
-    text-align: right;
-    width: 90%;
-    padding: 0 10% 0 0;
-  }
+}
   
-  .logo img {
-    width: 100%;
-    max-width: 80px;
-  }
+.logo {
+    display: block;
+}
 
-  #fcu_background {
-      background-color:rgb(255, 255, 255);
-      height: 100vh;
-      width: 100vw;
-  }
-  
-  html, body {          
-      margin: 0;
-      padding: 0;
-      height: 100%;
-  }
-  /*-----------------------------Header-Menu-----------------------------*/ 
-   #block{
-      display: inline-block;
-      position: absolute;
-      height:100%;
-      width:100%;
-      color:#0A0404;
-      background-color: gray;
-      visibility: hidden;
-      z-index: 500;
-      opacity: 0.9;
-      
-   }
-   
-     #dialog{
-      position: absolute;
-      top: 10%;
-      left: 10%;
-      width:80%;
-      height:80%;
-      background-color:rgba(255,255,255,.9);
-      z-index: 999;
-      visibility: hidden;
-      opacity: 1;
-      overflow-y:scroll;
-    }
+.logo img {
+    width: 5%;    
+}
 
-  .header_container {
-      background-color: rgb(255, 255, 255);
-      font-size: 15px;    
-      color:#120C0C;
-      font-family: "Times New Roman", Times, serif;    
-  }
+#body-main #main {            
+    display: flex;
+    flex-wrap: wrap;
+    
+}
 
-  .main_container_inner { 
+#fcu_background {
+    background-color:rgb(255, 255, 255);
+    height: 100vh;
+    width: 100vw;
+}
+
+html, body {          
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/*-----------------------------Header-Menu-----------------------------*/ 
+#block{
+    display: inline-block; 
+    position: absolute;
+    height:100%;
+    width:100%;
+    color:#0A0404;
+    background-color: gray;
+    visibility: hidden;
+    z-index: 500;
+    opacity: 0.9;
+    
+}
+
+#dialog{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width:80%;
+    height:80%;
+    background-color:rgba(255,255,255,.9);
+    z-index: 999;
+    visibility: hidden;
+    opacity: 1;
+    overflow-y:scroll;
+}
+
+.header_container {
+    background-color: rgb(255, 255, 255);
+    font-size: 15px;    
+    color:#120C0C;
+    font-family: "Times New Roman", Times, serif;    
+}
+
+.main_container_inner { 
     background-color: rgb(246, 246, 246);
     overflow-y: scroll;
- }
- /*-----------------------------Header-Menu-----------------------------*/
-   /* .dropdown_menu{
-       position: relative;
-   }
+}
 
-   .dropdown_menu > ul{
-       position: absolute;
-       z-index: 1;
-       visibility: hidden;
-       transition: visibility 0.5s;
-       opacity: 0;
-       text-decoration: none;
-   }
-   
-   .dropdown_menu > span:focus ~ ul{
-       visibility: visible;
-       opacity: 0.8;
-       text-decoration: none;
-       background-color: rgb(246,246,246);
-   } */
-  
-   
-   
-  /*-----------------------------Sidebar-----------------------------*/
-  
-  #nav_bar {
-      background-color: rgba(67, 162, 133, 0.00);
-      font-size: 20px;
-      font-family: "Times New Roman", Times, serif;
-  }
-  /* #body-main #main #sidebar .a {
-      order:2;
-  }
-  #body-main #main #sidebar .b {
-      order: 3;
-  } */
-  
-  /*-----------------------------Footer-----------------------------*/
-  footer {
-      padding: 30px;
-      background-color: #333;
-      text-align: center;
-      color: white;
-  }
-  /*-----------------------------media-----------------------------*/
-  /* @media screen and (min-width:600px) {
-      #sidebar {
-          flex: 0 0 200px;
-          background-color: #38BE97;
-      }
-      #content {
-          flex: 1;
-          order: 2;
-      }
-      #sidebar .a {
-          flex: 1;
-          order: 1;
-      }
-      #sodebar .b {
-          order: 3;
-      }
-      .logo {
-          display: block;
-      }
-  } */
+/*-----------------------------Sidebar-----------------------------*/
+#nav_bar {
+    background-color: rgb(246, 246, 246);
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.collapsing.width {
+  -webkit-transition-property: width, visibility;
+  transition-property: width, visibility;
+  width: 0;
+  height: auto;
+}  
