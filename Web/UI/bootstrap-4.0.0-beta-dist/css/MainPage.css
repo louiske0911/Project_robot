@@ -1,13 +1,9 @@
 element.style {
-      cursor : pointer;
+    cursor : pointer;
 }
   
-.logo {
-    display: block;
-}
-
 .logo img {
-    width: 5%;    
+    width: 3%;    
 }
 
 #body-main #main {            
@@ -67,7 +63,7 @@ html, body {
     overflow-y: scroll;
 }
 
-/*-----------------------------Sidebar-----------------------------*/
+/*-----------------------------navebar-----------------------------*/
 #nav_bar {
     background-color: rgb(246, 246, 246);
     font-size: 20px;
@@ -75,8 +71,8 @@ html, body {
 }
 
 .collapsing.width {
-  -webkit-transition-property: width, visibility;
-  transition-property: width, visibility;
-  width: 0;
-  height: auto;
+    -webkit-transition-property: width, visibility;
+    transition-property: width, visibility;
+    width: 0;
+    height: auto;
 }  

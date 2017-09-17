@@ -9,8 +9,13 @@
     <!-- will be switch the glyphicons icon which can use on loacl -->
 
     <!-- <script src="bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
+
     <script>
         function show() {
             document.getElementById("block").style.visibility = "visible";
@@ -33,52 +38,33 @@
                 erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing suscipit amet tincidunt sed felis enim nulla.
                 Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictum Lorem ipsum dolor sit amet integer sem reiciendis
                 placerat mattis at elementum. Ultrices eu luctus erat malesuada justo. Eget ut venenatis. A aliquam ullamcorper
-                interdum ligula per. Integer donec mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed.
-                Mauris at arcu orci metus vehicula. Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat
-                porttitor. Turpis viverra non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing
-                suscipit amet tincidunt sed felis enim nulla. Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictumLorem
-                ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat malesuada
-                justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris. Et proin ut quis
-                luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula. Massa ut tellus ante
-                augue viverra ullamcorper aenean lorem. Platea volutpat porttitor. Turpis viverra non quis lorem et. Eu wisi
-                erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing suscipit amet tincidunt sed felis enim nulla.
-                Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictumLorem ipsum dolor sit amet integer sem reiciendis
-                placerat mattis at elementum. Ultrices eu luctus erat malesuada justo. Eget ut venenatis. A aliquam ullamcorper
-                interdum ligula per. Integer donec mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed.
-                Mauris at arcu orci metus vehicula. Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat
-                porttitor. Turpis viverra non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing
-                suscipit amet tincidunt sed felis enim nulla. Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictumLorem
-                ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat malesuada
-                justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris. Et proin ut quis
-                luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula. Massa ut tellus ante
-                augue viverra ullamcorper aenean lorem. Platea volutpat porttitor. Turpis viverra non quis lorem et. Eu wisi
-                erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing suscipit amet tincidunt sed felis enim nulla.
-                Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictum
-            </p>
         </div>
     </div>
     <div class="d-lg-flex flex-row container-fluid" id="fcu_background">
-        <div class="d-lg-flex flex-column col-lg-1.5">
-            <a class="p-4 px-5 logo" href="#"><img src="FCU_mascot.svg.png" alt="" /></a>
-            <nav class="p-4 nav nav-tab nav-justified  flex-column" id="nav_bar">
-                <a class="p-2 nav-link" href="#"><span class="icon-compass pr-2"></span>現在位置</a>
-                <a class="p-2 nav-link" href="#"><span class="icon-location2 pr-2"></span>校園地圖</a>
-                <a class="p-2 nav-link" href="#"><span class="icon-info pr-2"></span>近日活動</a>
-                <a class="p-2 nav-link" href="#"><span class="icon-info pr-2"></span>關於我們</a>
-                <a class="p-2 nav-link" href="#"><span class="icon-user-tie pr-2"></span>Log in</a>
-                <a class="p-2 nav-link" href="#"><span class="icon-exit pr-2"></span>Log out</a>
-            </nav>
+        <div class="d-lg-flex flex-column col-lg-1.5 ">
+            <div class="m-4 p-4 collapse width" id="collapseExample">
+                <div style="width:175px;">
+                    <nav class="nav nav-tab nav-justified flex-column" id="nav_bar">
+                        <a class="nav-link" href="#"><span class="icon-compass pr-2"></span>現在位置</a>
+                        <a class="nav-link" href="#"><span class="icon-location2 pr-2"></span>校園地圖</a>
+                        <a class="p-2 nav-link" href="#"><span class="icon-info pr-2"></span>近日活動</a>
+                        <a class="p-2 nav-link" href="#"><span class="icon-info pr-2"></span>關於我們</a>
+                        <a class="p-2 nav-link" href="#"><span class="icon-user pr-2"></span>Log in</a>
+                        <a class="p-2 nav-link" href="#"><span class="icon-exit pr-2"></span>Log out</a>
+                    </nav>
+                </div>
+            </div>
         </div>
         <div class="d-lg-flex col-lg">
             <div class="p-3 d-lg-flex flex-column" id="content">
                 <div class="p-4 mt-5 d-lg-flex justify-content-around header_container">
-                    <!-- <nav class="p-4 nav nav-tab nav-justified flex-row"> -->
                     <div class="">
-                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()">學院介紹</button>
-                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()">大樓簡介</button>
-                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()">景點介紹</button>
+                        <a class="mx-5 logo"><img src="FCU_mascot.svg.png" alt="" data-toggle="collapse" href="#collapseExample" aria-expanded="false"
+                                aria-controls="collapseExample"></a>
+                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-book"> 學院介紹</button>
+                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-office"> 大樓簡介</button>
+                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-library"> 景點介紹</button>
                     </div>
-                    <!-- </nav> -->
                 </div>
                 <div class="p-5 mt-5 d-lg-flex main_container_inner rounded">
                     <p>Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat
@@ -87,32 +73,6 @@
                         Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat porttitor. Turpis viverra
                         non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing suscipit
                         amet tincidunt sed felis enim nulla. Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictum
-                        Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus
-                        erat malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec
-                        mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus
-                        vehicula. Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat porttitor.
-                        Turpis viverra non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing
-                        suscipitLorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices
-                        eu luctus erat malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer
-                        donec mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci
-                        metus vehicula. Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat porttitor.
-                        Turpis viverra non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing
-                        suscipitLorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices
-                        eu luctus erat malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer
-                        donec mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci
-                        metus vehicula.Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris.
-                        Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula.Eget
-                        ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris. Et proin ut quis luctus
-                        purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula.Eget ut venenatis. A
-                        aliquam ullamcorper interdum ligula per. Integer donec mauris. Et proin ut quis luctus purus ut eget
-                        quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula.Eget ut venenatis. A aliquam ullamcorper
-                        interdum ligula per. Integer donec mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada
-                        mi sed. Mauris at arcu orci metus vehicula.Eget ut venenatis. A aliquam ullamcorper interdum ligula
-                        per. Integer donec mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris
-                        at arcu orci metus vehicula.Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer
-                        donec mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci
-                        metus vehicula.Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris.
-                        Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula.
                     </p>
                 </div>
             </div>
