@@ -6,12 +6,6 @@ element.style {
     width: 3%;    
 }
 
-#body-main #main {            
-    display: flex;
-    flex-wrap: wrap;
-    
-}
-
 #fcu_background {
     background-color:rgb(255, 255, 255);
     height: 100vh;
