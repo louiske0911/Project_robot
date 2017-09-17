@@ -1,5 +1,9 @@
+element.style {
+      cursor : pointer;
+  }
 
-li.logo a:link, li.logo a:visited {
+ li.logo a:link,
+ li.logo a:visited {
     text-align: right;
     width: 90%;
     padding: 0 10% 0 0;
@@ -12,7 +16,8 @@ li.logo a:link, li.logo a:visited {
 
   #fcu_background {
       background-color:rgb(255, 255, 255);
-      height: 100%;
+      height: 100vh;
+      width: 100vw;
   }
   
   html, body {          
@@ -20,71 +25,7 @@ li.logo a:link, li.logo a:visited {
       padding: 0;
       height: 100%;
   }
-  
-  /*-----------------------------body-main(The biggest flex Container in this page)-----------------------------*/
-  /* #body-main {
-      display: flex;
-      flex-direction: column;
-      background-color: #A5E9DB;
-      height: 100vh;
-      padding:20px 20px;
-  }
-  #body-main .header {
-      background-color: #00795f;
-      color: white;
-      width: 100%;
-      text-align: center;
-      padding: 40px 0 ;
-      margin:20px 0px;
-      font-family: sans-serif;
-      
-  }
-  #body-main #main {            
-      display: flex;
-      flex-wrap: wrap;
-      
-  } */
-  
-  
-  /*-----------------------------Content-----------------------------*/
-  /* #body-main #main #content {
-      display: flex;
-      order:1;
-      padding: 20px 20px;
-      flex-direction:column;
-  }
-  
-  #body-main #main #content .Header-Container{
-      display: flex;
-      background-color: #12cc94;
-      text-align: center;
-      font-size: 30px;
-      padding:5px 0;
-      justify-content: center;
-      border:1px solid rgba(255, 0, 0, .3);
-  }
-  
-  #body-main #main #content .Header-Container a{   
-      line-height:35px;
-      margin:0 10px 0 0;
-      height:35px;
-      color:white;
-      flex:1 1 auto;
-      text-decoration: none;
-      
-  }
-  
-  #body-main #main #content .Top-Container {
-      margin:20px 0 0 0;
-      padding:20px 20px;
-      background-color: #7ecba1;
-      order:1;
-  }
-  
-  #body-main #main #content .Bottom-Container{
-      background-color: #466551;
-      order:2;
-  } */
+  /*-----------------------------Header-Menu-----------------------------*/ 
    #block{
       display: inline-block;
       position: absolute;
@@ -107,52 +48,47 @@ li.logo a:link, li.logo a:visited {
       background-color:rgba(255,255,255,.9);
       z-index: 999;
       visibility: hidden;
-      opacity: 1.0;
+      opacity: 1;
       overflow-y:scroll;
     }
 
-    /* #dialog p{
-      position: relative;
-    } */
-
-   .header{
-       /* top:0; */
-       background-color: rgb(246, 246, 246);
-       color:white;
-       text-decoration: none;
-   }
-  
-   .Main-Container-Inner { 
-      background-color: rgb(246, 246, 246);
-      overflow-y: scroll;
-      /* order:2; */
-   }
-
-  .Header-Container a{   
-      font-size: 20px;    
+  .header_container {
+      background-color: rgb(255, 255, 255);
+      font-size: 15px;    
       color:#120C0C;
-      text-decoration: none;
       font-family: "Times New Roman", Times, serif;    
   }
-/*-----------------------------Header-Menu-----------------------------*/
-   .Dropdown-Menu{
-       positive: relative;
+
+  .main_container_inner { 
+    background-color: rgb(246, 246, 246);
+    overflow-y: scroll;
+ }
+ /*-----------------------------Header-Menu-----------------------------*/
+   /* .dropdown_menu{
+       position: relative;
    }
 
-   .Dropdown-Menu > ul{
-       positive: absolute;
+   .dropdown_menu > ul{
+       position: absolute;
        z-index: 1;
-       display: none;
+       visibility: hidden;
+       transition: visibility 0.5s;
+       opacity: 0;
+       text-decoration: none;
    }
    
-   .Dropdown-Menu > span:focus ~ ul{
-       display:block;
-   }
+   .dropdown_menu > span:focus ~ ul{
+       visibility: visible;
+       opacity: 0.8;
+       text-decoration: none;
+       background-color: rgb(246,246,246);
+   } */
   
+   
    
   /*-----------------------------Sidebar-----------------------------*/
   
-  #navBar {
+  #nav_bar {
       background-color: rgba(67, 162, 133, 0.00);
       font-size: 20px;
       font-family: "Times New Roman", Times, serif;
