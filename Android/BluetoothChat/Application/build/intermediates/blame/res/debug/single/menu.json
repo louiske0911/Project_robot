@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/res/merged/debug/menu/main.xml",
-        "source": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/menu/main.xml"
+        "merged": "/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/res/merged/debug/menu/bluetooth_chat.xml",
+        "source": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/menu/bluetooth_chat.xml"
     },
     {
-        "merged": "/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/res/merged/debug/menu/bluetooth_chat.xml",
-        "source": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/menu/bluetooth_chat.xml"
+        "merged": "/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/menu/main.xml"
     }
 ]

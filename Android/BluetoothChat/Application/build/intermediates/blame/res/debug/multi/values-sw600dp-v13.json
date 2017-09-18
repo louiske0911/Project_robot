@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
+        "outputFile": "/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 118
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values-sw600dp/template-dimens.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values-sw600dp/template-dimens.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 186
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values-sw600dp/template-dimens.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values-sw600dp/template-dimens.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -50,7 +50,7 @@
                     "endOffset": 431
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values-sw600dp/template-styles.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values-sw600dp/template-styles.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,

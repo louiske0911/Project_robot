@@ -1,22 +1,22 @@
 [
     {
-        "merged": "/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/res/merged/debug/layout/activity_device_list.xml",
-        "source": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/layout/activity_device_list.xml"
+        "merged": "/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/layout/activity_main.xml"
     },
     {
-        "merged": "/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/res/merged/debug/layout/fragment_bluetooth_chat.xml",
-        "source": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/layout/fragment_bluetooth_chat.xml"
+        "merged": "/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/res/merged/debug/layout/activity_device_list.xml",
+        "source": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/layout/activity_device_list.xml"
     },
     {
-        "merged": "/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/res/merged/debug/layout/device_name.xml",
-        "source": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/layout/device_name.xml"
+        "merged": "/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/res/merged/debug/layout/device_name.xml",
+        "source": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/layout/device_name.xml"
     },
     {
-        "merged": "/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/res/merged/debug/layout/message.xml",
-        "source": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/layout/message.xml"
+        "merged": "/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/res/merged/debug/layout/fragment_bluetooth_chat.xml",
+        "source": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/layout/fragment_bluetooth_chat.xml"
     },
     {
-        "merged": "/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/res/merged/debug/layout/activity_main.xml",
-        "source": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/layout/activity_main.xml"
+        "merged": "/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/res/merged/debug/layout/message.xml",
+        "source": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/layout/message.xml"
     }
 ]

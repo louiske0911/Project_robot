@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v21/values-v21.xml",
+        "outputFile": "/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v21/values-v21.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 131
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values-v21/base-template-styles.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values-v21/base-template-styles.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,

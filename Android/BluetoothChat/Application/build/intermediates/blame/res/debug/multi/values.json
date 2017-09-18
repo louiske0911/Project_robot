@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+        "outputFile": "/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
         "map": [
             {
                 "to": {
@@ -163,7 +163,7 @@
                     "endOffset": 3013
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/template-dimens.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/template-dimens.xml",
                     "position": {
                         "startLine": 28,
                         "startColumn": 4,
@@ -182,7 +182,7 @@
                     "endOffset": 3056
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/template-dimens.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/template-dimens.xml",
                     "position": {
                         "startLine": 24,
                         "startColumn": 4,
@@ -201,7 +201,7 @@
                     "endOffset": 3100
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/template-dimens.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/template-dimens.xml",
                     "position": {
                         "startLine": 23,
                         "startColumn": 4,
@@ -220,7 +220,7 @@
                     "endOffset": 3145
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/template-dimens.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/template-dimens.xml",
                     "position": {
                         "startLine": 22,
                         "startColumn": 4,
@@ -239,7 +239,7 @@
                     "endOffset": 3188
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/template-dimens.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/template-dimens.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -258,7 +258,7 @@
                     "endOffset": 3230
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/template-dimens.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/template-dimens.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -277,7 +277,7 @@
                     "endOffset": 3298
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/template-dimens.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/template-dimens.xml",
                     "position": {
                         "startLine": 29,
                         "startColumn": 4,
@@ -296,7 +296,7 @@
                     "endOffset": 3349
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/base-strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/base-strings.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
@@ -315,7 +315,7 @@
                     "endOffset": 3451
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -334,7 +334,7 @@
                     "endOffset": 3508
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 33,
                         "startColumn": 4,
@@ -353,7 +353,7 @@
                     "endOffset": 3567
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 38,
                         "startColumn": 4,
@@ -372,7 +372,7 @@
                     "endOffset": 3640
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 37,
                         "startColumn": 4,
@@ -392,7 +392,7 @@
                     "endOffset": 4229
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/base-strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/base-strings.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -412,7 +412,7 @@
                     "endOffset": 4285
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 30,
                         "startColumn": 4,
@@ -431,7 +431,7 @@
                     "endOffset": 4353
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 29,
                         "startColumn": 4,
@@ -450,7 +450,7 @@
                     "endOffset": 4429
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -469,7 +469,7 @@
                     "endOffset": 4482
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/fragmentview_strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/fragmentview_strings.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
@@ -488,7 +488,7 @@
                     "endOffset": 4535
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/fragmentview_strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/fragmentview_strings.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -507,7 +507,7 @@
                     "endOffset": 4596
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 27,
                         "startColumn": 4,
@@ -526,7 +526,7 @@
                     "endOffset": 4665
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 36,
                         "startColumn": 4,
@@ -545,7 +545,7 @@
                     "endOffset": 4734
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 28,
                         "startColumn": 4,
@@ -564,7 +564,7 @@
                     "endOffset": 4772
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -583,7 +583,7 @@
                     "endOffset": 4869
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 23,
                         "startColumn": 4,
@@ -602,7 +602,7 @@
                     "endOffset": 4928
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 22,
                         "startColumn": 4,
@@ -621,7 +621,7 @@
                     "endOffset": 4990
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 24,
                         "startColumn": 4,
@@ -640,7 +640,7 @@
                     "endOffset": 5062
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 32,
                         "startColumn": 4,
@@ -659,7 +659,7 @@
                     "endOffset": 5126
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/strings.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 31,
                         "startColumn": 4,
@@ -678,7 +678,7 @@
                     "endOffset": 5177
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/template-styles.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/template-styles.xml",
                     "position": {
                         "startLine": 24,
                         "startColumn": 4,
@@ -781,7 +781,7 @@
                     "endOffset": 5969
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/template-styles.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/template-styles.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -800,7 +800,7 @@
                     "endOffset": 6022
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/template-styles.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/template-styles.xml",
                     "position": {
                         "startLine": 22,
                         "startColumn": 4,
@@ -819,7 +819,7 @@
                     "endOffset": 6049
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/template-styles.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/template-styles.xml",
                     "position": {
                         "startLine": 27,
                         "startColumn": 4,
@@ -839,7 +839,7 @@
                     "endOffset": 6245
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/template-styles.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/template-styles.xml",
                     "position": {
                         "startLine": 29,
                         "startColumn": 4,
@@ -860,7 +860,7 @@
                     "endOffset": 6523
                 },
                 "from": {
-                    "file": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/values/template-styles.xml",
+                    "file": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/values/template-styles.xml",
                     "position": {
                         "startLine": 34,
                         "startColumn": 4,
