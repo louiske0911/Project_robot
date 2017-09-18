@@ -5,17 +5,20 @@
     <meta charset="utf-8">
     <link href="bootstrap-4.0.0-beta-dist/css/MainPage.css" rel="stylesheet">
     <link href="bootstrap-4.0.0-beta-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://i.icomoon.io/public/temp/4c4752bd46/UntitledProject/style.css" rel="stylesheet">
+    <link href="https://i.icomoon.io/public/temp/79efbe2f4c/UntitledProject/style.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://i.icomoon.io/public/temp/c0de2c3979/UntitledProject/style.css"> -->
+
     <!-- will be switch the glyphicons icon which can use on loacl -->
 
     <!-- <script src="bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
-
     <script>
         function show() {
             document.getElementById("block").style.visibility = "visible";
@@ -29,6 +32,7 @@
 </head>
 
 <body>
+    <!-- <img class="bagimg" src="background image.jpg"> -->
     <div id="block" onclick="back()"></div>
     <div id="dialog" class="p-4 rounded">
         <p>Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat malesuada
@@ -39,9 +43,9 @@
             sapien nulla. Voluptates hendrerit dictum Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at
             elementum. Ultrices eu luctus erat malesuada justo. Eget ut venenatis. A aliquam ullamcorper
     </div>
-    <div class="d-lg-flex flex-row container-fluid" id="fcu_background" style="border: red 1px solid">
+    <div class="d-lg-flex flex-row" id="fcu_background" style="border: red 1px solid">
         <div class="d-lg-flex flex-column col-lg-1.5" style="border: red 1px solid">
-            <div class="m-4 p-4 collapse width" id="collapseExample" style="border: red 1px solid">
+            <div class="collapse width" id="collapseExample" style="border: red 1px solid">
                 <div style="width:175px;" style="border: red 1px solid">
                     <nav class="nav nav-tabs nav-justified flex-column" id="nav_bar">
                         <a class="p-2 nav-link" href="#"><span class="icon-compass pr-2"></span>現在位置</a>
@@ -54,18 +58,56 @@
                 </div>
             </div>
         </div>
-        <div class="d-lg-flex col-lg" style="border: red 1px solid">
-            <div class="p-3 d-lg-flex flex-column" id="content" style="border: red 1px solid">
-                <div class="p-4 mt-5 d-lg-flex justify-content-around header_container" style="border: 1px solid red">
-                    <div class="">
-                        <a class="mx-5 logo"><img src="FCU_mascot.svg.png" alt="" data-toggle="collapse" href="#collapseExample" aria-expanded="false"
-                                aria-controls="collapseExample"></a>
-                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-book"> 學院介紹</button>
-                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-office"> 大樓簡介</button>
-                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-library"> 景點介紹</button>
+        <div class="d-lg-flex col-lg" style="border: blue 2px solid">
+            <div class="d-lg-flex flex-column" id="content" style="border: red 5px solid">
+                <div class="p-4 m-5 d-lg-flex justify-content-center header_container rounded" style="border: 1px solid green">
+                    <div class="rounded" id="icon">
+                        <a class="icon-menu rounded" alt="" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            </a>
                     </div>
+                    <!-- <div style="border: red 1px solid"> -->
+                    <!-- <a class="mx-5 logo"><img src="FCU_mascot.svg.png" alt="" data-toggle="collapse" href="#collapseExample" aria-expanded="false"
+                                aria-controls="collapseExample"></a> -->
+                    <div class="dropdown">
+                        <button class="mx-5 btn btn-outline-primary btn-lg dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"><span class="icon-book"> 學院介紹</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#" onclick="show()">Action</a>
+                            <a class="dropdown-item" href="#" onclick="show()">Another action</a>
+                            <a class="dropdown-item" href="#" onclick="show()">Something else here</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="mx-5 btn btn-outline-primary btn-lg dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"><span class="icon-office"> 大樓簡介</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#" onclick="show()">Action</a>
+                            <a class="dropdown-item" href="#" onclick="show()">Another action</a>
+                            <a class="dropdown-item" href="#" onclick="show()">Something else here</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="mx-5 btn btn-outline-primary btn-lg dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"><span class="icon-library"> 景點介紹</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#" onclick="show()">Action</a>
+                            <a class="dropdown-item" href="#" onclick="show()">Another action</a>
+                            <a class="dropdown-item" href="#" onclick="show()">Something else here</a>
+                        </div>
+                    </div>
+                    <!-- <div style="border: red 1px solid"><button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-book"> 大樓簡介</button>
+                    </div>
+                    <div style="border: red 1px solid"><button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-book"> 景點介紹</button>
+                    </div> -->
+                    <!-- <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-book"> 學院介紹</button>
+                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-office"> 大樓簡介</button>
+                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-library"> 景點介紹</button> -->
+
+                    <!-- </div> -->
                 </div>
-                <div class="p-5 mt-5 d-lg-flex main_container_inner rounded">
+                <div class="p-5 m-5 d-lg-flex main_container_inner rounded">
                     <p>Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat
                         malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris.
                         Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula.

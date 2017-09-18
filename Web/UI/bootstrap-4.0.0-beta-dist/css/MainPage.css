@@ -6,8 +6,20 @@ element.style {
     width: 3%;    
 }
 
+#icon{ 
+    font-size: 30px;
+    line-height: 55px;
+    border:red 2px solid;
+    padding: 3px 13px 0px 13px;
+    background-color: #0084FF;
+}
+#icon > a{
+    color:white;
+    text-decoration: none;
+}
 #fcu_background {
-    background-color:rgb(255, 255, 255);
+    background-image: url(micah-h-25869.jpg);
+    /* background-color:rgb(255, 255, 255); */
     height: 100vh;
     width: 100vw;
 }
@@ -50,13 +62,22 @@ html, body {
     font-size: 15px;    
     color:#120C0C;
     font-family: "Times New Roman", Times, serif;    
+    opacity: 0.8;
 }
 
 .main_container_inner { 
     background-color: rgb(246, 246, 246);
     overflow-y: scroll;
+    opacity: 0.7;
 }
 
+.bagimg{
+    position: absolute;
+    height:100vh;
+    width:100vw;
+    opacity: 0.6;
+    
+}
 /*-----------------------------navebar-----------------------------*/
 #nav_bar {
     background-color: rgb(246, 246, 246);
@@ -64,7 +85,7 @@ html, body {
     font-family: "Times New Roman", Times, serif;
 }
 
-.collapsing.width {
+.collapsing .width {
     -webkit-transition-property: width, visibility;
     transition-property: width, visibility;
     width: 0;
