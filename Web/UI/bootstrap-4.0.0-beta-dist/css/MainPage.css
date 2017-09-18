@@ -10,16 +10,19 @@ element.style {
     font-size: 30px;
     line-height: 55px;
     border:red 2px solid;
-    padding: 3px 13px 0px 13px;
+    /* padding: 3px 13px 0px 13px; */
     background-color: #0084FF;
 }
+
 #icon > a{
     color:white;
     text-decoration: none;
 }
+
 #fcu_background {
-    background-image: url(micah-h-25869.jpg);
-    /* background-color:rgb(255, 255, 255); */
+    /* background-image: url('../../background_image.jpg'); */
+    /* background-size: 100vw, 100vh; */
+    /* background-color:rgb(188, 39, 39); */
     height: 100vh;
     width: 100vw;
 }
@@ -85,7 +88,7 @@ html, body {
     font-family: "Times New Roman", Times, serif;
 }
 
-.collapsing .width {
+.collapsing.width {
     -webkit-transition-property: width, visibility;
     transition-property: width, visibility;
     width: 0;

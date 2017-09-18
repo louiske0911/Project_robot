@@ -32,7 +32,7 @@
 </head>
 
 <body>
-    <!-- <img class="bagimg" src="background image.jpg"> -->
+    <img class="bagimg" src="background_image.jpg">
     <div id="block" onclick="back()"></div>
     <div id="dialog" class="p-4 rounded">
         <p>Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat malesuada
@@ -43,8 +43,8 @@
             sapien nulla. Voluptates hendrerit dictum Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at
             elementum. Ultrices eu luctus erat malesuada justo. Eget ut venenatis. A aliquam ullamcorper
     </div>
-    <div class="d-lg-flex flex-row" id="fcu_background" style="border: red 1px solid">
-        <div class="d-lg-flex flex-column col-lg-1.5" style="border: red 1px solid">
+    <div class="d-lg-flex flex-row" id="fcu_background" style="border: green 5px solid">
+        <div class="d-lg-flex flex-column" style="border: red 1px solid">
             <div class="collapse width" id="collapseExample" style="border: red 1px solid">
                 <div style="width:175px;" style="border: red 1px solid">
                     <nav class="nav nav-tabs nav-justified flex-column" id="nav_bar">
@@ -58,64 +58,47 @@
                 </div>
             </div>
         </div>
-        <div class="d-lg-flex col-lg" style="border: blue 2px solid">
-            <div class="d-lg-flex flex-column" id="content" style="border: red 5px solid">
-                <div class="p-4 m-5 d-lg-flex justify-content-center header_container rounded" style="border: 1px solid green">
-                    <div class="rounded" id="icon">
-                        <a class="icon-menu rounded" alt="" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                            </a>
-                    </div>
-                    <!-- <div style="border: red 1px solid"> -->
-                    <!-- <a class="mx-5 logo"><img src="FCU_mascot.svg.png" alt="" data-toggle="collapse" href="#collapseExample" aria-expanded="false"
-                                aria-controls="collapseExample"></a> -->
-                    <div class="dropdown">
-                        <button class="mx-5 btn btn-outline-primary btn-lg dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"><span class="icon-book"> 學院介紹</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#" onclick="show()">Action</a>
-                            <a class="dropdown-item" href="#" onclick="show()">Another action</a>
-                            <a class="dropdown-item" href="#" onclick="show()">Something else here</a>
-                        </div>
-                    </div>
-
-                    <div class="dropdown">
-                        <button class="mx-5 btn btn-outline-primary btn-lg dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"><span class="icon-office"> 大樓簡介</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#" onclick="show()">Action</a>
-                            <a class="dropdown-item" href="#" onclick="show()">Another action</a>
-                            <a class="dropdown-item" href="#" onclick="show()">Something else here</a>
-                        </div>
-                    </div>
-
-                    <div class="dropdown">
-                        <button class="mx-5 btn btn-outline-primary btn-lg dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"><span class="icon-library"> 景點介紹</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#" onclick="show()">Action</a>
-                            <a class="dropdown-item" href="#" onclick="show()">Another action</a>
-                            <a class="dropdown-item" href="#" onclick="show()">Something else here</a>
-                        </div>
-                    </div>
-                    <!-- <div style="border: red 1px solid"><button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-book"> 大樓簡介</button>
-                    </div>
-                    <div style="border: red 1px solid"><button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-book"> 景點介紹</button>
-                    </div> -->
-                    <!-- <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-book"> 學院介紹</button>
-                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-office"> 大樓簡介</button>
-                        <button class="mx-5 btn btn-outline-primary btn-lg" onclick="show()"><span class="icon-library"> 景點介紹</button> -->
-
-                    <!-- </div> -->
+        <div class="d-lg-flex flex-column" style="border: blue 2px solid">
+            <div class="p-4 m-5 d-lg-flex flex-wrap justify-content-around header_container rounded" style="border: 1px solid green">
+                <div class="px-2 rounded" id="icon" style="border: red 1px solid">
+                    <a class="icon-menu rounded" alt="" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></a>
                 </div>
-                <div class="p-5 m-5 d-lg-flex main_container_inner rounded">
-                    <p>Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat
-                        malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris.
-                        Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula.
-                        Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat porttitor. Turpis viverra
-                        non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing suscipit
-                        amet tincidunt sed felis enim nulla. Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictum
-                    </p>
+                <div class="dropdown" style="border: red 1px solid">
+                    <button class="btn btn-outline-primary btn-lg dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"><span class="icon-book"> 學院介紹</button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" onclick="show()">Action</a>
+                        <a class="dropdown-item" href="#" onclick="show()">Another action</a>
+                        <a class="dropdown-item" href="#" onclick="show()">Something else here</a>
+                    </div>
                 </div>
+                <div class="dropdown" style="border: red 1px solid">
+                    <button class="btn btn-outline-primary btn-lg dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"><span class="icon-office"> 大樓簡介</button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" onclick="show()">Action</a>
+                        <a class="dropdown-item" href="#" onclick="show()">Another action</a>
+                        <a class="dropdown-item" href="#" onclick="show()">Something else here</a>
+                    </div>
+                </div>
+                <div class="dropdown" style="border: red 1px solid">
+                    <button class="btn btn-outline-primary btn-lg dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"><span class="icon-library"> 景點介紹</button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" onclick="show()">Action</a>
+                        <a class="dropdown-item" href="#" onclick="show()">Another action</a>
+                        <a class="dropdown-item" href="#" onclick="show()">Something else here</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-5 m-5 d-lg-flex main_container_inner rounded">
+                <p>Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat malesuada
+                    justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris. Et proin ut
+                    quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula. Massa ut tellus
+                    ante augue viverra ullamcorper aenean lorem. Platea volutpat porttitor. Turpis viverra non quis lorem
+                    et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing suscipit amet tincidunt sed
+                    felis enim nulla. Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictum
+                </p>
             </div>
         </div>
     </div>
