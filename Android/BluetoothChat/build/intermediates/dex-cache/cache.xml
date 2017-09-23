@@ -3,66 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/Users/robert/.android/build-cache/60b210b36f1e7c8eaf2d8d28a0499dc6ef9a697b/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="003ebdacd5f75067b8724f92bd5eefa323d870aa">
-        <dex dex="/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_295fcce5aa4f3a5b9bdcfa99a3ac65cdcdea9c85/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="6c3d54b189f297950fa682487e230b3a65b2f14f">
-        <dex dex="/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_d2e08bf805b8fec16d3330586023a22bc08a408c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_56cf3553a6261942910196ed21c17b7cd39509f8/classes.dex" />
+        <dex dex="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_5855fa9489449eca921e1a857d813279208c9176/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/robert/.android/build-cache/8c333747d9a81b5a03af5d0d5abc1539ef662623/output/jars/classes.jar"
+        jar="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="82ce13fd19cdfde0e392f03c27edeba8d4333648">
-        <dex dex="/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b62484e9f24b1c0a7a79f227bc9b86c6ca3b0031/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/robert/.android/build-cache/27bc017f8970fed8a316de4d221271ee871a705b/output/jars/libs/internal_impl-23.3.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
-        <dex dex="/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.3.0_2dde5d9e8279251ceb0e04ccaefae77f1f92c524/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/robert/.android/build-cache/27bc017f8970fed8a316de4d221271ee871a705b/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
-        <dex dex="/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b14ef023e8d399179eb5c9d417e93dc192c654bc/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/robert/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.3.0/support-annotations-23.3.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
-        <dex dex="/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.3.0_d943b007bbc334ec4cf7faa4bedffea1a1bc9f95/classes.dex" />
+        sha1="20a95eb9c17ae4de92c089222bb2b9b01bb2597c">
+        <dex dex="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_7bd4663d8874961e62814d7159016f592b8ff75f/classes.dex" />
     </item>
 
 </items>

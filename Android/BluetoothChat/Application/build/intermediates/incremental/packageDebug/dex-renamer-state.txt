@@ -1,7 +1,7 @@
-#Sat Aug 12 12:01:31 CST 2017
-base.0=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_56cf3553a6261942910196ed21c17b7cd39509f8
+#Tue Sep 19 15:52:04 CST 2017
+base.0=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_5855fa9489449eca921e1a857d813279208c9176
 renamed.1=classes.dex
 renamed.0=classes2.dex
-file.1=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_d2e08bf805b8fec16d3330586023a22bc08a408c/classes.dex
-base.1=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_d2e08bf805b8fec16d3330586023a22bc08a408c
-file.0=/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_56cf3553a6261942910196ed21c17b7cd39509f8/classes.dex
+file.1=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_7bd4663d8874961e62814d7159016f592b8ff75f/classes.dex
+base.1=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_7bd4663d8874961e62814d7159016f592b8ff75f
+file.0=/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_5855fa9489449eca921e1a857d813279208c9176/classes.dex

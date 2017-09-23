@@ -59,7 +59,7 @@ public class BluetoothChatFragment extends Fragment {
     // Layout Views
     private ListView mConversationView;
     private EditText mOutEditText;
-    private Button mSendButton;
+    private Button mSendButton,btIdForward,btIdLeft,btIdStop,btIdRight,btIdBack;
 
     /**
      * Name of the connected device
@@ -151,6 +151,12 @@ public class BluetoothChatFragment extends Fragment {
         mConversationView = (ListView) view.findViewById(R.id.in);
         mOutEditText = (EditText) view.findViewById(R.id.edit_text_out);
         mSendButton = (Button) view.findViewById(R.id.button_send);
+        btIdBack = (Button) view.findViewById(R.id.btIdBack);
+        btIdForward = (Button) view.findViewById(R.id.btIdForward);
+        btIdLeft = (Button) view.findViewById(R.id.btIdLeft);
+        btIdRight = (Button) view.findViewById(R.id.btIdRight);
+        btIdStop = (Button) view.findViewById(R.id.btIdStop);
+
     }    //   For fragment_bluetooth_chat view ,this is initialization .
 
     /**
@@ -179,6 +185,37 @@ public class BluetoothChatFragment extends Fragment {
                 }
             }
         });
+        btIdForward.setOnClickListener(new View.OnClickListener() {    //use btn to pass the message.
+            public void onClick(View v) {
+                // Send a message using content of the edit text widget
+                sendMessage("1");
+            }
+        });
+        btIdStop.setOnClickListener(new View.OnClickListener() {    //use btn to pass the message.
+            public void onClick(View v) {
+                // Send a message using content of the edit text widget
+                sendMessage("5");
+            }
+        });
+        btIdBack.setOnClickListener(new View.OnClickListener() {    //use btn to pass the message.
+            public void onClick(View v) {
+                // Send a message using content of the edit text widget
+                sendMessage("2");
+            }
+        });
+        btIdRight.setOnClickListener(new View.OnClickListener() {    //use btn to pass the message.
+            public void onClick(View v) {
+                // Send a message using content of the edit text widget
+                sendMessage("3");
+            }
+        });
+        btIdLeft.setOnClickListener(new View.OnClickListener() {    //use btn to pass the message.
+            public void onClick(View v) {
+                // Send a message using content of the edit text widget
+                sendMessage("4");
+            }
+        });
+
 
         // Initialize the BluetoothChatService to perform bluetooth connections
         mChatService = new BluetoothChatService(getActivity(), mHandler);

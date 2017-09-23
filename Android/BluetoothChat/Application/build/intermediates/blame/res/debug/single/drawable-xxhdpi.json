@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_launcher.png",
-        "source": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/drawable-xxhdpi/ic_launcher.png"
+        "merged": "/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_action_device_access_bluetooth_searching.png",
+        "source": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/drawable-xxhdpi/ic_action_device_access_bluetooth_searching.png"
     },
     {
-        "merged": "/Users/robert/Project_robot/BluetoothChat/Application/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_action_device_access_bluetooth_searching.png",
-        "source": "/Users/robert/Project_robot/BluetoothChat/Application/src/main/res/drawable-xxhdpi/ic_action_device_access_bluetooth_searching.png"
+        "merged": "/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_launcher.png",
+        "source": "/Users/robert/Project_robot/Android/BluetoothChat/Application/src/main/res/drawable-xxhdpi/ic_launcher.png"
     }
 ]
