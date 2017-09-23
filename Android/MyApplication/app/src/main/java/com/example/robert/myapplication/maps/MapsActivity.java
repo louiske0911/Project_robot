@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.hardware.SensorManager;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,6 +35,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import java.io.Serializable;
 import java.util.List;
 
+import static android.content.Context.SENSOR_SERVICE;
+
 
 public class MapsActivity extends Fragment implements OnMapReadyCallback, Serializable {
     Button start_button;
@@ -55,6 +58,10 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback, Serial
     private LatLng[] position = {new LatLng(24.179012, 120.649016), new LatLng(24.179944, 120.649007), new LatLng(24.179964, 120.648269)
             , new LatLng(24.179005, 120.648316), new LatLng(24.178967, 120.647365), new LatLng(24.179615, 120.647335), new LatLng(24.179918, 120.647327)
             , new LatLng(24.180730, 120.647278), new LatLng(24.178525, 120.650162), new LatLng(24.180764, 120.648236)};
+
+
+
+
 
 
     public MapsActivity() {
@@ -88,6 +95,9 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback, Serial
             }
         });
 
+
+
+
         return viewGroup;
     }
 //
@@ -116,6 +126,11 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback, Serial
 
     private void sendRequest() {
         mMap.clear();
+
+//        float []values = senior.getSensorChanged();
+//        Log.v("senior",values[0]+"");
+
+
         String start = startpoint.getText().toString();
         String end = endpoint.getText().toString();
         if (start.isEmpty()) {
@@ -222,7 +237,8 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback, Serial
         }
     };
 
-//    @Override
+
+    //    @Override
 //    public void onMapClick(LatLng latLng) {
 //        Log.v("onMapClick", "1111");
 //        mTapTextView.setText("經緯度 :" + latLng);

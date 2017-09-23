@@ -27,6 +27,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -38,6 +42,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.robert.myapplication.R;
@@ -45,15 +50,20 @@ import com.example.robert.myapplication.common.logger.Log;
 import com.example.robert.myapplication.maps.MapsActivity;
 
 import java.io.Serializable;
+import java.util.List;
+
+import static android.content.Context.SENSOR_SERVICE;
 
 
 /**
  * This fragment controls Bluetooth to communicate with other devices.
  */
-public class BluetoothChatFragment extends Fragment implements Serializable {
+public class BluetoothChatFragment extends Fragment implements Serializable, SensorEventListener {
 
     private static final String TAG = "BluetoothChatFragment";
-
+    private Long startTime;
+    private Handler handler = new Handler();
+    public float[] values =null;
     // Intent request codes
     private static final int REQUEST_CONNECT_DEVICE_SECURE = 1;
     private static final int REQUEST_CONNECT_DEVICE_INSECURE = 2;
@@ -86,6 +96,11 @@ public class BluetoothChatFragment extends Fragment implements Serializable {
 
     Broadcast broadcast;
     public final static String BLUETOOTH_ACTION = "BLUETOOTH_ACTION";
+
+    private SensorManager sensorManager;
+    Handler handlerSenuor = new Handler();
+    Runnable runnable;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +113,10 @@ public class BluetoothChatFragment extends Fragment implements Serializable {
         transaction.replace(R.id.googleMaps, fragment);
         transaction.commit();
 
-
+        startTime = System.currentTimeMillis();
+        handler.removeCallbacks(updateTimer);
+        //設定Delay的時間
+        handler.postDelayed(updateTimer, 1);
 
 
 
@@ -113,6 +131,8 @@ public class BluetoothChatFragment extends Fragment implements Serializable {
         }    // No bluetooth service
 
         registerBrocast();
+
+        sensorManager = (SensorManager)getActivity().getSystemService(SENSOR_SERVICE);
     }
 
     public void registerBrocast(){
@@ -166,6 +186,10 @@ public class BluetoothChatFragment extends Fragment implements Serializable {
                 mChatService.start();
             }
         }
+
+
+        SetSensor();
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     @Override
@@ -401,6 +425,51 @@ public class BluetoothChatFragment extends Fragment implements Serializable {
         return false;
     }
 
+    protected void SetSensor()
+    {
+        List sensors = sensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
+        //如果有取到該手機的方位感測器，就註冊他。
+        if (sensors.size()>0)
+        {
+            //registerListener必須要implements SensorEventListener，
+            //而SensorEventListener必須實作onAccuracyChanged與onSensorChanged
+            //感應器註冊
+            sensorManager.registerListener(this, (Sensor) sensors.get(0), SensorManager.SENSOR_DELAY_NORMAL);
+        }
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        values = sensorEvent.values;
+        Log.v("abc","X：" + String.valueOf(values[0]));
+
+//         runnable = new Runnable() {
+//            @Override
+//            public void run() {
+//                Log.v("abc","X：" + String.valueOf(values[0]));
+////                handlerSenuor.postDelayed(this,10000000);
+//            }
+//        };
+    }
+
+    public class Run implements Runnable{
+        float values[];
+
+        public Run(float values[]){
+            this.values = values;
+        }
+
+        @Override
+        public void run() {
+
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
+
     public static class Broadcast extends BroadcastReceiver implements Serializable{
         BluetoothChatService mChatService;
         StringBuffer mOutStringBuffer;
@@ -425,4 +494,17 @@ public class BluetoothChatFragment extends Fragment implements Serializable {
 
         }
     }
+    private Runnable updateTimer = new Runnable() {
+        public void run() {
+//            sendMessage(""+values[0]);
+            Log.v("aaaa","X：" + String.valueOf(values[0]));
+
+//            Long spentTime = System.currentTimeMillis() - startTime;
+//            //計算目前已過分鐘數
+//            Long minius = (spentTime/1000)/60;
+//            //計算目前已過秒數
+//            Long seconds = (spentTime/1000) % 60;
+            handler.postDelayed(this, 1000);
+        }
+    };
 }
