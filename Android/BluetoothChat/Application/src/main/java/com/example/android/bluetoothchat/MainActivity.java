@@ -49,7 +49,6 @@ public class MainActivity extends SampleActivityBase {
             BluetoothChatFragment fragment = new BluetoothChatFragment();
             transaction.replace(R.id.sample_content_fragment, fragment);
             transaction.commit();
-
         }
     }
 

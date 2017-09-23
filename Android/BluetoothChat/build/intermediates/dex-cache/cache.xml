@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="edc23022fdc0e5149152dbc6ad0db7375bc9e3c5">
+        sha1="20a95eb9c17ae4de92c089222bb2b9b01bb2597c">
         <dex dex="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_7bd4663d8874961e62814d7159016f592b8ff75f/classes.dex" />
     </item>
 

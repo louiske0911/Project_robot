@@ -1,21 +1,23 @@
 <!--
   Copyright 2013 The Android Open Source Project
+
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
   You may obtain a copy of the License at
+
       http://www.apache.org/licenses/LICENSE-2.0
+
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
   -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sample_main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/sample_main_layout">
+    android:orientation="vertical">
 
     <View
         android:layout_width="match_parent"
@@ -24,9 +26,9 @@
 
     <FrameLayout
         android:id="@+id/sample_content_fragment"
-        android:layout_weight="2"
         android:layout_width="match_parent"
-        android:layout_height="0px" />
+        android:layout_height="0px"
+        android:layout_weight="2" />
 
     <!--<ViewAnimator-->
         <!--android:id="@+id/sample_output"-->
@@ -37,89 +39,27 @@
         <!--<ScrollView-->
             <!--style="@style/Widget.SampleMessageTile"-->
             <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="215dp">-->
+            <!--android:layout_height="match_parent">-->
 
-            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
-                <!--&lt;!&ndash;style="@style/Widget.SampleMessage"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:paddingLeft="@dimen/horizontal_page_margin"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:paddingRight="@dimen/horizontal_page_margin"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:paddingTop="@dimen/vertical_page_margin"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:paddingBottom="@dimen/vertical_page_margin"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:text="@string/intro_message" />&ndash;&gt;-->
-
-            <!--<LinearLayout-->
+            <!--<TextView-->
+                <!--style="@style/Widget.SampleMessage"-->
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="vertical">-->
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:orientation="horizontal"-->
-                    <!--android:gravity="center">-->
-
-                    <!--<Button-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="前進"-->
-                        <!--android:id="@+id/btIdForward"-->
-                        <!--/>-->
-                <!--</LinearLayout>-->
-
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:orientation="horizontal"-->
-                    <!--android:gravity="center">-->
-
-                    <!--<Button-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="左轉"-->
-                        <!--android:id="@+id/btIdLeft"-->
-                        <!--/>-->
-                    <!--<Button-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="停止"-->
-                        <!--android:id="@+id/btIdStop"-->
-                        <!--/>-->
-                    <!--<Button-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="右轉"-->
-                        <!--android:id="@+id/btIdRight"-->
-                        <!--/>-->
-
-                <!--</LinearLayout>-->
-
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:orientation="horizontal"-->
-                    <!--android:gravity="center">-->
-
-
-                <!--<Button-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="後退"-->
-                        <!--android:id="@+id/btIdBack"-->
-                        <!--/>-->
-                <!--</LinearLayout>-->
-
-            <!--</LinearLayout>-->
+                <!--android:paddingBottom="@dimen/vertical_page_margin"-->
+                <!--android:paddingLeft="@dimen/horizontal_page_margin"-->
+                <!--android:paddingRight="@dimen/horizontal_page_margin"-->
+                <!--android:paddingTop="@dimen/vertical_page_margin"-->
+                <!--android:text="@string/intro_message" />-->
         <!--</ScrollView>-->
 
-        <!--&lt;!&ndash;<fragment&ndash;&gt;-->
-            <!--&lt;!&ndash;android:name="com.example.android.common.logger.LogFragment"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:id="@+id/log_fragment"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_height="match_parent" />&ndash;&gt;-->
+        <!--<fragment-->
+            <!--android:id="@+id/log_fragment"-->
+            <!--android:name="com.example.android.common.logger.LogFragment"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" />-->
 
     <!--</ViewAnimator>-->
 
 
-
 </LinearLayout>
+

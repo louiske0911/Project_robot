@@ -22,7 +22,7 @@
     <ListView
         android:id="@+id/in"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll" />
@@ -44,98 +44,72 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/send" />
-
     </LinearLayout>
-    <ViewAnimator
-        android:id="@+id/sample_output"
+    <ScrollView
+        style="@style/Widget.SampleMessageTile"
         android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="1">
+        android:layout_height="215dp">
 
-        <ScrollView
-            style="@style/Widget.SampleMessageTile"
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="215dp">
-
-            <!--<TextView-->
-            <!--style="@style/Widget.SampleMessage"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:paddingLeft="@dimen/horizontal_page_margin"-->
-            <!--android:paddingRight="@dimen/horizontal_page_margin"-->
-            <!--android:paddingTop="@dimen/vertical_page_margin"-->
-            <!--android:paddingBottom="@dimen/vertical_page_margin"-->
-            <!--android:text="@string/intro_message" />-->
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btIdForward"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:text="前進" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="前進"
-                        android:id="@+id/btIdForward"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <Button
+                    android:id="@+id/btIdLeft"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:text="左轉" />
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="左轉"
-                        android:id="@+id/btIdLeft"
-                        />
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="停止"
-                        android:id="@+id/btIdStop"
-                        />
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="右轉"
-                        android:id="@+id/btIdRight"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <Button
+                    android:id="@+id/btIdStop"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:text="停止" />
 
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="後退"
-                        android:id="@+id/btIdBack"
-                        />
-                </LinearLayout>
+                <Button
+                    android:id="@+id/btIdRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="右轉" />
 
             </LinearLayout>
-        </ScrollView>
 
-        <!--<fragment-->
-        <!--android:name="com.example.android.common.logger.LogFragment"-->
-        <!--android:id="@+id/log_fragment"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" />-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-    </ViewAnimator>
+
+                <Button
+                    android:id="@+id/btIdBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="後退" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
