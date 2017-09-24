@@ -72,6 +72,7 @@ html, body {
     opacity: 1;
     overflow-y: scroll;
     transform: translate(-50%, -50%);
+<<<<<<< HEAD
 }
 
 #college_dialog {
@@ -86,6 +87,8 @@ html, body {
     opacity: 1;
     overflow-y: scroll;
     transform: translate(-50%, -50%);
+=======
+>>>>>>> Modify dialog layout for landscape
 }
 
 .main_dropdownMenu{
@@ -106,12 +109,16 @@ html, body {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Modify dialog layout for landscape
 .carousel_container {  
     width: 85% !important;
 }
 
 .carousel_img{
     background-size: cover;
+<<<<<<< HEAD
 =======
 .test {
     display: block;
@@ -119,6 +126,8 @@ html, body {
     left:17%;
     width: 65% !important;
 >>>>>>> Modify carousel size
+=======
+>>>>>>> Modify dialog layout for landscape
 }
 
 /*-----------------------------Main-Container-----------------------------*/ 
