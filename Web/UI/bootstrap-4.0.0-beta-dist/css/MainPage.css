@@ -7,19 +7,24 @@ element.style {
 }
 
 #icon{ 
-    font-size: 20px;
-    line-height: 40%;
-    border:red 2px solid;
-    background-color:rgba(235,235,227,1);
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    font-size: 21px;
+    color: #364656;
+    cursor: pointer;
+    -webkit-font-smoothing: antialiased;
 }
 
 #icon > a{
     color:black;    
-    text-decoration: none;
 }
 
 #fcu_background::before {
-    border: #FF07D8 5px solid;
+    /* border: #FF07D8 5px solid; */
     content: '';
     background: url('../../images/test.jpg') no-repeat fixed;
     /* background-color: rgb(235, 235, 227); */
@@ -74,7 +79,7 @@ html, body {
 }    
 
 .header_container {
-    background-color:rgba(250,250,250,1);
+    background-color:rgba(250,250,250,.95);
     font-size: 15px;    
     font-family: "Times New Roman", Times, serif;    
     /* opacity: 0.95; */
@@ -82,7 +87,7 @@ html, body {
 
 .header_container .btn{
     color:#120C0C;
-    background-color:rgba(235,235,227,1);
+    background-color:rgba(235,235,227,.5);
 }
 
 /*-----------------------------Main-Container-----------------------------*/ 
@@ -95,25 +100,26 @@ html, body {
 }
 
 .inner_background {
-    background-color:rgba(235,235,227,0);
+    background-color:rgba(235,235,227,.4);
     overflow-y: scroll;    
 }
 
 /*-----------------------------navebar-----------------------------*/
 #nav_bar {
-    background-color:rgba(235,235,227,1);
+    background-color:rgba(235,235,227,.95);
     font-size: 18px;
     font-family: "Times New Roman", Times, serif;
-    height: 99vh;
+    height: 100vh;
+    border-right: 3px gray inset;
 }
 
 #nav_bar .nav-link {
-    border-bottom: 1px groove black; 
-    color: black;
+    border-bottom: 2px #B1B1B1 solid; 
+    color: black;   
 }
 
-#nav_bar .nav-link {
-    border-bottom: 2px groove #71AFFF; 
+.nav_border {
+    border-top: 2px #B1B1B1 solid; 
 }
 
 .collapsing.width {
@@ -121,4 +127,5 @@ html, body {
     transition-property: width, visibility;
     width: 0;
     height: auto;
+    transition: all 0.1s ease-in-out;        
 }  
