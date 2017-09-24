@@ -50,7 +50,7 @@ html, body {
     width:100%;
     color:#0A0404;
     background-color: black;
-    visibility: hidden;
+    visibility: visible;
     z-index: 500;
     opacity: 0.6;
 }
@@ -63,7 +63,7 @@ html, body {
     height:80%;
     background-color:rgba(255,255,255,1);
     z-index: 999;
-    visibility: hidden;
+    visibility: visible;
     opacity: 1;
     overflow-y: scroll;
 }
@@ -83,6 +83,13 @@ html, body {
 .header_container .btn{
     color:#120C0C;
     background-color:rgba(235,235,227,1);
+}
+
+.test {
+    display: block;
+    border: red 1px solid;
+    left:17%;
+    width: 65% !important;
 }
 
 /*-----------------------------Main-Container-----------------------------*/ 
