@@ -60,17 +60,32 @@ html, body {
     opacity: 0.6;
 }
 
-#dialog{
+#landscape_dialog {
     position: absolute;
-    top: 10%;
-    left: 15%;
-    width:70%;
-    height:80%;
+    top: 50%;
+    left: 50%;
+    width:50%;
+    height:85%;
     background-color:rgba(255,255,255,1);
     z-index: 999;
     visibility: hidden;
     opacity: 1;
     overflow-y: scroll;
+    transform: translate(-50%, -50%);
+}
+
+#college_dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width:50%;
+    height:85%;
+    background-color:rgba(255,255,255,1);
+    z-index: 999;
+    visibility: hidden;
+    opacity: 1;
+    overflow-y: scroll;
+    transform: translate(-50%, -50%);
 }
 
 .main_dropdownMenu{
@@ -88,6 +103,14 @@ html, body {
 .header_container .btn{
     color:#120C0C;
     background-color:rgba(235,235,227,.5);
+}
+
+.carousel_container {  
+    width: 85% !important;
+}
+
+.carousel_img{
+    background-size: cover;
 }
 
 /*-----------------------------Main-Container-----------------------------*/ 
