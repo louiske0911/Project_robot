@@ -48,14 +48,24 @@ html, body {
 }
 
 /*-----------------------------Header-Menu-----------------------------*/ 
-#block{
-    display: inline-block; 
+#block {
     position: absolute;
     height:100%;
     width:100%;
     color:#0A0404;
     background-color: black;
     visibility: hidden;
+    z-index: 500;
+    opacity: 0.6;
+}
+
+#loader_block {
+    position: absolute;
+    height:100%;
+    width:100%;
+    color:#0A0404;
+    background-color: black;
+    visibility: visible;
     z-index: 500;
     opacity: 0.6;
 }
@@ -142,6 +152,26 @@ html, body {
 >>>>>>> Modify carousel size
 =======
 >>>>>>> Modify dialog layout for landscape
+}
+
+.loader {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width:50%;
+ 
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    animation: spin 1.2s ease infinite;
+    z-index: 999;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /*-----------------------------Main-Container-----------------------------*/ 

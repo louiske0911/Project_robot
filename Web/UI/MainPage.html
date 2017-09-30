@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link href="bootstrap-4.0.0-beta-dist/css/MainPage.css" rel="stylesheet">
     <link href="bootstrap-4.0.0-beta-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/b0d606ede6/UntitledProject/style.css">
+    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/1784b0cee6/UntitledProject/style.css">
     <!-- <link rel="stylesheet" href="https://i.icomoon.io/public/temp/c0de2c3979/UntitledProject/style.css"> -->
 
     <!-- will be switch the glyphicons icon which can use on loacl -->
@@ -33,10 +33,16 @@
             document.getElementById("college_dialog").style.visibility = "hidden";
             document.getElementById("landscape_dialog").style.visibility = "hidden";
         }
+        setTimeout(function () {
+            $("#loader_block").css("display", "none");
+        }, 3000);
     </script>
 </head>
 
 <body>
+    <div id="loader_block" onclick="back()">
+        <div class="loader"></div>
+    </div>
     <div id="block" onclick="back()"></div>
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -56,22 +62,64 @@
                     application)，並於2008年1月重新取得第一階段之認證預審資格。本院(含金融學院及EMBA)之AACSB認證計畫書於2009年5月份正式送交AACSB審核，並分別於2009年6月及9月順利通過AACSB
                     PAC(pre-accreditation committee) 及IAC(initial accreditation committee)會議審核通過，正式進入「初始認證」階段。2013年11月進行實地訪評，2014年2月3日AACSB公告本校通過認證，成為台灣第九所、中部第一所獲得AACSB認證的學校。
                 </p>
+
                 <p class="p-2">
                     「國際商管學院促進協會」(The Association to Advance Collegiate Schools of Business, AACSB)成立於1916年，發起成員包括美國哈佛大學、耶魯大學以及康乃爾大學等，為全球最具指標性的商管學院認證機構，能獲得AACSB國際認證不僅是對商學院教學品質之肯定，亦能提升本校之國際知名度，將逢甲大學推向國際級一流學府的地位。
                 </p>
+                <h4 style="text-align:center;">
+                    碩士班
+                </h4>
+                <ul>
+                    <li>會計學系</li>
+                    <li>國際經營與貿易學系</li>
+                    <li>財稅學系</li>
+                    <li>合作經濟暨社會經營學系</li>
+                    <li>統計學系統計與精算碩士班</li>
+                    <li>經濟學系</li>
+                    <li>企業管理學系</li>
+                    <li>財經法律研究所</li>
+                    <li>科技管理碩士學位學程</li>
+                </ul>
+                <h4 style="text-align:center;">
+                    學士班
+                </h4>
+                <ul>
+                    <li>會計學系</li>
+                    <li>國際經營與貿易學系</li>
+                    <li>財稅學系</li>
+                    <li>合作經濟暨社會經營學系</li>
+                    <li>統計學系</li>
+                    <li>經濟學系</li>
+                    <li>企業管理學系</li>
+                    <li>行銷學系</li>
+                    <li>國際企業管理學士學位學程(英語專班)</li>
+                    <li>商學進修學士班</li>
+                </ul>
             </div>
             <div id="carouselExampleControls" class="carousel slide d-flex justify-content-center" data-ride="carousel">
-                <div class="carousel-inner carousel_container">
-                    <div class="carousel-item active">
-                        <img class="mt-5 p-4 d-block w-100 carousel_img" src="images/JungChin.jpg">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="mt-5 p-4 d-block w-100 carousel_img" src="images/ShangShiue.jpeg">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="mt-5 p-4 d-block w-100 carousel_img" src="images/ShiueSz.jpg">
-                    </div>
 
+
+                <div class="carousel-inner carousel_container">
+                    <div class="p-5 f-lg-flex justify-content-center align-items-center">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100 carousel_img" src="images/JungChin.jpg">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100 carousel_img" src="images/ShangShiue.jpeg">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100 carousel_img" src="images/ShiueSz.jpg">
+                        </div>
+                    </div>
+                    <ul class="carousel-indicators">
+
+                        <li class="active rounded-circle" id="slick_dot" data-target="#photoCarousel" data-slide-to="0"></li>
+
+                        <li class="rounded-circle" id="slick_dot" data-target="#photoCarousel" data-slide-to="1"></li>
+
+                        <li class="rounded-circle" id="slick_dot" data-target="#photoCarousel" data-slide-to="2"></li>
+
+                    </ul>
                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
@@ -198,7 +246,7 @@
                     學思樓於第47屆校慶竣工，為地下一層、地上九層之建築物，象徵著學校另一個新生命的誕生，新思維、新科技的學思樓與古色古香的學思園相互輝映。
                 </p>
             </div>
-            <div id="carouselExampleControls" class="carousel slide d-flex justify-content-center" data-ride="carousel">
+            <div id="carouselExampleControls" class="carousel" data-ride="carousel">
                 <div class="carousel-inner carousel_container">
                     <div class="carousel-item active">
                         <img class="mt-5 p-4 d-block w-100 carousel_img" src="images/FengChia.jpg">
@@ -226,7 +274,7 @@
         <div class="d-md-flex flex-column">
             <div class="collapse width show" id="collapseExample">
                 <div id="nav_bar">
-                    <img class="mt-2 p-3" src="images/Feng-Chia.png" alt="" style="width:90%; ">
+                    <img class="mt-2 p-3" src="images/Feng-Chia.png" alt="" style="width:90%;">
                     <div style="width:15vw;">
                         <nav class="mt-4 nav nav-tabs nav-justified flex-column nav_border">
                             <a class="p-4 px-2 pr-3 nav-link" href="#"><span class="icon-compass pr-2"></span>現在位置</a>
@@ -311,7 +359,7 @@
             <div class="p-4 m-5 d-md-flex main_container_inner rounded">
                 <div class="p-4 inner_background d-md-flex flex-row">
                     <img src="images/test.jpg" alt="" style="width:20%">
-                    <p class="px-5">Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat
+                    <p class="px-5 ">Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus erat
                         malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec mauris.
                         Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci metus vehicula.
                         Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat porttitor. Turpis viverra
