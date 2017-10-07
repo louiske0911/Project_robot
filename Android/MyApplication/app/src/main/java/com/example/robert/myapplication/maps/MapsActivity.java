@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
-import android.hardware.SensorManager;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,13 +32,12 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
-
-import static android.content.Context.SENSOR_SERVICE;
 
 
 public class MapsActivity extends Fragment implements OnMapReadyCallback, Serializable {
-    Button start_button;
+    Button start_button, btnClear;
     static int Min_second = 1000;
     static int m5 = 0;
     EditText startpoint;
@@ -60,8 +58,10 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback, Serial
             , new LatLng(24.180730, 120.647278), new LatLng(24.178525, 120.650162), new LatLng(24.180764, 120.648236)};
 
 
+    public int checkMarkSize = 1;
 
-
+    ArrayList<MarkerOptions> markerOptionses = new ArrayList<MarkerOptions>();
+    ArrayList<PolylineOptions> polylineOptionses = new ArrayList<PolylineOptions>();
 
 
     public MapsActivity() {
@@ -71,6 +71,7 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback, Serial
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
     }
 
     @Nullable
@@ -80,7 +81,7 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback, Serial
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.activity_maps, container, false);
         MapFragment fragment = (MapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         fragment.getMapAsync(this);
-
+        btnClear = (Button) viewGroup.findViewById(R.id.clear);
         mTapTextView = (TextView) viewGroup.findViewById(R.id.message);
         start_button = (Button) viewGroup.findViewById(R.id.start);
         startpoint = (EditText) viewGroup.findViewById(R.id.startpoint);
@@ -94,34 +95,21 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback, Serial
                 sendRequest();
             }
         });
-
-
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkMarkSize = 1;
+                markerOptionses.remove(1);
+                mMap.clear();
+                mMap.addMarker(markerOptionses.get(0));
+                BluetoothChatFragment.Desition = null;
+                BluetoothChatFragment.Source = null;
+            }
+        });
 
 
         return viewGroup;
     }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_test, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
 
     private void sendRequest() {
@@ -191,14 +179,56 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback, Serial
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
+        // Add a markerOptionses in Sydney and move the camera
 
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16));
 
         mMap.setOnMapClickListener(onMapClickListener);
-        broadcast = new Broadcast(googleMap, mTapTextView);
+        broadcast = new Broadcast(googleMap, mTapTextView, markerOptionses, polylineOptionses){
+            @Override
+            public void position(LatLng latLng) {
+                super.position(latLng);
+
+                mTapTextView.setText("longitude:" + latLng.longitude + " latitude:" + latLng.latitude);
+
+                marker.add(0, new MarkerOptions().position(latLng).draggable(true));
+
+                polylineOptionses.add(0,new PolylineOptions()
+                        .add(sydney, latLng)
+                        .width(2)
+                        .color(Color.BLUE)
+                        .clickable(true));
+
+
+                googleMap.addPolyline(polylineOptionses.get(0));
+
+
+                googleMap.addMarker(marker.get(0));
+                sydney = latLng;
+                Log.v("lll","longitude:" + latLng.longitude + " latitude:" + latLng.latitude);
+                Intent broadcasetIntent = new Intent();
+                broadcasetIntent.setAction(BluetoothChatFragment.BLUETOOTH_ACTION_SOURCE);
+                broadcasetIntent.putExtra("LATITUDE1", latLng.latitude);
+                broadcasetIntent.putExtra("LONGITUDE1", latLng.longitude);
+                getActivity().sendBroadcast(broadcasetIntent);
+
+
+                googleMap.setOnPolylineClickListener(new GoogleMap.OnPolylineClickListener() {
+                    @Override
+                    public void onPolylineClick(Polyline polyline) {
+                        polyline.setColor(polyline.getColor() ^ 0x00ffffff);
+                    }
+                });
+
+            }
+        };
+
+
+
+
+
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(MAP_ACTION);
         getActivity().registerReceiver(broadcast, intentFilter);
@@ -208,21 +238,28 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback, Serial
     GoogleMap.OnMapClickListener onMapClickListener = new GoogleMap.OnMapClickListener() {
         @Override
         public void onMapClick(LatLng latLng) {
+//            if (checkMarkSize > 1) {
+//                return;
+//            }
             Log.v("onMapClick", "1111");
+            Log.v("onMapClick", latLng.latitude+" "+latLng.longitude);
             mTapTextView.setText("經緯度 :" + latLng);
-            mMutablePolyline = mMap.addPolyline(new PolylineOptions()
-                    .add(sydney, latLng)
-                    .width(2)
-                    .color(Color.BLUE)
-                    .clickable(true));
 
-            mMap.addMarker(new MarkerOptions().position(latLng).draggable(true));
-            sydney = latLng;
+//            mMutablePolyline = mMap.addPolyline(new PolylineOptions()
+//                    .add(sydney, latLng)
+//                    .width(2)
+//                    .color(Color.BLUE)
+//                    .clickable(true));
+
+//            mMap.addMarker(new MarkerOptions().position(latLng).draggable(true));
+            markerOptionses.add(0, new MarkerOptions().position(latLng).draggable(true));
+            mMap.addMarker(markerOptionses.get(0));
+            checkMarkSize++;
 
             Intent broadcasetIntent = new Intent();
-            broadcasetIntent.setAction(BluetoothChatFragment.BLUETOOTH_ACTION);
-            broadcasetIntent.putExtra("LATITUDE", String.valueOf(latLng.latitude));
-            broadcasetIntent.putExtra("LONGITUDE", String.valueOf(latLng.latitude));
+            broadcasetIntent.setAction(BluetoothChatFragment.BLUETOOTH_ACTION_DIRECTION);
+            broadcasetIntent.putExtra("LATITUDE", latLng.latitude);
+            broadcasetIntent.putExtra("LONGITUDE", latLng.longitude);
             getActivity().sendBroadcast(broadcasetIntent);
 
 
@@ -238,37 +275,20 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback, Serial
     };
 
 
-    //    @Override
-//    public void onMapClick(LatLng latLng) {
-//        Log.v("onMapClick", "1111");
-//        mTapTextView.setText("經緯度 :" + latLng);
-//        mMutablePolyline = mMap.addPolyline(new PolylineOptions()
-//                .add(sydney, latLng)
-//                .width(2)
-//                .color(Color.BLUE)
-//                .clickable(true));
-//
-//        mMap.addMarker(new MarkerOptions().position(latLng).draggable(true));
-//        sydney = latLng;
-//
-//        mMap.setOnPolylineClickListener(new GoogleMap.OnPolylineClickListener() {
-//            @Override
-//            public void onPolylineClick(Polyline polyline) {
-//                polyline.setColor(polyline.getColor() ^ 0x00ffffff);
-//            }
-//        });
-//    }
-
-    public static class Broadcast extends BroadcastReceiver implements Serializable{
+    public static class Broadcast extends BroadcastReceiver implements Serializable {
         GoogleMap googleMap;
         TextView mTapTextView;
+        ArrayList<MarkerOptions> marker;
+        ArrayList<PolylineOptions> polylineOptionses;
 
         public Broadcast() {
         }
 
-        public Broadcast(GoogleMap googleMap, TextView mTapTextView) {
+        public Broadcast(GoogleMap googleMap, TextView mTapTextView, ArrayList<MarkerOptions> marker, ArrayList<PolylineOptions> polylineOptionses) {
             this.googleMap = googleMap;
             this.mTapTextView = mTapTextView;
+            this.marker = marker;
+            this.polylineOptionses = polylineOptionses;
         }
 
         @Override
@@ -277,30 +297,17 @@ public class MapsActivity extends Fragment implements OnMapReadyCallback, Serial
             if (action.equals(MAP_ACTION)) {
                 String longitude = intent.getStringExtra("LONGITUDE");
                 String latitude = intent.getStringExtra("LATITUDE");
-                LatLng pointl = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
+                LatLng point = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
 
 
-                mTapTextView.setText("longitude:" + longitude + " latitude:" + latitude);
+                position(point);
 
-
-                googleMap.addPolyline(new PolylineOptions()
-                        .add(sydney, pointl)
-                        .width(2)
-                        .color(Color.BLUE)
-                        .clickable(true));
-//            mMap.clear();
-                googleMap.addMarker(new MarkerOptions().position(pointl).draggable(true));
-                sydney = pointl;
-
-                googleMap.setOnPolylineClickListener(new GoogleMap.OnPolylineClickListener() {
-                    @Override
-                    public void onPolylineClick(Polyline polyline) {
-                        polyline.setColor(polyline.getColor() ^ 0x00ffffff);
-                    }
-                });
             }
         }
 
+        public void position(LatLng latLng){
+
+        }
     }
 
 
