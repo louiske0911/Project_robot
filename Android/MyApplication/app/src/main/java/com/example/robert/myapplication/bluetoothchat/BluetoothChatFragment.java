@@ -48,6 +48,7 @@ import android.widget.Toast;
 import com.example.robert.myapplication.R;
 import com.example.robert.myapplication.common.logger.Log;
 import com.example.robert.myapplication.maps.MapsActivity;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.io.Serializable;
 import java.util.List;
@@ -95,11 +96,16 @@ public class BluetoothChatFragment extends Fragment implements Serializable, Sen
 
 
     Broadcast broadcast;
-    public final static String BLUETOOTH_ACTION = "BLUETOOTH_ACTION";
+    public final static String BLUETOOTH_ACTION_DIRECTION = "BLUETOOTH_ACTION_DIRECTION";
+    public final static String BLUETOOTH_ACTION_SOURCE = "BLUETOOTH_ACTION_SOURCE";
+    public static LatLng Desition = null;
+    public static LatLng Source = null;
 
     private SensorManager sensorManager;
-    Handler handlerSenuor = new Handler();
-    Runnable runnable;
+
+    String startSource = "",startDirection = "";
+
+    CalculateAngleCurrentToGoal calculateAngleCurrentToGoal = new CalculateAngleCurrentToGoal();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -116,7 +122,7 @@ public class BluetoothChatFragment extends Fragment implements Serializable, Sen
         startTime = System.currentTimeMillis();
         handler.removeCallbacks(updateTimer);
         //設定Delay的時間
-        handler.postDelayed(updateTimer, 1);
+        handler.postDelayed(updateTimer, 1000);
 
 
 
@@ -137,12 +143,21 @@ public class BluetoothChatFragment extends Fragment implements Serializable, Sen
 
     public void registerBrocast(){
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(BLUETOOTH_ACTION);
+        intentFilter.addAction(BLUETOOTH_ACTION_SOURCE);
+        intentFilter.addAction(BLUETOOTH_ACTION_DIRECTION);
         broadcast = new Broadcast(){
             @Override
-            public void msg(String msg) {
-                super.msg(msg);
-                sendMessage(msg);
+            public void msg(LatLng latLng,String name) {
+                super.msg(latLng,name);
+                if(name.equals("source")){
+                    startSource = "source";
+                    calculateAngleCurrentToGoal.setCurrentPosition(latLng);
+                    sendMessage("1234567");
+                }else if(name.equals("direction")){
+                    startDirection = "direction";
+                    calculateAngleCurrentToGoal.setGoalPosition(latLng);
+                }
+//                sendMessage(msg);
             }
         };
 
@@ -214,20 +229,6 @@ public class BluetoothChatFragment extends Fragment implements Serializable, Sen
 
         // Initialize the buffer for outgoing messages
         mOutStringBuffer = new StringBuffer("");
-
-        // Initialize the send button with a listener that for click events
-//        mSendButton.setOnClickListener(new View.OnClickListener() {    //use btn to pass the message.
-//            public void onClick(View v) {
-//                // Send a message using content of the edit text widget
-//                View view = getView();
-//                if (view != null) {
-//                    TextView textView = (TextView) view.findViewById(R.id.edit_text_out);
-//                    String message = textView.getText().toString();
-//                    sendMessage(message);
-//                }
-//            }
-//        });
-
     }
 
     /**
@@ -248,16 +249,18 @@ public class BluetoothChatFragment extends Fragment implements Serializable, Sen
      * @param message A string of text to send.
      */
     private void sendMessage(String message) {
+        Log.v("ccc",message);
+        Log.v("ddd",""+BluetoothChatService.STATE_CONNECTED);
+        Log.v("ddd",""+mChatService.getState() );
         // Check that we're actually connected before trying anything
         if (mChatService.getState() != BluetoothChatService.STATE_CONNECTED) {    //STATE_CONNECTED = 3
             Toast.makeText(getActivity(), R.string.not_connected, Toast.LENGTH_SHORT).show();
             return;
         }
-
         // Check that there's actually something to send
         if (message.length() > 0) {
             // Get the message bytes and tell the BluetoothChatService to write
-            byte[] send = message.getBytes();
+            byte[] send = message.getBytes();   //
             mChatService.write(send);
 
             // Reset out string buffer to zero and clear the edit text field
@@ -441,28 +444,8 @@ public class BluetoothChatFragment extends Fragment implements Serializable, Sen
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         values = sensorEvent.values;
-        Log.v("abc","X：" + String.valueOf(values[0]));
+        Log.v("abc","X：" + String.valueOf(values[0]));      //方向感測器的角度
 
-//         runnable = new Runnable() {
-//            @Override
-//            public void run() {
-//                Log.v("abc","X：" + String.valueOf(values[0]));
-////                handlerSenuor.postDelayed(this,10000000);
-//            }
-//        };
-    }
-
-    public class Run implements Runnable{
-        float values[];
-
-        public Run(float values[]){
-            this.values = values;
-        }
-
-        @Override
-        public void run() {
-
-        }
     }
 
     @Override
@@ -473,6 +456,7 @@ public class BluetoothChatFragment extends Fragment implements Serializable, Sen
     public static class Broadcast extends BroadcastReceiver implements Serializable{
         BluetoothChatService mChatService;
         StringBuffer mOutStringBuffer;
+
         public Broadcast() {
         }
 
@@ -484,27 +468,42 @@ public class BluetoothChatFragment extends Fragment implements Serializable, Sen
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (action.equals(BLUETOOTH_ACTION)) {
-                Log.v("lat",intent.getStringExtra("LATITUDE")+" ,"+intent.getStringExtra("LONGITUDE"));
-                msg(intent.getStringExtra("LATITUDE")+" ,"+intent.getStringExtra("LONGITUDE"));
+            if (action.equals(BLUETOOTH_ACTION_SOURCE)) {
+                Log.v("lat",intent.getDoubleExtra("LATITUDE1",0)+" ,"+intent.getDoubleExtra("LONGITUDE1",0));
+                msg(new LatLng(intent.getDoubleExtra("LATITUDE1",0),intent.getDoubleExtra("LONGITUDE1",0)),"source");   //ＧＰＳ定位 ，提供經緯度
+            }else if(action.equals(BLUETOOTH_ACTION_DIRECTION)){
+                Log.v("lat",intent.getDoubleExtra("LATITUDE",0)+" ,"+intent.getDoubleExtra("LONGITUDE",0));
+                msg(new LatLng(intent.getDoubleExtra("LATITUDE",0),intent.getDoubleExtra("LONGITUDE",0)),"direction");  //點擊地圖，提供目的地的經緯度
             }
         }
 
-        public void msg(String msg){
+        public void msg(LatLng latLng,String name){
 
         }
     }
     private Runnable updateTimer = new Runnable() {
         public void run() {
-//            sendMessage(""+values[0]);
             Log.v("aaaa","X：" + String.valueOf(values[0]));
 
-//            Long spentTime = System.currentTimeMillis() - startTime;
-//            //計算目前已過分鐘數
-//            Long minius = (spentTime/1000)/60;
-//            //計算目前已過秒數
-//            Long seconds = (spentTime/1000) % 60;
+            if((startDirection.equals("direction")&&(startSource.equals("source")))){
+                Log.v("aaaa","X：" + String.valueOf(values[0]));
+                calculateAngleCurrentToGoal.setCurrentAngle(values[0]);
+                Log.v("aaaaaa",calculateAngleCurrentToGoal.toString());
+                sendMessage(calculateAngleCurrentToGoal.toString());
+            }
+            else if ((startDirection.equals("direction")&&(!startSource.equals("source")))){
+                sendMessage("startSource is trun off .");
+            }
+            else if ((!startDirection.equals("direction")&&(startSource.equals("source")))){
+                sendMessage("startDirection is trun off .");
+            }
+            else{
+                sendMessage("Please trun on startSource and  startDirection .");
+            }
             handler.postDelayed(this, 1000);
+
         }
     };
+
+
 }
