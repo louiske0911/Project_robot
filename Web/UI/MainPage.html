@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <link href="bootstrap-4.0.0-beta-dist/css/MainPage.css" rel="stylesheet">
     <link href="bootstrap-4.0.0-beta-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/75748c9894/UntitledProject/style.css">
+    <link href="bootstrap-4.0.0-beta-dist/css/offcanvas.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/c2e9c3944c/UntitledProject/style.css">
     <!-- <link rel="stylesheet" href="https://i.icomoon.io/public/temp/c0de2c3979/UntitledProject/style.css"> -->
 
     <!-- will be switch the glyphicons icon which can use on loacl -->
@@ -19,6 +20,8 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
+    <script src="js/offcanvas.js"></script>
+
     <script>
         function college_show() {
             document.getElementById("block").style.visibility = "visible";
@@ -184,9 +187,9 @@
             </div>
         </div>
     </div>
-    <div class="d-md-flex flex-row" id="fcu_background">
+    <div class="d-md-flex flex-row fcu_background">
         <div class="d-md-flex flex-column">
-            <div class="collapse width show" id="collapseExample">
+            <div class="collapse width" id="collapseExample">
                 <div id="nav_bar">
                     <img class="mt-2 p-3" src="images/Feng-Chia.png" alt="" style="width:90%;">
                     <div style="width:15vw;">
@@ -209,9 +212,10 @@
             </div>
         </div>
         <div class="d-md-flex flex-column">
-            <div class="p-4 m-5 d-md-flex flex-wrap justify-content-center header_container rounded" id="background1">
+            <div class="p-4 m-5 d-md-flex flex-wrap justify-content-center header_container rounded">
                 <div class="px-2 navbar-toggler" id="icon">
-                    <a class="icon-menu rounded tran" alt="" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample"></a>
+                    <a class="icon-menu rounded" alt="" data-off="offcanvas" data-toggle="collapse" href="#collapseExample" aria-expanded="true"
+                        aria-controls="collapseExample"></a>
                 </div>
                 <div class="px-3 dropdown">
                     <button class="btn btn-outline-primary dropdown-toggle button_size" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"

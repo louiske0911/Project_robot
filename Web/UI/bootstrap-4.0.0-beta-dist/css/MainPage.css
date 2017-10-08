@@ -23,11 +23,9 @@ element.style {
     color:black;    
 }
 
-#fcu_background::before {
-    /* border: #FF07D8 5px solid; */
+.fcu_background::before {
     content: '';
     background: url('../../images/test.jpg') no-repeat fixed;
-    /* background-color: rgb(235, 235, 227); */
     background-size: 100% 100%;
     height: 100vh;
     width: 100vw;
@@ -36,15 +34,26 @@ element.style {
     z-index: -1; 
 }
 
-#fcu_background {
+.fcu_background {
+    right: 0;
     height: 100vh;
     width: 100vw;
+    position: relative;
+    -webkit-transition: all .3s ease-in-out;
+         -o-transition: all .3s ease-in-out;
+       -moz-transition: all .3s ease-in-out;         
+            transition: all .3s ease-in-out;
+}
+
+.fcu_background.active {
+    right: -15vw;     
 }
 
 html, body {          
     margin: 0;
     padding: 0;
     height: 100%;
+    overflow-x: hidden;   
 }
 
 /*-----------------------------Header-Menu-----------------------------*/ 
@@ -205,7 +214,17 @@ html, body {
     /* font-size: 18px; */          /*design in media*/
     font-family: "Times New Roman", Times, serif;
     height: 100vh;
-    border-right: 3px gray inset;
+    /* border-right: 3px gray inset; */
+    position: absolute;
+    top: 0;
+    width: 15vw;
+    /* z-index: 999; */
+    /* box-shadow: 0 0 20px rgba(0,0,0,0.3); */
+    box-shadow: inset 0px 0px 20px   rgba(0,0,0,1);
+}
+
+.collapse.show #nav_bar {
+    left: -15vw;    
 }
 
 #nav_bar .nav-link {
@@ -222,5 +241,7 @@ html, body {
     transition-property: width, visibility;
     width: 0;
     height: auto;
-    transition: all 0.1s ease-in-out;        
+    -webkit-transition: all .01s ease-in-out;
+         -o-transition: all .01s ease-in-out;
+            transition: all .01s ease-in-out;        
 }  
