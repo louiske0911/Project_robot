@@ -6,7 +6,7 @@
     <link href="bootstrap-4.0.0-beta-dist/css/MainPage.css" rel="stylesheet">
     <link href="bootstrap-4.0.0-beta-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap-4.0.0-beta-dist/css/offcanvas.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/c2e9c3944c/UntitledProject/style.css">
+    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/0ef334b3e5/UntitledProject/style.css">
     <!-- <link rel="stylesheet" href="https://i.icomoon.io/public/temp/c0de2c3979/UntitledProject/style.css"> -->
 
     <!-- will be switch the glyphicons icon which can use on loacl -->
@@ -36,7 +36,6 @@
             document.getElementById("college_dialog").style.visibility = "hidden";
             document.getElementById("landscape_dialog").style.visibility = "hidden";
         }
-
         setTimeout(function () {
             $("#loader_block").css("display", "none");
         }, 1000);
@@ -44,9 +43,9 @@
 </head>
 
 <body>
-    <div id="loader_block" onclick="back()">
-        <div class="loader"></div>
-    </div>
+    <!-- <div id="loader_block" onclick="back()"> -->
+    <!-- <div class="loader"></div> -->
+    <!-- </div> -->
     <div id="block" onclick="back()"></div>
     <div id="college_dialog" class="p-4 rounded">
         <div class="inner_background">
@@ -132,9 +131,6 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
-
     <div id="landscape_dialog" class="p-4 rounded">
         <div class="inner_background">
             <div class="p-4">
@@ -204,8 +200,8 @@
                 </div>
             </div>
         </div>
-        <div class="d-md-flex d-sm-flex d-lg-flex flex-column">
-            <div class="p-4 m-5 d-md-flex d-sm-flex d-lg-flex flex-wrap justify-content-center header_container rounded">
+        <div class="mt-4 d-md-flex d-sm-flex d-lg-flex flex-column">
+            <!-- <div class="p-4 m-5 d-md-flex d-sm-flex d-lg-flex flex-wrap justify-content-center header_container rounded">
                 <div class="px-2 navbar-toggler" id="icon">
                     <a class="icon-menu rounded" alt="" data-off="offcanvas" data-toggle="collapse" href="#collapseExample" aria-expanded="true"
                         aria-controls="collapseExample"></a>
@@ -275,8 +271,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="p-4 mx-5 mb-5 d-md-flex d-sm-flex d-lg-flex main_container_inner rounded">
+            </div> -->
+            <div class="p-4 m-5 mx-5 mb-5 d-md-flex d-sm-flex d-lg-flex main_container_inner rounded">
                 <div class="px-4 d-md-flex d-sm-flex d-lg-flex flex-column inner_background">
                     <div class="carousel slide" id="carouselExampleControls_mainpage" data-ride="carousel">
                         <div class="carousel-inner d-md-flex d-sm-flex d-lg-flex justify-content-center">
@@ -295,16 +291,10 @@
                                     <img class="d-block img-fluid carousel_img" src="images/MainPage_03.jpg">
                                 </div>
                             </div>
-
-
                             <ul class="carousel-indicators">
-
                                 <li class="active" data-target="#photoCarousel" data-slide-to="0"></li>
-
                                 <li class="" data-target="#photoCarousel" data-slide-to="1"></li>
-
                                 <li class="" data-target="#photoCarousel" data-slide-to="2"></li>
-
                             </ul>
                             <a class="carousel-control-prev" href="#carouselExampleControls_mainpage" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -316,7 +306,6 @@
                             </a>
                         </div>
                     </div>
-                    <!-- <img src="images/test.jpg" alt="" style="width:20%"> -->
                     <div class="p-4 d-md-flex d-sm-flex d-lg-flex flex-column">
                         <div class="p-2">
                             <h2>校園公告</h2>
@@ -324,17 +313,6 @@
                         <p>Lorem ipsum dolor sit amet integer sem reiciendis placerat mattis at elementum. Ultrices eu luctus
                             erat malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec
                             mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci
-                            metus vehicula. Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat
-                            porttitor. Turpis viverra non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse
-                            magna quam adipiscing suscipit amet tincidunt sed felis enim nulla. Ut nec nam. Proin sapien
-                            nulla. Voluptates hendrerit dictumMalesuada mi sed. Mauris at arcu orci metus vehicula. Massa
-                            ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat porttitor. Turpis viverra
-                            non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing suscipit
-                            amet tincidunt sed felis enim nulla. Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictumMalesuada
-                            mi sed. Mauris at arcu orci metus vehicula. Massa ut tellus ante augue viverra ullamcorper aenean
-                            lorem. Platea volutpat porttitor. Turpis viverra non quis lorem et. Eu wisi erat. Sed arcu nunc
-                            nonummy suspendisse magna quam adipiscing suscipit amet tincidunt sed felis enim nulla. Ut nec
-                            nam. Proin sapien nulla. Voluptates hendrerit dictum
                         </p>
                         <div class="p-2">
                             <h2>校園活動</h2>
@@ -343,16 +321,6 @@
                             erat malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec
                             mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci
                             metus vehicula. Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat
-                            porttitor. Turpis viverra non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse
-                            magna quam adipiscing suscipit amet tincidunt sed felis enim nulla. Ut nec nam. Proin sapien
-                            nulla. Voluptates hendrerit dictumMalesuada mi sed. Mauris at arcu orci metus vehicula. Massa
-                            ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat porttitor. Turpis viverra
-                            non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing suscipit
-                            amet tincidunt sed felis enim nulla. Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictumMalesuada
-                            mi sed. Mauris at arcu orci metus vehicula. Massa ut tellus ante augue viverra ullamcorper aenean
-                            lorem. Platea volutpat porttitor. Turpis viverra non quis lorem et. Eu wisi erat. Sed arcu nunc
-                            nonummy suspendisse magna quam adipiscing suscipit amet tincidunt sed felis enim nulla. Ut nec
-                            nam. Proin sapien nulla. Voluptates hendrerit dictum
                         </p>
                         <div class="p-2">
                             <h2>校園演講</h2>
@@ -361,16 +329,6 @@
                             erat malesuada justo. Eget ut venenatis. A aliquam ullamcorper interdum ligula per. Integer donec
                             mauris. Et proin ut quis luctus purus ut eget quisque. Malesuada mi sed. Mauris at arcu orci
                             metus vehicula. Massa ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat
-                            porttitor. Turpis viverra non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse
-                            magna quam adipiscing suscipit amet tincidunt sed felis enim nulla. Ut nec nam. Proin sapien
-                            nulla. Voluptates hendrerit dictumMalesuada mi sed. Mauris at arcu orci metus vehicula. Massa
-                            ut tellus ante augue viverra ullamcorper aenean lorem. Platea volutpat porttitor. Turpis viverra
-                            non quis lorem et. Eu wisi erat. Sed arcu nunc nonummy suspendisse magna quam adipiscing suscipit
-                            amet tincidunt sed felis enim nulla. Ut nec nam. Proin sapien nulla. Voluptates hendrerit dictumMalesuada
-                            mi sed. Mauris at arcu orci metus vehicula. Massa ut tellus ante augue viverra ullamcorper aenean
-                            lorem. Platea volutpat porttitor. Turpis viverra non quis lorem et. Eu wisi erat. Sed arcu nunc
-                            nonummy suspendisse magna quam adipiscing suscipit amet tincidunt sed felis enim nulla. Ut nec
-                            nam. Proin sapien nulla. Voluptates hendrerit dictum
                         </p>
                     </div>
                 </div>
