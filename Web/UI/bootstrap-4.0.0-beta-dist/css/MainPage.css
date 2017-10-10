@@ -157,8 +157,7 @@ html, body {
     height: 80vh;
     overflow-y: scroll;    
     /* opacity: 0.95; */
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
-    
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);   
 }
 
 .main_container_clear { 
@@ -283,6 +282,7 @@ html, body {
         font-size: 16px;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     /* The same effect to btn-md of bootstrap4 */
     .button_size {
         padding: 0.375rem 0.75rem !important;
@@ -299,6 +299,9 @@ html, body {
     }
 =======
 >>>>>>> Add sub containe for introduction (Issue: UI-007)
+=======
+<<<<<<< 2f74983aaf309f0b038d65727bb4e4e6a7bc41eb
+>>>>>>> Add sub_container V1 and some image of college (Issue: UI-007)
 }
 
 /********************************School-Message************************************/
@@ -306,6 +309,8 @@ html, body {
     border-radius: 0.6rem !important;    
     box-shadow: 0 5px 16px 0 rgba(0, 0, 0, .6);
     
+=======
+>>>>>>> Add sub_container V1 and some image of college (Issue: UI-007)
 }
 
 .message_icon {
