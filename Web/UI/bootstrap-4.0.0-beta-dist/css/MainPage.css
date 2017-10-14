@@ -51,6 +51,11 @@ html, body {
     z-index: 999;
 }
 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 #loader_block {
     position: absolute;
     height:100%;
@@ -144,7 +149,7 @@ html, body {
 .main_container_inner { 
     background-color:rgba(250,250,250,.95);
     height: 80vh;
-    /* overflow-y: scroll;     */
+    overflow-y: scroll;    
     /* opacity: 0.95; */
 }
 
@@ -225,7 +230,5 @@ html, body {
 
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+
+
