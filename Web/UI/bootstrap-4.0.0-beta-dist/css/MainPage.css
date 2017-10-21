@@ -12,8 +12,9 @@ html, body {
 /********************************Background************************************/ 
 .fcu_background {
     right: 0;
-    height: 100vh;
-    width: 100vw;
+    background-color: #eeeeee;
+    /* height: 100vh; */
+    /* width: 100vw; */
     position: relative;
     -webkit-transition: all .3s ease-in-out;
          -o-transition: all .3s ease-in-out;
@@ -24,17 +25,18 @@ html, body {
 .fcu_background.active {
     right: -15vw;     
 }
-
+/* 
 .fcu_background::before {
     content: '';
     background: url('../../images/test.jpg') no-repeat fixed;
+    background-color: black;
     background-size: 100% 100%;
     height: 100vh;
     width: 100vw;
     opacity: 0.5;
     position: absolute; 
     z-index: -1; 
-}
+} */
 
 /********************************Loading************************************/ 
 .loader {
@@ -143,14 +145,18 @@ html, body {
 /************************************Main-Container************************************/ 
 .inner_background {
     background-color:rgba(255,255,255,1);
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
+    /* height: 100vh; */
 }
 
 .main_container_inner { 
-    background-color:rgba(250,250,250,.95);
+    /* background-color:rgba(250,250,250,.95); */
+    background-color:rgba(255,255,255,1);
     height: 80vh;
     overflow-y: scroll;    
     /* opacity: 0.95; */
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    
 }
 
 .main_container_clear { 
@@ -250,12 +256,17 @@ html, body {
     font-size:1.375rem;
     color:black;
 }
-/* .ctr_1 {
+.ctr_1 {
     background-color: #0275d8 !important;
+  
+    z-index:100;
+    width:50%;
+    height:100%;
+    opacity:0.3;
 }
 
 .ctr_2 {
-    background-color: #5bc0de !important;
+    background-color: #d9534f!important;
 }
 
 .ctr_3 {
@@ -264,19 +275,8 @@ html, body {
 
 .ctr_4 {
     background-color: #d9534f !important;
-} */
-.ftr_1 {
-    background-color: #fff !important;
 }
 
-.ftr_2 {
-    background-color: #fff !important;
-}
-
-.ftr_3 {
-    background-color: #fff !important;
-}
-
-.ftr_4 {
+.ftr {
     background-color: #fff !important;
 }
