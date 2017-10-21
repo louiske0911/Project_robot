@@ -42,7 +42,7 @@ html, body {
 .loader {
     position: absolute;
     top: 45%;
-    left: 50%;
+    left: 47%;
     width:50%;
     border: 8px solid #f3f3f3;
     border-top: 8px solid #3498db;
@@ -51,6 +51,7 @@ html, body {
     height: 55px;
     animation: spin 1.2s ease infinite;
     z-index: 999;
+    
 }
 
 @keyframes spin {
@@ -63,7 +64,7 @@ html, body {
     height:100%;
     width:100%;
     color:#0A0404;
-    background-color: black;
+  /* background-color: black; */
     visibility: visible;
     z-index: 500;
     opacity: 0.6;
@@ -256,7 +257,7 @@ html, body {
     font-size:1.375rem;
     color:black;
 }
-.ctr_1 {
+/* .ctr_1 {
     background-color: #0275d8 !important;
   
     z-index:100;
@@ -275,7 +276,7 @@ html, body {
 
 .ctr_4 {
     background-color: #d9534f !important;
-}
+} */
 
 .ftr {
     background-color: #fff !important;
