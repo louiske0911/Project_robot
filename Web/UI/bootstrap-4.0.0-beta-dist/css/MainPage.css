@@ -11,7 +11,7 @@ html, body {
 
 /********************************Background************************************/ 
 .fcu_background {
-    right: 0;
+    /* right: 0; */
     background-color: #eeeeee;
     /* height: 100vh; */
     /* width: 100vw; */
@@ -146,6 +146,8 @@ html, body {
 /************************************Main-Container************************************/ 
 .inner_background {
     background-color:rgba(255,255,255,1);
+    /* min-height: 85vh;
+    min-width: 88.75vw; */
     /* overflow-y: scroll; */
     /* height: 100vh; */
 }
@@ -223,7 +225,13 @@ html, body {
         line-height: 1.5 !important;
         border-radius: 0.3rem !important;
     }
-
+    .inner_background {
+        background-color:rgba(255,255,255,1);
+        min-height: 85vh;
+        min-width: 88.75vw;
+        /* overflow-y: scroll; */
+        /* height: 100vh; */
+    }
 }
 
 @media screen and (max-width:1099px) {
@@ -231,7 +239,9 @@ html, body {
         width:450px; 
         height:350px;    
     }
-
+    .carousel-indicators{
+        bottom: 40px !important; 
+    }
     #nav_bar {
         font-size: 16px;
     }
@@ -242,7 +252,13 @@ html, body {
         line-height: 1.5 !important;
         border-radius: 0.2rem !important;
     }
-
+    .inner_background {
+        background-color:rgba(255,255,255,1);
+        min-height: 85vh;
+        min-width: 93.5vw;
+        /* overflow-y: scroll; */
+        /* height: 100vh; */
+    }
 }
 
 /********************************School-Message************************************/
