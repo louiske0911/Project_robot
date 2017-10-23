@@ -166,14 +166,6 @@ html, body {
     
 }
 
-.main_container_clear { 
-    background-color:rgba(250, 250, 250, 0);
-    /* height: 80vh; */
-    /* width: 90vw; */
-    /* border: 2px black solid; */
-    /* overflow-y: scroll;     */
-}
-
 .sub_container {
     position: relative;
     background-color: rgba(255, 255, 255, .95);
@@ -272,6 +264,14 @@ html, body {
         /* overflow-y: scroll; */
         /* height: 100vh; */
     }
+    .main_container_clear { 
+        background-color:rgba(250, 250, 250, 0);
+        max-height: 90vh;
+        /* max-width: 90vw; */
+        /* border: 2px black solid; */
+        /* overflow-y: scroll;     */
+    }
+    
 }
 
 @media screen and (max-width:1099px) {
@@ -307,6 +307,14 @@ html, body {
         /* overflow-y: scroll; */
         /* height: 100vh; */
     }
+    .main_container_clear { 
+        background-color:rgba(250, 250, 250, 0);
+        max-height: 90vh;
+        /* max-width: 90vw; */
+        /* border: 2px black solid; */
+        /* overflow-y: scroll;     */
+    }
+    
 }
 
 /********************************School-Message************************************/
