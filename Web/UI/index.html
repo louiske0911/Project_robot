@@ -43,13 +43,10 @@
 </head>
 
 <body>
-    <!-- <div id="loader_block" onclick="back()"> -->
-    <!-- <div class="loader"></div> -->
-    <!-- </div> -->
     <div id="block" onclick="back()"></div>
     <!-- *****************************************College Dialog***************************************** -->
     <div id="college_dialog" class="p-4 rounded">
-        <div class="inner_background">
+        <div class="dialog_inner">
             <div class="p-4">
                 <h2 class="mb-4" style="text-align:center;">學院介紹</h2>
                 <p class="p-2">
@@ -134,7 +131,7 @@
     </div>
     <!-- ****************************************Landscape Dialog**************************************** -->
     <div id="landscape_dialog" class="p-4 rounded">
-        <div class="inner_background">
+        <div class="dialog_inner">
             <div class="p-4">
                 <h2 class="mb-4" style="text-align:center;">學思園</h2>
                 <p class="p-2">
@@ -178,158 +175,151 @@
             </div>
         </div>
     </div>
-    <div class="d-md-flex d-sm-flex d-lg-flex flex-row fcu_background">
-        <!-- ********************************************Nav Bar********************************************* -->
-        <div class="d-md-flex d-sm-flex d-lg-flex flex-column">
-            <div class="collapse width" id="collapseExample">
-                <div id="nav_bar">
-                    <img class="mt-2 p-3" src="images/Feng-Chia.png" alt="" style="width:90%;">
-                    <div style="width:15vw;">
-                        <nav class="mt-4 nav nav-tabs nav-justified flex-column nav_border">
-                            <a class="p-4 px-2 pr-3 nav-link" href="#">
-                                <span class="icon-compass pr-2"></span>現在位置</a>
-                            <a class="p-4 px-2 pr-3 nav-link" href="#">
-                                <span class="icon-location2 pr-2"></span>校園地圖</a>
-                            <a class="p-4 px-2 pr-3 nav-link" href="#">
-                                <span class="icon-book pr-2"></span>學院介紹</a>
-                            <a class="p-4 px-2 pr-3 nav-link" href="#">
-                                <span class="icon-office pr-2"></span>大樓介紹</a>
-                            <a class="p-4 px-2 pr-3 nav-link" href="#">
-                                <span class="icon-library pr-2"></span>景點介紹</a>
-                            <a class="p-4 px-2 pr-3 nav-link" href="#">
-                                <span class="icon-info pr-2"></span>近日活動</a>
-                            <a class="p-4 px-2 pr-3 nav-link" href="#">
-                                <span class="icon-info pr-2"></span>關於我們</a>
-                            <a class="p-4 px-2 pr-3 nav-link" href="#">
-                                <span class="icon-user pr-2"></span>Log in</a>
-                            <a class="p-4 px-2 pr-3 nav-link" href="#">
-                                <span class="icon-exit pr-2"></span>Log out</a>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+
+
+
+    <!-- ********************************************Nav Bar********************************************* -->
+
+    <!-- *****************************************Container******************************************** -->
+    <div class="mt-5 mx-5 container fcu_background rounded">
+        <div class="col-xs-12 text-right lead">
+            <a class="btn btn-outline-secondary prev" href="#postsCarousel" data-slide="prev" title="go back">
+                <i class="icon-arrow-left"></i>
+            </a>
+            <a class="btn btn-outline-secondary next" href="#postsCarousel" data-slide="next" title="more">
+                <i class="icon-arrow-right"></i>
+            </a>
         </div>
-        <!-- *****************************************Container******************************************** -->
-        <div class="mt-4 d-md-flex d-sm-flex d-lg-flex flex-column">
-            <div class="col-xs-12 text-md-right lead">
-                <a class="btn btn-outline-secondary prev" href="#postsCarousel" data-slide="prev" title="go back"><i class="icon-arrow-left"></i></a>
-                <a class="btn btn-outline-secondary next" href="#postsCarousel" data-slide="next" title="more"><i class="icon-arrow-right"></i></a>
-            </div>
+        <div class="row">
             <section class="carousel slide" data-ride="carousel" id="postsCarousel">
                 <div class="carousel-inner">
                     <div class="sub_container_trans carousel-item active">
-                        <div class="p-4 m-5 mx-5 mb-5 d-md-flex d-sm-flex d-lg-flex main_container_clear rounded justify-content-center">
-                            <div class="mx-4 card sub_container" style="max-width: 20vw;">
-                                <div class="card-header">
-                                    <h4 class="mt-1 card-title">商學院</h4>
-                                    <h6 class="sub-title text-muted">商學大樓</h6>
-                                </div>
-                                <div class="card-body">
-                                    <img class="mt-2 d-block img-fluid" src="images/ShangShiue.jpeg">
-                                    <p class="mt-4 card-text">
-                                        本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻，以培育國際企業發展所需之商管專業人才，並以培育學生具備商業資料分析的科技能力與國際企業所愛的移動能力為教學發展特色。 為達成上述使命，本院致力於： 持續提升教師專業知識、教學能力與學生學習成效...
-                                        展專業人才。其中的土木、水利工程學系為1961年逢甲工商學院創校四系之二...
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">
-                                        <button class="p-2 btn btn-outline-primary button_rwd">開始導覽</button>
-                                        <button class="p-2 btn btn-outline-primary button_rwd" onclick="landscape_show()">More..</button>
+                        <div class="p-3 row main_container_clear rounded justify-content-around">
+                            <div class="col-4 d-flex align-items-stretch">
+                                <div class="card sub_container">
+                                    <div class="card-header">
+                                        <h4 class="card-title">商學院</h4>
+                                        <h6 class="sub-title text-muted">商學大樓</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <img class="d-block img-fluid" src="images/ShangShiue.jpeg">
+                                        <p class="mt-4 card-text">
+                                            本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻，以培育國際企業發展所需之商管專業人才，並以培育學生具備商業資料分析的科技能力與國際企業所愛的移動能力為教學發展特色。 為達成上述使命，本院致力於： 持續提升教師專業知識、教學能力與學生學習成效...
+                                            展專業人才。其中的土木、水利工程學系為1961年逢甲工商學院創校四系之二...
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">
+                                            <button class="btn btn-outline-primary button_rwd">開始導覽</button>
+                                            <button class="btn btn-outline-primary button_rwd" onclick="landscape_show()">More..</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mx-4 card sub_container" style="max-width: 20vw;">
-                                <div class="card-header">
-                                    <h4 class="mt-1 card-title">建設學院</h4>
-                                    <h6 class="sub-title text-muted">丘逢甲紀念館</h6>
-                                </div>
-                                <div class="card-body">
-                                    <img class="mt-2 d-block img-fluid" src="images/丘逢甲紀念館_01.jpg" alt="Carousel 2">
-                                    <p class="mt-4 card-text">
-                                        建設學院成立於2000年8月1日，是台灣唯一以建設為名的學院，致力於培養具備務實專精與創新研發能力，並負有社會責任感與國際觀的國土建設與永續環境發 展專業人才。其中的土木、水利工程學系為1961年逢甲工商學院創校四系之二...
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">
-                                        <button class="p-2 btn btn-outline-primary button_rwd">開始導覽</button>
-                                        <button class="p-2 btn btn-outline-primary button_rwd" onclick="landscape_show()">More..</button>
+                            <div class="col-4 d-flex align-items-stretch">
+                                <div class="card sub_container">
+                                    <div class="card-header">
+                                        <h4 class="card-title">建設學院</h4>
+                                        <h6 class="sub-title text-muted">丘逢甲紀念館</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <img class="d-block img-fluid" src="images/丘逢甲紀念館_01.jpg" alt="Carousel 2">
+                                        <p class="mt-4 card-text">
+                                            建設學院成立於2000年8月1日，是台灣唯一以建設為名的學院，致力於培養具備務實專精與創新研發能力，並負有社會責任感與國際觀的國土建設與永續環境發 展專業人才。其中的土木、水利工程學系為1961年逢甲工商學院創校四系之二...
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">
+                                            <button class="btn btn-outline-primary button_rwd">開始導覽</button>
+                                            <button class="btn btn-outline-primary button_rwd" onclick="landscape_show()">More..</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mx-4 card sub_container" style="max-width: 20vw;">
-                                <div class="card-header">
-                                    <h4 class="mt-1 card-title">工學院</h4>
-                                    <h6 class="sub-title text-muted">工學館</h6>
-                                </div>
-                                <img class="mt-4 d-block img-fluid" src="images/工學院_01.jpg">
-                                <div class="card-body">
-                                    <p class="mt-4 card-text">
-                                        新世紀高等教育已被賦予更多、更重的責任，社會大眾除了希望大學能夠給予年輕學子擁有多元化的技能、教養與更加深思熟慮之外，還期待大學帶動地方經濟發展，提供回流或社區教育，甚至增強國際競爭力 展專業人才。其中的土木、水利工程學系為1961年逢甲工商學院創校四系之二...
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">
-                                        <button class="p-2 btn btn-outline-primary button_rwd">開始導覽</button>
-                                        <button class="p-2 btn btn-outline-primary button_rwd" onclick="landscape_show()">More..</button>
+
+                            <div class="col-4 d-flex align-items-stretch">
+                                <div class="card sub_container">
+                                    <div class="card-header">
+                                        <h4 class="card-title">建設學院</h4>
+                                        <h6 class="sub-title text-muted">丘逢甲紀念館</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <img class="d-block img-fluid" src="images/丘逢甲紀念館_01.jpg" alt="Carousel 2">
+                                        <p class="mt-4 card-text">
+                                            建設學院成立於2000年8月1日，是台灣唯一以建設為名的學院，致力於培養具備務實專精與創新研發能力，並負有社會責任感與國際觀的國土建設與永續環境發 展專業人才。其中的土木、水利工程學系為1961年逢甲工商學院創校四系之二...
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">
+                                            <button class="btn btn-outline-primary button_rwd">開始導覽</button>
+                                            <button class="btn btn-outline-primary button_rwd" onclick="landscape_show()">More..</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!--******************Second page******************-->
                     <div class="sub_container_trans carousel-item">
-                        <div class="p-4 m-5 mx-5 mb-5 d-md-flex d-sm-flex d-lg-flex main_container_clear rounded justify-content-center">
-                            <div class="mx-4 card sub_container" style="max-width: 20vw;">
-                                <div class="card-header">
-                                    <h4 class="mt-1 card-title">商學院</h4>
-                                    <h6 class="sub-title text-muted">商學大樓</h6>
-                                </div>
-                                <div class="card-body">
-                                    <img class="mt-2 d-block img-fluid" src="images/ShangShiue.jpeg">
-                                    <p class="mt-4 card-text">
-                                        本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻，以培育國際企業發展所需之商管專業人才，並以培育學生具備商業資料分析的科技能力與國際企業所愛的移動能力為教學發展特色。 為達成上述使命，本院致力於： 持續提升教師專業知識、教學能力與學生學習成效...
-                                        展專業人才。其中的土木、水利工程學系為1961年逢甲工商學院創校四系之二...
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">
-                                        <button class="p-2 btn btn-outline-primary button_rwd">開始導覽</button>
-                                        <button class="p-2 btn btn-outline-primary button_rwd" onclick="landscape_show()">More..</button>
+                        <div class="p-3 row main_container_clear rounded justify-content-around">
+                            <div class="col-4 d-flex align-items-stretch">
+                                <div class="card sub_container">
+                                    <div class="card-header">
+                                        <h4 class="card-title">商學院</h4>
+                                        <h6 class="sub-title text-muted">商學大樓</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <img class="d-block img-fluid" src="images/ShangShiue.jpeg">
+                                        <p class="mt-4 card-text">
+                                            本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻，以培育國際企業發展所需之商管專業人才，並以培育學生具備商業資料分析的科技能力與國際企業所愛的移動能力為教學發展特色。 為達成上述使命，本院致力於： 持續提升教師專業知識、教學能力與學生學習成效...
+                                            展專業人才。其中的土木、水利工程學系為1961年逢甲工商學院創校四系之二...
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">
+                                            <button class="btn btn-outline-primary button_rwd">開始導覽</button>
+                                            <button class="btn btn-outline-primary button_rwd" onclick="landscape_show()">More..</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mx-4 card sub_container" style="max-width: 20vw;">
-                                <div class="card-header">
-                                    <h4 class="mt-1 card-title">建設學院</h4>
-                                    <h6 class="sub-title text-muted">丘逢甲紀念館</h6>
-                                </div>
-                                <div class="card-body">
-                                    <img class="mt-2 d-block img-fluid" src="images/丘逢甲紀念館_01.jpg" alt="Carousel 2">
-                                    <p class="mt-4 card-text">
-                                        建設學院成立於2000年8月1日，是台灣唯一以建設為名的學院，致力於培養具備務實專精與創新研發能力，並負有社會責任感與國際觀的國土建設與永續環境發 展專業人才。其中的土木、水利工程學系為1961年逢甲工商學院創校四系之二...
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">
-                                        <button class="p-2 btn btn-outline-primary button_rwd">開始導覽</button>
-                                        <button class="p-2 btn btn-outline-primary button_rwd" onclick="landscape_show()">More..</button>
+                            <div class="col-4 d-flex align-items-stretch">
+                                <div class="card sub_container">
+                                    <div class="card-header">
+                                        <h4 class="card-title">建設學院</h4>
+                                        <h6 class="sub-title text-muted">丘逢甲紀念館</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <img class="d-block img-fluid" src="images/丘逢甲紀念館_01.jpg" alt="Carousel 2">
+                                        <p class="mt-4 card-text">
+                                            建設學院成立於2000年8月1日，是台灣唯一以建設為名的學院，致力於培養具備務實專精與創新研發能力，並負有社會責任感與國際觀的國土建設與永續環境發 展專業人才。其中的土木、水利工程學系為1961年逢甲工商學院創校四系之二...
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">
+                                            <button class="btn btn-outline-primary button_rwd">開始導覽</button>
+                                            <button class="btn btn-outline-primary button_rwd" onclick="landscape_show()">More..</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mx-4 card sub_container" style="max-width: 20vw;">
-                                <div class="card-header">
-                                    <h4 class="mt-1 card-title">工學院</h4>
-                                    <h6 class="sub-title text-muted">工學館</h6>
-                                </div>
-                                <img class="mt-4 d-block img-fluid" src="images/工學院_01.jpg">
-                                <div class="card-body">
-                                    <p class="mt-4 card-text">
-                                        新世紀高等教育已被賦予更多、更重的責任，社會大眾除了希望大學能夠給予年輕學子擁有多元化的技能、教養與更加深思熟慮之外，還期待大學帶動地方經濟發展，提供回流或社區教育，甚至增強國際競爭力 展專業人才。其中的土木、水利工程學系為1961年逢甲工商學院創校四系之二...
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">
-                                        <button class="p-2 btn btn-outline-primary button_rwd">開始導覽</button>
-                                        <button class="p-2 btn btn-outline-primary button_rwd" onclick="landscape_show()">More..</button>
+                            <div class="col-4 d-flex align-items-stretch">
+                                <div class="card sub_container">
+                                    <div class="card-header">
+                                        <h4 class="card-title">工學院</h4>
+                                        <h6 class="sub-title text-muted">工學館</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <img class="d-block img-fluid" src="images/工學院_01.jpg">
+                                        <p class="mt-4 card-text">
+                                            新世紀高等教育已被賦予更多、更重的責任，社會大眾除了希望大學能夠給予年輕學子擁有多元化的技能、教養與更加深思熟慮之外，還期待大學帶動地方經濟發展，提供回流或社區教育，甚至增強國際競爭力 展專業人才。其中的土木、水利工程學系為1961年逢甲工商學院創校四系之二...
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">
+                                            <button class="btn btn-outline-primary button_rwd">開始導覽</button>
+                                            <button class="btn btn-outline-primary button_rwd" onclick="landscape_show()">More..</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -338,6 +328,7 @@
             </section>
             </div>
         </div>
+
 </body>
 
 </html>
