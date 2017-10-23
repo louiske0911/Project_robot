@@ -21,25 +21,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
     <script src="js/offcanvas.js"></script>
-
-    <script>
-        function college_show() {
-            document.getElementById("block").style.visibility = "visible";
-            document.getElementById("college_dialog").style.visibility = "visible";
-        }
-        function landscape_show() {
-            document.getElementById("block").style.visibility = "visible";
-            document.getElementById("landscape_dialog").style.visibility = "visible";
-        }
-        function back() {
-            document.getElementById("block").style.visibility = "hidden";
-            document.getElementById("college_dialog").style.visibility = "hidden";
-            document.getElementById("landscape_dialog").style.visibility = "hidden";
-        }
-        setTimeout(function () {
-            $("#loader_block").css("display", "none");
-        }, 1000);
-    </script>
 </head>
 
 <body>
@@ -181,7 +162,7 @@
     <!-- ********************************************Nav Bar********************************************* -->
 
     <!-- *****************************************Container******************************************** -->
-    <div class="container-fluid fcu_background container_margin rounded">
+    <div class="container-fluid fcu_background rounded" style="border:rebeccapurple 2px solid">
         <div class="col-xs-12 text-right lead">
             <a class="btn btn-outline-secondary prev" href="#postsCarousel" data-slide="prev" title="go back">
                 <i class="icon-arrow-left"></i>
@@ -190,10 +171,10 @@
                 <i class="icon-arrow-right"></i>
             </a>
         </div>
-        <div class="row justify-content-center inner_background">
+        <div class="row justify-content-center inner_background" style="border:red 2px solid">
             <section class="carousel slide" data-ride="carousel" id="postsCarousel">
                 <div class="carousel-inner">
-                    <div class="px-5 sub_container_trans carousel-item active" style="border:red 2px solid">
+                    <div class="px-5 sub_container_trans carousel-item active">
                         <div class="p-3 row main_container_clear rounded justify-content-center">
                             <div class="col-md-4 col-lg-3 d-flex align-items-stretch">
                                 <div class="card sub_container">

@@ -1,19 +1,19 @@
 setTimeout(function () {
     $("#loader_block").css("display", "none");
 }, 3000);
-function AddClass() {
-    var newDiv = document.createElement("div");
-    newDiv.classList.add("ctr_1");
-    newDiv.innerHTML += "1234";
-    x = document.getElementById("inner_bg");
-    x.appendChild(newDiv);
-    x.innerHTML += x;
+// function AddClass() {
+//     var newDiv = document.createElement("div");
+//     newDiv.classList.add("ctr_1");
+//     newDiv.innerHTML += "1234";
+//     x = document.getElementById("inner_bg");
+//     x.appendChild(newDiv);
+//     x.innerHTML += x;
 
-    // var menu = document.getElementsByTagName("body")[0];
-    // menu.appendChild(newDiv);
-    // var newDiv1 = document.createElement("div");
-    // var x = document.querySelector('body');
-}
+//     // var menu = document.getElementsByTagName("body")[0];
+//     // menu.appendChild(newDiv);
+//     // var newDiv1 = document.createElement("div");
+//     // var x = document.querySelector('body');
+// }
 function AddCard() {
     /*************************Loader prepend to tag:body*************************/
     $('<div id="loader_block"><div id="loader" class="loader"></div></div>').prependTo('body');
