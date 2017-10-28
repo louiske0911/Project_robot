@@ -1,23 +1,25 @@
 setTimeout(function () {
     $("#loader_block").css("display", "none");
 }, 3000);
-function AddClass() {
-    var newDiv = document.createElement("div");
-    newDiv.classList.add("ctr_1");
-    newDiv.innerHTML += "1234";
-    x = document.getElementById("inner_bg");
-    x.appendChild(newDiv);
-    x.innerHTML += x;
+// function AddClass() {
+//     var newDiv = document.createElement("div");
+//     newDiv.classList.add("ctr_1");
+//     newDiv.innerHTML += "1234";
+//     x = document.getElementById("inner_bg");
+//     x.appendChild(newDiv);
+//     x.innerHTML += x;
 
-    // var menu = document.getElementsByTagName("body")[0];
-    // menu.appendChild(newDiv);
-    // var newDiv1 = document.createElement("div");
-    // var x = document.querySelector('body');
-}
+//     // var menu = document.getElementsByTagName("body")[0];
+//     // menu.appendChild(newDiv);
+//     // var newDiv1 = document.createElement("div");
+//     // var x = document.querySelector('body');
+// }
 function AddCard() {
     /*************************Loader prepend to tag:body*************************/
     $('<div id="loader_block"><div id="loader" class="loader"></div></div>').prependTo('body');
     setTimeout(function () {
+        var col = '<div class="col-10 rounded"></div>';
+        $('#inner_bg').prepend(col);
         var row = '<div id="row" class="row"></div>';
         $('#inner_bg').append(row);
         var iconArray = ['icon-newspaper', 'icon-bullhorn', 'icon-accessibility', 'icon-user-tie'];
@@ -83,35 +85,35 @@ function AddCard() {
         }
     }, 2000);
 }
-function AddCarousel() {
-    var imgArray = ["images/MainPage_01.jpg", "images/MainPage_02.jpg", "images/MainPage_03.jpg"];
-    var carousel_inner = '<div class="carousel slide" id="carouselExampleControls_mainpage" data-ride="carousel">'
-        + '<div id="carousel_item" class="carousel-inner d-md-flex d-sm-flex d-lg-flex justify-content-center rounded">'
-        + '<ul class="carousel-indicators"></ul>'
-        + '<a class="carousel-control-prev" href="#carouselExampleControls_mainpage" role="button" data-slide="prev">'
-        + '<span class="carousel-control-prev-icon" aria-hidden="true"></span>'
-        + '<span class="sr-only">Previous</span>'
-        + '</a>'
-        + '<a class="carousel-control-next" href="#carouselExampleControls_mainpage" role="button" data-slide="next">'
-        + '<span class="carousel-control-next-icon" aria-hidden="true"></span>'
-        + '<span class="sr-only">Next</span>'
-        + '</a></div></div>';
-    $('#inner_bg').prepend(carousel_inner);
+// function AddCarousel() {
+//     var imgArray = ["images/MainPage_01.jpg", "images/MainPage_02.jpg", "images/MainPage_03.jpg"];
+//     var carousel_inner = '<div class="carousel slide" id="carouselExampleControls_mainpage" data-ride="carousel">'
+//         + '<div id="carousel_item" class="carousel-inner d-md-flex d-sm-flex d-lg-flex justify-content-center rounded">'
+//         + '<ul class="carousel-indicators"></ul>'
+//         + '<a class="carousel-control-prev" href="#carouselExampleControls_mainpage" role="button" data-slide="prev">'
+//         + '<span class="carousel-control-prev-icon" aria-hidden="true"></span>'
+//         + '<span class="sr-only">Previous</span>'
+//         + '</a>'
+//         + '<a class="carousel-control-next" href="#carouselExampleControls_mainpage" role="button" data-slide="next">'
+//         + '<span class="carousel-control-next-icon" aria-hidden="true"></span>'
+//         + '<span class="sr-only">Next</span>'
+//         + '</a></div></div>';
+//     $('#inner_bg').prepend(carousel_inner);
 
-    /*************************Isert the carousel item*************************/
-    for (var i = 0; i < (imgArray.length); i++) {
-        $('<div class="carousel-item item_container">'
-            + '<div class="d-md-flex d-sm-flex d-lg-flex h-100 align-items-center justify-content-center"> <img class="d-block img-fluid carousel_img" src=" '
-            + imgArray[i]
-            + '"></div></div>').prependTo('#carousel_item');
-        $('<li class="" data-target="#photoCarousel" data-slide-to="' + i + '"></li>').appendTo('.carousel-indicators');
-    }
+//     /*************************Isert the carousel item*************************/
+//     for (var i = 0; i < (imgArray.length); i++) {
+//         $('<div class="carousel-item item_container">'
+//             + '<div class="d-md-flex d-sm-flex d-lg-flex h-100 align-items-center justify-content-center"> <img class="d-block img-fluid carousel_img" src=" '
+//             + imgArray[i]
+//             + '"></div></div>').prependTo('#carousel_item');
+//         $('<li class="" data-target="#photoCarousel" data-slide-to="' + i + '"></li>').appendTo('.carousel-indicators');
+//     }
 
 
-    $('.carousel-item.item_container').first().addClass('active');
-    $('.carousel-indicators > li').first().addClass('active');
-    $('#carousel').carousel();
-}
+//     $('.carousel-item.item_container').first().addClass('active');
+//     $('.carousel-indicators > li').first().addClass('active');
+//     $('#carousel').carousel();
+// }
 /* <div class="mb-4 carousel slide" id="carouselExampleControls_mainpage" data-ride="carousel">
     <div class="carousel-inner d-md-flex d-sm-flex d-lg-flex justify-content-center rounded">
 

@@ -21,13 +21,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
     <script src="js/offcanvas.js"></script>
-    <script src="js/BulletinPage.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/landscape.js"></script>
+    <script src="js/college.js"></script>
 </head>
 
 <body>
-    <div class="container fcu_background" style="border:rebeccapurple 2px solid">
+    <div id="outer_bg" class="container fcu_background" style="border:rebeccapurple 2px solid">
         <div id="inner_bg" class="row justify-content-center inner_background" style="border:red 2px solid">
-            <Button type="button" onclick="AddCard()">AddCard</Button>
+
+            <Button type="button" onclick="AddSub('landscape')">AddSub</Button>
+            <Button type="button" onclick="AddSub('college')">AddSub1</Button>
+
         </div>
     </div>
 </body>
