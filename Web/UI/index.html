@@ -21,6 +21,24 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
     <script src="js/offcanvas.js"></script>
+    <script>
+        function college_show() {
+            document.getElementById("block").style.visibility = "visible";
+            document.getElementById("college_dialog").style.visibility = "visible";
+        }
+        function landscape_show() {
+            document.getElementById("block").style.visibility = "visible";
+            document.getElementById("landscape_dialog").style.visibility = "visible";
+        }
+        function back() {
+            document.getElementById("block").style.visibility = "hidden";
+            document.getElementById("college_dialog").style.visibility = "hidden";
+            document.getElementById("landscape_dialog").style.visibility = "hidden";
+        }
+        setTimeout(function () {
+            $("#loader_block").css("display", "none");
+        }, 1000);
+    </script>
 </head>
 
 <body>
@@ -80,7 +98,7 @@
                 <div class="carousel-inner d-md-flex d-sm-flex d-lg-flex justify-content-center">
                     <div class="carousel-item active item_container">
                         <div class="d-md-flex d-sm-flex d-lg-flex h-100 align-items-center justify-content-center">
-                            <img class="d-block img-fluid carousel_img_1" src="images/JungChin.jpg">
+                            <img class="d-block img-fluid carousel_img" src="images/JungChin.jpg">
                         </div>
                     </div>
                     <div class="carousel-item item_container">
@@ -174,6 +192,7 @@
         <div class="row justify-content-center inner_background" style="border:red 2px solid">
             <section class="carousel slide" data-ride="carousel" id="postsCarousel">
                 <div class="carousel-inner">
+
                     <div class="px-5 sub_container_trans carousel-item active">
                         <div class="p-3 row main_container_clear rounded justify-content-center">
                             <div class="col-md-4 col-lg-3 col-xl-3 d-flex align-items-stretch">
@@ -240,6 +259,7 @@
                         </div>
                     </div>
                     <!--******************Second page******************-->
+
                     <div class="px-5 sub_container_trans carousel-item">
                         <div class="p-3 row main_container_clear rounded justify-content-center">
                             <div class="col-md-4 col-lg-3 col-xl-3 d-flex align-items-stretch">
