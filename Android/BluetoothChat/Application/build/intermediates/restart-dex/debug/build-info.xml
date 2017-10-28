@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
     abi="armeabi-v7a,armeabi"
-    api-level="23"
+    api-level="21"
     build-mode="FULL"
-    density="xxhdpi"
+    density="xhdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1505807521109"
+    timestamp="1508153137170"
     token="5123296494479476304"
     verifier="FULL_BUILD_REQUESTED" >
 
@@ -18,23 +18,17 @@
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="126" />
+        duration="0" />
     <task
         name="verifier"
         duration="0" />
 
     <artifact
-        location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_2.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_6.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_1.apk"
-        type="SPLIT" />
-    <artifact
         location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/outputs/apk/Application-debug.apk"
         type="SPLIT_MAIN" />
+    <artifact
+        location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_2.apk"
+        type="SPLIT" />
     <artifact
         location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_8.apk"
         type="SPLIT" />
@@ -51,6 +45,9 @@
         location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/dep/dependencies.apk"
         type="SPLIT" />
     <artifact
+        location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_6.apk"
+        type="SPLIT" />
+    <artifact
         location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_4.apk"
         type="SPLIT" />
     <artifact
@@ -59,23 +56,20 @@
     <artifact
         location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_0.apk"
         type="SPLIT" />
+    <artifact
+        location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_1.apk"
+        type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1505807521109"
+        timestamp="1508153137170"
         verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_6.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_1.apk"
-            type="SPLIT" />
         <artifact
             location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/outputs/apk/Application-debug.apk"
             type="SPLIT_MAIN" />
+        <artifact
+            location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            type="SPLIT" />
         <artifact
             location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
@@ -92,6 +86,9 @@
             location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
+            location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            type="SPLIT" />
+        <artifact
             location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
@@ -99,6 +96,9 @@
             type="SPLIT" />
         <artifact
             location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/robert/Project_robot/Android/BluetoothChat/Application/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
     </build>
 

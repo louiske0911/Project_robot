@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">magneticForce</string>
+    <string
+        name="hello">Hello World, Sample</string>
+
+    <string
+        name="title">磁場感測器案例</string>
+
+    <string
+        name="myTextView1">x方向的磁場分量為：</string>
+    <string
+        name="myTextView2">y方向的磁場分量為：</string>
+
+    <string
+        name="myTextView3">z方向的磁場分量為：</string>
+
+</resources>

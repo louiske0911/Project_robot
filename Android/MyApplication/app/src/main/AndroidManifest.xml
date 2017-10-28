@@ -19,9 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
-            android:name=".bluetoothchat.MainActivity"
+            android:name="tw.example.robert.myapplication.bluetoothchat.MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name">
             <intent-filter>
@@ -41,22 +40,26 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
-            android:name=".bluetoothchat.DeviceListActivity"
+            android:name="tw.example.robert.myapplication.bluetoothchat.DeviceListActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/select_device"
-            android:theme="@style/CustomDialog"/>
+            android:theme="@style/CustomDialog" />
         <!-- <activity -->
         <!-- android:name=".maps.MapsActivity" -->
         <!-- android:label="@string/title_activity_maps"></activity> -->
-        <!--<activity-->
-            <!--android:name=".maps.MapsActivity"-->
-            <!--android:label="@string/title_activity_maps"></activity>-->
+        <!-- <activity -->
+        <!-- android:name=".maps.MapsActivity" -->
+        <!-- android:label="@string/title_activity_maps"></activity> -->
         <service
-            android:name=".maps.LocationService"
+            android:name="tw.example.robert.myapplication.maps.LocationService"
             android:enabled="true"
-            android:exported="true">
-        </service>
+            android:exported="true" />
+
+        <activity
+            android:name="tw.example.robert.myapplication.maps.MapsActivity"
+            android:label="@string/title_activity_maps" />
     </application>
 
 </manifest>
