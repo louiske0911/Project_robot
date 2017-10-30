@@ -1,9 +1,12 @@
-
 setTimeout(function () {
     $("#loader_block").css("display", "none");
 }, 1000);
 
 var dialogType = '';
+
+const BUILDING_URL = 'http://localhost:3000/api/fcu/building';
+const COLLEGE_URL = 'http://localhost:3000/api/fcu/college';
+const LANDSCAPE_URL = 'http://localhost:3000/api/fcu/landscape';
 
 const titleArray = ['商學院', '建設學院', '建設學院'];
 const titleArray_1 = ['商學院', '建設學院', '工學院'];
@@ -56,30 +59,28 @@ function AddCard() {
         + '<div id="main_container_clear_1" class="p-3 row main_container_clear justify-content-center rounded"></div></div>';
 
     $('#carousel_inner').prepend(carousel_item);
-    for (let i = 0; i < (imageArray.length); i++) {
+    for (var i = 0; i < (imageArray.length); i++) {
         subContainer = SetSubContainer(i);
         $('#main_container_clear').prepend(subContainer);
     }
 
     $('#carousel_inner').append(carousel_item_1);
-    for (let i = 0; i < (imageArray_1.length); i++) {
+    for (var i = 0; i < (imageArray_1.length); i++) {
         subContainer = SetSubContainer(i);
         $('#main_container_clear_1').prepend(subContainer);
     }
 }
 
-function CampusCardType(Type) {
+function CampusIntroductionCard(Type) {
     if (Type == 'landscape') {
-        dialogType = 'landscapeShow()';
+        dialogType = 'AddLandscapeDialog()';
+
     } else if (Type == 'college') {
-        dialogType = 'collegeShow()';
+        campusInfo = GetCampusInfo(COLLEGE_URL);
+        dialogType = 'AddCollegeDialog()';
     }
+    campus = InitCampusInfo(campusInfo);
     AddContainer();
-    if (Type == 'landscape') {
-        AddLandscapeDialog();
-    } else if (Type == 'college') {
-        AddCollegeDialog();
-    }
 }
 
 function SetOuterSection() {
@@ -128,3 +129,29 @@ function SetSubContainer(index) {
     return subContainer;
 }
 
+function GetCampusInfo(url) {
+    fetch(url, {
+        method: 'GET',
+    }).then(function (response) {
+        if (response.status >= 200 && response.status < 300) {
+            return response.json()
+        } else {
+            var error = new Error(response.statusText)
+            error.response = response
+            throw error
+        }
+    }).then(function (data) {
+        campusInfo = data;
+        console.log(campusInfo);
+        return campusInfo;
+        // data 才是實際的 JSON 資料
+    }).catch(function (error) {
+        return error.response;
+    }).then(function (errorData) {
+        // errorData 裡面才是實際的 JSON 資料
+    });
+}
+
+function InitCollegeInfo(campusInfo) {
+    return college;
+}
