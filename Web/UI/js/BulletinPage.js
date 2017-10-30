@@ -1,4 +1,4 @@
-const BULLETIN_URL = 'http://ca773b61.ngrok.io/api/fcu/bulletin';
+const BULLETIN_URL = 'http://localhost:3000/api/fcu/bulletin';
 const bulletin = {
     paragraph: ['校園新聞', '校園公告', '校園活動', '校園演講'],
     type: ['News', 'Announce', 'Activity', 'Lecture']
