@@ -12,7 +12,7 @@ const collegeSchema = mongoose.Schema({
     },
     info: {
         type: Object,
-        introduction: String,
+        introduction: Array,
         image: String,
         department: {
             type: Object,
@@ -22,7 +22,6 @@ const collegeSchema = mongoose.Schema({
                 department_name: String,
                 department_url: String
             }]
-
         }
     }
 });

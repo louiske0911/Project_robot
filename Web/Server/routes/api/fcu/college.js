@@ -2,33 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var College = require('../../../modules/schema/College.js');
-
-var college_test = new College({
-    _college_id: 1,
-    college_name: "商學院",
-    college_location: {
-        college_building: "商學大樓",
-        latitude: 123,
-        longitude: 123
-    },
-    info: {
-        introduction: "test",
-        image: "test",
-        department: {
-            department_type: "學士班",
-            department_list: [
-                {
-                    department_name: "會計學系",
-                    department_url: "http://www.acct.fcu.edu.tw/wSite/mp?mp=420101"
-                },
-                {
-                    department_name: "經濟學系",
-                    department_url: "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101"
-                }
-            ]
-        },
-    }
-})
+var config = require('../../../college.json');
 
 /* GET */
 router.get('/', function (req, res, next) {
@@ -40,11 +14,9 @@ router.get('/', function (req, res, next) {
     //     console.log(colleges);
     //     res.json(colleges);
     // });
-    var config = require('../../../college.json');
     let data = [];
-
     for (var index = 0; index < config.length; index++) {
-        let introduction = config[index]['info']['introduction'][0].substr(0, 100);
+        let introduction = config[index]['info']['introduction'][0].substr(0, 100) + "...";
         //parser only 100 words in front of this string 
         data.push({
             name: config[index]['college_name'],
@@ -63,26 +35,37 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/:id', function (req, res, next) {
-    College.findById(req.params.id, function (err, colleges) {
+    var data = []
+    College.findById('59ec2cec2353f42374b14655', function (err, college) {
         if (err) {
             console.log(err);
             return next(err);
         }
-        console.log(colleges);
-        res.json(colleges);
+        let data = {
+            name: college['college_name'],
+            location: college['college_location']['college_building'],
+            info: college['info']
+        }
+        res.json(data);
     });
 });
 
 /* POST */
 router.post('/', function (req, res, next) {
-    College.create(req.body, function (err, post) {
-        if (err) {
-            console.log(err);
-            return next(err);
-        }
-        console.log('Post Successfully.\n' + post);
-        res.json(post);
-    });
+    var college_test;
+
+    for (var i = 0; i < config.length; i++) {
+        college_test = new College(config[i]);
+
+        College.create(college_test, function (err, post) {
+            if (err) {
+                console.log(err);
+                return next(err);
+            }
+        });
+    }
+    console.log('Post Successfully.\n');
+    res.json('Post Successfully.\n');
 });
 
 module.exports = router;

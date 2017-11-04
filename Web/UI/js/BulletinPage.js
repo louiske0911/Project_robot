@@ -1,4 +1,4 @@
-const BULLETIN_URL = 'http://localhost:3000/api/fcu/bulletin';
+const BULLETIN_URL = 'http://2377ea38.ngrok.io/api/fcu/bulletin';
 const bulletin = {
     paragraph: ['校園新聞', '校園公告', '校園活動', '校園演講'],
     type: ['News', 'Announce', 'Activity', 'Lecture']
@@ -29,7 +29,12 @@ function AddCard(bulletinList) {
 
     for (var i = 0; i < 4; i++) {
         for (var y = 0; y < 3; y++) {
-            titleList[bulletin.type[i]].push('<p class="card-title"><a href="' + bulletinList[bulletin.type[i]][y]['url'] + '">' + bulletinList[bulletin.type[i]][y]['title'] + '</p>')
+            titleList[bulletin.type[i]].push(
+                // '<p class="card-title"><a href="SendWebviewURL(' + bulletinList[bulletin.type[i]][y]['url'] + ')">'
+                // + bulletinList[bulletin.type[i]][y]['title'] + '</p>'
+                '<p class="card-title"><a href="javascript:SendWebviewURL(\'' + bulletinList[bulletin.type[i]][y]['url'] + '\')">'
+                + bulletinList[bulletin.type[i]][y]['title'] + '</p>'
+            )
         }
         titleHtml.push(
             titleList[bulletin.type[i]][0] + titleList[bulletin.type[i]][1] + titleList[bulletin.type[i]][2]
@@ -99,7 +104,7 @@ function getBulletin() {
             throw error
         }
     }).then(function (data) {
-        bulletinList = data;
+        var bulletinList = data;
         AddCard(bulletinList);
         // data 才是實際的 JSON 資料
     }).catch(function (error) {
@@ -107,4 +112,21 @@ function getBulletin() {
     }).then(function (errorData) {
         // errorData 裡面才是實際的 JSON 資料
     });
+}
+
+function SendWebviewURL(url) {
+    console.log(url)
+    if (JSInterface) {
+        JSInterface.sendWebviewURL(url);
+    }
+}
+
+function GoolgeMap() {
+    if (JSInterface) {
+        JSInterface.showToast();
+    }
+}
+
+function test() {
+    getBulletin();
 }
