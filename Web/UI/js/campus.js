@@ -11,14 +11,15 @@ function CampusIntroductionCard(Type) {
     switch (Type) {
         case 'college':
             GetCampusInfo(COLLEGE_URL);
-            dialogType = 'AddCollegeDialog()';
+            dialogType = 'AddDialog(\'college\')';
             break;
         case 'landscape':
             GetCampusInfo(LANDSCAPE_URL);
-            dialogType = 'AddLandscapeDialog()';
+            dialogType = 'AddDialog(\'landscape\')';
             break;
         case 'building':
             GetCampusInfo(BUILDING_URL);
+            dialogType = 'AddDialog(\'building\')';
             break;
     }
 }
@@ -95,7 +96,7 @@ function SetSubContainer(campusInfo, index) {
         + '<h6 class="sub-title text-muted">' + campusInfo[index]['location']['building'] + '</h6 > '
         + '</div>'
         + '<div class="card-body">'
-        + '<img class="d-block img-fluid" src="' + campusInfo[index]['info']['image'] + '">'
+        + '<img class="d-block img-fluid" src="' + campusInfo[index]['info']['image'][0] + '">'
         + '<p class="mt-4 card-text">' + campusInfo[index]['info']['introduction'] + '</p>'
         + '</div>'
         + '<div class="card-footer">'

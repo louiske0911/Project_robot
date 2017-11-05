@@ -13,9 +13,9 @@ const collegeSchema = mongoose.Schema({
     info: {
         type: Object,
         introduction: Array,
-        image: String,
+        image: Array,
         department: {
-            type: Object,
+            type: Array,
             department_type: String,
             department_list: [{
                 type: Array,
