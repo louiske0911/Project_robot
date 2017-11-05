@@ -24,13 +24,70 @@
     <script src="js/index.js"></script>
     <script src="js/landscape.js"></script>
     <script src="js/college.js"></script>
+    <script src="js/Navigation.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtO6a1R4EPgjltm-QSxGcBaIP0E6mojTs">
+    </script>
+    <script type="text/javascript">
+        function initialize() {
+            var mapOptions = {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8
+            };
+            var map = new google.maps.Map(
+                document.getElementById('map-canvas'),
+                mapOptions);
+        }
+        google.maps.event.addDomListener(
+            window, 'load', initialize); 
+    </script>
 </head>
 
 <body>
-    <div id="outer_bg" class="container fcu_background" style="border:rebeccapurple 2px solid">
-        <div id="inner_bg" class="inner_background" style="border:red 2px solid">
+    <div id="outer_bg" class="container-fluid fcu_background" style="border:rebeccapurple 2px solid">
+        <div id="inner_bg" class="row inner_background" style="border:red 2px solid">
+            <div id="map-canvas" class="col-md-5"></div>
 
+            <div class="col-md-7" style="border:green 2px solid">
+                <div id="navigation_dialog" class="p-4 navigation_a rounded">
+                    <div id="dialog_inner" class="dialog_inner">
+                        <div class="p-4">
+                            <p>本院目前的組織包括有: 電機與通訊工程博士學位學程 資訊工程學系(大學部、碩士班、博士班) 電機工程學系(大學部、碩士班) 電子工程學系(大學部、碩士班) 自動控制工程學系(大學部、碩士班)
+                                通訊工程學系(大學部、碩士班) 資電榮譽班(大學部) 資電碩士在職專班光電能源與視覺科技碩士在職專班 智慧聯網產業博士學位學程 產業研發碩士專班 資電器材中心 嵌入式系統發展研究中心
+                                3D列印研究發展中心 資通安全研究中心 積體電路電磁相容研發中心 視覺光學研究中心 天線暨微波電路創新研究中心 智慧聯網研究中心
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="navigation_dialog" class="p-4 navigation_b rounded">
+                    <div id="dialog_inner" class="dialog_inner">
+                        <div class="p-4">
+                            <p>本院目前的組織包括有:</p>
+                            <ol>
+                                <li>電機與通訊工程博士學位學程</li>
+                                <li>資訊工程學系(大學部、碩士班、博士班)</li>
+                                <li>電機工程學系(大學部、碩士班)</li>
+                                <li>電子工程學系(大學部、碩士班)</li>
+                                <li>自動控制工程學系(大學部、碩士班)</li>
+                                <li>通訊工程學系(大學部、碩士班)</li>
+                                <li>資電榮譽班(大學部)</li>
+                                <li>資電碩士在職專班光電能源與視覺科技碩士在職專班</li>
+                                <li>智慧聯網產業博士學位學程</li>
+                                <li>產業研發碩士專班</li>
+                                <li>資電器材中心</li>
+                                <li>嵌入式系統發展研究中心</li>
+                                <li>3D列印研究發展中心</li>
+                                <li>資通安全研究中心></li>
+                                <li>積體電路電磁相容研發中心</li>
+                                <li>視覺光學研究中心</li>
+                                <li>天線暨微波電路創新研究中心</li>
+                                <li>智慧聯網研究中心</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
 </body>
 
