@@ -6,7 +6,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow-x: hidden;   
+    /* overflow-x: hidden;    */
 }
 
 /********************************Background************************************/ 
@@ -110,6 +110,29 @@ html, body {
     transform: translate(-50%, -50%);
 }
 
+#navigation_dialog {
+    position: absolute;
+    /* background-color:rgba(255,255,255,1); */
+    z-index: 999;
+    opacity: 1;
+    overflow-y: scroll;
+    transform: translate(-50%, -50%);
+}
+
+.navigation_a {
+    top:25%;
+    left:50%;
+    width:50%;
+    background-color: red;
+    visibility: visible;
+}
+.navigation_b {
+    top:75%;
+    right:-50%;
+    width:50%;
+    background-color: blue;
+    visibility: visible;
+}
 /********************************Header-Menu************************************/ 
 .carousel_container {  
     width: 85% !important;
@@ -143,14 +166,6 @@ html, body {
 }
 
 /************************************Main-Container************************************/ 
-.inner_background {
-    background-color:rgba(255,255,255,1);
-    min-height: 85vh;
-    min-width: 88.75vw;
-    /* overflow-y: scroll; */
-    /* height: 100vh; */
-}
-
 .dialog_inner {
     background-color:rgba(235,235,227,.4);
      
@@ -260,18 +275,21 @@ html, body {
     .inner_background {
         background-color:rgba(255,255,255,1);
         min-height: 85vh;
-        min-width: 88.75vw;
+        /* min-width: 88.75vw; */
         /* overflow-y: scroll; */
         /* height: 100vh; */
     }
     .main_container_clear { 
         background-color:rgba(250, 250, 250, 0);
         max-height: 90vh;
+        min-height: 90vh;
         /* max-width: 90vw; */
         /* border: 2px black solid; */
         /* overflow-y: scroll;     */
     }
-  
+    .card-text {
+        font-size: 1.125rem;;
+    }
 }
 
 @media screen and (max-width:1099px) {
@@ -303,18 +321,21 @@ html, body {
     .inner_background {
         background-color:rgba(255,255,255,1);
         min-height: 85vh;
-        min-width: 93.5vw;
+        /* min-width: 93.5vw; */
         /* overflow-y: scroll; */
         /* height: 100vh; */
     }
     .main_container_clear { 
         background-color:rgba(250, 250, 250, 0);
         max-height: 90vh;
+        min-height: 90vh;
         /* max-width: 90vw; */
         /* border: 2px black solid; */
         /* overflow-y: scroll;     */
     }
-    
+    .card-text {
+        font-size: 0.875rem;
+    }
 }
 
 /********************************School-Message************************************/
@@ -352,4 +373,9 @@ html, body {
 
 .ftr {
     background-color: #fff !important;
+}
+
+/********************************Navigation************************************/
+.floor_plan {
+    height:90vh;
 }

@@ -47,7 +47,8 @@ function AddCard(campusInfo) {
         carouselCount += 1;
     }
 
-    for (var pageCount = 1; count <= carouselCount; pageCount++) {  // count means how much page
+    for (var pageCount = 1; pageCount <= carouselCount; pageCount++) {  // count means how much page
+
         var carouselId = "carouselId_" + pageCount;
         const carousel_item =
             '<div class="px-5 sub_container_trans carousel-item">'

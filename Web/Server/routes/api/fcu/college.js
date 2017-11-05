@@ -43,7 +43,7 @@ router.get('/:id', function (req, res, next) {
         }
         let data = {
             name: college['college_name'],
-            location: college['college_location']['college_building'],
+            building: college['college_location']['college_building'],
             info: college['info']
         }
         res.json(data);
