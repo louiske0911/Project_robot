@@ -7,3 +7,4 @@ function NavigationBack() {
     document.getElementById("block").style.visibility = "hidden";
     document.getElementById("navigation_dialog").style.visibility = "hidden";
 }
+

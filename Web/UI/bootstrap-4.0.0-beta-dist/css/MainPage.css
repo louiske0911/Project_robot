@@ -96,29 +96,37 @@ html, body {
     transform: translate(-50%, -50%);
 }
 
-#navigation_dialog {
-    position: absolute;
-    /* background-color:rgba(255,255,255,1); */
-    z-index: 999;
-    opacity: 1;
-    overflow-y: scroll;
-    transform: translate(-50%, -50%);
+/********************************arrow_box************************************/ 
+.arrow_box {
+	position: relative;
+	background: #88b7d5;
+    /* border: 4px solid #c2e1f5; */
+    box-shadow: 0 5px 16px 0 rgba(0, 0, 0, .6), 0 10px 30px 0 rgba(0, 0, 0, .6);
+}
+.arrow_box:after, .arrow_box:before {
+	right: 100%;
+	top: 10%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
 }
 
-.navigation_a {
-    top:25%;
-    left:50%;
-    width:50%;
-    background-color: red;
-    visibility: visible;
+.arrow_box:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-right-color: #88b7d5;
+	border-width: 20px;
+	margin-top: -20px;
 }
-.navigation_b {
-    top:75%;
-    right:-50%;
-    width:50%;
-    background-color: blue;
-    visibility: visible;
+.arrow_box:before {
+	border-color: rgba(194, 225, 245, 0);
+	/* border-right-color: #c2e1f5; */
+	border-width: 26px;
+	margin-top: -26px;
 }
+
 /********************************Header-Menu************************************/ 
 .carousel_container {  
     width: 85% !important;
@@ -151,6 +159,9 @@ html, body {
     color:black;    
 }
 
+.arrow_locate {
+    
+}
 /************************************Main-Container************************************/ 
 .dialog_inner {
     background-color:rgba(235,235,227,.4);
@@ -359,9 +370,4 @@ html, body {
 
 .ftr {
     background-color: #fff !important;
-}
-
-/********************************Navigation************************************/
-.floor_plan {
-    height:90vh;
 }
