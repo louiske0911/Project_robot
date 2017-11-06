@@ -6,6 +6,7 @@
     <link href="bootstrap-4.0.0-beta-dist/css/MainPage.css" rel="stylesheet">
     <link href="bootstrap-4.0.0-beta-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap-4.0.0-beta-dist/css/offcanvas.css" rel="stylesheet">
+    <link rel="stylesheet" src="../Server/node_modules/pure-css-loader/dist/css-loader.css">
     <link rel="stylesheet" href="https://i.icomoon.io/public/temp/d3d77ec5d6/UntitledProject/style.css">
     <!-- <link rel="stylesheet" href="https://i.icomoon.io/public/temp/c0de2c3979/UntitledProject/style.css"> -->
 
@@ -27,12 +28,16 @@
 </head>
 
 <body>
+    <div id="loader_block">
+        <div class="fetch_loader"></div>
+    </div>
     <div id="outer_bg" class="container fcu_background" style="border:rebeccapurple 2px solid">
         <div id="inner_bg" class="row justify-content-center inner_background" style="border:red 2px solid">
             <Button type="button" onclick="CampusIntroductionCard('building')">building</Button>
             <Button type="button" onclick="CampusIntroductionCard('landscape')">landscape</Button>
             <Button type="button" onclick="CampusIntroductionCard('college')">college</Button>
         </div>
+        <div class="loader loader-curtain is-active" data-curtain-text="正在導覽中...">123</div>
     </div>
 </body>
 

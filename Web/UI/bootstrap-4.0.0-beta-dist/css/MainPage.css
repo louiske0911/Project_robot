@@ -39,7 +39,7 @@ html, body {
 } */
 
 /********************************Loading************************************/ 
-.loader {
+.fetch_loader {
     position: absolute;
     top: 45%;
     left: 47%;
@@ -65,7 +65,7 @@ html, body {
     width:100%;
     color:#0A0404;
   /* background-color: black; */
-    visibility: visible;
+    display: none;
     z-index: 500;
     opacity: 0.6;
 }

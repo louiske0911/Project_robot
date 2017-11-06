@@ -1,6 +1,4 @@
-setTimeout(function () {
-    $("#loader_block").css("display", "none");
-}, 1000);
+
 
 const BUILDING_URL = 'http://localhost:3000/api/fcu/building';
 const COLLEGE_URL = 'http://localhost:3000/api/fcu/college';
@@ -8,6 +6,7 @@ const LANDSCAPE_URL = 'http://localhost:3000/api/fcu/landscape';
 var dialogType = '';
 
 function CampusIntroductionCard(Type) {
+    $('#loader_block').css("display", "block");
     switch (Type) {
         case 'college':
             GetCampusInfo(COLLEGE_URL);
@@ -102,12 +101,11 @@ function SetSubContainer(campusInfo, index) {
         + '<div class="card-footer">'
         + '<div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">'
         + '<button class="btn btn-outline-primary button_rwd">開始導覽</button>'
-        + '<button class="btn btn-outline-primary button_rwd" onclick="' + dialogType + '">More..</button>'
+        + '<button id=' + campusInfo[index]['college'] + ' class="btn btn-outline-primary button_rwd" onclick="' + dialogType + '">More..</button>'
         + '</div>'
         + '</div>'
         + '</div>'
         + '</div>';
-
     return subContainer;
 }
 
@@ -126,6 +124,7 @@ function GetCampusInfo(url) {
         campusInfo = data;
         console.log(campusInfo);
         AddContainer(campusInfo);
+        $('#loader_block').css("display", "none");
         // data 才是實際的 JSON 資料
     }).catch(function (error) {
         return error.response;
