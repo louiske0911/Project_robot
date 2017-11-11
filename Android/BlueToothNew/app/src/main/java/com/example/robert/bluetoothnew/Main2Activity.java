@@ -17,6 +17,11 @@ import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -33,71 +38,105 @@ import java.util.List;
 
 public class Main2Activity extends AppCompatActivity implements OnMapReadyCallback, SensorEventListener {
 
-    private GoogleMap mMap;
-    public BluetoothChatService bluetoothChatService;
-    public Handler mHandler = new Handler();
-    public StringBuffer mOutStringBuffer = new StringBuffer("");
-    public static final String MAP_ACTION = "MAP_ACTION";
     ArrayList<MarkerOptions> markerOptionses = new ArrayList<MarkerOptions>();
     ArrayList<PolylineOptions> polylineOptionses = new ArrayList<PolylineOptions>();
 
-    public boolean direction = false;
-    public boolean source = false;
-    public float[] values = {0};
+    private GoogleMap mMap;
     private Handler handler = new Handler();
     private Long startTime;
     private SensorManager sensorManager;
 
-    public int checkMarkSize = 0;
-    public static LatLng sydney = new LatLng(24.1803, 120.6507);
+    public boolean direction = false;
+    public boolean source = false;
+    public boolean start = false;
+
     public Broadcast broadcast;
+    public BluetoothChatService bluetoothChatService;
     public CalculateAngleCurrentToGoal angle = new CalculateAngleCurrentToGoal();
-
+    public float[] values = {0};
+    public Handler mHandler = new Handler();
+    public int checkMarkSize = 0;
+    public ImageView imgbtnRun;
     public Path path ;
+    public StringBuffer mOutStringBuffer = new StringBuffer("");
+    public static final String MAP_ACTION = "MAP_ACTION";
+    public static LatLng sydney  =new LatLng(24.17998,120.6498);
+    public Sensor sensor;
+    List<LatLng> temp ;
+    ArrivalDestination calculate  = new ArrivalDestination();
+    double tesla = 0.0;
+    boolean stop = false;
+    boolean one = true;
 
-
-
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        initImageButton();
         initLocationService();
         initBluetooth();
         initMapView();
         setAngle();
+        initWindow();
         initPath();
-        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+        imgbtnRun.setOnClickListener(new ImageButton.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                start = true;
+                stopIfOr();
+            }
+        });
     }
     public void initPath(){
         path = new Path();
     }
-
+    public void initImageButton(){
+        imgbtnRun = (ImageView) findViewById(R.id.run);
+    }
     public void setAngle() {
         startTime = System.currentTimeMillis();
         handler.removeCallbacks(updateTimer);
         //設定Delay的時間
         handler.postDelayed(updateTimer, 500);
     }
-
     public void initBluetooth() {
         bluetoothChatService = BluetoothChatService.getInstance(this);
         bluetoothChatService.setmHandler(mHandler);
     }
-
     public void initLocationService() {
         Log.v("initLocationService", "initLocationService");
         Intent intent = new Intent(this, LocationService.class);
         startService(intent);
     }
-
     public void initMapView() {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
+    public void initWindow(){
+        this.setFinishOnTouchOutside(false);
+        Window window = this.getWindow();
+        window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);
+    }
 
     @Override
+    public void onResume(){
+        super.onResume();
+
+        if(sensor != null){
+            sensorManager.registerListener(this,sensor,SensorManager.SENSOR_DELAY_NORMAL);
+        }else{
+            Toast.makeText(this,"Not supperted", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+    }
+    public void onPause(){
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         LocationManager status = (LocationManager) (this.getSystemService(Context.LOCATION_SERVICE));
@@ -116,14 +155,20 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
                 @Override
                 public void position(LatLng latLng) {
                     super.position(latLng);
+                    sydney = latLng;
                     angle.setCurrentPosition(latLng);
                     source = true;
-                    path.setStart(latLng);
+
+                    if(one){
+                        path.setStart(latLng);
+                        one = false;
+                    }
+                    calculate.setSource(latLng);
                     polylineOptionses.add(0, new PolylineOptions()
                             .add(sydney, latLng)
-                            .width(2)
-                            .color(Color.BLUE)
-                            .clickable(true));
+                            .width(6)
+                            .color(Color.RED)
+                            .clickable(false));
 
 
                     googleMap.addPolyline(polylineOptionses.get(0));
@@ -149,68 +194,87 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
             startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));    //開啟設定
         }
     }
-
-    GoogleMap.OnMapClickListener onMapClickListener = new GoogleMap.OnMapClickListener() {
-        @Override
-        public void onMapClick(LatLng latLng) {
-            Log.v("onMapClick", latLng.latitude + " " + latLng.longitude);
-            angle.setGoalPosition(latLng);
-            path.setEnd(latLng);
-//            List<LatLng> result = new ArrayList<LatLng>();
-//            result = path.path();
-//            for(int i =0;i<path.path().size();i++){
-//                markerOptionses.add(0, new MarkerOptions().position(result.get(i)).draggable(true));
-//            }
-
-            Handler handler = new Handler();
-
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                /*
-                *路線規劃
-                 * strings[0] = startPosition
-                 * strings[1] = endPosition
-                */
-                    List<LatLng> temp = path.path();
+    public void communication(List<LatLng> temp){
+        this.temp = temp;
+    }
+    public void planPath(){
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                List<LatLng> temp  = path.path();
+                communication(temp);
                     /*
                     *交換參考點
                     */
-                    for (int i = 1; i < temp.size() - 1; i++) {
-                        mMap.addPolyline(new PolylineOptions()  //畫線
-                                .add(temp.get(i-1), temp.get(i))    //參考點和下一個參考點相連
-                                .width(2)
-                                .color(Color.BLUE)
-                                .clickable(true));
+                for (int i = 1; i < temp.size(); i++) {
+                    mMap.addPolyline(new PolylineOptions()  //畫線
+                            .add(temp.get(i-1), temp.get(i))    //參考點和下一個參考點相連
+                            .width(6)
+                            .color(Color.BLUE)
+                            .clickable(true));
 //
-                        mMap.addMarker(new MarkerOptions().position(temp.get(i)).draggable(true));    //在google map上畫一個marker
+                    mMap.addMarker(new MarkerOptions().position(temp.get(i)).draggable(true));    //在google map上畫一個marker
 
 
-                        mMap.setOnPolylineClickListener(new GoogleMap.OnPolylineClickListener() {
-                            @Override
-                            public void onPolylineClick(Polyline polyline) {
-                                polyline.setColor(polyline.getColor() ^ 0x00ffffff);
-                            }
-                        });
+                    mMap.setOnPolylineClickListener(new GoogleMap.OnPolylineClickListener() {
+                        @Override
+                        public void onPolylineClick(Polyline polyline) {
+                            polyline.setColor(polyline.getColor() ^ 0x00ffffff);
+                        }
+                    });
 
+                }
+            }
+
+        });
+        checkMarkSize++;
+        mMap.setOnPolylineClickListener(new GoogleMap.OnPolylineClickListener() {
+            @Override
+            public void onPolylineClick(Polyline polyline) {
+                polyline.setColor(polyline.getColor() ^ 0x00ffffff);
+            }
+        });
+        direction = true;
+    }
+    public void stopIfOr(){
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                int j =0;
+                while(j<temp.size()-1){
+                    angle.setGoalPosition(temp.get(j));
+                    calculate.setDirection(temp.get(j));
+                    stop = calculate.calDistance();
+                    if(stop){
+                        j++;
+                    }
+
+                    try {
+                        Log.v("run","Running");
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        Log.v("error","error");
                     }
                 }
-            });
+            }
+        });
+    }
+    GoogleMap.OnMapClickListener onMapClickListener = new GoogleMap.OnMapClickListener() {   //觸發地圖
+        @Override
+        public void onMapClick(LatLng latLng) {
+            Log.v("run",""+start);
 
+            if(!start){
+                mMap.clear();
+                path.clear();
+                Log.v("onMapClick", latLng.latitude + " " + latLng.longitude);
+                path.setEnd(latLng);
+                planPath();
+            }
+            mMap.addMarker(new MarkerOptions().position(latLng).draggable(true));    //在google map上畫一個marker
 
-
-
-
-//            markerOptionses.add( new MarkerOptions().position(latLng).draggable(true));
-//            mMap.addMarker(markerOptionses.get(markerOptionses.lastIndexOf(markerOptionses.size()-1)));
-            checkMarkSize++;
-            mMap.setOnPolylineClickListener(new GoogleMap.OnPolylineClickListener() {
-                @Override
-                public void onPolylineClick(Polyline polyline) {
-                    polyline.setColor(polyline.getColor() ^ 0x00ffffff);
-                }
-            });
-            direction = true;
         }
     };
 
@@ -226,10 +290,11 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
 
 
     public void setMapAction(final GoogleMap mMap) {
-        mMap.getUiSettings().setZoomControlsEnabled(true);//enable zoom controls
+//        mMap.getUiSettings().setZoomControlsEnabled(true);//enable zoom controls
         mMap.getUiSettings().setAllGesturesEnabled(true);//enable all gestures
         mMap.getUiSettings().setScrollGesturesEnabled(true);
-        mMap.getUiSettings().setMapToolbarEnabled(true);
+        mMap.getUiSettings().setMapToolbarEnabled(false);
+
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
@@ -274,6 +339,11 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
     public void onSensorChanged(SensorEvent sensorEvent) {
         values = sensorEvent.values;
         Log.v("Angle Value", "angleValue(current)：" + String.valueOf(values[0]));//方向感測器的角度
+        float azimuth = Math.round(sensorEvent.values[0]);
+        float pitch = Math.round(sensorEvent.values[1]);
+        float roll = Math.round(sensorEvent.values[2]);
+
+        tesla = Math.sqrt((azimuth * azimuth)+(pitch * pitch)+(roll * roll));
     }
 
     @Override
@@ -285,9 +355,12 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
         public void run() {
             Log.v("Angle Value", "angleValue：" + String.valueOf(values[0]));
             angle.setCurrentAngle(values[0]);
-            if (source && direction) {
-                sendMessage(angle.toString());
-            }
+            if(tesla < 55){
+                if (source && direction && start && !stop) {
+                    sendMessage(angle.toString());
+                }
+            }else{}
+
             handler.postDelayed(this, 500);
 
         }

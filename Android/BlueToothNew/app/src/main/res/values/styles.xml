@@ -17,6 +17,7 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">@drawable/dlg_set_item</item>
         <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimAmount">0</item>
     </style>
 
     <style name="Widget" />
