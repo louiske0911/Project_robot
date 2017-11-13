@@ -201,7 +201,18 @@ html, body {
     opacity: 0.5;
     display: flex;
 }
-
+/************************************GoogleMap************************************/
+.item_container_nav{
+    /* background-image: url('../../images/JungChin.jpg'); */
+    background-size: cover;
+    background-position: center center;
+}
+.test{
+    width:100%;
+    height: auto;
+    object-fit: scale-down;
+    object-position: center center;
+}
 /************************************NavBar************************************/
 .collapse.show #nav_bar {
     left: -15vw;    
@@ -255,6 +266,11 @@ html, body {
          height:350px;
     }
     
+    .item_container_nav {
+        max-width:150px;
+        height:150px;
+    }
+
     #nav_bar {
         font-size: 20px;
     }
@@ -297,6 +313,10 @@ html, body {
     .item_container {
         width:450px; 
         height:350px;    
+    }
+    .item_container_nav {
+        max-width:150px;
+        height:150px;
     }
     .carousel-indicators{
         bottom: 40px !important; 
