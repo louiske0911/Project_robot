@@ -1,14 +1,14 @@
-const BULLETIN_URL = 'http://2377ea38.ngrok.io/api/fcu/bulletin';
+const BULLETIN_URL = 'http://localhost:3000/api/fcu/bulletin';
 const bulletin = {
     paragraph: ['校園新聞', '校園公告', '校園活動', '校園演講'],
     type: ['News', 'Announce', 'Activity', 'Lecture']
 }
 
 const iconList = [
-    'icon-newspaper',
-    'icon-bullhorn',
-    'icon-accessibility',
-    'icon-user-tie'
+    'fa fa-newspaper-o',
+    'fa fa-bullhorn',
+    'fa fa-users',
+    'fa fa-file-text-o'
 ];
 
 var bulletinList = JSON.parse('{}');
@@ -19,16 +19,16 @@ var titleList = {
     Lecture: []
 }
 
-function AddCard(bulletinList) {
+function AddBuletinList(bulletinList) {
     /*************************Loader prepend to tag:body*************************/
     let titleHtml = []
     var col = '<div class="col-10 col-xl-10 rounded"></div>';
     $('#inner_bg').prepend(col);
-    var row = '<div id="row" class="row"></div>';
+    var row = '<div id="bulletin_list" class="row"></div>';
     $('#inner_bg').append(row);
 
-    for (var i = 0; i < 4; i++) {
-        for (var y = 0; y < 3; y++) {
+    for (let i = 0; i < 4; i++) {
+        for (let y = 0; y < 3; y++) {
             titleList[bulletin.type[i]].push(
                 // '<p class="card-title"><a href="SendWebviewURL(' + bulletinList[bulletin.type[i]][y]['url'] + ')">'
                 // + bulletinList[bulletin.type[i]][y]['title'] + '</p>'
@@ -43,13 +43,13 @@ function AddCard(bulletinList) {
     console.log(bulletinList['Carousel'])
     AddCarousel(bulletinList['Carousel']);
     /*************************Insert the card*************************/
-    for (var i = 0; i < bulletin.paragraph.length; i++) {
+    for (let i = 0; i < bulletin.paragraph.length; i++) {
         $('<div class="col-md-12 col-xl-6 mb-4">'
             + '<div class="card h-100 mb-3 message_container">'
             + '<div id="card_header" class="card-header d-flex justify-content-between">'
+            + '<a class="bulletin_title_icon">'
             + bulletin.paragraph[i]
-            + '<a class="message_icon" href="#">'
-            + '<span id="icon" class="">' + iconList[i] + '</span>'
+            + '<span class="' + iconList[i] + '"</span>'
             + '</a>'
             + '</div>'
             + '<div id="card_body" class="card-body">'
@@ -59,34 +59,42 @@ function AddCard(bulletinList) {
             + '<a>..More</a>'
             + '</div>'
             + '</div>'
-            + '</div>').appendTo('#row');
+            + '</div>').appendTo('#bulletin_list');
     }
 }
 
 function AddCarousel(imgList) {
-    var carousel_inner = '<div class="carousel slide" id="carouselExampleControls_mainpage" data-ride="carousel">'
+    let carousel_inner =
+        '<div class="carousel slide" id="carouselExampleControls_mainpage" data-ride="carousel">'
         + '<div id="carousel_item" class="carousel-inner d-md-flex d-sm-flex d-lg-flex justify-content-center rounded">'
         + '<ul class="carousel-indicators"></ul>'
-        + '<a class="carousel-control-prev" href="#carouselExampleControls_mainpage" role="button" data-slide="prev">'
+        + '</div>'
+        + '</div>';
+
+    let carouselControlIcon =
+        '<a class="carousel-control-prev" href="#carouselExampleControls_mainpage" role="button" data-slide="prev">'
         + '<span class="carousel-control-prev-icon" aria-hidden="true"></span>'
         + '<span class="sr-only">Previous</span>'
         + '</a>'
         + '<a class="carousel-control-next" href="#carouselExampleControls_mainpage" role="button" data-slide="next">'
         + '<span class="carousel-control-next-icon" aria-hidden="true"></span>'
         + '<span class="sr-only">Next</span>'
-        + '</a></div></div>';
+        + '</a>'
+
     $('#inner_bg').prepend(carousel_inner);
 
     /*************************Isert the carousel item*************************/
-    for (var i = 0; i < (imgList.length); i++) {
+    for (let i = 0; i < imgList.length; i++) {
         $('<div class="carousel-item item_container">'
-            + '<div class="d-md-flex d-sm-flex d-lg-flex h-100 align-items-center justify-content-center"> <img class="d-block img-fluid carousel_img" src=" '
+            + '<div class="d-md-flex d-sm-flex d-lg-flex h-100 align-items-center justify-content-center">'
+            + '<img class="d-block img-fluid carousel_img" src=" '
             + imgList[i]['image']
-            + '"></div></div>').prependTo('#carousel_item');
+            + '"></div></div>').appendTo('#carousel_item');
 
         $('<li class="" data-target="#photoCarousel" data-slide-to="' + i + '"></li>').appendTo('.carousel-indicators');
     }
 
+    $('#carousel_item').append(carouselControlIcon)
     $('.carousel-item.item_container').first().addClass('active');
     $('.carousel-indicators > li').first().addClass('active');
     $('#carousel').carousel();
@@ -105,7 +113,7 @@ function getBulletin() {
         }
     }).then(function (data) {
         var bulletinList = data;
-        AddCard(bulletinList);
+        AddBuletinList(bulletinList);
         // data 才是實際的 JSON 資料
     }).catch(function (error) {
         return error.response;
