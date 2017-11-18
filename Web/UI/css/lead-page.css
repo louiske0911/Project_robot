@@ -1,3 +1,4 @@
+
 body {
     background-image: url('../images/RenIan.jpg');
     background-size: cover;
@@ -12,32 +13,30 @@ body {
    bottom: 0;
 }
 
-.lead_container .login {
+ .login {
     position: fixed;
-    width: 20vw;
     height: 10vh;
     z-index: 300;
     bottom: 0;
     right: 0;
     background-color:seagreen;
-    opacity: 0.8;
+    opacity: 0.9;
+    border-width:10px 0 0 10px;
+    border-color: rgba(255, 255, 255, 0.7);
+    border-style: solid;
+    border-top-left-radius: 10rem;
 }
 
 .title {
     position:fixed;
     top:10%;
-    left: 20%;   
-}
-
-.title > h1 {
-    font-size: 60px;
-    opacity: 1;
+    left: 12%;
+    font-family: STHeiti, LiHei Pro, sans-serif;   
 }
 
 .main_container {
     position:fixed;
     border: rebeccapurple 2px solid;
-    width:60vw;
     height:60vh;
     top: 30%;
     left:10%;
@@ -48,30 +47,80 @@ body {
 }
 
 .circle {
-    width:250px;
-    height:250px; 
     border-radius:99em;
     opacity: 0.8;
     border:10px solid;
     border-color: rgba(255, 255, 255, 0.7);
+    color: white;
 }
 
-.circle.c1 {
+.circle.college {
     background-color: red;
 }
 
-.circle.c2 {
+.circle.building {
     background-color: green;
 }
 
-.circle.c3 {
+.circle.landscape {
     background-color: blue;
 }
 
-.circle.c4 {
+.circle.location {
     background-color: blueviolet;
 }
 
-.circle.c5 {
+.circle.message {
     background-color: orange;
+}
+
+@media screen and (min-width:1100px) {
+
+    .main_container{
+        width:60vw;
+    }
+
+    .title > h1 {
+        font-size: 60px; 
+    }
+
+    .login{
+        width: 20vw;
+    }
+
+    .circle {
+        width:250px;
+        height:250px;
+    }
+
+    .inner_container.bottom {
+        border: blue 2px solid;
+        padding:0 12%;
+    }
+
+}
+@media screen and (max-width:1099px) {
+
+    .main_container{
+        width:70vw;
+    }
+
+    .title > h1 {
+        font-size: 40px;
+    }
+
+    .login{
+        width: 25vw;
+    }
+
+    .circle {
+        width:200px;
+        height:200px;
+    }
+
+    .inner_container.bottom {
+        border: red 2px solid;
+        padding:0 12%;
+    }
+
 }
