@@ -21,7 +21,9 @@
     <script src="js/campus.js" async></script>
     <script src="js/dialog.js" async></script>
     <script src="js/landscape.js" async></script>
+    <script src="js/navigation.js" async></script>
     <script src="js/offcanvas.js" async></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtO6a1R4EPgjltm-QSxGcBaIP0E6mojTs"></script>
 
 </head>
 
@@ -38,7 +40,7 @@
                         <a class="nav-link" href="javascript:GoogleMap()">
                             <span class="fa fa-map-marker fa-fw"></span>現在位置
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="javascript:GetGoogleMap()">
                             <span class="fa fa-car fa-fw"></span>導覽現況
                         </a>
                         <a class="nav-link" href="javascript:CampusIntroductionCard('college')">
@@ -71,9 +73,6 @@
     <div id="outer_bg" class="container fcu_background">
         <div id="inner_bg" class="row justify-content-center inner_background">
         </div>
-        <!-- <div class="loader loader-curtain is-active" data-curtain-text="正在導覽中..."></div> -->
-        <!-- <p id="456"> Test </p> -->
-        <!-- <button id="123">Load</button> -->
     </div>
 </body>
 
