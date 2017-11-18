@@ -38,7 +38,7 @@ function AddBuletinList(bulletinList) {
     for (let i = 0; i < 4; i++) {
         for (let y = 0; y < 5; y++) {
             titleList[bulletin.type[i]].push(
-                // '<p class="card-title"><a href="javascript:OpenURL(\'' + bulletinList[bulletin.type[i]][y]['url'] + '\')">' +
+                '<p class="card-title"><a href="javascript:OpenURL(\'' + bulletinList[bulletin.type[i]][y]['url'] + '\')">' +
                 bulletinList[bulletin.type[i]][y]['title'] + '</p>'
             )
         }
