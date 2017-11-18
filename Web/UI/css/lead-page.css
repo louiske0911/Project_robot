@@ -1,34 +1,77 @@
 body {
     background-image: url('../images/RenIan.jpg');
     background-size: cover;
-    opacity:0.6;
+    opacity:0.7;
 }
 
 .lead_container {
+   position: fixed;
    width: 100vw;
    height: calc(100vh - 50px);
    z-index:300;
-   position: fixed;
    bottom: 0;
-   
 }
 
 .lead_container .login {
+    position: fixed;
     width: 20vw;
     height: 10vh;
-    position: fixed;
     z-index: 300;
     bottom: 0;
     right: 0;
     background-color:seagreen;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 .title {
-    left: 10%;
     position:fixed;
+    top:10%;
+    left: 20%;   
 }
 
 .title > h1 {
     font-size: 60px;
+    opacity: 1;
+}
+
+.main_container {
+    position:fixed;
+    border: rebeccapurple 2px solid;
+    width:60vw;
+    height:60vh;
+    top: 30%;
+    left:10%;
+}
+
+.inner_container {
+    height:50%;
+}
+
+.circle {
+    width:250px;
+    height:250px; 
+    border-radius:99em;
+    opacity: 0.8;
+    border:10px solid;
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.circle.c1 {
+    background-color: red;
+}
+
+.circle.c2 {
+    background-color: green;
+}
+
+.circle.c3 {
+    background-color: blue;
+}
+
+.circle.c4 {
+    background-color: blueviolet;
+}
+
+.circle.c5 {
+    background-color: orange;
 }
