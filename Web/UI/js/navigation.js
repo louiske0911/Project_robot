@@ -8,39 +8,37 @@ function NavigationBack() {
     document.getElementById("navigation_dialog").style.visibility = "hidden";
 }
 
-function initMap() {
-    var FengChia = { lat: 24.1801304, lng: 120.6484 };
+function InitMap() {
+    var FengChia = {
+        lat: 24.1801304,
+        lng: 120.6484
+    };
     var mapOptions = {
         center: FengChia,
         zoom: 17
     };
-    var map = new google.maps.Map(
-        document.getElementById('map-canvas'),
-        mapOptions);
-    var contentString =
-        '<div><div class="carousel slide" id="carouselExampleControls_mainpage" data-ride="carousel">' +
+
+
+
+    let contentString =
+        '<div>' +
+        '<div class="carousel slide" id="carouselExampleControls_mainpage" data-ride="carousel">' +
         '<div id="carousel_item" class="carousel-inner d-md-flex d-sm-flex d-lg-flex justify-content-center rounded">' +
         '<div class="carousel-item active item_container_nav h-50" style="border:red 2px solid">' +
         '<div class="d-md-flex d-sm-flex d-lg-flex align-items-center justify-content-center">' +
-        '<img class="d-block img-fluid test" src="images/JungChin.jpg">' +
+        '<img class="d-block img-fluid test" src="../images/JungChin.jpg">' +
         '</div>' +
         '</div>' +
         '<div class="carousel-item item_container_nav h-50" style="border:blue 2px solid">' +
         '<div class="d-md-flex d-sm-flex d-lg-flex align-items-center justify-content-center">' +
-        '<img class="d-block img-fluid test" src="images/ShiueSzYuan.jpg">' +
+        '<img class="d-block img-fluid test" src="../images/ShiueSzYuan.jpg">' +
         '</div>' +
         '</div>' +
         '<div class="carousel-item item_container_nav h-50" style="border:green 2px solid">' +
         '<div class="d-md-flex d-sm-flex d-lg-flex align-items-center justify-content-center">' +
-        '<img class="d-block img-fluid test" src="images/ShangShiue.jpeg">' +
+        '<img class="d-block img-fluid test" src="../images/ShangShiue.jpeg">' +
         '</div>' +
-        '</div>'
-        // + '<ul class="carousel-indicators">'
-        // + '<li class="active" data-target="#photoCarousel" data-slide-to="0"></li>'
-        // + '<li class="" data-target="#photoCarousel" data-slide-to="1"></li>'
-        // + '<li class="" data-target="#photoCarousel" data-slide-to="2"></li>'
-        // + '</ul>'
-        +
+        '</div>' +
         '<a class="carousel-control-prev" href="#carouselExampleControls_mainpage" role="button" data-slide="prev">' +
         '<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
         '<span class="sr-only">Previous</span>' +
@@ -57,16 +55,17 @@ function initMap() {
     // + '<li>培育學生具備人文素養、專業知識與社會責任，以成為國際企業所需之專業人才。</li>'
     // + '</ol>'
     // + '<p>本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻，以培育國際企業發展所需之商管專業人才，並以培育學生具備商業資料分析的科技能力與國際企業所愛的移動能力為教學發展特色。</p></div>';
-    google.maps.event.addDomListener(
-        window, 'load', initMap);
+
+    var map = new google.maps.Map(
+        document.getElementById('map-canvas'), mapOptions);
+
+    google.maps.event.addDomListener(window, 'load', InitMap);
 
     var infowindow = new google.maps.InfoWindow({
         content: contentString
-
     });
 
     /*****Add Marker*****/
-
     var marker = new google.maps.Marker({
         position: FengChia,
         map: map,
@@ -78,17 +77,15 @@ function initMap() {
     });
 }
 
-function getNavigation() {
-    var main_container_clear = '<div id="main_container_clear" class="mt-5 row main_container_clear"></div>';
-    $('#inner_bg').prepend(main_container_clear);
+function GetNavigation() {
+    let main_container_clear = '<div id="main_container_clear" class="mt-5 row main_container_clear"></div>';
 
-    var col = '<div class="col-md-1">' +
-        '</div>' +
-        '<div id="map-canvas" class="my-5 col-md-5 rounded">' +
-        '</div>' +
-        '<div id="col_md_6" class="p-5 col-md-6 d-md-flex d-xl-flex justify-content-center align-content-start flex-wrap">' +
-        ' </div>';
-    var row = '<div class="row" style="border:red 2px solid">' +
+    let col =
+        '<div class="col-md-1"></div>' +
+        '<div id="map-canvas" class="my-5 col-md-5 rounded"></div>' +
+        '<div id="col_md_6" class="p-5 col-md-6 d-md-flex d-xl-flex justify-content-center align-content-start flex-wrap"></div>';
+    let row =
+        '<div class="row" style="border:red 2px solid">' +
         '<div class="container">' +
         '<span class=""></span>' +
         '</div>' +
@@ -105,6 +102,13 @@ function getNavigation() {
         '<p>本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻，以培育國際企業發展所需之商管專業人才，並以培育學生具備商業資料分析的科技能力與國際企業所愛的移動能力為教學發展特色。</p>' +
         '</div>' +
         '</div>';
+
+    $('#inner_bg').prepend(main_container_clear);
     $('#main_container_clear').prepend(col);
     $('#col_md_6').prepend(row);
+}
+
+function GetGoogleMap() {
+    GetNavigation();
+    InitMap();
 }

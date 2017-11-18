@@ -1,22 +1,21 @@
 const BUILDING_URL = 'http://localhost:3000/api/fcu/building';
 const COLLEGE_URL = 'http://localhost:3000/api/fcu/college';
 const LANDSCAPE_URL = 'http://localhost:3000/api/fcu/landscape';
-var dialogType = '';
+let dialogType = '';
 
 function CampusIntroductionCard(Type) {
-    $('#loader_block').css("display", "block");
     switch (Type) {
         case 'college':
             GetCampusInfo(COLLEGE_URL);
-            dialogType = 'AddDialog(\'college\')';
+            dialogType = 'college';
             break;
         case 'landscape':
             GetCampusInfo(LANDSCAPE_URL);
-            dialogType = 'AddDialog(\'landscape\')';
+            dialogType = 'landscape';
             break;
         case 'building':
             GetCampusInfo(BUILDING_URL);
-            dialogType = 'AddDialog(\'building\')';
+            dialogType = 'building';
             break;
     }
 }
@@ -25,15 +24,21 @@ function AddContainer(campusInfo) {
 
     postsCarousel = SetPostCarousel();
     section = SetOuterSection();
+    // append inner_bg div for jquery remove and change page
+    $('#outer_bg').append('<div id="inner_bg" class="row justify-content-center inner_background"></div>')
 
-    $('#outer_bg').prepend(postsCarousel);
+    // $('#outer_bg').prepend(postsCarousel);
     $('#inner_bg').prepend(section);
 
     AddCard(campusInfo);
 
     $('.carousel-item').first().addClass('active');
-    $('#outer_bg').removeClass('container'); // should be using this in other page too
-    $('#outer_bg').addClass('container-fluid');
+
+    /* 
+    container-fluid is only for Campus introfuction
+    and should be change or remove this in all page
+    */
+    $('#outer_bg').removeClass('container').addClass('container-fluid');
 
 }
 
@@ -47,7 +52,7 @@ function AddCard(campusInfo) {
 
     for (var pageCount = 1; pageCount <= carouselCount; pageCount++) { // count means how much page
 
-        var carouselId = "carouselId_" + pageCount;
+        let carouselId = "carouselId_" + pageCount;
         const carousel_item =
             '<div class="px-5 sub_container_trans carousel-item">' +
             '<div id="' + carouselId + '" class="p-3 row main_container_clear justify-content-center rounded"></div></div>';
@@ -99,7 +104,7 @@ function SetSubContainer(campusInfo, index) {
         '<div class="card-footer">' +
         '<div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">' +
         '<button class="btn btn-outline-primary button_rwd">開始導覽</button>' +
-        '<button id=' + campusInfo[index]['college'] + ' class="btn btn-outline-primary button_rwd" onclick="' + dialogType + '">More..</button>' +
+        '<button id=' + campusInfo[index]['id'] + ' class="btn btn-outline-primary button_rwd" onclick="GetSpecifyInfoById(' + dialogType + ')">More..</button>' +
         '</div>' +
         '</div>' +
         '</div>' +
@@ -108,6 +113,9 @@ function SetSubContainer(campusInfo, index) {
 }
 
 function GetCampusInfo(url) {
+    $('#inner_bg').remove();
+    $('#loader_block').css("display", "block");
+
     fetch(url, {
         method: 'GET',
     }).then(function(response) {
@@ -129,4 +137,9 @@ function GetCampusInfo(url) {
     }).then(function(errorData) {
         // errorData 裡面才是實際的 JSON 資料
     });
+}
+
+function GetSpecifyInfoById(dialogType) {
+    console.log(id)
+    AddDialog(dialogType);
 }

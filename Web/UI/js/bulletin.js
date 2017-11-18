@@ -11,8 +11,8 @@ const iconList = [
     'fa fa-file-text-o'
 ];
 
-var bulletinList = JSON.parse('{}');
-var titleList = {
+let bulletinList = JSON.parse('{}');
+let titleList = {
     News: [],
     Announce: [],
     Activity: [],
@@ -22,17 +22,23 @@ var titleList = {
 function AddBuletinList(bulletinList) {
     /*************************Loader prepend to tag:body*************************/
     let titleHtml = []
-    var col = '<div class="col-10 col-xl-10 rounded"></div>';
+    let col = '<div class="col-10 col-xl-10 rounded"></div>';
+    let row = '<div id="bulletin_list" class="row"></div>';
+
+    /* 
+    container-fluid is only for Campus introfuction
+    and should be change or remove this in all page
+    */
+    $('#outer_bg').removeClass('container-fluid').addClass('container');
+    $('#outer_bg').append('<div id="inner_bg" class="row justify-content-center inner_background"></div>')
+
     $('#inner_bg').prepend(col);
-    var row = '<div id="bulletin_list" class="row"></div>';
     $('#inner_bg').append(row);
 
     for (let i = 0; i < 4; i++) {
         for (let y = 0; y < 5; y++) {
             titleList[bulletin.type[i]].push(
-                // '<p class="card-title"><a href="SendWebviewURL(' + bulletinList[bulletin.type[i]][y]['url'] + ')">'
-                // + bulletinList[bulletin.type[i]][y]['title'] + '</p>'
-                '<p class="card-title"><a href="javascript:SendWebviewURL(\'' + bulletinList[bulletin.type[i]][y]['url'] + '\')">' +
+                // '<p class="card-title"><a href="javascript:OpenURL(\'' + bulletinList[bulletin.type[i]][y]['url'] + '\')">' +
                 bulletinList[bulletin.type[i]][y]['title'] + '</p>'
             )
         }
@@ -43,11 +49,11 @@ function AddBuletinList(bulletinList) {
             titleList[bulletin.type[i]][3]
         )
     }
-    console.log(bulletinList['Carousel'])
     AddCarousel(bulletinList['Carousel']);
     /*************************Insert the card*************************/
     for (let i = 0; i < bulletin.paragraph.length; i++) {
-        $('<div class="col-md-12 col-xl-6 mb-4">' +
+        $(
+            '<div class="col-md-12 col-xl-6 mb-4">' +
             '<div class="card h-100 message_container">' +
             '<div class="card-header">' +
             '<a class="bulletin_title_icon">' +
@@ -59,7 +65,8 @@ function AddBuletinList(bulletinList) {
             titleHtml[i] +
             '</div>' +
             '<div class="card-footer d-flex justify-content-end ftr">' +
-            '<button class="btn btn-outline-secondary button_rwd">More..</button>' +
+            '<button class="btn btn-outline-secondary button_rwd" onclick="GetSpecificBulletin(\'' + bulletin.type[i] + '\')"' +
+            '>More..</button>' +
             '</div>' +
             '</div>' +
             '</div>').appendTo('#bulletin_list');
@@ -89,10 +96,10 @@ function AddCarousel(imgList) {
     /*************************Isert the carousel item*************************/
     for (let i = 0; i < imgList.length; i++) {
         $('<div class="carousel-item item_container">' +
-            '<div class="d-md-flex d-sm-flex d-lg-flex h-100 align-items-center justify-content-center">' +
+            '<div class="d-md-flex d-sm-flex d-lg-flex h-100 align-items-center justify-contern-center">' +
             '<img class="d-block img-fluid carousel_img" src=" ' +
-            imgList[i]['image'] +
-            '"></div></div>').appendTo('#carousel_item');
+            imgList[i]['image'] + '">' +
+            '</div></div>').appendTo('#carousel_item');
 
         $('<li class="" data-target="#photoCarousel" data-slide-to="' + i + '"></li>').appendTo('.carousel-indicators');
     }
@@ -104,6 +111,9 @@ function AddCarousel(imgList) {
 }
 
 function getBulletin() {
+    $('#inner_bg').remove();
+    $('#loader_block').css("display", "block");
+
     fetch(BULLETIN_URL, {
         method: 'GET',
     }).then(function(response) {
@@ -115,9 +125,10 @@ function getBulletin() {
             throw error
         }
     }).then(function(data) {
-        var bulletinList = data;
+        bulletinList = data;
         AddBuletinList(bulletinList);
         // data 才是實際的 JSON 資料
+        $('#loader_block').css("display", "none");
     }).catch(function(error) {
         return error.response;
     }).then(function(errorData) {
@@ -125,10 +136,20 @@ function getBulletin() {
     });
 }
 
-function SendWebviewURL(url) {
-    console.log(url)
+function GetSpecificBulletin(bulletinType) {
+    for (let i = 0; i < 10; i++) {
+        console.log(bulletinList[bulletinType][i]['title']);
+        console.log(bulletinList[bulletinType][i]['url']);
+    }
+}
+
+function OpenURL(url) {
+    var JSInterface;
     if (JSInterface) {
         JSInterface.sendWebviewURL(url);
+    } else {
+        var win = window.open(url, '_blank');
+        win.focus();
     }
 }
 
@@ -136,8 +157,4 @@ function GoolgeMap() {
     if (JSInterface) {
         JSInterface.showToast();
     }
-}
-
-function test() {
-    getBulletin();
 }

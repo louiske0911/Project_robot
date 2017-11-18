@@ -36,9 +36,10 @@ function SetDepartment(departmentList) {
             departmentList[i]['department_type'] +
             '</h4>'
         for (let y = 0; y < departmentList[i]['department_list'].length; y++) {
+            let url = departmentList[i]['department_list'][y]['department_url']
             department +=
                 '<li class="px-5 p-2">' +
-                '<a href=' + departmentList[i]['department_list'][y]['department_url'] + '>' +
+                '<a href=javascript:OpenURl(' + url + ')>' +
                 departmentList[i]['department_list'][y]['department_name'] +
                 '</a></li>'
             console.log(departmentList[i])
