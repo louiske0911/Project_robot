@@ -19,14 +19,14 @@ let titleList = {
     Lecture: []
 }
 
-function dialogShow() {
+function bulletinDialogShow() {
     document.getElementById("block").style.visibility = "visible";
-    document.getElementById("campus_dialog").style.visibility = "visible";
+    document.getElementById("bulletin_dialog").style.visibility = "visible";
 }
 
-function dialogBack() {
+function bulletinDialogBack() {
     document.getElementById("block").style.visibility = "hidden";
-    document.getElementById("campus_dialog").style.visibility = "hidden";
+    document.getElementById("bulletin_dialog").style.visibility = "hidden";
 }
 
 function AddBuletinList(bulletinList) {
@@ -40,7 +40,7 @@ function AddBuletinList(bulletinList) {
     and should be change or remove this in all page
     */
     $('#outer_bg').removeClass('container-fluid').addClass('container');
-    $('#outer_bg').append('<div id="inner_bg" class="row justify-content-center inner_background"></div>')
+    $('#outer_bg').append('<div id="inner_bg" class="ml-5 pl-5 row justify-content-center inner_background"></div>')
 
     $('#inner_bg').prepend(col);
     $('#inner_bg').append(row);
@@ -151,21 +151,21 @@ function getBulletin() {
 
 function GetSpecificBulletin(bulletinType) {
     let bulletinLink = "";
-    const block = '<div id="block" onclick="dialogBack()"></div>';
+    const block = '<div id="block" onclick="bulletinDialogBack()"></div>';
 
     $('body').prepend(block);
 
     for (let i = 0; i < 9; i += 2) {
-        bulletinLink += '<a href="' + bulletinList[bulletinType][i]['url'] + '" class="list-group-item list-group-item-action">' +
+        bulletinLink += '<a href="javascript:OpenURL(\'' + bulletinList[bulletinType][i]['url'] + '\')" class="list-group-item list-group-item-light">' +
             bulletinList[bulletinType][i]['title'] + '</a>';
-        bulletinLink += '<a href="' + bulletinList[bulletinType][i + 1]['url'] + '" class="list-group-item list-group-item-secondary">' +
+        bulletinLink += '<a href="javascript:OpenURL(\'' + bulletinList[bulletinType][i + 1]['url'] + '\')" class="list-group-item list-group-item-secondary">' +
             bulletinList[bulletinType][i + 1]['title'] + '</a>';
     }
 
     let bulletinTypeIndex = bulletin.type.indexOf(bulletinType);
 
-    $('<div id="campus_dialog" class="card message_container">' +
-        '<div class="card-header">' +
+    $('<div id="bulletin_dialog" class="card message_container">' +
+        '<div class="card-header bulletin_title_icon">' +
         bulletin.paragraph[bulletinTypeIndex] +
         '<span class="' + iconList[bulletinTypeIndex] + ' float-right float-md-right"></span>' +
         '</div>' +
@@ -174,10 +174,8 @@ function GetSpecificBulletin(bulletinType) {
         bulletinLink +
         '</div>' +
         '</div>' +
-        '<div class="card-footer d-flex justify-content-end ftr">' +
-        '</div>' +
         '</div>').prependTo('#inner_bg');
-    dialogShow();
+    bulletinDialogShow();
 }
 
 function OpenURL(url) {
@@ -185,8 +183,8 @@ function OpenURL(url) {
     if (JSInterface) {
         JSInterface.sendWebviewURL(url);
     } else {
-        // var win = window.open(url, '_blank');
-        // win.focus();
+        var win = window.open(url, '_blank');
+        win.focus();
     }
 }
 
