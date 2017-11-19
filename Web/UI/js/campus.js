@@ -2,6 +2,8 @@ const BUILDING_URL = 'http://localhost:3000/api/fcu/building';
 const COLLEGE_URL = 'http://localhost:3000/api/fcu/college';
 const LANDSCAPE_URL = 'http://localhost:3000/api/fcu/landscape';
 let dialogType = '';
+let rightCarousel;
+let leftCarousel;
 
 function CampusIntroductionCard(Type) {
     switch (Type) {
@@ -22,16 +24,16 @@ function CampusIntroductionCard(Type) {
 
 function AddContainer(campusInfo) {
 
-    postsCarousel = SetPostCarousel();
+    SetPostCarousel();
+
     section = SetOuterSection();
     // append inner_bg div for jquery remove and change page
-    $('#outer_bg').append('<div id="inner_bg" class="row justify-content-center inner_background"></div>')
+    $('#outer_bg').append('<div id="inner_bg" class="mt-5 mb-5 ml-5 pl-5 row justify-content-center inner_background"></div>')
 
-    // $('#outer_bg').prepend(postsCarousel);
     $('#inner_bg').prepend(section);
 
-    AddCard(campusInfo);
 
+    AddCard(campusInfo);
     $('.carousel-item').first().addClass('active');
 
     /* 
@@ -60,38 +62,43 @@ function AddCard(campusInfo) {
         let cardIndex = campusInfo.length - (carouselCount - pageCount) * 3; //  總Card數 - (總CarouselPage數 - 當下頁數)
 
         $('#carousel_inner').prepend(carousel_item);
+
+        $('#' + carouselId).append(leftCarousel);
+
         for (index; index < cardIndex; index++) {
             subContainer = SetSubContainer(campusInfo, index);
             $('#' + carouselId).append(subContainer);
         }
+
+        $('#' + carouselId).append(rightCarousel);
+
     }
 }
 
 function SetOuterSection() {
-    const section =
-        '<section class="carousel slide" data-ride="carousel" id="postsCarousel">' +
+    const section = '<section class="carousel slide" data-ride="carousel" id="postsCarousel">' +
         '<div id="carousel_inner" class="carousel-inner"></div></div>';
-
     return section;
 }
 
 function SetPostCarousel() {
-    const postsCarousel =
-        '<div class="col-xs-12 text-right lead">' +
-        '<a class="btn btn-outline-secondary prev" href="#postsCarousel" data-slide="prev" title="go back">' +
-        '<i class="icon-arrow-left"></i>' +
-        '</a>' +
-        '<a class="btn btn-outline-secondary next" href="#postsCarousel" data-slide="next" title="more">' +
-        '<i class="icon-arrow-right"></i>' +
+    leftCarousel =
+        '<div class="text-right align-self-center">' +
+        '<a class="btn prev" style="color:black;" href="#postsCarousel" data-slide="prev" title="go back">' +
+        '<i class="fa fa-chevron-circle-left fa-3x"></i>' +
         '</a>' +
         '</div>';
-
-    return postsCarousel;
+    rightCarousel =
+        '<div class="text-left align-self-center">' +
+        '<a class="btn next" style="color:black;"href="#postsCarousel" data-slide="next" title="more">' +
+        '<i class="fa fa-chevron-circle-right fa-3x"></i>' +
+        '</a>' +
+        '</div>';
 }
 
 function SetSubContainer(campusInfo, index) {
     const subContainer =
-        '<div class="col-md-4 col-lg-3 d-flex align-items-stretch">' +
+        '<div class="col-md-3 col-lg-3 d-flex align-items-stretch">' +
         '<div class="card sub_container">' +
         '<div class="card-header">' +
         '<h4 class="card-title">' + campusInfo[index]['name'] + '</h4 > ' +
