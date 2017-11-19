@@ -98,7 +98,7 @@ body {
 /********************************Dialog************************************/
 
 #block {
-    position: absolute;
+    position: fixed;
     height: 100%;
     width: 100%;
     color: #0A0404;
@@ -423,6 +423,10 @@ nav>a {
     font-size: 1.375rem;
     color: black;
     width: 100%;
+}
+
+.bulletin_title_icon .fa {
+    font-size: 1.2em;
 }
 
 

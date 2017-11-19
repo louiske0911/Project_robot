@@ -19,6 +19,16 @@ let titleList = {
     Lecture: []
 }
 
+function dialogShow() {
+    document.getElementById("block").style.visibility = "visible";
+    document.getElementById("campus_dialog").style.visibility = "visible";
+}
+
+function dialogBack() {
+    document.getElementById("block").style.visibility = "hidden";
+    document.getElementById("campus_dialog").style.visibility = "hidden";
+}
+
 function AddBuletinList(bulletinList) {
     /*************************Loader prepend to tag:body*************************/
     let titleHtml = []
@@ -38,8 +48,11 @@ function AddBuletinList(bulletinList) {
     for (let i = 0; i < 4; i++) {
         for (let y = 0; y < 5; y++) {
             titleList[bulletin.type[i]].push(
-                '<p class="card-title"><a href="javascript:OpenURL(\'' + bulletinList[bulletin.type[i]][y]['url'] + '\')">' +
-                bulletinList[bulletin.type[i]][y]['title'] + '</p>'
+                '<p class="card-title">' +
+                '<a href="javascript:OpenURL(\'' + bulletinList[bulletin.type[i]][y]['url'] + '\')">' +
+                bulletinList[bulletin.type[i]][y]['title'] +
+                '</a>' +
+                '</p>'
             )
         }
         titleHtml.push(
@@ -137,10 +150,34 @@ function getBulletin() {
 }
 
 function GetSpecificBulletin(bulletinType) {
-    for (let i = 0; i < 10; i++) {
-        console.log(bulletinList[bulletinType][i]['title']);
-        console.log(bulletinList[bulletinType][i]['url']);
+    let bulletinLink = "";
+    const block = '<div id="block" onclick="dialogBack()"></div>';
+
+    $('body').prepend(block);
+
+    for (let i = 0; i < 9; i += 2) {
+        bulletinLink += '<a href="' + bulletinList[bulletinType][i]['url'] + '" class="list-group-item list-group-item-action">' +
+            bulletinList[bulletinType][i]['title'] + '</a>';
+        bulletinLink += '<a href="' + bulletinList[bulletinType][i + 1]['url'] + '" class="list-group-item list-group-item-secondary">' +
+            bulletinList[bulletinType][i + 1]['title'] + '</a>';
     }
+
+    let bulletinTypeIndex = bulletin.type.indexOf(bulletinType);
+
+    $('<div id="campus_dialog" class="card message_container">' +
+        '<div class="card-header">' +
+        bulletin.paragraph[bulletinTypeIndex] +
+        '<span class="' + iconList[bulletinTypeIndex] + ' float-right float-md-right"></span>' +
+        '</div>' +
+        '<div class="card-body">' +
+        '<div class="list-group">' +
+        bulletinLink +
+        '</div>' +
+        '</div>' +
+        '<div class="card-footer d-flex justify-content-end ftr">' +
+        '</div>' +
+        '</div>').prependTo('#inner_bg');
+    dialogShow();
 }
 
 function OpenURL(url) {
@@ -148,8 +185,8 @@ function OpenURL(url) {
     if (JSInterface) {
         JSInterface.sendWebviewURL(url);
     } else {
-        var win = window.open(url, '_blank');
-        win.focus();
+        // var win = window.open(url, '_blank');
+        // win.focus();
     }
 }
 
