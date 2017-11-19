@@ -36,6 +36,9 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+
 public class Main2Activity extends AppCompatActivity implements OnMapReadyCallback, SensorEventListener {
 
     ArrayList<MarkerOptions> markerOptionses = new ArrayList<MarkerOptions>();
@@ -46,27 +49,42 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
     private Long startTime;
     private SensorManager sensorManager;
 
-    public boolean direction = false;
-    public boolean source = false;
-    public boolean start = false;
 
     public Broadcast broadcast;
     public BluetoothChatService bluetoothChatService;
-    public CalculateAngleCurrentToGoal angle = new CalculateAngleCurrentToGoal();
-    public float[] values = {0};
+    public CalculateAngleCurrentToGoal calculateAngleCurrentToGoal = new CalculateAngleCurrentToGoal();
+    public float orientationValue = 0;
+    public float gyroscopeValue = 0;
+    public float [] accelerometerValue = null;
+
+    double magnitude = 0.0;
+
     public Handler mHandler = new Handler();
-    public int checkMarkSize = 0;
     public ImageView imgbtnRun;
+    public ImageButton imageStop;
     public Path path ;
     public StringBuffer mOutStringBuffer = new StringBuffer("");
     public static final String MAP_ACTION = "MAP_ACTION";
     public static LatLng sydney  =new LatLng(24.17998,120.6498);
     public Sensor sensor;
     List<LatLng> temp ;
-    ArrivalDestination calculate  = new ArrivalDestination();
-    double tesla = 0.0;
-    boolean stop = false;
-    boolean one = true;
+    ArrivalDestination arrivalDestination  = new ArrivalDestination();
+    public float [] tesla = null;
+    boolean arrivalDirection = false ;
+    int j =0;
+    LatLng a  = sydney;
+    float modifyAngle = 0;
+
+    /**
+     * The variable is Key
+     */
+    public boolean direction = false;
+    public boolean source = false;
+    public boolean start = false;
+    public boolean filterGps = false;   //avoid once time
+    public int arrival = 0;
+
+//    CalcalateAngleWithMagnetic_v2 calcalateAngleWithMagnetic_v2  = new CalcalateAngleWithMagnetic_v2();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,25 +93,41 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
         initLocationService();
         initBluetooth();
         initMapView();
-        setAngle();
+//        setAngle();
         initWindow();
         initPath();
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+        SetSensorAccelerometer();
+        SetSensormagnetic();
+//        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+//        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+        SetSensorGyroscope();
         imgbtnRun.setOnClickListener(new ImageButton.OnClickListener(){
             @Override
             public void onClick(View view) {
                 start = true;
-                stopIfOr();
+                filterGps = true;
+                handler.postDelayed(stopIfOr, 500);
+                setAngle();
+            }
+        });
+        imageStop.setOnClickListener(new ImageButton.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                start = false;
+                sendMessage("900");
             }
         });
     }
+    
     public void initPath(){
         path = new Path();
     }
     public void initImageButton(){
         imgbtnRun = (ImageView) findViewById(R.id.run);
+        imageStop = (ImageButton) findViewById(R.id.imageButton);
     }
     public void setAngle() {
         startTime = System.currentTimeMillis();
@@ -121,18 +155,25 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
         window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
                 WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);
     }
-
-    @Override
-    public void onResume(){
-        super.onResume();
-
-        if(sensor != null){
-            sensorManager.registerListener(this,sensor,SensorManager.SENSOR_DELAY_NORMAL);
-        }else{
-            Toast.makeText(this,"Not supperted", Toast.LENGTH_SHORT).show();
-            finish();
-        }
+    private void initKeyVariable(){
+        source = false ;
+        direction = false ;
+        start = false ;
+        arrival =0;
+        filterGps = false;
     }
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//
+//        if(sensor != null){
+//
+//            sensorManager.registerListener(this,sensor,SensorManager.SENSOR_DELAY_NORMAL);
+//        }else{
+//            Toast.makeText(this,"Not supperted", Toast.LENGTH_SHORT).show();
+//            finish();
+//        }
+//    }
     public void onPause(){
         super.onPause();
         sensorManager.unregisterListener(this);
@@ -140,6 +181,8 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         LocationManager status = (LocationManager) (this.getSystemService(Context.LOCATION_SERVICE));
+        SetSensorOrientation();
+
         if (status.isProviderEnabled(LocationManager.GPS_PROVIDER) || status.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
 
             enableMyLocation();
@@ -147,7 +190,6 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
             IntentFilter intentFilter = new IntentFilter();
             intentFilter.addAction(MAP_ACTION);
             registerReceiver(broadcast, intentFilter);
-            SetSensor();
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16));
 
             mMap.setOnMapClickListener(onMapClickListener);
@@ -155,15 +197,23 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
                 @Override
                 public void position(LatLng latLng) {
                     super.position(latLng);
-                    sydney = latLng;
-                    angle.setCurrentPosition(latLng);
-                    source = true;
 
-                    if(one){
-                        path.setStart(latLng);
-                        one = false;
-                    }
-                    calculate.setSource(latLng);
+
+                    if((sqrt(pow(a.latitude-latLng.latitude,2)+pow(a.longitude - latLng.longitude,2)) * 111100)>10 && filterGps){
+                        latLng = a;
+                    }          // filter deviation that is mush than 10 meters
+
+                    sydney = latLng;
+                    calculateAngleCurrentToGoal.setCurrentPosition(latLng);
+                    source = true;
+                    path.setStart(latLng);
+
+//                    calcalateAngleWithMagnetic_v2.setLastPosition(a);
+                    a = latLng;
+//                    calcalateAngleWithMagnetic_v2.setCurrentPosition(latLng);
+
+                    arrivalDestination.setSource(latLng);
+
                     polylineOptionses.add(0, new PolylineOptions()
                             .add(sydney, latLng)
                             .width(6)
@@ -173,9 +223,8 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
 
                     googleMap.addPolyline(polylineOptionses.get(0));
 
-//                googleMap.addMarker(marker.get(0));
                     sydney = latLng;
-                    Log.v("lll", "longitude:" + latLng.longitude + " latitude:" + latLng.latitude);
+                    Log.v("Position", "longitude:" + latLng.longitude + " latitude:" + latLng.latitude);
 
                     googleMap.setOnPolylineClickListener(new GoogleMap.OnPolylineClickListener() {
                         @Override
@@ -183,7 +232,6 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
                             polyline.setColor(polyline.getColor() ^ 0x00ffffff);
                         }
                     });
-
                 }
             };
             intentFilter.addAction(MAP_ACTION);
@@ -213,9 +261,7 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
                             .width(6)
                             .color(Color.BLUE)
                             .clickable(true));
-//
                     mMap.addMarker(new MarkerOptions().position(temp.get(i)).draggable(true));    //在google map上畫一個marker
-
 
                     mMap.setOnPolylineClickListener(new GoogleMap.OnPolylineClickListener() {
                         @Override
@@ -228,7 +274,6 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
             }
 
         });
-        checkMarkSize++;
         mMap.setOnPolylineClickListener(new GoogleMap.OnPolylineClickListener() {
             @Override
             public void onPolylineClick(Polyline polyline) {
@@ -237,29 +282,8 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
         });
         direction = true;
     }
-    public void stopIfOr(){
-        final Handler handler = new Handler();
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                int j =0;
-                while(j<temp.size()-1){
-                    angle.setGoalPosition(temp.get(j));
-                    calculate.setDirection(temp.get(j));
-                    stop = calculate.calDistance();
-                    if(stop){
-                        j++;
-                    }
-
-                    try {
-                        Log.v("run","Running");
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        Log.v("error","error");
-                    }
-                }
-            }
-        });
+    public void communicationForStopIfOr(boolean arrival){
+        arrivalDirection = arrival;
     }
     GoogleMap.OnMapClickListener onMapClickListener = new GoogleMap.OnMapClickListener() {   //觸發地圖
         @Override
@@ -272,9 +296,8 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
                 Log.v("onMapClick", latLng.latitude + " " + latLng.longitude);
                 path.setEnd(latLng);
                 planPath();
+                mMap.addMarker(new MarkerOptions().position(latLng).draggable(true));    //在google map上畫一個marker
             }
-            mMap.addMarker(new MarkerOptions().position(latLng).draggable(true));    //在google map上畫一個marker
-
         }
     };
 
@@ -324,8 +347,39 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
         }
     }
 
-    protected void SetSensor() {
+    protected void SetSensorOrientation() {
         List sensors = sensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
+        //如果有取到該手機的方位感測器，就註冊他。
+        if (sensors.size() > 0) {
+            //registerListener必須要implements SensorEventListener，
+            //而SensorEventListener必須實作onAccuracyChanged與onSensorChanged
+            //感應器註冊
+            sensorManager.registerListener(this, (Sensor) sensors.get(0), SensorManager.SENSOR_DELAY_NORMAL);
+        }
+    }
+    protected void SetSensormagnetic() {
+        List sensors = sensorManager.getSensorList(Sensor.TYPE_MAGNETIC_FIELD);
+        //如果有取到該手機的方位感測器，就註冊他。
+        if (sensors.size() > 0) {
+            //registerListener必須要implements SensorEventListener，
+            //而SensorEventListener必須實作onAccuracyChanged與onSensorChanged
+            //感應器註冊
+            sensorManager.registerListener(this, (Sensor) sensors.get(0), SensorManager.SENSOR_DELAY_NORMAL);
+        }
+    }
+
+    protected void SetSensorGyroscope() {
+        List sensors = sensorManager.getSensorList(Sensor.TYPE_GYROSCOPE);
+        //如果有取到該手機的方位感測器，就註冊他。
+        if (sensors.size() > 0) {
+            //registerListener必須要implements SensorEventListener，
+            //而SensorEventListener必須實作onAccuracyChanged與onSensorChanged
+            //感應器註冊
+            sensorManager.registerListener(this, (Sensor) sensors.get(0), SensorManager.SENSOR_DELAY_NORMAL);
+        }
+    }
+    protected void SetSensorAccelerometer() {
+        List sensors = sensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
         //如果有取到該手機的方位感測器，就註冊他。
         if (sensors.size() > 0) {
             //registerListener必須要implements SensorEventListener，
@@ -337,15 +391,40 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        values = sensorEvent.values;
-        Log.v("Angle Value", "angleValue(current)：" + String.valueOf(values[0]));//方向感測器的角度
-        float azimuth = Math.round(sensorEvent.values[0]);
-        float pitch = Math.round(sensorEvent.values[1]);
-        float roll = Math.round(sensorEvent.values[2]);
-
-        tesla = Math.sqrt((azimuth * azimuth)+(pitch * pitch)+(roll * roll));
+        if(sensorEvent.sensor.getType()== Sensor.TYPE_ORIENTATION){
+            float [] temp = sensorEvent.values.clone();
+            Log.v("AngleValue", "angleValue(current) ： " + String.valueOf(temp[0]));//方向感測器的 X 角度
+            orientationValue = temp[0];
+        }else if(sensorEvent.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD){
+            float [] temp = sensorEvent.values.clone();
+            tesla = temp;
+            float azimuth = Math.round(temp[0]);
+            float pitch = Math.round(temp[1]);
+            float roll = Math.round(temp[2]);
+            magnitude = Math.sqrt((azimuth * azimuth)+(pitch * pitch)+(roll * roll));
+            Log.v("magnetic","magnitude : "+magnitude);
+        }else if(sensorEvent.sensor.getType() == Sensor.TYPE_GYROSCOPE){
+            float [] temp = sensorEvent.values.clone();
+            Log.v("Gyroscope", "Gyroscope ： " + String.valueOf(temp[0]));//陀螺儀感測器的 X 角度
+            gyroscopeValue = temp[0];
+        }else if(sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
+            float [] temp = sensorEvent.values.clone();
+            Log.v("Accelerometer", "Accelerometer ： " + String.valueOf(temp[0]));//加速度感測器的 X 角度
+            accelerometerValue = temp;
+        }else{}     //the others sensor
     }
 
+    public float modifyAngleWithMagnetic(){
+        float [] R = new float[9];
+        float [] values = new float[3];
+        if(accelerometerValue != null && tesla != null){
+            SensorManager.getRotationMatrix(R,null,accelerometerValue,tesla);   //計算旋轉矩陣
+            SensorManager.getOrientation(R,values);
+            return  (float) Math.toDegrees(values[0]);
+        }else{
+            return 0;
+        }
+    }
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
 
@@ -353,14 +432,67 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
 
     private Runnable updateTimer = new Runnable() {
         public void run() {
-            Log.v("Angle Value", "angleValue：" + String.valueOf(values[0]));
-            angle.setCurrentAngle(values[0]);
-            if(tesla < 55){
-                if (source && direction && start && !stop) {
-                    sendMessage(angle.toString());
-                }
-            }else{}
+            if(!arrivalDirection){
+                modifyAngle = modifyAngleWithMagnetic();
 
+                if(orientationValue >180){
+                    orientationValue = -(orientationValue -360);       //改成 0 ~-180
+                }
+
+                if(modifyAngle < 0){
+                    modifyAngle = -(modifyAngle);
+                }
+
+                Log.v("aaa", "angleValue(1) ： " + String.valueOf(orientationValue));//方向感測器的 X 角度
+                Log.v("aaa", "angleValue(2) ： " + String.valueOf(modifyAngle));//方向感測器的 X 角度
+
+                if(magnitude < 55){
+                    if(orientationValue >180){
+                        orientationValue = -(orientationValue -360);       //改成 0 ~-180
+                    }
+                    calculateAngleCurrentToGoal.setCurrentAngle(orientationValue);
+
+                    if (source && direction && start) {
+                        sendMessage(calculateAngleCurrentToGoal.toString());
+                        Log.v("calculateAngle", "calculateAngleCurrentToGoal：" + calculateAngleCurrentToGoal.toString());
+                    }
+                }else{
+                    modifyAngle = modifyAngleWithMagnetic();
+                    if(modifyAngle < 0){
+                        modifyAngle = -(modifyAngle);
+                    }
+                    calculateAngleCurrentToGoal.setCurrentAngle(modifyAngle);
+
+                    if (source && direction && start) {
+                        sendMessage(calculateAngleCurrentToGoal.toString());
+                        Log.v("modifyAngle", "modifyAngle：" + modifyAngle);
+                        Log.v("calculateAngle", "calculateAngleCurrentToGoal：" + calculateAngleCurrentToGoal.toString());
+                    }
+
+
+                }
+            }else if(arrival == temp.size()-1){
+                /**
+                 *  initial key
+                 */
+                initKeyVariable();
+            }
+            handler.postDelayed(this, 6000);
+        }
+    };
+
+    private Runnable stopIfOr = new Runnable() {
+        public void run() {
+            boolean arrival = false ;
+            if(j<temp.size()){
+                calculateAngleCurrentToGoal.setGoalPosition(temp.get(j));
+                arrivalDestination.setDirection(temp.get(j));
+                arrival = arrivalDestination.calDistance();
+                if(arrival){
+                    j++;
+                }
+            }
+            communicationForStopIfOr(arrival);
             handler.postDelayed(this, 500);
 
         }

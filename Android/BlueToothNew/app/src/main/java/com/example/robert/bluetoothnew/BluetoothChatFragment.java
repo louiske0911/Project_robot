@@ -116,8 +116,8 @@ public class BluetoothChatFragment extends Fragment {
         myWebView.requestFocus();
         myWebView.setWebViewClient(new MyWebViewClient());
 //        myWebView.loadUrl("http://140.134.26.31/Project_robot/Web/UI/index.html");
-//        myWebView.loadUrl("http://140.134.26.31/Bluetooth/Bluetooth.html");
-        myWebView.loadUrl("http://06a07494.ngrok.io/BulletinPage_jquery.html");
+        myWebView.loadUrl("http://140.134.26.31/Bluetooth/Bluetooth.html");
+//        myWebView.loadUrl("http://06a07494.ngrok.io/BulletinPage_jquery.html");
 //        myWebView.loadUrl("http://ca773b61.ngrok.io/BulletinPage_jquery.html");
         myWebView.addJavascriptInterface(new JavaScriptInterface(getActivity()), "JSInterface");
     }
@@ -132,9 +132,7 @@ public class BluetoothChatFragment extends Fragment {
 
         @JavascriptInterface
         public void showToast() {
-            sendMessage("123");
             Intent i = new Intent(context, Main2Activity.class);
-            sendMessage("123");
             context.startActivity(i);
         }
     }

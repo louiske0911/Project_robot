@@ -8,7 +8,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class CalculateAngleCurrentToGoal {
 
-    protected LatLng currentPosition, goalPosition, referPosition;
+    protected LatLng currentPosition = null, goalPosition = null, referPosition=null;
     protected float currentAngle;
     protected Double templeAngle;
     protected static final Double LATITUDE = 90.0;
@@ -50,27 +50,55 @@ public class CalculateAngleCurrentToGoal {
     }
 
     private void DecideDirection() {
-        if (templeAngle > currentAngle) {
-            if (((templeAngle - currentAngle) > 0) && ((templeAngle - currentAngle) < 20)) {
-                result = "999";
+        int positiveX = 0;
 
-            } else {
-                result = String.valueOf(templeAngle - currentAngle);
-            }
-        } else if (templeAngle < currentAngle) {
-
-            if (((templeAngle - currentAngle) < -340) && ((templeAngle - currentAngle) > -360)) {
-                result = "999";
-
-            } else {
-                result = String.valueOf(templeAngle - currentAngle);
-            }
-
-        } else
-
-        {
-            result = "0";
+        if((goalPosition.latitude - currentPosition.latitude) > 0){
+            positiveX = 1;  //goalPosition 在 currentPosition 的東方
         }
+
+        if(positiveX == 1){
+            if (templeAngle > currentAngle) {       //右轉
+                if (((templeAngle - currentAngle) > 0) && ((templeAngle - currentAngle) < 5)) {
+                    result = "999";
+
+                } else {
+                    result = String.valueOf(templeAngle - currentAngle);
+                }
+            } else if (templeAngle < currentAngle) { //左轉
+
+                if (((templeAngle - currentAngle) < 0) && ((templeAngle - currentAngle) > -5)) {
+                    result = "999";
+
+                } else {
+                    result = String.valueOf(templeAngle - currentAngle);
+                }
+
+            } else {
+                result = "999";
+            }
+        }else{
+            if (templeAngle < currentAngle) {       //右轉
+                if (((templeAngle - currentAngle) < 0) && ((templeAngle - currentAngle) > -5)) {
+                    result = "999";
+
+                } else {
+                    result = String.valueOf(templeAngle - currentAngle);
+                }
+            } else if (templeAngle > currentAngle) { //左轉
+
+                if (((templeAngle - currentAngle) > 0) && ((templeAngle - currentAngle) < 5)) {
+                    result = "999";
+
+                } else {
+                    result = String.valueOf(templeAngle - currentAngle);
+                }
+
+            } else {
+                result = "999";
+            }
+
+        }
+
 
     }
 
