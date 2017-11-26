@@ -53,6 +53,7 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
     public Broadcast broadcast;
     public BluetoothChatService bluetoothChatService;
     public CalculateAngleCurrentToGoal calculateAngleCurrentToGoal = new CalculateAngleCurrentToGoal();
+    public ArrivalGoal arrivalGoal = new ArrivalGoal();
     public float orientationValue = 0;
     public float gyroscopeValue = 0;
     public float [] accelerometerValue = null;
@@ -100,9 +101,6 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         SetSensorAccelerometer();
         SetSensormagnetic();
-//        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-//        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-
         SetSensorGyroscope();
         imgbtnRun.setOnClickListener(new ImageButton.OnClickListener(){
             @Override
@@ -207,13 +205,10 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
                     calculateAngleCurrentToGoal.setCurrentPosition(latLng);
                     source = true;
                     path.setStart(latLng);
-
-//                    calcalateAngleWithMagnetic_v2.setLastPosition(a);
                     a = latLng;
-//                    calcalateAngleWithMagnetic_v2.setCurrentPosition(latLng);
 
                     arrivalDestination.setSource(latLng);
-
+                    arrivalGoal.setSource(latLng);
                     polylineOptionses.add(0, new PolylineOptions()
                             .add(sydney, latLng)
                             .width(6)
@@ -300,8 +295,6 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
             }
         }
     };
-
-
     private void enableMyLocation() {
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -310,8 +303,6 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
             mMap.setMyLocationEnabled(true);
         }
     }
-
-
     public void setMapAction(final GoogleMap mMap) {
 //        mMap.getUiSettings().setZoomControlsEnabled(true);//enable zoom controls
         mMap.getUiSettings().setAllGesturesEnabled(true);//enable all gestures
@@ -326,7 +317,6 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
             }
         });
     }
-
     private void sendMessage(String message) {
 
         // Check that we're actually connected before trying anything
@@ -346,7 +336,6 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
             mOutStringBuffer.setLength(0);
         }
     }
-
     protected void SetSensorOrientation() {
         List sensors = sensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
         //如果有取到該手機的方位感測器，就註冊他。
@@ -367,7 +356,6 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
             sensorManager.registerListener(this, (Sensor) sensors.get(0), SensorManager.SENSOR_DELAY_NORMAL);
         }
     }
-
     protected void SetSensorGyroscope() {
         List sensors = sensorManager.getSensorList(Sensor.TYPE_GYROSCOPE);
         //如果有取到該手機的方位感測器，就註冊他。
@@ -488,8 +476,13 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
                 calculateAngleCurrentToGoal.setGoalPosition(temp.get(j));
                 arrivalDestination.setDirection(temp.get(j));
                 arrival = arrivalDestination.calDistance();
+                arrivalGoal.setDirection(temp.get(temp.size()-1));
+                if(judgeIsSpecialPoint(temp.get(j)).equals("1")){}
                 if(arrival){
                     j++;
+                }else if(arrivalGoal.calDistance()){
+                    j = temp.size();
+                    arrival = true;
                 }
             }
             communicationForStopIfOr(arrival);
@@ -497,6 +490,80 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
 
         }
     };
+    private String judgeIsSpecialPoint(LatLng point){
+        int i=0;
+        for(i=0 ;i< Constants.SPECIAL1.length; i++){
+            if(Constants.SPECIAL1[i].equals(point)){
+                return "1";
+            }
+        }
+        for(i=0 ;i< Constants.SPECIAL2.length; i++){
+            if(Constants.SPECIAL2[i].equals(point)){
+                return "1";
+            }
+        }
+        for(i=0 ;i< Constants.SPECIAL3.length; i++){
+            if(Constants.SPECIAL3[i].equals(point)){
+                return "1";
+            }
+        }
+        for(i=0 ;i< Constants.SPECIAL4.length; i++){
+            if(Constants.SPECIAL4[i].equals(point)){
+                return "1";
+            }
+        }
+        for(i=0 ;i< Constants.SPECIAL5.length; i++){
+            if(Constants.SPECIAL5[i].equals(point)){
+                return "1";
+            }
+        }
+        for(i=0 ;i< Constants.SPECIAL6.length; i++){
+            if(Constants.SPECIAL6[i].equals(point)){
+                return "1";
+            }
+        }
+        for(i=0 ;i< Constants.SPECIAL7.length; i++){
+            if(Constants.SPECIAL7[i].equals(point)){
+                return "1";
+            }
+        }
+        for(i=0 ;i< Constants.SPECIAL8.length; i++){
+            if(Constants.SPECIAL8[i].equals(point)){
+                return "1";
+            }
+        }
+        for(i=0 ;i< Constants.SPECIAL9.length; i++){
+            if(Constants.SPECIAL9[i].equals(point)){
+                return "1";
+            }
+        }
+        for(i=0 ;i< Constants.SPECIAL10.length; i++){
+            if(Constants.SPECIAL10[i].equals(point)){
+                return "1";
+            }
+        }
+        for(i=0 ;i< Constants.SPECIAL11.length; i++){
+            if(Constants.SPECIAL11[i].equals(point)){
+                return "1";
+            }
+        }
+        for(i=0 ;i< Constants.SPECIAL12.length; i++){
+            if(Constants.SPECIAL12[i].equals(point)){
+                return "1";
+            }
+        }
+        for(i=0 ;i< Constants.SPECIAL13.length; i++){
+            if(Constants.SPECIAL13[i].equals(point)){
+                return "1";
+            }
+        }
+        for(i=0 ;i< Constants.SPECIAL14.length; i++){
+            if(Constants.SPECIAL14[i].equals(point)){
+                return "1";
+            }
+        }
+        return null;
+    }
 
     public static class Broadcast extends BroadcastReceiver {
         GoogleMap googleMap;

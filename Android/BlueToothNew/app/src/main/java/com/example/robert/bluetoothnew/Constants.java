@@ -33,20 +33,20 @@ public interface Constants {
     // Key names received from the BluetoothChatService Handler
     public static final String DEVICE_NAME = "device_name";
     public static final String TOAST = "toast";
-    public static final LatLng[] a = {new LatLng(24.18069, 120.64671),new LatLng(24.18069, 120.64671),new LatLng(24.18072, 120.64718), new LatLng(24.18066, 120.64728),new LatLng(24.17993, 120.64657)};        //育樂館
-    public static final LatLng[] b = {new LatLng(24.17991, 120.64674) ,new LatLng(24.17986, 120.64657),new LatLng(24.17992, 120.64725),new LatLng(24.17987, 120.64732),new LatLng(24.17967, 120.64733),new LatLng(24.17958, 120.64728)};    //語言大樓
-    public static final LatLng[] c = {new LatLng(24.17953, 120.64733), new LatLng(24.17904, 120.64734), new LatLng(24.17897, 120.64729),new LatLng(24.17893, 120.64671),new LatLng(24.17896, 120.64663),new LatLng(24.1794, 120.6466)};     //忠勤樓
-    public static final LatLng[] d = {new LatLng(24.17872, 120.64669),new LatLng(24.17872, 120.64705),new LatLng(24.17873, 120.64729)};     //行政一館
-    public static final LatLng[] e = {new LatLng(24.17873, 120.64745), new LatLng(24.17874, 120.64789)};   //行政二館
-    public static final LatLng[] f = {new LatLng(24.1789, 120.6484),new LatLng(24.179, 120.64863),new LatLng(24.179, 120.64897),new LatLng(24.17895, 120.6493),new LatLng(24.17846, 120.64929)};       //圖書館
-    public static final LatLng[] g = {new LatLng(24.17839, 120.64925)};   //科航管
-    public static final LatLng[] h = {new LatLng(24.17848, 120.64943),new LatLng(24.17851, 120.65007)};   //商學院
-    public static final LatLng[] i = {new LatLng(24.17901, 120.65008),new LatLng(24.17912, 120.65013),new LatLng(24.17955, 120.65012),new LatLng(24.17957, 120.65002),new LatLng(24.17956, 120.64904),new LatLng(24.17907, 120.64901),new LatLng(24.179, 120.64905)};   //資電館
-    public static final LatLng[] j = {new LatLng(24.17971, 120.65006),new LatLng(24.17978, 120.65013),new LatLng(24.17968, 120.64907), new LatLng(24.17995, 120.64911)};   //人社院
-    public static final LatLng[] k = {new LatLng(24.17971, 120.649),new LatLng(24.17993, 120.64893),new LatLng(24.17994, 120.64832),new LatLng(24.17991, 120.64827), new LatLng(24.17967, 120.64828)};   //人言
-    public static final LatLng[] l = {new LatLng(24.17954, 120.64828),new LatLng(24.17961, 120.64818),new LatLng(24.17905, 120.6483),new LatLng(24.179, 120.64825),new LatLng(24.17898, 120.64744),new LatLng(24.17904, 120.64734),new LatLng(24.17953, 120.64733),new LatLng(24.17962, 120.64741)};   //工學院
-    public static final LatLng[] m = {new LatLng(24.17962, 120.64751)};     //第一招待所
-    public static final LatLng[] n = {new LatLng(24.18076, 120.6478),new LatLng(24.18075, 120.64739),new LatLng(24.18129, 120.64725),new LatLng(24.18132, 120.64732)};     //理學院
+    public static final LatLng[] SPECIAL1 = {new LatLng(24.18069, 120.64671),new LatLng(24.18069, 120.64671),new LatLng(24.18072, 120.64718), new LatLng(24.18066, 120.64728),new LatLng(24.17993, 120.64657)};        //育樂館
+    public static final LatLng[] SPECIAL2 = {new LatLng(24.17991, 120.64674) ,new LatLng(24.17986, 120.64657),new LatLng(24.17992, 120.64725),new LatLng(24.17987, 120.64732),new LatLng(24.17967, 120.64733),new LatLng(24.17958, 120.64728)};    //語言大樓
+    public static final LatLng[] SPECIAL3 = {new LatLng(24.17953, 120.64733), new LatLng(24.17904, 120.64734), new LatLng(24.17897, 120.64729),new LatLng(24.17893, 120.64671),new LatLng(24.17896, 120.64663),new LatLng(24.1794, 120.6466)};     //忠勤樓
+    public static final LatLng[] SPECIAL4 = {new LatLng(24.17872, 120.64669),new LatLng(24.17872, 120.64705),new LatLng(24.17873, 120.64729)};     //行政一館
+    public static final LatLng[] SPECIAL5 = {new LatLng(24.17873, 120.64745), new LatLng(24.17874, 120.64789)};   //行政二館
+    public static final LatLng[] SPECIAL6 = {new LatLng(24.1789, 120.6484),new LatLng(24.179, 120.64863),new LatLng(24.179, 120.64897),new LatLng(24.17895, 120.6493),new LatLng(24.17846, 120.64929)};       //圖書館
+    public static final LatLng[] SPECIAL7 = {new LatLng(24.17839, 120.64925)};   //科航管
+    public static final LatLng[] SPECIAL8 = {new LatLng(24.17848, 120.64943),new LatLng(24.17851, 120.65007)};   //商學院
+    public static final LatLng[] SPECIAL9 = {new LatLng(24.17901, 120.65008),new LatLng(24.17912, 120.65013),new LatLng(24.17955, 120.65012),new LatLng(24.17957, 120.65002),new LatLng(24.17956, 120.64904),new LatLng(24.17907, 120.64901),new LatLng(24.179, 120.64905)};   //資電館
+    public static final LatLng[] SPECIAL10 = {new LatLng(24.17971, 120.65006),new LatLng(24.17978, 120.65013),new LatLng(24.17968, 120.64907), new LatLng(24.17995, 120.64911)};   //人社院
+    public static final LatLng[] SPECIAL11 = {new LatLng(24.17971, 120.649),new LatLng(24.17993, 120.64893),new LatLng(24.17994, 120.64832),new LatLng(24.17991, 120.64827), new LatLng(24.17967, 120.64828)};   //人言
+    public static final LatLng[] SPECIAL12 = {new LatLng(24.17954, 120.64828),new LatLng(24.17961, 120.64818),new LatLng(24.17905, 120.6483),new LatLng(24.179, 120.64825),new LatLng(24.17898, 120.64744),new LatLng(24.17904, 120.64734),new LatLng(24.17953, 120.64733),new LatLng(24.17962, 120.64741)};   //工學院
+    public static final LatLng[] SPECIAL13 = {new LatLng(24.17962, 120.64751)};     //第一招待所
+    public static final LatLng[] SPECIAL14 = {new LatLng(24.18076, 120.6478),new LatLng(24.18075, 120.64739),new LatLng(24.18129, 120.64725),new LatLng(24.18132, 120.64732)};     //理學院
 
 
     public static final LatLng[] position = {new LatLng(24.1812269,120.646596)

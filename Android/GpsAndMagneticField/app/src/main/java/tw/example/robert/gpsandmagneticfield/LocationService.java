@@ -1,4 +1,4 @@
-package com.example.robert.bluetoothnew;
+package tw.example.robert.gpsandmagneticfield;
 
 import android.app.Service;
 import android.content.Intent;
@@ -29,7 +29,7 @@ public class LocationService extends Service implements
 
     protected static final String TAG = "Service-location";
 
-    private static final long UPDATE_INTERVAL_IN_MILLISECONDS = 50;
+    private static final long UPDATE_INTERVAL_IN_MILLISECONDS = 5;
     private static final long FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS =
             UPDATE_INTERVAL_IN_MILLISECONDS / 2;
 
@@ -52,6 +52,7 @@ public class LocationService extends Service implements
     SharedPreferences sp;
     private static final String NAMEPREF = "NAMEPREF";
     private static final String NAMEFIELD = "NAME";
+//    private static final String MAP_ACTION = "MAP_ACTION";
     boolean first = true;
 
     public class Lock {
@@ -70,7 +71,7 @@ public class LocationService extends Service implements
             Log.d("abc", String.valueOf(String.valueOf(mCurrentLocation.getLatitude()) + ", " + mCurrentLocation.getLongitude()));
 
             Intent broadcasetIntent = new Intent();
-            broadcasetIntent.setAction(Main2Activity.MAP_ACTION);
+            broadcasetIntent.setAction(MapsActivity.MAP_ACTION);
             broadcasetIntent.putExtra("LATITUDE", String.valueOf(mCurrentLocation.getLatitude()));
             broadcasetIntent.putExtra("LONGITUDE", String.valueOf(mCurrentLocation.getLongitude()));
             sendBroadcast(broadcasetIntent);
@@ -170,7 +171,7 @@ public class LocationService extends Service implements
     @Override
     public void onDestroy() {
         super.onDestroy();
-//        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, serviceLocationListener);//取消更新目前狀況
+        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, serviceLocationListener);//取消更新目前狀況
         Log.d(TAG, "onDestroy");
     }
 }

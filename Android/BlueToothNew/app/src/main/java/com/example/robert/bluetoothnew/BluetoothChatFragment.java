@@ -20,8 +20,10 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -40,6 +42,13 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
+
+import java.util.ArrayList;
+
 
 /**
  * This fragment controls Bluetooth to communicate with other devices.
@@ -47,11 +56,13 @@ import android.widget.Toast;
 public class BluetoothChatFragment extends Fragment {
 
     private static final String TAG = "BluetoothChatFragment";
+    public static final String MAP_ACTION = "MAP_ACTION";
 
     // Intent request codes
     private static final int REQUEST_CONNECT_DEVICE_SECURE = 1;
     private static final int REQUEST_CONNECT_DEVICE_INSECURE = 2;
     private static final int REQUEST_ENABLE_BT = 3;
+    private static final int CloseMap = 4;
 
     public final static String BLUETOOTH_ACTION_SOURCE = "BLUETOOTH_ACTION_SOURCE";
     public final static String BLUETOOTH_ACTION_DIRECTION = "BLUETOOTH_ACTION_DIRECTION";
@@ -76,6 +87,7 @@ public class BluetoothChatFragment extends Fragment {
      */
     private BluetoothChatService mChatService = null;
 
+    public Broadcast broadcast;
     WebView myWebView;
 
     @Override
@@ -101,8 +113,9 @@ public class BluetoothChatFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        initLocationService();
         initWebView(view);
-
+        intiBroadCast();
     }    //   For fragment_bluetooth_chat view ,this is initialization .
 
     //初始化WebView
@@ -117,11 +130,40 @@ public class BluetoothChatFragment extends Fragment {
         myWebView.setWebViewClient(new MyWebViewClient());
 //        myWebView.loadUrl("http://140.134.26.31/Project_robot/Web/UI/index.html");
         myWebView.loadUrl("http://140.134.26.31/Bluetooth/Bluetooth.html");
+//        myWebView.loadUrl("http://1eec6559.ngrok.io/index.html");
+
 //        myWebView.loadUrl("http://06a07494.ngrok.io/BulletinPage_jquery.html");
 //        myWebView.loadUrl("http://ca773b61.ngrok.io/BulletinPage_jquery.html");
         myWebView.addJavascriptInterface(new JavaScriptInterface(getActivity()), "JSInterface");
     }
 
+    public void initLocationService() {
+        Log.v("initLocationService", "initLocationService");
+        Intent intent = new Intent(getActivity(), LocationService.class);
+
+        Intent intent1 = new Intent(getActivity(), angleFunction.class);
+        getActivity().startService(intent);
+        getActivity().startService(intent1);
+    }
+
+    public void intiBroadCast() {
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(MAP_ACTION);
+        getActivity().registerReceiver(broadcast, intentFilter);
+
+        broadcast = new Broadcast() {
+            @Override
+            public void position(LatLng latLng) {
+                super.position(latLng);
+
+                Log.v("latLng", "" + latLng);
+                myWebView.loadUrl("javascript:test('Hello World!')");
+            }
+        };
+        intentFilter.addAction(MAP_ACTION);
+        getActivity().registerReceiver(broadcast, intentFilter);
+
+    }
 
     public class JavaScriptInterface {
         private Context context;
@@ -133,9 +175,18 @@ public class BluetoothChatFragment extends Fragment {
         @JavascriptInterface
         public void showToast() {
             Intent i = new Intent(context, Main2Activity.class);
+            startActivityForResult(i, CloseMap);
+        }
+
+        @JavascriptInterface
+        public void sendWebviewURL(String url) {
+            Intent i = new Intent(context, Main3Activity.class);
+            Log.v("111", "222222");
+            i.putExtra("URL", url);
             context.startActivity(i);
         }
     }
+
 
     @Override
     public void onStart() {
@@ -191,7 +242,7 @@ public class BluetoothChatFragment extends Fragment {
 
         // Check that there's actually something to send
         if (message.length() > 0) {
-            Log.v("abc","abc");
+            Log.v("abc", "abc");
             // Get the message bytes and tell the BluetoothChatService to write
             byte[] send = message.getBytes();
             mChatService.write(send);
@@ -311,6 +362,10 @@ public class BluetoothChatFragment extends Fragment {
                             Toast.LENGTH_SHORT).show();
                     getActivity().finish();
                 }
+                break;
+            case CloseMap:
+                myWebView.loadUrl("javascript:CloseMap()");
+                break;
         }
     }
 
@@ -381,6 +436,37 @@ public class BluetoothChatFragment extends Fragment {
                 // Start the Bluetooth chat services
                 mChatService.start();
             }
+        }
+    }
+
+    public static class Broadcast extends BroadcastReceiver {
+        GoogleMap googleMap;
+        ArrayList<MarkerOptions> marker;
+        ArrayList<PolylineOptions> polylineOptionses;
+
+        public Broadcast() {
+        }
+
+        public Broadcast(GoogleMap googleMap, ArrayList<MarkerOptions> marker, ArrayList<PolylineOptions> polylineOptionses) {
+            this.googleMap = googleMap;
+            this.marker = marker;
+            this.polylineOptionses = polylineOptionses;
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals(MAP_ACTION)) {
+                String longitude = intent.getStringExtra("LONGITUDE");
+                String latitude = intent.getStringExtra("LATITUDE");
+                LatLng point = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
+                position(point);
+
+            }
+        }
+
+        public void position(LatLng latLng) {
+
         }
     }
 }

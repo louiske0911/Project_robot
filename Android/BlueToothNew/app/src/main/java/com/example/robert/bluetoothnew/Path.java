@@ -17,8 +17,6 @@ public class Path implements Serializable {
     LatLng end ;
     public List<LatLng> result = new ArrayList<LatLng>();
     public List<LatLng> positionList = new ArrayList<LatLng>();
-
-
     public Path(){}
     public Path(LatLng start , LatLng end){
         this.start = start;
