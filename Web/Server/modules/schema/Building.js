@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // Building Schema
 const buildingSchema = new mongoose.Schema({
-    building_id: Number,
+    _building_id: Number,
     building_name: String,
     building_type: String,
     building_location: {

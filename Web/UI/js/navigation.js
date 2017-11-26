@@ -1,3 +1,22 @@
+function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+}
+
+var data;
+//usage:
+readTextFile("./location.json", function(text) {
+    data = JSON.parse(text);
+    console.log(data);
+});
+
 function NavigationShow() {
     document.getElementById("block").style.visibility = "visible";
     document.getElementById("navigation_dialog").style.visibility = "visible";
@@ -12,6 +31,10 @@ function InitMap() {
     var FengChia = {
         lat: 24.1801304,
         lng: 120.6484
+    };
+    var FengChia2 = {
+        lat: 24.18201304,
+        lng: 120.62484
     };
     var mapOptions = {
         center: FengChia,
@@ -66,11 +89,42 @@ function InitMap() {
     });
 
     /*****Add Marker*****/
-    var marker = new google.maps.Marker({
-        position: FengChia,
-        map: map,
-        title: 'Uluru (Ayers Rock)'
-    });
+    for (var i = 0; i < data['data'].length; i++) {
+        var lat1 = parseFloat(data['data'][i]['Lat'])
+        var lng1 = parseFloat(data['data'][i]['Lng'])
+        var magn = parseFloat(data['data'][i]['magnitude'])
+        var color
+        console.log(i)
+        if (magn > 60) {
+            color = 'red'
+        } else if (magn < 40) {
+            color = 'blue'
+        } else if (magn > 40 && magn < 50) {
+            color = 'green'
+        } else if (magn > 50) {
+            color = 'orange'
+        }
+        console.log(lat1)
+        var marker = new google.maps.Marker({
+            position: {
+                lat: lat1,
+                lng: lng1
+            },
+            map: map,
+            title: 'Uluru (Ayers Rock)',
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                fillColor: color,
+                fillOpacity: 0.8,
+                scale: 1,
+                strokeColor: color,
+                strokeWeight: 5
+            },
+            draggable: true,
+
+        });
+    }
+
 
     marker.addListener('click', function() {
         infowindow.open(map, marker);
@@ -82,7 +136,7 @@ function GetNavigation() {
 
     let col =
         '<div class="col-md-1"></div>' +
-        '<div id="map-canvas" class="my-5 col-md-5 rounded"></div>' +
+        '<div id="map-canvas" class="my-5 col-md-12 rounded"></div>' +
         '<div id="col_md_6" class="p-5 col-md-6 d-md-flex d-xl-flex justify-content-center align-content-start flex-wrap"></div>';
     let row =
         '<div class="row" style="border:red 2px solid">' +

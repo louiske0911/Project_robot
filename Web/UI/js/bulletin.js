@@ -1,4 +1,5 @@
-const BULLETIN_URL = 'http://localhost:3000/api/fcu/bulletin';
+var GOOGLE_STATUS = 0;
+const BULLETIN_URL = 'http://1eec6559.ngrok.io/api/fcu/bulletin';
 const bulletin = {
     paragraph: ['校園新聞', '校園公告', '校園活動', '校園演講'],
     type: ['News', 'Announce', 'Activity', 'Lecture']
@@ -179,17 +180,34 @@ function GetSpecificBulletin(bulletinType) {
 }
 
 function OpenURL(url) {
-    var JSInterface;
-    if (JSInterface) {
-        JSInterface.sendWebviewURL(url);
-    } else {
-        var win = window.open(url, '_blank');
-        win.focus();
+    try {
+        if (JSInterface) {
+            JSInterface.sendWebviewURL(url);
+        }
+    } catch (e) {
+        if (e instanceof ReferenceError) {
+            var win = window.open(url, '_blank');
+            win.focus();
+        } else {
+            printError(e, false);
+        }
     }
 }
 
 function GoolgeMap() {
     if (JSInterface) {
-        JSInterface.showToast();
+        if (GOOGLE_STATUS == 0) {
+            JSInterface.showToast();
+            GOOGLE_STATUS = 1;
+        }
     }
+}
+
+function test(data) {
+    getBulletin();
+    alert(data);
+}
+
+function CloseMap() {
+    GOOGLE_STATUS = 0;
 }

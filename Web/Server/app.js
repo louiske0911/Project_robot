@@ -1,4 +1,3 @@
-
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -13,18 +12,19 @@ var mongoose = require('mongoose');
 var college = require('./routes/api/fcu/college');
 var bulletin = require('./routes/api/fcu/bulletin');
 var building = require('./routes/api/fcu/building');
+var location = require('./routes/api/fcu/location');
 
 var app = express();
 
 // Connect to Mongoose
 mongoose.connect('mongodb://localhost:27017/FcuDB', {
-  useMongoClient: true,
+    useMongoClient: true,
 });
 var db = mongoose.connection;
-db.once('open', function () {
-  console.log("Database Connected.");
-}).on('error', function (error) {
-  console.log("DB Connect Error:", error);
+db.once('open', function() {
+    console.log("Database Connected.");
+}).on('error', function(error) {
+    console.log("DB Connect Error:", error);
 });
 
 
@@ -39,23 +39,24 @@ app.use(express.static(path.join(__dirname, '../UI')));
 app.use('/api/fcu/college', college);
 app.use('/api/fcu/bulletin', bulletin);
 app.use('/api/fcu/building', building);
+app.use('/api/fcu/location', location);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;

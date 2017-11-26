@@ -1,6 +1,5 @@
 {
-    "Announce": [
-        {
+    "Announce": [{
             "title": "106-1 國語文教學中心：大學國文專題演講(二)",
             "url": "http://news.fcu.edu.tw/wSite/ct?xItem=F5025C72D0E545BC482581C4001024C7&ctNode=14980&mp=9000"
         },
@@ -61,8 +60,7 @@
             "url": "http://news.fcu.edu.tw/wSite/ct?xItem=6C19F77D91821AA04825818D000C97B4&ctNode=14980&mp=9000"
         }
     ],
-    "News": [
-        {
+    "News": [{
             "title": "威剛、逢甲合作照明技術　串聯校園、商圈智慧生活",
             "url": "http://web.pr.fcu.edu.tw/~pr/fest/2017/20171017/20171017_0.html"
         },
@@ -123,8 +121,7 @@
             "url": "http://news.fcu.edu.tw/wSite/ct?xItem=361A21F5739FA44E48257BDB002329FF&ctNode=15360&mp=9000"
         }
     ],
-    "Lecture": [
-        {
+    "Lecture": [{
             "title": "歡迎參加12/15「威力導演15進階班-影片後製密技(二)」研習活動",
             "url": "http://news.fcu.edu.tw/wSite/ct?xItem=45FE8509415DCE2B482581C200346165&ctNode=15362&mp=9000"
         },
@@ -185,8 +182,7 @@
             "url": "http://news.fcu.edu.tw/wSite/ct?xItem=ED894145E42593B8482581C40019C1A7&ctNode=15362&mp=9000"
         }
     ],
-    "Activity": [
-        {
+    "Activity": [{
             "title": "106學年度認識大學~【影片剪輯製作課程】",
             "url": "http://news.fcu.edu.tw/wSite/ct?xItem=8132F8C848FD125E482581C6003031B1&ctNode=15361&mp=9000"
         },
@@ -247,8 +243,7 @@
             "url": "http://news.fcu.edu.tw/wSite/ct?xItem=8B57FBB629421F83482581C200216FCB&ctNode=15361&mp=9000"
         }
     ],
-    "Carousel": [
-        {
+    "Carousel": [{
             "title": "2017臺灣最佳大學　逢甲飆進前十強",
             "image": "http://www.fcu.edu.tw/wSite/public/Data/f1501054583862.jpg"
         },
