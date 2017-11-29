@@ -5,7 +5,7 @@ var College = require('../../../modules/schema/College.js');
 var config = require('../../../college.json');
 
 /* GET */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     // College.find({}, function (err, colleges) {
     //     if (err) {
     //         console.log(err);
@@ -16,29 +16,28 @@ router.get('/', function(req, res, next) {
     // });
     let data = [];
     for (var index = 0; index < config.length; index++) {
-        let introduction = config[index]['info']['introduction'][0].substr(0, 100) + "...";
-        //parser only 100 words in front of this string 
-        data.push({
-            id: config[index]['_id'],
-            name: config[index]['college_name'],
-            location: {
-                building: config[index]['college_location']['college_building'],
-                latitude: config[index]['college_location']['latitude'],
-                longitude: config[index]['college_location']['longitude']
-            },
-            info: {
-                introduction: introduction,
-                image: config[index]['info']['image']
-            }
-        })
+        let introduction = config[index]['info']['introduction']
+        if (introduction)
+
+            data.push({
+                id: config[index]['_id'],
+                name: config[index]['college_name'],
+                location: {
+                    building: config[index]['college_location']['college_building'],
+                    latitude: config[index]['college_location']['location']
+                },
+                info: {
+                    introduction: introduction,
+                    image: config[index]['info']['image']
+                }
+            })
     }
-    console.log(data)
-    res.json(data);
+    res.json(data)
 });
 
-router.get('/:id', function(req, res, next) {
+router.get('/:id', function (req, res, next) {
     var data = []
-    College.findById('59ec2cec2353f42374b14655', function(err, college) {
+    College.findById('59ec2cec2353f42374b14655', function (err, college) {
         if (err) {
             console.log(err);
             return next(err);
@@ -53,13 +52,13 @@ router.get('/:id', function(req, res, next) {
 });
 
 /* POST */
-router.post('/', function(req, res, next) {
+router.post('/', function (req, res, next) {
     var college_test;
 
     for (var i = 0; i < config.length; i++) {
         college_test = new College(config[i]);
 
-        College.create(college_test, function(err, post) {
+        College.create(college_test, function (err, post) {
             if (err) {
                 console.log(err);
                 return next(err);

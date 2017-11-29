@@ -15,7 +15,7 @@ def analysis():
     data = str(doc.Document.Folder.Placemark.LineString.coordinates).split()
     for x in data:
         coord = x.replace(',0', '').split(',')
-        list_latlng.append(", new LatLng(" + coord[1] + ',' + coord[0] + ")")
+        list_latlng.append(", new LatLng(" + coord[0] + ',' + coord[1] + ")")
     # for x in doc.Document.Folder.Placemark:
     #     coord = str(x.Point.coordinates).split()
     #     name = unicode(x.name).encode('utf8')

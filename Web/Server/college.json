@@ -1,311 +1,1008 @@
-[{
-        "_id": 0,
-        "college_name": "商學院",
-        "college_location": {
-            "college_building": "商學大樓",
-            "latitude": 11111,
-            "longitude": 1211113
-        },
-        "info": {
-            "introduction": [
-                "本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻，以培育國際企業發展所需之商管專業人才，並以培育學生具備商業資料分析的科技能力與國際企業所愛的移動能力為教學發展特色。",
-                "為達成上述使命，本院致力於：",
-                "1.持續提升教師專業知識、教學能力與學生學習成效。",
-                "2.鼓勵教師參與提升學校、企業及國家競爭力之相關服務與研究。",
-                "3.培育學生具備人文素養、專業知識與社會責任，以成為國際企業所需之專業人才。",
-                "此外，為順應國際化潮流，獲得國際學術組織認證是邁向國際化及提升國際競爭力的重要指標之ㄧ。本院為提升教學品質，並與國外著名大學並駕齊驅，於2006年申請加入AACSB成為會員。2007年12月因本校院系組織重整，復以商學院、金融學院之名，重新申請入會，修訂並遞交新的認證資格申請書(application)，並於2008年1月重新取得第一階段之認證預審資格。",
-                "本院(含金融學院及EMBA)之AACSB認證計畫書於2009年5月份正式送交AACSB審核，並分別於2009年6月及9月順利通過AACSBPAC(pre-accreditation committee) 及IAC(initial accreditation committee)會議審核通過，正式進入「初始認證」階段。2013年11月進行實地訪評，2014年2月3日AACSB公告本校通過認證，成為台灣第九所、中部第一所獲得AACSB認證的學校。",
-                "「國際商管學院促進協會」(The Association to Advance Collegiate Schools of Business, AACSB)成立於1916年，發起成員包括美國哈佛大學、耶魯大學以及康乃爾大學等，為全球最具指標性的商管學院認證機構，能獲得AACSB國際認證不僅是對商學院教學品質之肯定，亦能提升本校之國際知名度，將逢甲大學推向國際級一流學府的地位。"
-            ],
-            "image": [
-                "images/ShangShiue.jpeg",
-                "images/ShiueSz.jpg"
-            ],
-            "department": [{
-                    "department_type": "學士班",
-                    "department_list": [{
-                            "department_name": "會計學系",
-                            "department_url": "http://www.acct.fcu.edu.tw/wSite/mp?mp=420101"
-                        },
-                        {
-                            "department_name": "經濟學系",
-                            "department_url": "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101"
-                        }
-                    ]
-                },
-                {
-                    "department_type": "碩士班",
-                    "department_list": [{
-                            "department_name": "會計學系",
-                            "department_url": "http://www.acct.fcu.edu.tw/wSite/mp?mp=420101"
-                        },
-                        {
-                            "department_name": "經濟學系",
-                            "department_url": "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101"
-                        }
-                    ]
-                }
-            ]
-        },
-        "__v": 0
-    },
+[
     {
         "_id": 1,
-        "college_name": "資電學院",
-        "college_location": {
-            "college_building": "商學大樓",
-            "latitude": 222,
-            "longitude": 122223
-        },
+        "college_name": "商學院",
         "info": {
-            "introduction": [
-                "本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻，以培育國際企業發展所需之商管專業人才，並以培育學生具備商業資料分析的科技能力與國際企業所愛的移動能力為教學發展特色。",
-                "為達成上述使命，本院致力於：",
-                "1.持續提升教師專業知識、教學能力與學生學習成效。",
-                "2.鼓勵教師參與提升學校、企業及國家競爭力之相關服務與研究。",
-                "3.培育學生具備人文素養、專業知識與社會責任，以成為國際企業所需之專業人才。",
-                "此外，為順應國際化潮流，獲得國際學術組織認證是邁向國際化及提升國際競爭力的重要指標之ㄧ。本院為提升教學品質，並與國外著名大學並駕齊驅，於2006年申請加入AACSB成為會員。2007年12月因本校院系組織重整，復以商學院、金融學院之名，重新申請入會，修訂並遞交新的認證資格申請書(application)，並於2008年1月重新取得第一階段之認證預審資格。",
-                "本院(含金融學院及EMBA)之AACSB認證計畫書於2009年5月份正式送交AACSB審核，並分別於2009年6月及9月順利通過AACSBPAC(pre-accreditation committee) 及IAC(initial accreditation committee)會議審核通過，正式進入「初始認證」階段。2013年11月進行實地訪評，2014年2月3日AACSB公告本校通過認證，成為台灣第九所、中部第一所獲得AACSB認證的學校。",
-                "「國際商管學院促進協會」(The Association to Advance Collegiate Schools of Business, AACSB)成立於1916年，發起成員包括美國哈佛大學、耶魯大學以及康乃爾大學等，為全球最具指標性的商管學院認證機構，能獲得AACSB國際認證不僅是對商學院教學品質之肯定，亦能提升本校之國際知名度，將逢甲大學推向國際級一流學府的地位。"
-            ],
             "image": [
-                "images/工學院_01.jpg",
-                "images/工學院_02.jpg",
-                "images/工學院_03.jpg"
+                "images/college/商學院_01.jpg",
+                "images/college/商學院_02.jpg",
+                "images/college/商學院_03.jpg"
             ],
-            "department": [{
-                    "department_type": "學士班",
-                    "department_list": [{
-                            "department_name": "會計學系",
-                            "department_url": "http://www.acct.fcu.edu.tw/wSite/mp?mp=420101"
+            "department": [
+                {
+                    "department_type": "博士班",
+                    "department_list": [
+                        {
+                            "department_name": "商學博士學位學程",
+                            "department_url": "http://www.bphd.fcu.edu.tw/wSite/mp?mp=407101",
+                            "department_location": "商學大樓709室",
+                            "department_phone": "04-24517250 轉 4072"
                         },
                         {
-                            "department_name": "經濟學系",
-                            "department_url": "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101"
+                            "department_name": "統計學系應用統計博士班",
+                            "department_url": "http://www.stat.fcu.edu.tw/wSite/mp?mp=440101",
+                            "department_location": "商學大樓1017室",
+                            "department_phone": "04-24517250 轉 4401"
+                        },
+                        {
+                            "department_name": "經濟學系博士班",
+                            "department_url": "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101",
+                            "department_location": "商學大樓917室",
+                            "department_phone": "04-24517250 轉 4471"
                         }
                     ]
                 },
                 {
                     "department_type": "碩士班",
-                    "department_list": [{
+                    "department_list": [
+                        {
+                            "department_name": "合作經濟暨社會事業經營學系",
+                            "department_url": "http://www.coop.fcu.edu.tw/wSite/mp?mp=435101",
+                            "department_location": "商學大樓901室",
+                            "department_phone": "04-24517250轉4351～4354"
+                        },
+                        {
+                            "department_name": "企業管理學系",
+                            "department_url": "http://www.ba.fcu.edu.tw/wSite/mp?mp=460101",
+                            "department_location": "商學大樓506室",
+                            "department_phone": "04-24517250 轉4601"
+                        },
+                        {
+                            "department_name": "科技管理碩士學位學程",
+                            "department_url": "http://www.mot.fcu.edu.tw/wSite/mp?mp=405101",
+                            "department_location": "商學大樓516室",
+                            "department_phone": "04-24517250 轉 4051"
+                        },
+                        {
+                            "department_name": "財稅學系",
+                            "department_url": "http://www.pf.fcu.edu.tw/wSite/mp?mp=430101 ",
+                            "department_location": "商學大樓1117室",
+                            "department_phone": "04-24517250 轉 4301"
+                        },
+                        {
+                            "department_name": "財經法律研究所",
+                            "department_url": "http://www.econlaw.fcu.edu.tw/wSite/mp?mp=418101",
+                            "department_location": "商學大樓715室",
+                            "department_phone": "04-24517250轉 4181、4198、4199"
+                        },
+                        {
+                            "department_name": "國際經營與貿易學系",
+                            "department_url": "http://www.itra.fcu.edu.tw/wSite/mp?mp=425101 ",
+                            "department_location": "商學大樓805A室",
+                            "department_phone": " 04-24517250 轉 4251"
+                        },
+                        {
+                            "department_name": "統計學系統計與精算碩士班",
+                            "department_url": "http://www.stat.fcu.edu.tw/wSite/mp?mp=440101 ",
+                            "department_location": "商學大樓1017室",
+                            "department_phone": "04-24517250 轉 4401"
+                        },
+                        {
                             "department_name": "會計學系",
-                            "department_url": "http://www.acct.fcu.edu.tw/wSite/mp?mp=420101"
+                            "department_url": "http://www.acct.fcu.edu.tw/wSite/mp?mp=420101 ",
+                            "department_location": "商學大樓1101室",
+                            "department_phone": "04-24517250 轉 4201"
                         },
                         {
                             "department_name": "經濟學系",
-                            "department_url": "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101"
+                            "department_url": "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101 ",
+                            "department_location": "商學大樓917室",
+                            "department_phone": "04-24517250 轉 4471 "
+                        }
+                    ]
+                },
+                {
+                    "department_type": "學士班",
+                    "department_list": [
+                        {
+                            "department_name": "會計學系",
+                            "department_url": "http://www.acct.fcu.edu.tw/wSite/mp?mp=420101 ",
+                            "department_location": "商學大樓1101室",
+                            "department_phone": "04-24517250 轉 4201"
+                        },
+                        {
+                            "department_name": "國際經營與貿易學系",
+                            "department_url": "http://www.itra.fcu.edu.tw/wSite/mp?mp=425101 ",
+                            "department_location": "商學大樓805A室",
+                            "department_phone": " 04-24517250 轉 4251"
+                        },
+                        {
+                            "department_name": "財稅學系",
+                            "department_url": "http://www.pf.fcu.edu.tw/wSite/mp?mp=430101 ",
+                            "department_location": "商學大樓1117室",
+                            "department_phone": "04-24517250 轉 4301"
+                        },
+                        {
+                            "department_name": "合作經濟暨社會事業經營學系",
+                            "department_url": "http://www.coop.fcu.edu.tw/wSite/mp?mp=435101",
+                            "department_location": "商學大樓901室",
+                            "department_phone": "04-24517250轉4351～4354"
+                        },
+                        {
+                            "department_name": "統計學系",
+                            "department_url": "http://www.stat.fcu.edu.tw/wSite/mp?mp=440101",
+                            "department_location": "商學大樓1017室",
+                            "department_phone": "04-24517250 轉 4401"
+                        },
+                        {
+                            "department_name": "經濟學系",
+                            "department_url": "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101 ",
+                            "department_location": "商學大樓917室",
+                            "department_phone": "04-24517250 轉 4471 "
+                        },
+                        {
+                            "department_name": "企業管理學系",
+                            "department_url": "http://www.ba.fcu.edu.tw/wSite/mp?mp=460101",
+                            "department_location": "商學大樓506室",
+                            "department_phone": "04-24517250 轉4601"
+                        },
+                        {
+                            "department_name": "行銷學系",
+                            "department_url": "http://marketing.fcu.edu.tw/wSite/mp?mp=403103",
+                            "department_location": "",
+                            "department_phone": "04-2451-7250 轉4383、4382 "
+                        },
+                        {
+                            "department_name": "國際企業管理學士學位學程",
+                            "department_url": "http://www.biba.fcu.edu.tw/wSite/mp?mp=409501",
+                            "department_location": "商學大樓805室",
+                            "department_phone": "04-24517250轉4096"
+                        },
+                        {
+                            "department_name": "商學進修學士班",
+                            "department_url": "http://www.bce.fcu.edu.tw/wSite/mp?mp=406101",
+                            "department_location": "商學大樓713A室",
+                            "department_phone": "04-24517250 轉4063、4065"
+                        }
+                    ]
+                },
+                {
+                    "department_type": "碩士在職專班",
+                    "department_list": [
+                        {
+                            "department_name": "商業專業碩士在職專班",
+                            "department_url": "http://www.bm.fcu.edu.tw/wSite/mp?mp=409001",
+                            "department_location": "商學大樓103室",
+                            "department_phone": "04-24517250 轉4090"
+                        },
+                        {
+                            "department_name": "財經法律研究所",
+                            "department_url": "http://www.econlaw.fcu.edu.tw/wSite/mp?mp=418101",
+                            "department_location": "商學大樓 715室",
+                            "department_phone": "04-24517250轉4181、4198、4199"
+                        }
+                    ]
+                },
+                {
+                    "department_type": "產業碩士專班",
+                    "department_list": [
+                        {
+                            "department_name": "全球運籌經營管理產業碩士專班",
+                            "department_url": "http://www.impcb.fcu.edu.tw/wSite/mp?mp=427601",
+                            "department_location": "",
+                            "department_phone": "04-24517250 轉 4044"
+                        }
+                    ]
+                },
+                {
+                    "department_type": "研究中心",
+                    "department_list": [
+                        {
+                            "department_name": "公司治理研究中心",
+                            "department_url": "http://www.cgrc.fcu.edu.tw/wSite/mp?mp=409102",
+                            "department_location": "商學大樓715室",
+                            "department_phone": "04-24517250 轉4198 "
+                        },
+                        {
+                            "department_name": "企業法律諮詢研究中心",
+                            "department_url": "http://lcc.fcu.edu.tw/wSite/mp?mp=408101",
+                            "department_location": "商學大樓712室",
+                            "department_phone": "04-24517250 轉4081、4181"
+                        },
+                        {
+                            "department_name": "兩岸稅務研究中心",
+                            "department_url": "http://140.134.4.13/wSite/ct?xItem=147551&ctNode=14631&mp=400101&previewToken=820ea931a56bf4696e58e5c4057463cc",
+                            "department_location": "商學大樓801室",
+                            "department_phone": "04-24517250 轉4001"
+                        },
+                        {
+                            "department_name": "社會事業經營管理研究中心",
+                            "department_url": "http://www.rise.fcu.edu.tw/wSite/mp?mp=435401",
+                            "department_location": "商學大樓902室",
+                            "department_phone": "04-24517250 轉4367"
+                        },
+                        {
+                            "department_name": "創業教育發展中心",
+                            "department_url": "http://www.ceed.fcu.edu.tw/wSite/mp?mp=403101",
+                            "department_location": "",
+                            "department_phone": "04-24517250 轉4032"
+                        },
+                        {
+                            "department_name": "環境會計研究中心",
+                            "department_url": "http://www.cear.fcu.edu.tw/wSite/mp?mp=402601",
+                            "department_location": "商學大樓1142室",
+                            "department_phone": "04-24517250 轉4231"
+                        },
+                        {
+                            "department_name": "大數據中心",
+                            "department_url": "",
+                            "department_location": "",
+                            "department_phone": ""
+                        },
+                        {
+                            "department_name": "家族企業中心",
+                            "department_url": "",
+                            "department_location": "",
+                            "department_phone": ""
+                        },
+                        {
+                            "department_name": "AACSB國際認證與商管教育創新辦公室",
+                            "department_url": "http://www.cbei.fcu.edu.tw/wSite/mp?mp=403001",
+                            "department_location": "商學大樓101室",
+                            "department_phone": " 04-24517250 轉4281\""
                         }
                     ]
                 }
-            ]
+            ],
+            "introduction": "本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻，以培育國際企業發展所需之商管專業人才，並以培育學生具備商業資料分析的科技能力與國際企業所愛的移動能力為教學發展特色。\n為達成上述使命，本院致力於：\n持續提升教師專業知識、教學能力與學生學習成效。\n鼓勵教師參與提升學校、企業及國家競爭力之相關服務與研究。\n培育學生具備人文素養、專業知識與社會責任，以成為國際企業所需之專業人才。\n此外，為順應國際化潮流，獲得國際學術組織認證是邁向國際化及提升國際競爭力的重要指標之ㄧ。本院為提升教學品質，並與國外著名大學並駕齊驅，於2006年申請加入AACSB成為會員。2007年12月因本校院系組織重整，復以商學院、金融學院之名，重新申請入會，修訂並遞交新的認證資格申請書(\napplication)，並於2008年1月重新取得第一階段之認證預審資格。本院(含金融學院及EMBA)之AACSB認證計畫書於2009年5月份正式送交AACSB審核，並分別於2009年6月及9月順利通過AACSB\nPAC(pre-accreditation committee) 及IAC(initial accreditation committee)會議審核通過，正式進入「初始認證」階段。2013年11月進行實地訪評，2014年2月3日AACSB公告本校通過認證，成為台灣第九所、中部第一所獲得AACSB認證的學校。\n「國際商管學院促進協會」(The Association to Advance Collegiate Schools of Business, AACSB)成立於1916年，發起成員包括美國哈佛大學、耶魯大學以及康乃爾大學等，為全球最具指標性的商管學院認證機構，能獲得AACSB國際認證不僅是對商學院教學品質之肯定，亦能提升本校之國際知名度，將逢甲大學推向國際級一流學府的地位。",
+            "history": "本校創校時原為工商學院，民國六十五年(1976)為加強教學，於該年八月一日設置商學部（同時並設置研究部及工學部），當時由呂之渭教授兼商學部主任；至民國六十六年(1977)由林憲德教授兼商學部主任。直至民國六十九年(1980)六月十一日教育部核准本校改制大學，同年八月一日正式成立商學院，由董事會聘林憲德教授為商學院首任院長。 \n \n商學院成立時設有會計學系、國際貿易學系、銀行保險學系、財稅學系、合作經濟學系、統計學系及經濟學系等七個學系；並設有保險學研究所及經濟學研究所二個碩士班。民國七十年(1981)商學院納入商業實務實習中心[1]，定期辦理實務講習班，後於民國八十三年(1994)八月一日為精簡人事裁撤該單位。在發展歷程中，本校為配合國家經濟建設之發展及因應社會競爭需求之趨向，數度經校務會議通過重整校院組織，民國八十九年(2000)將原隸屬管理學院之企業管理學系(所)整合納入商學院；民國九十一年(2002)本院設置整合性「經營管理碩士在職專班」，該專班於民國九十三年(2004)8月1日改隸屬於經營管理學院(籌備)；民國九十六年(2007)通過教育部補助大學校院試辦商管專業學院計畫之審核，設立「國際經營管理碩士學位學程(IMBA)」。此外，民國九十六年(2007)原隸屬於本院之「財務金融學系」及「風險管理與保險學系(原保險學系更名)」另整合設立「金融學院」。\n \n商學院發展至今，系所班組規模不斷擴增，增設調整之情形如表1所示。目前大學部計有會計學系、企業管理學系、國際貿易學系、財稅學系、合作經濟學系、統計學系、經濟學系、行銷學系等八個學系、一個國際企業管理學士學位學程及一個商學進修學士班；碩士班計有會計、企業管理、國際貿易、財稅、合作經濟、經濟、統計與精算、財經法律(含法律學組及法律專業組)、科技管理等九個碩士班及一個國際經營管理碩士學位學程；另計有經濟學系、統計學系應用統計等二個博士班及一個商學博士學位學程；此外，亦推動「統計暨財務金融」、「統計暨保險」、「統計暨精算」、「會計暨企業管理」、「會計暨財稅」、「財稅暨會計」、「財稅暨企業管理」、「企業管理暨會計」、「企業管理暨財稅」、「企業管理暨合作經濟」與「合作經濟暨企業管理」等11個主輔修學士學位學程，以培養學生第二專長。然因考量學生需求、主輔學位學程之歸屬定位及師資安排不易，通過自99學年度起停辦商學院及金融學院主輔修學士學位學程。\n \n隨著世界經濟變遷及國內企業邁向國際化之趨勢，培育具備英語溝通能力、國際視野及國際管理專業能力之國際企業經營管理人才為本院之目標，「國際經營管理碩士學位學程」與「國際企業管理學士學位學程(英語專班)」經教育部核准通過自101學年度起增設「國際專班」，期能朝向完整學制之國際管理學院目標邁進。此外，商學博士學位學程與中山醫學大學合作，增設「醫療經濟組」，自102學年度正式招生。財經法律研究所法律學組碩士在職專班亦於102學年度起更名為「財經法律研究所碩士在職專班」，擴大招生範圍，取消需具備法律相關學系畢業之報考限制。\n\n本校院系為因應研究、教學與服務社會及推動校務之需要，得經行政會議審議通過設置「學術單位中心」，校設中心為因應整體校務發展之需要，由本校主動設立之中心；而自設中心則為本校教師或教學單位因應整合性教學、研究工作之推動，或專門領域內實務應用之推廣，自主發起成立之中心。民國九十年(2001)，本院首先設置「電子商務研究中心」，次年(2002)再獲通過成立「統計調查研究中心」，此二個中心性質均屬校設中心，隨著階段性任務完成之際，本校評估整體發展，決議自民國九十八年(2009)八月ㄧ日起裁撤此二個校設中心。此外，本院各系所因研究、教學與服務社會業務發展之需，紛紛提案自設中心，目前已通過設置之中心計有「公司治理研究中心」、「社會事業經營管理研究中心」、「企業法律諮詢研究中心」、「創業教育發展中心」、「兩岸稅務研究中心」、「環境會計研究中心」及「商管教育創新中心」。"
         },
-        "__v": 0
+        "college_location": {
+            "college_building": "商學大樓",
+            "location": "24.178333, 120.649845"
+        }
     },
     {
         "_id": 2,
         "college_name": "工學院",
-        "college_location": {
-            "college_building": "商學大樓",
-            "latitude": 123,
-            "longitude": 3333333
-        },
         "info": {
-            "introduction": [
-                "本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻，以培育國際企業發展所需之商管專業人才，並以培育學生具備商業資料分析的科技能力與國際企業所愛的移動能力為教學發展特色。",
-                "為達成上述使命，本院致力於：",
-                "持續提升教師專業知識、教學能力與學生學習成效。",
-                "鼓勵教師參與提升學校、企業及國家競爭力之相關服務與研究。",
-                "培育學生具備人文素養、專業知識與社會責任，以成為國際企業所需之專業人才。",
-                "此外，為順應國際化潮流，獲得國際學術組織認證是邁向國際化及提升國際競爭力的重要指標之ㄧ。本院為提升教學品質，並與國外著名大學並駕齊驅，於2006年申請加入AACSB成為會員。2007年12月因本校院系組織重整，復以商學院、金融學院之名，重新申請入會，修訂並遞交新的認證資格申請書(application)，並於2008年1月重新取得第一階段之認證預審資格。",
-                "本院(含金融學院及EMBA)之AACSB認證計畫書於2009年5月份正式送交AACSB審核，並分別於2009年6月及9月順利通過AACSBPAC(pre-accreditation committee) 及IAC(initial accreditation committee)會議審核通過，正式進入「初始認證」階段。2013年11月進行實地訪評，2014年2月3日AACSB公告本校通過認證，成為台灣第九所、中部第一所獲得AACSB認證的學校。",
-                "「國際商管學院促進協會」(The Association to Advance Collegiate Schools of Business, AACSB)成立於1916年，發起成員包括美國哈佛大學、耶魯大學以及康乃爾大學等，為全球最具指標性的商管學院認證機構，能獲得AACSB國際認證不僅是對商學院教學品質之肯定，亦能提升本校之國際知名度，將逢甲大學推向國際級一流學府的地位。"
-            ],
             "image": [
-                "images/丘逢甲紀念館_01.jpg",
-                "images/丘逢甲紀念館_02.jpg",
-                "images/丘逢甲紀念館_03.jpg"
+                "images/college/工學院_01.jpg",
+                "images/college/工學院_02.jpg",
+                "images/college/工學院_03.jpg"
             ],
-            "department": [{
-                    "department_type": "學士班",
-                    "department_list": [{
-                            "department_name": "會計學系",
-                            "department_url": "http://www.acct.fcu.edu.tw/wSite/mp?mp=420101"
-                        },
-                        {
-                            "department_name": "經濟學系",
-                            "department_url": "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101"
-                        }
-                    ]
-                },
+            "department": [
                 {
-                    "department_type": "碩士班",
-                    "department_list": [{
-                            "department_name": "會計學系",
-                            "department_url": "http://www.acct.fcu.edu.tw/wSite/mp?mp=420101"
+                    "department_type": "系所及學位學程",
+                    "department_list": [
+                        {
+                            "department_name": "機械與電腦輔助工程學系",
+                            "department_url": "http://www.mcae.fcu.edu.tw/wSite/mp?mp=350101",
+                            "department_location": "工學館208室",
+                            "department_phone": "04-24517250 轉3501"
                         },
                         {
-                            "department_name": "經濟學系",
-                            "department_url": "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101"
+                            "department_name": "纖維與複合材料學系",
+                            "department_url": "http://www.fcm.fcu.edu.tw/wSite/mp?mp=340101",
+                            "department_location": "工學館221室",
+                            "department_phone": "04-24517250 轉3401"
+                        },
+                        {
+                            "department_name": "工業工程與系統管理學系",
+                            "department_url": "http://www.inde.fcu.edu.tw/wSite/mp?mp=360101",
+                            "department_location": "工學館318-1室",
+                            "department_phone": "04-24517250 轉3601"
+                        },
+                        {
+                            "department_name": "化學工程學系",
+                            "department_url": "http://www.che.fcu.edu.tw/wSite/mp?mp=365101",
+                            "department_location": "學思樓521室",
+                            "department_phone": " 04-24517250 轉 3651"
+                        },
+                        {
+                            "department_name": "航太與系統工程學系",
+                            "department_url": "http://www.aero.fcu.edu.tw/wSite/mp?mp=395101",
+                            "department_location": "科學與航太館401室",
+                            "department_phone": "04-24517250 轉3951"
+                        },
+                        {
+                            "department_name": "機械與航空工程博士學位學程",
+                            "department_url": "http://www.mae.fcu.edu.tw/wSite/mp?mp=302101",
+                            "department_location": "工學館301室",
+                            "department_phone": "04-24517250 轉3022"
+                        },
+                        {
+                            "department_name": "電聲碩士學位學程",
+                            "department_url": "http://www.earmp.fcu.edu.tw/wSite/mp?mp=349101",
+                            "department_location": "工學館106室",
+                            "department_phone": "04-24517250轉3491、3492、3036"
+                        },
+                        {
+                            "department_name": "綠色能源科技碩士學位學程",
+                            "department_url": "http://www.gest.fcu.edu.tw/wSite/mp?mp=348101",
+                            "department_location": "工學館517室",
+                            "department_phone": "04-24517250 轉3032"
+                        },
+                        {
+                            "department_name": "創意設計碩士學位學程",
+                            "department_url": "http://www.mpcd.fcu.edu.tw/wSite/mp?mp=303001",
+                            "department_location": "工學館105室",
+                            "department_phone": "04-24517250轉3032"
+                        },
+                        {
+                            "department_name": "精密系統設計學士學位學程",
+                            "department_url": "http://www.psd.fcu.edu.tw/wSite/mp?mp=350301",
+                            "department_location": "工學館225室",
+                            "department_phone": "04-24517250 轉3572"
+                        },
+                        {
+                            "department_name": "智能製造與工程管理碩士在職學位學程",
+                            "department_url": "http://www.imem.fcu.edu.tw/wSite/mp?mp=360201",
+                            "department_location": "工學館517室",
+                            "department_phone": "04-24517250 轉3602"
+                        },
+                        {
+                            "department_name": "紡織與材料工業研究中心",
+                            "department_url": "http://www.tmirc.fcu.edu.tw/?ctNode=36895&idPath=34064_36850_36855",
+                            "department_location": "工學館403室",
+                            "department_phone": "04-24517250轉3015"
+                        },
+                        {
+                            "department_name": "碳纖維產業研究中心",
+                            "department_url": "http://www.ccfi.fcu.edu.tw/wSite/mp?mp=398401",
+                            "department_location": "科學與航太館304室",
+                            "department_phone": "04-24517250 轉3984"
                         }
                     ]
                 }
-            ]
+            ],
+            "introduction": "新世紀高等教育已被賦予更多、更重的責任，社會大眾除了希望大學能夠給予年輕學子擁有多元化的技能、教養與更加深思熟慮之外，還期待大學帶動地方經濟發展，提供回流或社區教育，甚至增強國際競爭力。因此本院配合本校成為「大中部地區學術聲望最高大學」之願景及學校之六大校務發展策略，以世代科技宏觀來規劃未來之發展及高等教育科系學生結構，以迎合台灣產業所需的專業人才。本院體認世紀發展趨勢是以知識為基礎的經濟體系，未來勢必展現一個以智慧加工和創造力為主的知識經濟時代，而知識經濟內涵首重於製造業中的高科技工業：包括機電、航太、生物、電子等產業。為因應第三科學園區之設立及現代國際化的大趨勢下，擬以過去所建立之教學、研究與服務成果與基礎，整合教學與研究領域，尋求校外資源並集中系內有限資源，針對區域性產業關鍵性技術之迫切需求性，擬定新時代所需求之技術與課程，以建立本院發展特色為目標。由於工學院擁有與前述產業息息相關的專業系所，且本院及所屬單位的專業形象頗受產業界肯定，因此本院將聚合各系所以往努力打造的個別潛能，匯流成深具爆發衝力的全院巨大整體能量；同時納入知識創造、知識流通、知識加值等現代優勢競爭的新觀念，以超越新時代的心胸抱負來開創美好前程\n\n(一)發展目標：\n1. 優質教學、全面認證\n2. 重點研究、國際合作\n3. 深耕產業、技術服務\n4. 全人教育、師生一家\n\n(二)發展願景：\n1. 建構優質的產學研發平台\n2. 締造完善的教學研究環境\n3. 成立全國首屈一指的特色研究中心\n4. 成為大中部地區學術聲望最高的工學院",
+            "history": "民國五十年本校創立為工商學院，土木、水利工程學系為創校四系之二。民國六十五年工學部成立。為加強教學，特設置工學部，設有土木、水利、建築、都計、化工、紡織、機械、工工、航空、資訊、電機、電子、自控等十三學系、及實習工場。民國六十九年八月易名「工學院」。本校奉准改制為大學，工學部亦易名為工學院。民國七十五年工學院組織調整原隸屬研究學院之工程研究所單位，歸屬工學院，此時院設有十三個學系、實習工場及六個研究所(紡織、自動控制、化工、機械、資訊、土水等工程研究所)。民國八十三年九月本院原編制圖學教學單位裁撤，由各系之圖學教師組成「圖學教學小組」。民國八十八年八月工學院組織調整--資訊、電機等系另成立「資電學院」，原資訊、電機、電子、自控四系合組另成立「資電學院」，工學院組織調整為土木、水利、建築、都計、化工、紡織、機械、工工及航空九系；土水所、建都所二所及實習工場。民國八十八年十一月「營建研究中心」(籌備處)成立。民國八十九年八月工學院組織調整--土木、水利等系另成立「建設學院」，原有土木、水利、建築、都計、營建研究中心等單位，與管理學院交管、土管、地理資訊中心合組成立建設學院。工學院組織調整為化工、紡織、機械、工工、航空等五學系及實習工場一個單位。\n \n民國九十年四月機械系與紡織系獲教育部核准更名，自九十學年度起分別更名為「機械與電腦輔助工程學系」、「纖維與複合材料學系」。民國九十年八月成立院特色研究中心「數位化設計與精密製造中心」、「產業電子化中心」。民國九十一年八月工學院新設立「機械與航空工程博士班」、「航空工程學系碩士班」等教學單位。民國九十一年十月工學館東南角改建為「逢甲大學聯合諮詢中心」，以服務全校師生。民國九十二年八月工學院成立「能源與資源研究中心」，「實習工場」轉型成立「精密製造技術服務中心」。民國九十三年八月航空工程學系與工業工程學系獲教育部核准更名為「航太與系統工程學系」、「工業工程與系統管理學系」。民國九十五年八月工學院增設「電聲碩士學位學程」，並建構全國唯一之「電聲碩士學位學程」與「電聲研究實驗室」。民國九十七年二月工學院「精密製造技術服務中心」因階段性任務結束予以裁撤。民國九十七年八月工學院之「機械工程研究所碩士班」與「機械與電腦輔助工程學系」系所合一為「機械與電腦輔助工程學系機械工程碩士班」；原「機械與航空工程研究所博士班」轉型為「機械與航空工程博士學位學程」。民國九十八年八月工學院新增系所「綠色能源科技碩士學位學程」；民國一０一年八月新增系所「創意設計碩士學位學程」；民國一０二年新增系所「精密系統設計學士學位學程」。"
         },
-        "__v": 0
+        "college_location": {
+            "college_building": "工學館",
+            "location": "24.179113, 120.647885"
+        }
     },
     {
-        "_id": 0,
-        "college_name": "商學院",
-        "college_location": {
-            "college_building": "商學大樓",
-            "latitude": 11111,
-            "longitude": 1211113
-        },
+        "_id": 3,
+        "college_name": "建設學院",
         "info": {
-            "introduction": [
-                "本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻，以培育國際企業發展所需之商管專業人才，並以培育學生具備商業資料分析的科技能力與國際企業所愛的移動能力為教學發展特色。",
-                "為達成上述使命，本院致力於：",
-                "1.持續提升教師專業知識、教學能力與學生學習成效。",
-                "2.鼓勵教師參與提升學校、企業及國家競爭力之相關服務與研究。",
-                "3.培育學生具備人文素養、專業知識與社會責任，以成為國際企業所需之專業人才。",
-                "此外，為順應國際化潮流，獲得國際學術組織認證是邁向國際化及提升國際競爭力的重要指標之ㄧ。本院為提升教學品質，並與國外著名大學並駕齊驅，於2006年申請加入AACSB成為會員。2007年12月因本校院系組織重整，復以商學院、金融學院之名，重新申請入會，修訂並遞交新的認證資格申請書(application)，並於2008年1月重新取得第一階段之認證預審資格。",
-                "本院(含金融學院及EMBA)之AACSB認證計畫書於2009年5月份正式送交AACSB審核，並分別於2009年6月及9月順利通過AACSBPAC(pre-accreditation committee) 及IAC(initial accreditation committee)會議審核通過，正式進入「初始認證」階段。2013年11月進行實地訪評，2014年2月3日AACSB公告本校通過認證，成為台灣第九所、中部第一所獲得AACSB認證的學校。",
-                "「國際商管學院促進協會」(The Association to Advance Collegiate Schools of Business, AACSB)成立於1916年，發起成員包括美國哈佛大學、耶魯大學以及康乃爾大學等，為全球最具指標性的商管學院認證機構，能獲得AACSB國際認證不僅是對商學院教學品質之肯定，亦能提升本校之國際知名度，將逢甲大學推向國際級一流學府的地位。"
-            ],
             "image": [
-                "images/ShangShiue.jpeg",
-                "images/ShiueSz.jpg"
+                "images/college/建設學院_01.jpg",
+                "images/college/建設學院_02.jpg",
+                "images/college/建設學院_03.jpg"
             ],
-            "department": [{
-                    "department_type": "學士班",
-                    "department_list": [{
-                            "department_name": "會計學系",
-                            "department_url": "http://www.acct.fcu.edu.tw/wSite/mp?mp=420101"
+            "department": [
+                {
+                    "department_type": "系所及學位學程",
+                    "department_list": [
+                        {
+                            "department_name": "土木工程學系",
+                            "department_url": "http://www.civil.fcu.edu.tw/wSite/mp?mp=310101",
+                            "department_location": "土木水利館305室",
+                            "department_phone": "04-24517250 轉 3101"
                         },
                         {
-                            "department_name": "經濟學系",
-                            "department_url": "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101"
+                            "department_name": "水利工程與資源保育學系",
+                            "department_url": "http://www.he.fcu.edu.tw/wSite/mp?mp=320101",
+                            "department_location": "土木水利館306室",
+                            "department_phone": "04-2451-7250 轉3201"
+                        },
+                        {
+                            "department_name": "都市計畫與空間資訊學系",
+                            "department_url": "http://www.up.fcu.edu.tw/wSite/mp?mp=335101",
+                            "department_location": "忠勤樓413室",
+                            "department_phone": "04-24517250 轉3352、3353"
+                        },
+                        {
+                            "department_name": "運輸科技與管理學系",
+                            "department_url": "http://www.ttm.fcu.edu.tw/wSite/mp?mp=465101",
+                            "department_location": "",
+                            "department_phone": "04-24517250轉4650~4654"
+                        },
+                        {
+                            "department_name": "土地管理學系",
+                            "department_url": "http://www.lm.fcu.edu.tw/wSite/mp?mp=470101",
+                            "department_location": "丘逢甲紀念館313室",
+                            "department_phone": "04-24517250 轉4701"
+                        },
+                        {
+                            "department_name": "土木及水利工程博士學位學程",
+                            "department_url": "http://www.gche.fcu.edu.tw/wSite/mp?mp=325201",
+                            "department_location": "丘逢甲紀念館309室",
+                            "department_phone": "04-24517250 轉3252"
+                        },
+                        {
+                            "department_name": "景觀與遊憩碩士學位學程",
+                            "department_url": "http://www.glr.fcu.edu.tw/wSite/mp?mp=477101",
+                            "department_location": "丘逢甲紀念館309室",
+                            "department_phone": "04-24517250 轉4772"
+                        },
+                        {
+                            "department_name": "營建工程與不動產物業管理進修學士班",
+                            "department_url": "http://www.civil.fcu.edu.tw/wSite/lp?ctNode=3251&mp=310101&idPath=3233_3245_3251",
+                            "department_location": "土木水利館305室",
+                            "department_phone": "04-24517250 轉 3101"
+                        },
+                        {
+                            "department_name": "專案管理碩士在職專班",
+                            "department_url": "http://www.mppmcd.fcu.edu.tw/wSite/mp?mp=450701",
+                            "department_location": "丘逢甲紀念館309室",
+                            "department_phone": "04-24517250 轉3252"
+                        },
+                        {
+                            "department_name": "建設碩士在職專班",
+                            "department_url": "http://www.mcd.fcu.edu.tw/wSite/mp?mp=450105",
+                            "department_location": "丘逢甲紀念館309室",
+                            "department_phone": " 04-24517250 轉4738"
                         }
                     ]
                 },
                 {
-                    "department_type": "碩士班",
-                    "department_list": [{
-                            "department_name": "會計學系",
-                            "department_url": "http://www.acct.fcu.edu.tw/wSite/mp?mp=420101"
+                    "department_type": "研究中心",
+                    "department_list": [
+                        {
+                            "department_name": "水利發展研究中心",
+                            "department_url": "",
+                            "department_location": "",
+                            "department_phone": ""
                         },
                         {
-                            "department_name": "經濟學系",
-                            "department_url": "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101"
+                            "department_name": "地理資訊系統研究中心",
+                            "department_url": "http://www.gis.tw/",
+                            "department_location": "",
+                            "department_phone": "04-24516669"
+                        },
+                        {
+                            "department_name": "車輛行車事故鑑定研究中心",
+                            "department_url": "http://www.rctaa.fcu.edu.tw/wSite/mp?mp=469001",
+                            "department_location": "逢甲紀念館112室",
+                            "department_phone": "04-24517250 轉4690"
+                        },
+                        {
+                            "department_name": "營建及防災研究中心中心",
+                            "department_url": "http://www.cdprc.fcu.edu.tw/",
+                            "department_location": "土木水利館407-1室",
+                            "department_phone": "04-24517250轉3061"
+                        },
+                        {
+                            "department_name": "城鄉發展研究中心",
+                            "department_url": "http://www.fcu.edu.tw/wSite/mp?mp=337201",
+                            "department_location": "忠勤樓809-2室",
+                            "department_phone": "04-24517250 轉3390"
+                        },
+                        {
+                            "department_name": "先進交通管理研究中心",
+                            "department_url": "http://www.atms.fcu.edu.tw/wSite/mp?mp=452001",
+                            "department_location": "科學與航太館605、606室",
+                            "department_phone": " 04-24517250 轉4522"
+                        },
+                        {
+                            "department_name": "專案管理與系統思考研究中心",
+                            "department_url": "http://www.pmst.fcu.edu.tw/wSite/mp?mp=308001",
+                            "department_location": "土木水利館523室",
+                            "department_phone": " 04-24517250 轉3226 "
+                        },
+                        {
+                            "department_name": "測量教學研究中心",
+                            "department_url": "http://www.strc.fcu.edu.tw/wSite/ct?xItem=12976&ctNode=6309&mp=310801",
+                            "department_location": "土木水利館102室",
+                            "department_phone": " 04-24517250 轉 3108 "
+                        },
+                        {
+                            "department_name": "營建資訊模擬研究中心",
+                            "department_url": "",
+                            "department_location": "",
+                            "department_phone": ""
+                        },
+                        {
+                            "department_name": "海峽兩岸科技研究中心",
+                            "department_url": "http://www.rcstats.fcu.edu.tw/",
+                            "department_location": "台中市西屯區東大路一段951號四樓",
+                            "department_phone": "04-24517250 轉6456"
+                        },
+                        {
+                            "department_name": "逢甲同濟水利發展研究中心",
+                            "department_url": "http://www.rcstats.fcu.edu.tw/FCUTGUJRCHD/",
+                            "department_location": "台中市西屯區東大路一段951號四樓",
+                            "department_phone": "04-24517250 轉6871"
                         }
                     ]
                 }
-            ]
+            ],
+            "introduction": "逢甲大學建設學院之教育目標\nA.使學生成為具有跨領域與國際化視野並能終生學習之國土建設與維運專業人才。\nB.使學生具有創新與獨立思考能力、溝通與團隊合作能力及問題解決之能力。\nC.使學生具有高度專業倫理與社會責任感，並以落實環境和諧與永續為職志。\n\n\n逢甲大學建設學院之核心能力\nA.具備國土建設之基本知識與專業技能，並能持續學習。\nB.具備策劃執行、專題研究、成果展現與溝通協調之跨領域整合與專案管理能力。\nC.具備綠色環境、自然生態與人文素養調和之永續環境建構能力。\nD.具備專業倫理與社會責任感。 \nE.具備創新與獨立思考、宏觀與國際化視野。",
+            "history": "沿革：建設學院成立於2000年8月1日，是台灣唯一以建設為名的學院，致力於培養具備務實專精與創新研發能力，並負有社會責任感與國際觀的國土建設與永續環境發 展專業人才。其中的土木、水利工程學系為1961年逢甲工商學院創校四系之二。逢甲改制為大學後，土木、水利、建築、都市計畫等系所屬的工學部易名為工學 院。2000年工學院再次組織調整時，原有土木、水利、建築、都計、營建研究中心等單位，與管理學院交管、土管、地理資訊中心等單位合組成立「建設學院」。2016年8月1日建築專業學院成立，建設學院所屬建築系及室內設計進修學士班歸屬於建築專業學院。\n\n院系特色：學系型塑聚焦特色、建立學科發展策略、建立教師團隊、產出學系具體研發成果，整合凝聚成學院亮點-智慧與韌性城市的推手。\n    建設學院為因應全球氣候變遷趨勢與落實政府永續環境政策，藉由教學、研究與服務整合院內教研資源，建置優質教學環境，打造綠色研發環境，建構中台灣永續環境 （低碳建設與防災保育）教育的基地。本學院整合建設領域相關學門，以其具有持殊專業性及互補性之特點，期以規劃、設計、施工乃至管理等連續性課程，提供學 生更全面之學習環境，訓練學生自不同專業角度思維未來永續環境所需面對之問題，進而導引師生具備對國土、社會及人文永續發展關懷之國家建設尖兵為本學院的 教育目標。本學院具有下列三個特色的構面內容：\n（一）優質教學構面：本院首先長期且持續落實「e35教學卓越計畫」與「國際工程教育認證」相關機 制，精進課程精實與教學品保，提高學生處理複雜問題的軟硬實力。其次在教學上本院持續增聘相關領域專長之師資，並透過評鑑機制不斷檢視以及更新學系課程內 容之妥適度，進而有效的提升學生對外之競爭力。最後本院鼓勵師生辦理與參加境外學術活動與產研合作，推動學制內之學術交流，以拓展國際視野與學習廣度，並 整合資源吸納境外人才來台就學與研究。\n（二）產研創新構面：由於全球氣候以及生態環境急遽改變，本院以前瞻環境永續及災害防治跨領域重點為重點研 究方向，積極成立研究群組以培育研發能量與人才，爭取整合型研發與建教計畫。其研發策略有二：首先是發展綠色與智慧材料、技術與工法的開發。其次是深化巨 量環境資訊建置、模擬、評估與應用的技術與能力。上述兩項課題均以大型跨領域與多面向問題之成果整合為本院重點支持的科研核心項目。\n（三）服務社 會構面：本院透過服務學習機制積極鼓勵師生參與社會服務與社區經營，規劃專業課程融入服務學習發揮學以致用與關懷社會的精神；同時配合智慧型綠色大學之校 園規劃，將綠色及智慧科技落實於教育學習、產學合作及環境建構當中。最後整合與導引本院6個學系、8個研究中心於災害防救及永續環境建構之服務量能，與政 府政策方向及社會弱勢團體與非營利組織需求結合，提升服務社會的深度與廣度。"
         },
-        "__v": 0
-    },
-    {
-        "_id": 1,
-        "college_name": "資電學院",
         "college_location": {
-            "college_building": "商學大樓",
-            "latitude": 222,
-            "longitude": 122223
-        },
-        "info": {
-            "introduction": [
-                "本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻，以培育國際企業發展所需之商管專業人才，並以培育學生具備商業資料分析的科技能力與國際企業所愛的移動能力為教學發展特色。",
-                "為達成上述使命，本院致力於：",
-                "1.持續提升教師專業知識、教學能力與學生學習成效。",
-                "2.鼓勵教師參與提升學校、企業及國家競爭力之相關服務與研究。",
-                "3.培育學生具備人文素養、專業知識與社會責任，以成為國際企業所需之專業人才。",
-                "此外，為順應國際化潮流，獲得國際學術組織認證是邁向國際化及提升國際競爭力的重要指標之ㄧ。本院為提升教學品質，並與國外著名大學並駕齊驅，於2006年申請加入AACSB成為會員。2007年12月因本校院系組織重整，復以商學院、金融學院之名，重新申請入會，修訂並遞交新的認證資格申請書(application)，並於2008年1月重新取得第一階段之認證預審資格。",
-                "本院(含金融學院及EMBA)之AACSB認證計畫書於2009年5月份正式送交AACSB審核，並分別於2009年6月及9月順利通過AACSBPAC(pre-accreditation committee) 及IAC(initial accreditation committee)會議審核通過，正式進入「初始認證」階段。2013年11月進行實地訪評，2014年2月3日AACSB公告本校通過認證，成為台灣第九所、中部第一所獲得AACSB認證的學校。",
-                "「國際商管學院促進協會」(The Association to Advance Collegiate Schools of Business, AACSB)成立於1916年，發起成員包括美國哈佛大學、耶魯大學以及康乃爾大學等，為全球最具指標性的商管學院認證機構，能獲得AACSB國際認證不僅是對商學院教學品質之肯定，亦能提升本校之國際知名度，將逢甲大學推向國際級一流學府的地位。"
-            ],
-            "image": [
-                "images/工學院_01.jpg",
-                "images/工學院_02.jpg",
-                "images/工學院_03.jpg"
-            ],
-            "department": [{
-                    "department_type": "學士班",
-                    "department_list": [{
-                            "department_name": "會計學系",
-                            "department_url": "http://www.acct.fcu.edu.tw/wSite/mp?mp=420101"
-                        },
-                        {
-                            "department_name": "經濟學系",
-                            "department_url": "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101"
-                        }
-                    ]
-                },
-                {
-                    "department_type": "碩士班",
-                    "department_list": [{
-                            "department_name": "會計學系",
-                            "department_url": "http://www.acct.fcu.edu.tw/wSite/mp?mp=420101"
-                        },
-                        {
-                            "department_name": "經濟學系",
-                            "department_url": "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101"
-                        }
-                    ]
-                }
-            ]
-        },
-        "__v": 0
+            "college_building": "丘逢甲紀念館3樓",
+            "location": "24.178318, 120.648279"
+        }
     },
     {
         "_id": 4,
-        "college_name": "工學院",
-        "college_location": {
-            "college_building": "商學大樓",
-            "latitude": 123,
-            "longitude": 3333333
-        },
+        "college_name": "金融學院",
         "info": {
-            "introduction": [
-                "本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻，以培育國際企業發展所需之商管專業人才，並以培育學生具備商業資料分析的科技能力與國際企業所愛的移動能力為教學發展特色。",
-                "為達成上述使命，本院致力於：",
-                "持續提升教師專業知識、教學能力與學生學習成效。",
-                "鼓勵教師參與提升學校、企業及國家競爭力之相關服務與研究。",
-                "培育學生具備人文素養、專業知識與社會責任，以成為國際企業所需之專業人才。",
-                "此外，為順應國際化潮流，獲得國際學術組織認證是邁向國際化及提升國際競爭力的重要指標之ㄧ。本院為提升教學品質，並與國外著名大學並駕齊驅，於2006年申請加入AACSB成為會員。2007年12月因本校院系組織重整，復以商學院、金融學院之名，重新申請入會，修訂並遞交新的認證資格申請書(application)，並於2008年1月重新取得第一階段之認證預審資格。",
-                "本院(含金融學院及EMBA)之AACSB認證計畫書於2009年5月份正式送交AACSB審核，並分別於2009年6月及9月順利通過AACSBPAC(pre-accreditation committee) 及IAC(initial accreditation committee)會議審核通過，正式進入「初始認證」階段。2013年11月進行實地訪評，2014年2月3日AACSB公告本校通過認證，成為台灣第九所、中部第一所獲得AACSB認證的學校。",
-                "「國際商管學院促進協會」(The Association to Advance Collegiate Schools of Business, AACSB)成立於1916年，發起成員包括美國哈佛大學、耶魯大學以及康乃爾大學等，為全球最具指標性的商管學院認證機構，能獲得AACSB國際認證不僅是對商學院教學品質之肯定，亦能提升本校之國際知名度，將逢甲大學推向國際級一流學府的地位。"
-            ],
             "image": [
-                "images/丘逢甲紀念館_01.jpg",
-                "images/丘逢甲紀念館_02.jpg",
-                "images/丘逢甲紀念館_03.jpg"
+                "images/college/金融學院_01.jpg",
+                "images/college/金融學院_02.jpg",
+                "images/college/金融學院_03.jpg"
             ],
-            "department": [{
-                    "department_type": "學士班",
-                    "department_list": [{
-                            "department_name": "會計學系",
-                            "department_url": "http://www.acct.fcu.edu.tw/wSite/mp?mp=420101"
+            "department": [
+                {
+                    "department_type": "系所及學位學程",
+                    "department_list": [
+                        {
+                            "department_name": "財務金融學系",
+                            "department_url": "http://www.fina.fcu.edu.tw/wSite/mp?mp=415101",
+                            "department_location": " 商學大樓1211室",
+                            "department_phone": "04-24517250 轉4151"
                         },
                         {
-                            "department_name": "經濟學系",
-                            "department_url": "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101"
+                            "department_name": "風險管理與保險學系",
+                            "department_url": "http://www.rmi.fcu.edu.tw/wSite/mp?mp=412101",
+                            "department_location": " 商學大樓1001室",
+                            "department_phone": "04-24517250 轉4121"
+                        },
+                        {
+                            "department_name": "財務工程與精算學士學位學程",
+                            "department_url": "http://www.bpfeas.fcu.edu.tw/wSite/mp?mp=409701",
+                            "department_location": "商學大樓1201 室",
+                            "department_phone": "04-24517250 轉6111"
+                        },
+                        {
+                            "department_name": "金融碩士在職專班",
+                            "department_url": "http://www.fmba.fcu.edu.tw/wSite/mp?mp=615201",
+                            "department_location": "商學大樓703室",
+                            "department_phone": "04-24517250 轉6152"
+                        },
+                        {
+                            "department_name": "金融博士學位學程",
+                            "department_url": "http://www.fphd.fcu.edu.tw/wSite/mp?mp=615101",
+                            "department_location": "商學大樓703室",
+                            "department_phone": " 04-24517250 轉6152"
+                        }
+                    ]
+                }
+            ],
+            "introduction": "1. 持續提升教師專業知識、教學能力與學生學習成效。\n2. 鼓勵教師參與提升學校、企業及國家競爭力之相關服務與研究。\n3. 培育學生具備人文素養、專業知識與社會責任，以成為大中華企業所需之專業人才。",
+            "history": "在金融自由化與國際化的時代潮流之下，台灣金融產業走向金控時代，意味著金融產業必須進行大規模整併，在金控體系中涵括銀行、保險、證券以及投資理財等不同領域，因此如何整合不同的經營文化，發揮相乘相加的力量，是現今金融業首先必須解決的課題；另外法規的鬆綁以及跨國的購併，台灣的金融業還面臨外資銀行嚴竣的挑戰，如何尋找或培養具備整合性與國際觀的金融人才，更是現今金控公司刻不容緩的工作。\n\n展望未來台灣金融業的發展，在證券期貨、財務投資、融資管理、保險規畫及風險管理等領域之整合性人才將炙手可熱。因此，金融保險相關人才不僅必須瞭解自身專業，加強外語能力，還必須廣博多元地接觸其他領域的知識，才能在未來競爭激烈的金融環境中佔得一席之地。\n\n在此金融產業面臨整合與重拾專業倫理的關鍵時刻，財金保險相關領域的大學教育必須呼應產業的實務發展，因此本校以前瞻性的眼光，進行財金保險專業領域之整合，於2007年首創成立金融學院，整合財務金融系及風險管理與保險系等二系二所，以及風險管理與保險碩士在職專班，並於98學年度起增設金融博士學位學程，99學年度增設金融碩士在職專班(原風險管理與保險碩士在職專班予以併入)，102學年度增設財務工程與精算學士學位學程。目前有大學部學生1465名，碩士班學生90名，碩士在職專班57名，博士班學生62名，共1674名。在師資方面，目前有31位專任師資皆具有博士學位，另外有16位兼任老師。"
+        },
+        "college_location": {
+            "college_building": "商學大樓",
+            "location": "24.178333, 120.649845"
+        }
+    },
+    {
+        "_id": 5,
+        "college_name": "建築專業學院",
+        "info": {
+            "image": [
+                "images/college/建築專業學院_01.jpg",
+                "images/college/建築專業學院_02.jpg",
+                "images/college/建築專業學院_03.jpg"
+            ],
+            "department": [
+                {
+                    "department_type": "系所及學位學程",
+                    "department_list": []
+                }
+            ],
+            "introduction": "創造，成為先驅\n設計及創意可以說是本世紀最重要產業之一，也是人類發展文明根本的動力，「建築專業學院」從其獨特性邁向創新、前瞻、國際化，並將原有的建築範疇放大到與自然生態環境持續發展，細膩到關注生活細節文創提案，並配合學校從校級「綠色大學」推動，院級「大造綠色研發環境（ING）」定位，創造國際化建築教育平台綠色推動特色\\，積極建立具備「從搖籃到搖籃（C2C）特色」的建築專業學院。",
+            "history": "本校為因應全球跨領域資源整合之趨勢，並感於傳統建築教育機制已無法滿足全方位的建築專業人才培育，近年啟動教育改革，將建築系改制為建築專業學院，在2015年獲得教育部核准，2016年8月1日正式招生，成為國內第一、也是目前唯一的建築專業學院，並於9月24日舉辦成立典禮。\n\n        本校建築系成立於民國52年，系友遍布產、官、學各界，升級為建築專業學院之後，將有兩大特色，其一是學院底下規劃三個學程，包含建築設計、室內設計及創新設計，其二為學院採大一、大二課程不分流，讓所有學生接受完整的建築設計基礎訓練，大三以上提供不同的課程模組，提供學生選擇修讀建築學位學程（五年制）、室內設計學位學程（四年制）、創新設計學位學程（四年制），各課程模組之間可互相串連自由選讀，提供更多元的課程選擇。"
+        },
+        "college_location": {
+            "college_building": "忠勤樓",
+            "location": "24.179184, 120.647024"
+        }
+    },
+    {
+        "_id": 6,
+        "college_name": "國際科技與管理學院",
+        "info": {
+            "image": [
+                "images/college/國際科技與管理學院_01.jpg",
+                "images/college/國際科技與管理學院_02.jpg",
+                "images/college/國際科技與管理學院_03.jpg"
+            ],
+            "department": [
+                {
+                    "department_type": "系所及學位學程",
+                    "department_list": [
+                        {
+                            "department_name": "國際經營管理碩士學位學程",
+                            "department_url": "http://www.istm.fcu.edu.tw/CH/",
+                            "department_location": "圖書館二樓國際與科技管理學院",
+                            "department_phone": "04-24517250 轉6620、04-35072162"
+                        }
+                    ]
+                }
+            ],
+            "introduction": "逢甲大學教育目標\nA.欣賞人類共通的人文價值，尊重道德與文化傳統，並能予以實現。\nB.重視知識，主動求知，具有創新、整合、多元、國際之專業能力及合作精神，追求卓越及終身學習。\nC.開放的心胸及批判思考能力，具備責任感、誠實及勇氣，並有服務社會的熱情與能力。\n國際學院教育目標\nA.培養具備國際視野、尊重多元文化及善於溝通的專業人才。\nB.深化科技與管理知識、獨立分析、判斷與創新創業的能力。\nC.打造宏觀格局與博雅涵養，強化企業倫理與社會責任。",
+            "history": "逢甲大學於2014年成立國際科技與管理學院，授課內容有別傳統，以專題課程激發學生的學習力，開設2+2國際專班，學生2年在逢甲，2年在國外，四年後可取得兩校雙學士文憑。"
+        },
+        "college_location": {
+            "college_building": "圖書館",
+            "location": "24.178655, 120.648941"
+        }
+    },
+    {
+        "_id": 7,
+        "college_name": "資電學院",
+        "info": {
+            "image": [
+                "images/college/資電學院_01.jpg",
+                "images/college/資電學院_02.jpg",
+                "images/college/資電學院_03.jpg"
+            ],
+            "department": [
+                {
+                    "department_type": "系所",
+                    "department_list": [
+                        {
+                            "department_name": "資訊工程學系",
+                            "department_url": "http://www.iecs.fcu.edu.tw/wSite/mp?mp=370201",
+                            "department_location": "資訊電機館201室",
+                            "department_phone": "04-24517250 轉 3701"
+                        },
+                        {
+                            "department_name": "電機工程學系",
+                            "department_url": "http://www.ee.fcu.edu.tw/wSite/mp?mp=380101",
+                            "department_location": "資訊電機館301室",
+                            "department_phone": "04-24517250 轉 3801"
+                        },
+                        {
+                            "department_name": "電子工程學系",
+                            "department_url": "http://www.ece.fcu.edu.tw/wSite/mp?mp=490101",
+                            "department_location": "電子通訊館122室",
+                            "department_phone": "04-24517250 轉 4901"
+                        },
+                        {
+                            "department_name": "自動控制工程學系",
+                            "department_url": "http://www.auto.fcu.edu.tw/wSite/mp?mp=390101",
+                            "department_location": "資訊電機館425室",
+                            "department_phone": "04-24517250 轉3901"
+                        },
+                        {
+                            "department_name": "通訊工程學系",
+                            "department_url": "http://www.ce.fcu.edu.tw/wSite/mp?mp=480101",
+                            "department_location": "電子通訊館220室",
+                            "department_phone": "04-24517250 轉4801"
+                        },
+                        {
+                            "department_name": "不分系榮譽班",
+                            "department_url": "http://www.fcu.edu.tw/wSite/mp?mp=386101",
+                            "department_location": "資訊電機館521室",
+                            "department_phone": "04-24517250轉3863"
+                        },
+                        {
+                            "department_name": "資訊電機工程碩士在職學位學程",
+                            "department_url": "http://www.miee.fcu.edu.tw/wSite/mp?mp=386501",
+                            "department_location": "資訊電機館521室",
+                            "department_phone": "04-24517250 轉 3865"
+                        },
+                        {
+                            "department_name": "生醫資訊暨生醫工程碩士學程",
+                            "department_url": "http://www.bmie.fcu.edu.tw/wSite/mp?mp=389101",
+                            "department_location": "資訊電機館521室",
+                            "department_phone": "04-24517250轉3892"
+                        },
+                        {
+                            "department_name": "光電能源與視覺科技碩士在職專班",
+                            "department_url": "http://www.most.fcu.edu.tw/wSite/mp?mp=488101",
+                            "department_location": "資訊電機館202室",
+                            "department_phone": "04-24517250 轉 3991"
+                        },
+                        {
+                            "department_name": "產業研發碩士班",
+                            "department_url": "http://www.rdms.fcu.edu.tw/wSite/mp?mp=387101",
+                            "department_location": "資訊電機館521室",
+                            "department_phone": "04-24517250 轉3871"
+                        },
+                        {
+                            "department_name": "電機與通訊工程博士學位學程",
+                            "department_url": "http://www.gece.fcu.edu.tw/wSite/mp?mp=499101",
+                            "department_location": "資訊電機館521室",
+                            "department_phone": "04-24517250 分機3892"
+                        },
+                        {
+                            "department_name": "智慧聯網產業博士學位學程",
+                            "department_url": "http://www.iot-phd.fcu.edu.tw/wSite/mp?mp=387201&ctNode=42987&idPath=37183_37188_37196",
+                            "department_location": "資訊電機館5樓",
+                            "department_phone": "04-24517250 轉 3872"
                         }
                     ]
                 },
                 {
-                    "department_type": "碩士班",
-                    "department_list": [{
-                            "department_name": "會計學系",
-                            "department_url": "http://www.acct.fcu.edu.tw/wSite/mp?mp=420101"
+                    "department_type": "研究中心",
+                    "department_list": [
+                        {
+                            "department_name": "積體電路電磁相容研發中心",
+                            "department_url": "http://www.icemc.fcu.edu.tw/wSite/mp?mp=388101",
+                            "department_location": "資訊電機館5樓",
+                            "department_phone": "04-24517250 轉3881"
                         },
                         {
-                            "department_name": "經濟學系",
-                            "department_url": "http://www.econ.fcu.edu.tw/wSite/mp?mp=445101"
+                            "department_name": "資通安全研究中心",
+                            "department_url": "http://icsrc.iecs.fcu.edu.tw/?ctNode=37212&idPath=37183_37188_37198",
+                            "department_location": "資訊電機館242室",
+                            "department_phone": "04-24517250 轉 3716"
+                        },
+                        {
+                            "department_name": "嵌入式系統發展研究中心",
+                            "department_url": "",
+                            "department_location": "",
+                            "department_phone": ""
+                        },
+                        {
+                            "department_name": "3D列印研究發展中心",
+                            "department_url": "http://www.3dprint.fcu.edu.tw/wSite/mp?mp=489201",
+                            "department_location": "資訊電機館514室",
+                            "department_phone": "04-24517250 轉3755"
+                        },
+                        {
+                            "department_name": "視覺光學研究中心",
+                            "department_url": "http://www.vorc.fcu.edu.tw/wSite/mp?mp=489501",
+                            "department_location": ""
+                        }
+                    ]
+                }
+            ],
+            "introduction": "本院自1999年成立，不僅為大中部第一個資訊電機學院，更首創學程導向的教學規劃，有效整合教學與研究資源，建立多元化、精緻化、資訊化、國際化的教學環境。期使本院不僅成為大台中，全國，也是國際公認的第一流學院，對現代科技教育，學術研究以及社會發展，均有卓越之貢獻。本院的教育目標如下：\n1.鼓勵創新，發展特色：秉持「策略規劃、特色經營」的精神，以既有的知識技術，配合社會的期待需求，不斷積極開發資電科技的最新技術，培育學有專精的科技人才。\n2.學程導向，強調務實：由專業學程的教育規劃，配合產學合作的實務研發，凝聚眾人的努力以及智慧，誠懇務實地培育下一代科技新血，提昇國家科技水平。\n3.追求卓越，永續發展：隨著世界的發展而進步，以積極的態度及務實的眼光，配合堅強的校友組織，突破一切主客觀限制，不斷自我提升，永為先進科技的培育搖籃。",
+            "history": "鑑於資電科技的快速更迭以及資電人才的需求孔急，逢甲大學於民國八十八年結合既有的資電相關科系、整合教學和研究資源，率先於大中部地區成立第一個資訊電機學院。首創學程導向的教學規劃，有效整合教學與研究資源，建立多元化、精緻化、資訊化、國際化的教學環境。\n        本院目前的組織包括有電機與通訊工程博士學位學程、資訊工程學系(大學部、碩士班、博士班)、電機工程學系(大學部、碩士班)、電子工程學系(大學部、碩士班)、自動控制工程學系(大學部、碩士班)、通訊工程學系(大學部、碩士班)、資電榮譽班(大學部)、資電碩士在職專班、光電能源與視覺科技碩士在職專班、智慧聯網產業博士學位學程、產業研發碩士專班、資電器材中心、嵌入式系統發展研究中心、3D列印研究發展中心、資通安全研究中心、積體電路電磁相容研發中心、視覺光學研究中心、天線暨微波電路創新研究中心、以及智慧聯網研究中心等單位。本院專任師資超過百人，其中具博士學位者佔96%，並多具有產業界實務經驗，為學生提供多樣、完整而專業的知識。\n       本院以發展智慧聯網之關鍵技術與應用為主要任務，建立未來智慧聯網所需之感測網路資料收集技術、異質資料匯集技術、以及後端巨量資料判斷分析和回饋技術。規劃推行智慧聯網相關之節能服務與智慧商圈，並提升與改善本院感控與節能應用，未來將推行實現於逢甲智慧商圈之整合性智慧聯網服務為目標。\n       為迎向廿一世紀高科技的競爭和面對富挑戰的新社會和新秩序，本院各學系經組織精實重整後，在整體發展方向上更為明確，在教學資源方面創新學程導向教學制度，在學術及技術的研發上則戮力於整合及蘊積研發能量，以期在研發的質與量上做更進一步的提昇。透過院特色計畫及各項專案計畫的規劃執行，各研究領域的設備亦逐步擴充，並以提昇研究品質、增進產學合作和教育訓練為宗旨，增進產學互動，加強國際學術交流，積極建構本院成為具前瞻性與科技觀的一流學院。"
+        },
+        "college_location": {
+            "college_building": "資訊電機館",
+            "location": "24.179240, 120.649679"
+        }
+    },
+    {
+        "_id": 8,
+        "college_name": "人文社會學院",
+        "info": {
+            "image": [
+                "images/college/人文社會學院_01.jpg",
+                "images/college/人文社會學院_02.jpg",
+                "images/college/人文社會學院_03.jpg"
+            ],
+            "department": [
+                {
+                    "department_type": "系所",
+                    "department_list": [
+                        {
+                            "department_name": "中國文學系",
+                            "department_url": "http://www.cl.fcu.edu.tw/wSite/mp?mp=535101",
+                            "department_location": "人言大樓805室",
+                            "department_phone": "04-24517250 轉5351"
+                        },
+                        {
+                            "department_name": "外國語文學系",
+                            "department_url": "http://www.fll.fcu.edu.tw/wSite/mp?mp=560101",
+                            "department_location": "人言大樓803室",
+                            "department_phone": " 04-24517250 轉5603"
+                        },
+                        {
+                            "department_name": "歷史與文物研究所",
+                            "department_url": "http://www.ghhr.fcu.edu.tw/wSite/mp?mp=565101",
+                            "department_location": "人言大樓807",
+                            "department_phone": "04-24517250 轉5652、5653"
+                        },
+                        {
+                            "department_name": "公共事務與社會創新研究所",
+                            "department_url": "http://www.gipp.fcu.edu.tw/wSite/mp?mp=570101",
+                            "department_location": "人言大樓801室",
+                            "department_phone": "04-24517250轉5702、5709"
+                        }
+                    ]
+                },
+                {
+                    "department_type": "研究中心",
+                    "department_list": [
+                        {
+                            "department_name": "B型企業王道中心",
+                            "department_url": "",
+                            "department_location": "",
+                            "department_phone": ""
+                        },
+                        {
+                            "department_name": "庶民文化研究中心",
+                            "department_url": "http://www.csel.fcu.edu.tw/wSite/mp?mp=551101",
+                            "department_location": "人言大樓905 室",
+                            "department_phone": "04-24517250 轉5512"
+                        },
+                        {
+                            "department_name": "唐代研究中心",
+                            "department_url": "http://tang.cl.fcu.edu.tw/wSite/mp?mp=535601",
+                            "department_location": "人言大樓905-1室",
+                            "department_phone": "04-24517250 轉5501"
+                        },
+                        {
+                            "department_name": "公共政策研究中心",
+                            "department_url": "http://www.pprc.fcu.edu.tw/wSite/mp?mp=572201",
+                            "department_location": "人言大樓905-2室",
+                            "department_phone": "04-24517250 轉5722"
+                        },
+                        {
+                            "department_name": "亞太博物館學與文化研究中心",
+                            "department_url": "",
+                            "department_location": "",
+                            "department_phone": ""
+                        }
+                    ]
+                }
+            ],
+            "introduction": "人文社會學院在學校由工商學院轉型為精緻綜合大學上扮演著重要角色，著力於提昇本校人文社會學術研究及相關領域的發展，加強人文社會科學與自然科學的均衡發展，倡導校園藝文，結合社區文化，參與公共政策之討論。在本校資訊化、精緻化和多元化的理想以及國際化的趨勢上，除了積極建立院系特色，發展重點研究，未來擬著眼於結合統整多重學科的教學與研究，發展跨領域的前瞻概念，萃集人文社會發展的團隊成就，培養學生的多元知能與第二專長，以期更能掌握時代脈動，培育具有專業能力、六大軟能力與服務熱忱之現代民主社會公民。",
+            "history": "為落實本校「營造優質的學習環境，並藉由提供豐富的通識教育、紮實的專業課程、及全程的輔導關懷，培養畢業生成為兼具人文素養與專業知識之現代民主社會公民。」的教育使命，人文社會學院自1999年成立以來，先後設立四個學術單位：中國文學系（學士、碩士、博士班）、外國語文學系（學士班、英語文研究碩士班）、歷史與文物研究所（碩士班）、公共事務與社會創新研究所（碩士、碩士在職專班）。另設有二個學分學程：華語教師學程、社會傳播學程，以及五個研究中心：唐代研究中心、公共政策研究中心、庶民文化研究中心、亞太博物館學與文化研究中心、B型企業王道中心。\n \n　　人文社會學院在學校由工商學院轉型為精緻綜合大學上扮演著重要角色，著力於提昇本校人文社會學術研究及相關領域的發展，加強人文社會科學與自然科學的均衡發展，倡導校園藝文，結合社區文化，參與公共政策之討論。在本校資訊化、精緻化和多元化的理想以及國際化的趨勢上，除了積極建立院系特色，發展重點研究，未來擬著眼於結合統整多重學科的教學與研究，發展跨領域的前瞻概念，萃集人文社會發展的團隊成就，培養學生的多元知能與第二專長，以期更能掌握時代脈動，培育具有專業能力、六大軟能力與服務熱忱之現代民主社會公民。"
+        },
+        "college_location": {
+            "college_building": "人言大樓",
+            "location": "24.179720, 120.648625"
+        }
+    },
+    {
+        "_id": 9,
+        "college_name": "理學院",
+        "info": {
+            "image": [
+                "images/college/理學院_01.jpg",
+                "images/college/理學院_02.jpg",
+                "images/college/理學院_03.jpg"
+            ],
+            "department": [
+                {
+                    "department_type": "系所",
+                    "department_list": [
+                        {
+                            "department_name": "應用數學學系",
+                            "department_url": "http://www.math.fcu.edu.tw/wSite/mp?mp=510101",
+                            "department_location": "理學大樓201室",
+                            "department_phone": "04-24517250 轉5101"
+                        },
+                        {
+                            "department_name": "環境工程與科學學系",
+                            "department_url": "http://www.ees.fcu.edu.tw/wSite/mp?mp=520101",
+                            "department_location": "理學大樓301室",
+                            "department_phone": "04-24517250 轉5201"
+                        },
+                        {
+                            "department_name": "材料科學與工程學系",
+                            "department_url": "http://www.mse.fcu.edu.tw/wSite/mp?mp=530101",
+                            "department_location": "學思樓321室",
+                            "department_phone": "04-24517250轉5301"
+                        },
+                        {
+                            "department_name": "光電學系",
+                            "department_url": "http://www.photonics.fcu.edu.tw/wSite/mp?mp=505101",
+                            "department_location": "理學大樓理109室",
+                            "department_phone": "04-24517250 轉5051"
+                        }
+                    ]
+                },
+                {
+                    "department_type": "研究中心",
+                    "department_list": [
+                        {
+                            "department_name": "環境安全衛生教育暨研究中心",
+                            "department_url": "http://www.cesh.fcu.edu.tw/wSite/mp?mp=528901&ctNode=36911&idPath=36833_36879_36882",
+                            "department_location": "理學大樓B101室",
+                            "department_phone": "04-24517250 轉5285"
+                        },
+                        {
+                            "department_name": "材料研究中心",
+                            "department_url": "http://www.mrc.fcu.edu.tw/wSite/mp?mp=530301&ctNode=36912&idPath=36833_36879_36882",
+                            "department_location": "學思樓405室",
+                            "department_phone": "04-24517250 轉5303"
+                        }
+                    ]
+                }
+            ],
+            "introduction": "使命與願景\n 本院於96年度凝聚全院共識所訂定之發展願景為：\n1.在基礎科學之奠基下，積極建立多元與廣博的優質學習環境。\n2.規劃跨領域研究以提昇研究能量及學術水準，成為中部地區學術領先的理學院。\n \n為達成理學院願景，茲擬定全院教育使命如下：\n1.具備科學知識與素養，及跨領域專業知能，並持續成長與終身學習，成為科技專精人才。\n2.發揮科學精神，秉持專業倫理、敬業態度與團隊合作，並以恢弘之國際觀追求卓越。\n3.具備人文涵養、道德關懷與社會責任，並尊重不同社群的價值觀。\n \n綜合而言，本院之整體教育目標，以培育具基礎科學及應用科技之優秀人才為主，並養成學生具備團隊精神及領導才能，以應社會各界需要，期能發揮所長，進而蔚為社會中堅。",
+            "history": "理學院成立於民國69年，82年加入中國文學系，更名為文理學院。其後基於院系重整之政策，中國文學系改隸人文社會學院，故文理學院於民國88年重新更名為理學院。本學院目前設有四個學系及四個中心，分別為應用數學系、環境工程與科學學系、材料科學與工程學系、光電學系、物理教學研究中心、材料研究中心、環境與安全衛生教育暨研究中心及微積分教學中心。\n　\n各學系之發展均朝向完整學制方向進行，目前應數系設有學、碩士班，並於「機械與航空工程研究所博士班」成立「計算數學組」招收博士生，也負責全校「微積分」課程之教學；環科系及材料系均包括完整之學、碩、博士班之培育；材料系另與機械系與化工系合辦碩士在職專班，並協助資電學院辦理光電產業碩士在職專班，提供在職進修之管道；光電系於93學年成立並與光電物理所更名後合併，分別招收學、碩士班學生，積極聘任光電相關專長教師，朝向設立博士班之方向努力。研究中心為任務導向之規劃，物理教學研究中心主要負責全校普通物理及實驗之教學；材料研究中心及環境與安全衛生教育暨研究中心成立於93年度，目的在整合校內相關研發人力，並扮演對外學術服務與技術交流之工作平台。更於97學年度設立微積分教學中心，強化大一基礎學科『微積分』科目。\n　\n各項院務工作之執依所屬單位之本質與現況，同時考量社會發展與需求，規劃本院之發展策略。教學方面：結合理論與實務，加強輔助教學、規劃學程、更新實驗（習）與教學設備，增進教學環境品質並提供多元化之學習環境，以提升學生之競爭力，並積極協助各系充實師資，建立碩、博士班之完整學制。研究與服務方面：積極規劃跨學（院）系之研究群，整合教師研究能量，爭取研究計畫經費，強化研究體質，以提高教師學術研究成就。透過研究中心之成立，結合產、官、學、研之力量，發展產學合作，以創造雙贏新局；同時善用系所特性，積極發展各項推廣教育及專業訓練課程，善盡大學對社會服務之責任與義務。"
+        },
+        "college_location": {
+            "college_building": "理學大樓",
+            "location": "24.181193, 120.647328"
+        }
+    },
+    {
+        "_id": 10,
+        "college_name": "經營管理學院",
+        "info": {
+            "image": [
+                "images/college/經營管理學院_01.jpg",
+                "images/college/經營管理學院_02.jpg",
+                "images/college/經營管理學院_03.jpg"
+            ],
+            "department": [
+                {
+                    "department_type": "系所",
+                    "department_list": [
+                        {
+                            "department_name": "電子商務碩士在職專班",
+                            "department_url": "http://www.smd.fcu.edu.tw/wSite/mp?mp=600001",
+                            "department_location": "台中市西屯區東大路一段951號",
+                            "department_phone": "04-24608566 轉6000"
+                        }
+                    ]
+                }
+            ],
+            "introduction": "A.與國際同步躍升\n打破國內一般MBA附屬於商學院系的定位，逢甲大學經營管理學院（School of Management Development; SMD；簡稱經管院）大膽從體質與組織上創新，並以台灣的洛桑學院（IMD）為期許。在學制上，則效法歐美正統EMBA的運作模式，成立獨立學院；在課程上，則以院整合組織、策略、財務、生產、行銷、人力資源、科技管理與產業經濟策略等領域之師資，規劃出貼近市場脈動，符合企業界需求的經營管理課程。\nB.向古老智慧師法\n在理念上，採融合古時太學的官學標準要求，不僅提供兼具人文及科技氛圍的學習交流互動平台，更在課程規劃獨具匠心，並定期安排學生海外研習及田野研究，以最直接的海外參訪，讓學生體驗國際的趨勢環境。\n逢甲經管院之設立宗旨在於「以台灣核心優勢為體，經營管理知識為用，培養具國際觀的企業家領導人」。台灣核心優勢是指在高情境文化下快速彈性動態組合的經營管理型態，而可反映出臺灣企業家精神的優勢；經營管理知識意謂經營的熱忱與管理的決策分析力，以提高企業家領導人競爭全球經營市場的效率與效能，並以「開展全方位的經營管理能力、提升管理格局、增強國際適應能力」為教育目標，以培養學生的寬廣國際觀、圓融處世觀、慎密決策觀，並成為具台灣管理風格的專業經理人才。\nC.發展高低情境專屬的「SCOPAB+」　六大元素教學重點\n依據設立宗旨、使命及目標，具體落實所設計的課程特色，將課程區分為低情境課程（Low Context）與高情境課程（High Context）二大領域。\n低情境課程強調經濟理性與邏輯思考，內容涵蓋策略與定位（Strategy & Positioning）、成本與財務（Cost & Finance）、組織（Organization）與流程（Process）四大部份；高情境課程則訴求創意思考與文化關懷，內容包括藝術（Arts）與品牌經營（Branding），其中藝術部份以人文/美學（Humanism & Aesthetics）為範疇。\n「SCOPAB+」以六大元素教學重點為碁盤，強化終身保固學習能量，舉凡企業高峰班、海外研習、特色講座…等，以開展學生全方位經營管理能力、提升管理格局與增強國際適應能力。",
+            "history": "為配合國家經濟建設之發展及企業面對國內外激烈競爭之需要，逢甲大學商學院特設置整合性「經營管理碩士在職專班」，並於九十一學年度正式對外招生，其目的在培育具國際觀，能經營大中華的經營管理人才。\n\n九十三學年度正式獨立成立「經營管理學院」，並於九十四至九十六學年度依不同來源初設高階管理組與經營管理組兩組，另因應中部科學園區之設立，而增設科技管理組；九十七學年度再度因應社會之需求增設文化創意產業管理組；九十八學年度配合教育部在職及回流教育利用「數位學習」進修管道，並增加在職人士繼續進修的機會，成立「電子商務碩士在職專班」。"
+        },
+        "college_location": {
+            "college_building": "逢甲大學經管院中科校區",
+            "location": "24.201581, 120.609402"
+        }
+    },
+    {
+        "_id": 11,
+        "college_name": "跨領域設計學院",
+        "info": {
+            "image": [
+                "images/college/跨領域設計學院_01.jpg",
+                "images/college/跨領域設計學院_02.jpg",
+                "images/college/跨領域設計學院_03.jpg"
+            ],
+            "department": [
+                {
+                    "department_type": "系所",
+                    "department_list": [
+                        {
+                            "department_name": "跨領域設計學院",
+                            "department_url": "http://www.dschool.fcu.edu.tw/",
+                            "department_location": "教學資源中心",
+                            "department_phone": "04-24517250 轉2871"
+                        }
+                    ]
+                }
+            ],
+            "introduction": "跨領域設計課程以Real Company、Real Project、Real Design為特色,課程以設計思考為基礎,解決社會真實問題,透過做中學培養學生溝通、團隊合作能力。",
+            "history": "隨著工業4.0時代的來臨,人才培育需求已從過去專業知識導向轉變為跨領域的創新能力,高等教育也隨之逐漸轉型,為了培養未來人才,本校設立跨領域設計學院,以教師、學生的跨域合作,推動跨領域學習,透過構思、設計、實施、操作之創新教學模式,促進學生創新思考,培養定義問題、團隊合作及解決問題能力,並邀請產業界共同投入資源,以跨領域設計學院為平台,整合業界資源與校內師資,讓學生透過解決真實問題,將專業應用於實務,培養就業即戰力,也讓產業與學校共同育才,培養未來人力資源,同時獲得多元企業或產品發展建議。"
+        },
+        "college_location": {
+            "college_building": "行政二館",
+            "location": "24.178626, 120.647705"
+        }
+    },
+    {
+        "_id": 12,
+        "college_name": "跨科系學習",
+        "info": {
+            "image": [
+                "images/college/通識教育中心.jpg",
+                "images/college/雲端學院.jpg",
+                "images/college/外語教學中心.jpg",
+                "images/college/國語文教學中心.jpg",
+                "images/college/全校國際生大一不分系學士班.jpg"
+            ],
+            "department": [
+                {
+                    "department_type": "系所位置",
+                    "department_list": [
+                        {
+                            "department_name": "通識教育中心",
+                            "department_url": "http://www.genedu.fcu.edu.tw/wSite/mp?mp=214101",
+                            "department_location": "人言大樓10樓",
+                            "department_phone": "04-24517250 轉 2141"
+                        },
+                        {
+                            "department_name": "雲端學院",
+                            "department_url": "http://cloudacademy.fcu.edu.tw/",
+                            "department_location": "圖書館",
+                            "department_phone": "04-24517250 轉2601"
+                        },
+                        {
+                            "department_name": "外語教學中心",
+                            "department_url": "http://www.fcuflc.fcu.edu.tw/wSite/mp?mp=588101&ctNode=44797&idPath=31688_44797",
+                            "department_location": "資訊電機館1樓外語教學中心",
+                            "department_phone": "04-24517250 轉5881"
+                        },
+                        {
+                            "department_name": "國語文教學中心",
+                            "department_url": "http://www.cclc.fcu.edu.tw/wSite/mp?mp=536901&ctNode=44799&idPath=31688_44799",
+                            "department_location": "資訊電機館106室",
+                            "department_phone": "04-24517250 轉5533"
+                        },
+                        {
+                            "department_name": "全校國際生大一不分系學士班",
+                            "department_url": "http://www.pmp.fcu.edu.tw/wSite/mp?mp=214106&ctNode=44794&idPath=31688_44794",
+                            "department_location": "資訊電機館109室",
+                            "department_phone": "04-24517250 轉5542"
                         }
                     ]
                 }
             ]
         },
-        "__v": 0
+        "college_location": {}
     }
 ]

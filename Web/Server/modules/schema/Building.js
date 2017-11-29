@@ -13,10 +13,7 @@ const buildingSchema = new mongoose.Schema({
     info: {
         type: Object,
         introduction: String,
-        image: {
-            type: Array,
-            image_location: String
-        },
+        image: Array,
         floor_count: Number
     }
 });
