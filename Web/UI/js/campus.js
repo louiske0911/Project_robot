@@ -28,7 +28,7 @@ function AddContainer(campusInfo) {
 
     section = SetOuterSection();
     // append inner_bg div for jquery remove and change page
-    $('#outer_bg').append('<div id="inner_bg" class="mt-5 mb-5 ml-5 pl-5 row justify-content-center inner_background"></div>')
+    $('#outer_bg').append('<div id="inner_bg" class="mt-5 ml-5 pl-5 row justify-content-center inner_background"></div>')
 
     $('#inner_bg').prepend(section);
 
@@ -56,7 +56,7 @@ function AddCard(campusInfo) {
 
         let carouselId = "carouselId_" + pageCount;
         const carousel_item =
-            '<div class="px-5 sub_container_trans carousel-item">' +
+            '<div class="pl-5 sub_container_trans carousel-item">' +
             '<div id="' + carouselId + '" class="p-3 row main_container_clear justify-content-center rounded"></div></div>';
 
         let cardIndex = campusInfo.length - (carouselCount - pageCount) * 3; //  總Card數 - (總CarouselPage數 - 當下頁數)
@@ -105,13 +105,13 @@ function SetSubContainer(campusInfo, index) {
         '<h6 class="sub-title text-muted">' + campusInfo[index]['location']['building'] + '</h6 > ' +
         '</div>' +
         '<div class="card-body">' +
-        '<img class="d-block img-fluid" src="' + campusInfo[index]['info']['image'][0] + '">' +
+        '<img class="d-block img-fluid" src="' + campusInfo[index]['info']['image'][1] + '">' +
         '<p class="mt-4 card-text">' + campusInfo[index]['info']['introduction'] + '</p>' +
         '</div>' +
         '<div class="card-footer">' +
         '<div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">' +
-        '<button class="btn btn-outline-primary button_rwd">開始導覽</button>' +
-        '<button id=' + campusInfo[index]['id'] + ' class="btn btn-outline-primary button_rwd" onclick="GetSpecifyInfoById(' + dialogType + ')">More..</button>' +
+        '<button class="btn btn-outline-secondary button_rwd">開始導覽</button>' +
+        '<button id=' + campusInfo[index]['id'] + ' class="btn btn-outline-secondary button_rwd" onclick="GetSpecifyInfoById(' + dialogType + ')">More..</button>' +
         '</div>' +
         '</div>' +
         '</div>' +
@@ -125,7 +125,7 @@ function GetCampusInfo(url) {
 
     fetch(url, {
         method: 'GET',
-    }).then(function(response) {
+    }).then(function (response) {
         if (response.status >= 200 && response.status < 300) {
             return response.json()
         } else {
@@ -133,15 +133,15 @@ function GetCampusInfo(url) {
             error.response = response
             throw error
         }
-    }).then(function(data) {
+    }).then(function (data) {
         campusInfo = data;
         console.log(campusInfo);
         AddContainer(campusInfo);
         $('#loader_block').css("display", "none");
         // data 才是實際的 JSON 資料
-    }).catch(function(error) {
+    }).catch(function (error) {
         return error.response;
-    }).then(function(errorData) {
+    }).then(function (errorData) {
         // errorData 裡面才是實際的 JSON 資料
     });
 }

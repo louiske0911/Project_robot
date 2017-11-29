@@ -1,13 +1,27 @@
-body {
+/* body {
     background-image: url('../images/RenIan.jpg');
     background-size: cover;
-    opacity: 0.7;
+    /* opacity: 0.7; */
+
+
+/* } */
+
+.lead_container::before {
+    content: '';
+    background-image: url('../images/RenIan.jpg');
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    opacity: 0.6;
+    position: absolute;
+    z-index: -1;
 }
 
 .lead_container {
     position: fixed;
     width: 100vw;
-    height: calc(100vh - 50px);
+    height: 100vh;
+    /* height: calc(100vh - 50px); */
     z-index: 300;
     bottom: 0;
 }
@@ -19,7 +33,7 @@ body {
     bottom: 0;
     right: 0;
     background-color: seagreen;
-    opacity: 0.9;
+    opacity: 0.8;
     border-width: 10px 0 0 10px;
     border-color: rgba(255, 255, 255, 0.7);
     border-style: solid;
@@ -35,7 +49,6 @@ body {
 
 .main_container {
     position: fixed;
-    border: rebeccapurple 2px solid;
     height: 60vh;
     top: 30%;
     left: 10%;
@@ -47,7 +60,7 @@ body {
 
 .circle {
     border-radius: 99em;
-    opacity: 0.8;
+    opacity: 0.7;
     border: 10px solid;
     border-color: rgba(255, 255, 255, 0.7);
     color: white;
@@ -88,7 +101,6 @@ body {
         height: 250px;
     }
     .inner_container.bottom {
-        border: blue 2px solid;
         padding: 0 12%;
     }
 }
@@ -102,13 +114,16 @@ body {
     }
     .login {
         width: 25vw;
+        height: 12vh;
     }
     .circle {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
     }
     .inner_container.bottom {
-        border: red 2px solid;
         padding: 0 12%;
+    }
+    .circle>h2 {
+        font-size: 25px;
     }
 }

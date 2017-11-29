@@ -12,10 +12,14 @@
     <link href="icon/css/font-awesome.css" rel="stylesheet">
 
     <!-- will be switch the glyphicons icon which can use on loacl -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
 
     <script src="js/bulletin.js" async></script>
     <script src="js/campus.js" async></script>
@@ -58,10 +62,6 @@
                         </a>
                         <a class="nav-link" href="#">
                             <span class="fa fa-question-circle-o fa-fw"></span>關於我們</a>
-                        <a class="nav-link" href="#">
-                            <span class="fa fa-sign-in fa-fw"></span>Log in</a>
-                        <a class="nav-link" href="#">
-                            <span class="fa fa-sign-out fa-fw"></span>Log out</a>
                     </nav>
                 </div>
             </div>
@@ -73,7 +73,8 @@
     </div> -->
     <div id="outer_bg" class="container fcu_background">
         <div id="inner_bg" class="row justify-content-center inner_background">
-            <button onclick="Speech('本院致力於成為亞太知名商管學院')">talk</button>
+            <!-- <button onclick="Speech('本院致力於成為亞太知名商管學院')">talk</button> -->
+            <div id="map-canvas"></div>
         </div>
     </div>
 </body>
@@ -83,11 +84,11 @@
     var textToDisplay = "本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻",
         $output = $("#456");
 
-    $("#123").click(function() {
+    $("#123").click(function () {
         var displayInt;
         textToDisplay = textToDisplay.split('');
         $output.empty();
-        displayInt = setInterval(function() {
+        displayInt = setInterval(function () {
             var word = textToDisplay.shift();
             if (word == null) {
                 return clearInterval(displayInt);

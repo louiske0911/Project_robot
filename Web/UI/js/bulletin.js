@@ -203,10 +203,10 @@ function GoolgeMap() {
     }
 }
 
-function test(data) {
-    getBulletin();
-    alert(data);
-}
+// function test(data) {
+//     getBulletin();
+//     alert(data);
+// }
 
 function CloseMap() {
     GOOGLE_STATUS = 0;

@@ -8,7 +8,6 @@ body {
     padding: 0;
     height: 100%;
     background-color: #EEEEEE !important;
-    /* overflow-x: hidden;    */
 }
 
 #carousel_item {
@@ -123,11 +122,10 @@ body {
 }
 
 #bulletin_dialog {
-    position: absolute;
-    top: 50%;
+    position: fixed;
+    top: 25vw;
     left: 50%;
-    width: 50%;
-    /* height: 70%; */
+    width: 50vw;
     background-color: rgba(255, 255, 255, 1);
     z-index: 999;
     visibility: hidden;
@@ -219,7 +217,7 @@ body {
     position: relative;
     background-color: rgba(255, 255, 255, .95);
     border-radius: 0.6rem !important;
-    /* width: 20vw; */
+    text-overflow: ellipsis;
     box-shadow: 0 5px 16px 0 rgba(0, 0, 0, .6), 0 10px 30px 0 rgba(0, 0, 0, .6);
 }
 
@@ -229,7 +227,7 @@ body {
 }
 
 .sub_container .card-body>img {
-    border-radius: 0.30rem !important;
+    /* border-radius: 0.30rem !important; */
     opacity: 0.90;
     box-shadow: 0 4px 2px #777;
     width: 100%;
@@ -264,7 +262,7 @@ body {
 .sidebar {
     background-image: url('../../images/sidebar-1.jpg');
     position: fixed;
-    height: 100vh;
+    height: 100%;
     z-index: 2;
     background-color: rgba(238, 238, 238, .8);
     display: block;
@@ -284,7 +282,7 @@ body {
 
 .nav_bar {
     font-family: "Times New Roman", Times, serif;
-    height: 100vh;
+    height: 100%;
     position: relative;
     background-color: rgba(255, 255, 255, .9);
     top: 0;
@@ -355,20 +353,23 @@ nav>a {
         min-height: 85vh;
         max-height: 100%;
         /* min-width: 88.75vw; */
-        /* overflow-y: scroll; */
         /* height: 100vh; */
     }
     .main_container_clear {
         background-color: rgba(250, 250, 250, 0);
         max-height: 90vh;
         min-height: 90vh;
-        /* max-width: 90vw; */
-        /* border: 2px black solid; */
-        /* overflow-y: scroll;     */
         margin-bottom: 1rem;
     }
+
     .card-text {
         font-size: 1.125rem;
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 10; 
+        -webkit-box-orient: vertical;
     }
 }
 
@@ -388,11 +389,9 @@ nav>a {
         max-width: 150px;
         height: 150px;
     }
-    .carousel-indicators {
-        bottom: 40px !important;
-    }
     .nav_bar {
-        font-size: 16px;
+        font-size: 17px;
+        width: 19vw;
     }
     /* The same effect to btn-md of bootstrap4 */
     .button_size {
@@ -405,21 +404,34 @@ nav>a {
         background-color: rgba(255, 255, 255, 0);
         min-height: 85vh;
         z-index: 2;
-        /* min-width: 93.5vw; */
-        /* overflow-y: scroll; */
-        /* height: 100vh; */
     }
     .main_container_clear {
+        right: 0;
         background-color: rgba(250, 250, 250, 0);
-        max-height: 90vh;
+        max-height: 95vh;
         min-height: 90vh;
-        /* max-width: 90vw; */
-        /* border: 2px black solid; */
-        /* overflow-y: scroll;     */
+        margin-left: 3rem;
         margin-bottom: 1rem;
     }
     .card-text {
-        font-size: 0.875rem;
+        font-size: 16.5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 16px;     /* fallback */
+        max-height: 160px;      /* fallback */
+        -webkit-line-clamp: 10; /* number of lines to show */
+        -webkit-box-orient: vertical;
+    }
+    #bulletin_dialog {
+        top: 28vw;
+        height: 95vh;
+    }
+    .nav_bar>img {
+        width: 95%;
+    }
+    .sub_container {
+        width: 60rem;
     }
 }
 
