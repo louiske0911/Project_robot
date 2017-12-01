@@ -1,5 +1,4 @@
-var GOOGLE_STATUS = 0;
-const BULLETIN_URL = 'http://1eec6559.ngrok.io/api/fcu/bulletin';
+const BULLETIN_URL = 'http://localhost:3000/api/fcu/bulletin';
 const bulletin = {
     paragraph: ['校園新聞', '校園公告', '校園活動', '校園演講'],
     type: ['News', 'Announce', 'Activity', 'Lecture']
@@ -130,7 +129,7 @@ function getBulletin() {
 
     fetch(BULLETIN_URL, {
         method: 'GET',
-    }).then(function(response) {
+    }).then(function (response) {
         if (response.status >= 200 && response.status < 300) {
             return response.json()
         } else {
@@ -138,14 +137,14 @@ function getBulletin() {
             error.response = response
             throw error
         }
-    }).then(function(data) {
+    }).then(function (data) {
         bulletinList = data;
         AddBuletinList(bulletinList);
         // data 才是實際的 JSON 資料
         $('#loader_block').css("display", "none");
-    }).catch(function(error) {
+    }).catch(function (error) {
         return error.response;
-    }).then(function(errorData) {
+    }).then(function (errorData) {
         // errorData 裡面才是實際的 JSON 資料
     });
 }
@@ -177,37 +176,4 @@ function GetSpecificBulletin(bulletinType) {
         '</div>' +
         '</div>').prependTo('#inner_bg');
     bulletinDialogShow();
-}
-
-function OpenURL(url) {
-    try {
-        if (JSInterface) {
-            JSInterface.sendWebviewURL(url);
-        }
-    } catch (e) {
-        if (e instanceof ReferenceError) {
-            var win = window.open(url, '_blank');
-            win.focus();
-        } else {
-            printError(e, false);
-        }
-    }
-}
-
-function GoolgeMap() {
-    if (JSInterface) {
-        if (GOOGLE_STATUS == 0) {
-            JSInterface.showToast();
-            GOOGLE_STATUS = 1;
-        }
-    }
-}
-
-// function test(data) {
-//     getBulletin();
-//     alert(data);
-// }
-
-function CloseMap() {
-    GOOGLE_STATUS = 0;
 }

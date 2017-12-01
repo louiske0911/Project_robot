@@ -1,21 +1,3 @@
-function readTextFile(file, callback) {
-    var rawFile = new XMLHttpRequest();
-    rawFile.overrideMimeType("application/json");
-    rawFile.open("GET", file, true);
-    rawFile.onreadystatechange = function () {
-        if (rawFile.readyState === 4 && rawFile.status == "200") {
-            callback(rawFile.responseText);
-        }
-    }
-    rawFile.send(null);
-}
-
-var data;
-//usage:
-readTextFile("./location.json", function (text) {
-    data = JSON.parse(text);
-});
-
 function NavigationShow() {
     document.getElementById("block").style.visibility = "visible";
     document.getElementById("navigation_dialog").style.visibility = "visible";
@@ -93,16 +75,9 @@ function InitMap() {
         var lng1 = parseFloat(data['data'][i]['Lng'])
         var magn = parseFloat(data['data'][i]['magnitude'])
         var color
-        if (magn > 60) {
+        if (magn > 55) {
             color = 'red'
-        } else if (magn < 40) {
-            color = 'blue'
-        } else if (magn > 40 && magn < 50) {
-            color = 'green'
-        } else if (magn > 50) {
-            color = 'orange'
-        } else {
-            color = 'red'
+
         }
         var marker = new google.maps.Marker({
             position: {
