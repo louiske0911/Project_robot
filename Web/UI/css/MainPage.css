@@ -134,8 +134,10 @@ body {
     transform: translate(-50%, -50%);
     padding-bottom: 2.5rem;
 }
-
-
+.fa-chevron-left,
+.fa-chevron-right{
+    color: black;
+}
 /********************************arrow_box************************************/
 
 .arrow_box {
@@ -309,13 +311,40 @@ body {
 }
 
 nav>a {
+    border-radius: 0.3rem;
     margin-left: 2rem;
+    margin-bottom: 1rem; /*fix for hover width*/
+    
+    margin-right: 1.3rem; /*fix for hover width*/
+    
 }
 
 .nav-link>span {
     padding-right: 2.5rem !important;
     text-align: left;
 }
+
+
+.nav_bar>nav>a:hover {
+    text-decoration: none;
+    color: black    ;
+    background: rgba(110, 110, 110, 0.2);
+}
+
+.nav_bar>nav>a:focus {
+    color:whitesmoke;
+    background-color: #4b6dd1;
+    box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+    visibility: show;
+}
+
+.nav_bar>nav .active{
+    color:whitesmoke;
+    background-color: #4b6dd1;
+    box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+    visibility: show;
+}
+
 
 
 /********************************Button-Font-RWD************************************/
