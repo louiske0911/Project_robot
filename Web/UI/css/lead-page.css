@@ -70,6 +70,7 @@
     background-color: red;
 }
 
+
 .circle.building {
     background-color: green;
 }
@@ -84,6 +85,26 @@
 
 .circle.bulletin {
     background-color: orange;
+}
+
+.login,
+.circle.college,
+.circle.building,
+.circle.landscape,
+.circle.location,
+.circle.bulletin {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.login:hover,
+.circle.college:hover,
+.circle.building:hover,
+.circle.landscape:hover,
+.circle.location:hover,
+.circle.bulletin:hover {
+    background-color: rgb(63, 63, 63);
+    text-decoration: none;
 }
 
 @media screen and (min-width:1100px) {

@@ -97,6 +97,9 @@ function SetPostCarousel() {
 }
 
 function SetSubContainer(campusInfo, index) {
+    if (campusInfo[index]['location']['building'] == undefined)
+        campusInfo[index]['location']['building'] = ""
+
     const subContainer =
         '<div class="col-md-3 col-lg-3 d-flex align-items-stretch">' +
         '<div class="card sub_container">' +

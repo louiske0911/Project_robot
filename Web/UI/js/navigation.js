@@ -13,10 +13,7 @@ function InitMap() {
         lat: 24.1801304,
         lng: 120.6484
     };
-    var FengChia2 = {
-        lat: 24.18201304,
-        lng: 120.62484
-    };
+
     var mapOptions = {
         center: FengChia,
         zoom: 17
@@ -69,36 +66,17 @@ function InitMap() {
         content: contentString
     });
 
-    /*****Add Marker*****/
-    for (var i = 0; i < data['data'].length; i++) {
-        var lat1 = parseFloat(data['data'][i]['Lat'])
-        var lng1 = parseFloat(data['data'][i]['Lng'])
-        var magn = parseFloat(data['data'][i]['magnitude'])
-        var color
-        if (magn > 55) {
-            color = 'red'
 
-        }
-        var marker = new google.maps.Marker({
-            position: {
-                lat: lat1,
-                lng: lng1
-            },
-            map: map,
-            title: 'Uluru (Ayers Rock)',
-            icon: {
-                path: google.maps.SymbolPath.CIRCLE,
-                fillColor: color,
-                fillOpacity: 0.8,
-                scale: 1,
-                strokeColor: color,
-                strokeWeight: 5
-            },
-            draggable: true,
+    var marker = new google.maps.Marker({
+        position: FengChia,
+        map: map,
+        icon: {
+            url: 'images/placeholder.png',
+        },
+        title: 'Uluru (Ayers Rock)',
+        // draggable: true,
 
-        });
-    }
-    console.log(i)
+    });
 
     marker.addListener('click', function () {
         infowindow.open(map, marker);

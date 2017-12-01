@@ -16,6 +16,8 @@ function AndroidPlanPath(info) {
         }
     } catch (e) {
         if (e instanceof ReferenceError) {
+            console.log(info.dataset.type)
+            console.log(info.dataset.id)
             NavigationSpeck(info.dataset.type, info.dataset.id);
 
         } else {
@@ -65,8 +67,13 @@ function GetHistory(URL, id) {
             throw error
         }
     }).then(function (data) {
-        speckContent = data.info.history;
+        if (data.info.history)
+            speckContent = data.info.history;
+        else
+            speckContent = data.info.introduction;
+
         speckContent = speckContent.split('\n')[0].replace(' ', '').replace('\n', ',').replace('。', ',').replace('、', ',')
+        console.log(speckContent)
         Speech(speckContent)
         // data 才是實際的 JSON 資料
     }).catch(function (error) {
@@ -76,14 +83,13 @@ function GetHistory(URL, id) {
     });
 }
 
-function NavigationSpeck(type, id) {
+function NavigationSpeck(type, id) {  //Android Webview need call this function to speech
     let url;
     if (type == 'college') url = COLLEGE_DIALOG_URL;
     else if (type = 'building') url = BUILDING_DIALOG_URL;
     else if (type == 'landscape') url = LANDSCAPE_DIALOG_URL;
 
     GetHistory(url, id)
-
 }
 
 

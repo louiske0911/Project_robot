@@ -9,6 +9,8 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var mongoose = require('mongoose');
 
+var schedule = require('node-schedule')
+
 var college = require('./routes/api/fcu/college');
 var bulletin = require('./routes/api/fcu/bulletin');
 var building = require('./routes/api/fcu/building');
@@ -60,5 +62,12 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
+
+var j = schedule.scheduleJob('* */1 * * *', function () {
+    console.log('Parser the Bulletin Data ....');
+    var bulletinData = require('./bulletin_parser.js')
+});
+
 
 module.exports = app;
