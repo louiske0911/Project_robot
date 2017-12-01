@@ -2,29 +2,44 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Building = require('../../../modules/schema/Building.js');
+var config = require('../../../building.json');
 
 /* GET */
 router.get('/', function (req, res, next) {
-    Building.find({}, function (err, buildings) {
-        if (err) {
-            console.log(err);
-            return next(err);
-        }
-        console.log(buildings);
-        res.json(buildings);
-    });
-
+    let data = [];
+    for (var index = 0; index < config.length; index++) {
+        let introduction = config[index]['info']['introduction']
+        if (introduction)
+            data.push({
+                id: config[index]['_id'],
+                name: config[index]['building_name'],
+                location: {
+                    building: config[index]['building_type'],
+                    location: config[index]['building_location']['location'].replace(' ', '')
+                },
+                info: {
+                    introduction: introduction,
+                    image: config[index]['info']['image']
+                }
+            })
+    }
+    res.json(data)
 });
 
 router.get('/:id', function (req, res, next) {
-    Building.findById(req.params.id, function (err, building) {
-        if (err) {
-            console.log(err);
-            return next(err);
+    let data
+    config.forEach(element => {
+        if (req.params.id == element._id) {
+            data = {
+                name: element['building_name'],
+                building: element['building_type'],
+                info: element['info']
+            }
+            return
         }
-        console.log(building);
-        res.json(building);
     });
+    console.log(data)
+    res.json(data);
 });
 
 /* POST */

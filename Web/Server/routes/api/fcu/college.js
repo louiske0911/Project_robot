@@ -18,13 +18,12 @@ router.get('/', function (req, res, next) {
     for (var index = 0; index < config.length; index++) {
         let introduction = config[index]['info']['introduction']
         if (introduction)
-
             data.push({
                 id: config[index]['_id'],
                 name: config[index]['college_name'],
                 location: {
                     building: config[index]['college_location']['college_building'],
-                    latitude: config[index]['college_location']['location']
+                    location: config[index]['college_location']['location'].replace(' ', '')
                 },
                 info: {
                     introduction: introduction,
@@ -36,19 +35,19 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/:id', function (req, res, next) {
-    var data = []
-    College.findById('59ec2cec2353f42374b14655', function (err, college) {
-        if (err) {
-            console.log(err);
-            return next(err);
+    let data
+    config.forEach(element => {
+        if (req.params.id == element._id) {
+            data = {
+                name: element['college_name'],
+                building: element['college_location']['college_building'],
+                info: element['info']
+            }
+            return
         }
-        let data = {
-            name: college['college_name'],
-            building: college['college_location']['college_building'],
-            info: college['info']
-        }
-        res.json(data);
     });
+    console.log(data)
+    res.json(data);
 });
 
 /* POST */

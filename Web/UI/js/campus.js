@@ -66,10 +66,10 @@ function AddCard(campusInfo) {
         $('#' + carouselId).append(leftCarousel);
 
         for (index; index < cardIndex; index++) {
-            subContainer = SetSubContainer(campusInfo, index);
+            let info_index = campusInfo.length - index - 1
+            subContainer = SetSubContainer(campusInfo, info_index);
             $('#' + carouselId).append(subContainer);
         }
-
         $('#' + carouselId).append(rightCarousel);
 
     }
@@ -110,8 +110,13 @@ function SetSubContainer(campusInfo, index) {
         '</div>' +
         '<div class="card-footer">' +
         '<div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">' +
-        '<button class="btn btn-outline-secondary button_rwd">開始導覽</button>' +
-        '<button id=' + campusInfo[index]['id'] + ' class="btn btn-outline-secondary button_rwd" onclick="GetSpecifyInfoById(' + dialogType + ')">More..</button>' +
+        '<button' +
+        ' data-type=' + dialogType +
+        ' data-id=' + campusInfo[index]['id'] +
+        ' data-loc=' + campusInfo[index]['location']['location'] + ' class="btn btn-outline-secondary button_rwd"' +
+        'onclick="AndroidPlanPath(this)">開始導覽</button>' +
+        '<button data-id=' + campusInfo[index]['id'] + ' class="btn btn-outline-secondary button_rwd"' +
+        'onclick="GetSpecifyInfoById(this,\'' + dialogType + '\')">More..</button>' +
         '</div>' +
         '</div>' +
         '</div>' +
@@ -147,6 +152,6 @@ function GetCampusInfo(url) {
 }
 
 function GetSpecifyInfoById(dialogType) {
-    console.log(id)
     AddDialog(dialogType);
 }
+
