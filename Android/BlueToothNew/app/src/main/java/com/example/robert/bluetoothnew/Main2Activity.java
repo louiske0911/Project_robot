@@ -85,9 +85,20 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
             public void onClick(View view) {
                 singleTonTemp.status = false;
                 sendMessage("900");
-//                 callWeb("1");
+//                String [] a = new String[2];
+//                a[0]="building";
+//                a[1]="1";
+//                 callWeb(a);
             }
         });
+    }
+    public void callWeb(String string[]) {
+        Log.v("callWeb", "callWeb");
+        Intent broadcasetIntent = new Intent();
+        broadcasetIntent.setAction("CallWeb");
+        broadcasetIntent.putExtra("type", string[0]);
+        broadcasetIntent.putExtra("id", string[1]);
+        sendBroadcast(broadcasetIntent);
     }
 //    public void initangleFunction() {
 //        Log.v("initLocationService", "initLocationService");
@@ -150,7 +161,8 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
         mMap = googleMap;
         Log.v("GPs",""+singleTonTemp.Gps);
 
-        if(singleTonTemp.status){
+        if(singleTonTemp.status || singleTonTemp.tempstatus){
+            mMap.clear();
             Log.v("Status",""+singleTonTemp.status);
             planPath();
         }
@@ -188,7 +200,7 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
 
     public void planPath() {
         List<LatLng> temp = singleTonTemp.planPath;
-        mMap.addMarker(new MarkerOptions().position(singleTonTemp.Gps).draggable(true));    //在google map上畫一個marker
+//        mMap.addMarker(new MarkerOptions().position(singleTonTemp.Gps).draggable(true));    //在google map上畫一個marker
         mMap.addMarker(new MarkerOptions().position(temp.get(temp.size()-1)).draggable(true));    //在google map上畫一個marker
 
         for (int i = 1; i < temp.size(); i++) {
@@ -280,13 +292,13 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
         }
     }
 
-    public void callWeb(String position) {
-        Log.v("callWeb", "callWeb");
-        Intent broadcasetIntent = new Intent();
-        broadcasetIntent.setAction("CallWeb");
-        broadcasetIntent.putExtra("CallPosition", position);
-        sendBroadcast(broadcasetIntent);
-    }
+//    public void callWeb(String position) {
+//        Log.v("callWeb", "callWeb");
+//        Intent broadcasetIntent = new Intent();
+//        broadcasetIntent.setAction("CallWeb");
+//        broadcasetIntent.putExtra("CallPosition", position);
+//        sendBroadcast(broadcasetIntent);
+//    }
 
 
     public void setMapAction(final GoogleMap mMap) {

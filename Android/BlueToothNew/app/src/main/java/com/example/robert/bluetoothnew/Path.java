@@ -24,7 +24,7 @@ public class Path implements Serializable {
     }
     public void setStart(LatLng start){
         this.start = start;
-        result.add(start);
+//        result.add(start);
     }
     public void setEnd(LatLng end){
         this.end = end;
@@ -34,11 +34,12 @@ public class Path implements Serializable {
         result.add(start);
     }
     public void initPositionList(){
-        for(int i = 0;i<Constants.position.length -1;i++){
+        for(int i = 0;i<Constants.position.length;i++){     //刪掉 -1
             positionList.add(Constants.position[i]);
         }
     }
     public List<LatLng> path() {
+        result.clear();
         positionList.clear();
 
         initPositionList();
@@ -52,7 +53,7 @@ public class Path implements Serializable {
         int j =0;
         double maxValue = Value;
 
-        for(int i=0;i < positionList.size()-1;i++){             //找最近的開始點
+        for(int i=0;i < positionList.size();i++){             //找最近的結束點
             double tempValue = Math.sqrt(Math.pow(positionList.get(i).longitude - end.longitude, 2) + Math.pow(positionList.get(i).latitude - end.latitude, 2));   //計算 startPosition到 endPosition的距離
             if(Value > tempValue){
                 Value = tempValue ;
@@ -70,12 +71,16 @@ public class Path implements Serializable {
         }
 
 
-        int tempPosition = 0;   //預選點的位置
-        int tempPosition_v2 = 0;   //預選點的位置
-        int tempPosition_v3 = 0;   //預選點的位置
+//        int tempPosition = 0;   //預選點的位置
+//        int tempPosition_v2 = 0;   //預選點的位置
+//        int tempPosition_v3 = 0;   //預選點的位置
 
         boolean stop = false;
         while (!stop) {
+            int tempPosition = 0;   //預選點的位置
+            int tempPosition_v2 = 0;   //預選點的位置
+            int tempPosition_v3 = 0;   //預選點的位置
+
             int controlLa1 = 0;
             int controlLo1 = 0;
             double tempMaxValue = maxValue;
@@ -83,7 +88,7 @@ public class Path implements Serializable {
             double tempMaxValue_v3 = maxValue;
 
 
-            for (int i = 0; i < positionList.size() -1; i++) {
+            for (int i = 0; i < positionList.size(); i++) {         //刪除 -1
 
                 controlLa1 = 0;
                 controlLo1 = 0;
@@ -115,7 +120,8 @@ public class Path implements Serializable {
             }
             if(tempStart.equals(end)){
                 stop = true;
-                result.add(tempStart);
+                result.add(end);
+                Log.v("QWE",""+end);
             }else {
                 int index =0;
                 index = tempPosition;

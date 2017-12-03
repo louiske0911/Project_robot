@@ -137,7 +137,9 @@ public class BluetoothChatFragment extends Fragment{
                     if (result == TextToSpeech.LANG_MISSING_DATA
                             || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                         Log.e("TTS", "This Language is not supported");
-                    } else {}
+                    } else {
+
+                    }
 
                 } else {
                     Log.e("TTS", "Initilization Failed!");
@@ -159,7 +161,6 @@ public class BluetoothChatFragment extends Fragment{
         intiBroadCast();
     }    //   For fragment_bluetooth_chat view ,this is initialization .
 
-    //初始化WebView
     public void initWebView(View view) {
         myWebView = (WebView) view.findViewById(R.id.webview);
         myWebView.getSettings().setJavaScriptEnabled(true);
@@ -169,8 +170,8 @@ public class BluetoothChatFragment extends Fragment{
         settings.setLoadWithOverviewMode(true);
         myWebView.requestFocus();
         myWebView.setWebViewClient(new MyWebViewClient());
-//        myWebView.loadUrl("http://172.20.10.2:3000/index.html");
-        myWebView.loadUrl("http://140.134.26.31/Bluetooth/Bluetooth.html");
+        myWebView.loadUrl("http://172.20.10.2:3000/index.html");
+//        myWebView.loadUrl("http://140.134.26.31/Bluetooth/Bluetooth.html");
         myWebView.addJavascriptInterface(new JavaScriptInterface(getActivity()), "JSInterface");
     }
 
@@ -219,10 +220,21 @@ public class BluetoothChatFragment extends Fragment{
         }
 
         @JavascriptInterface
-        public void setDirection(LatLng latLng) {
+        public void setDirection(String lat,String lng) {
             Intent broadcasetIntent = new Intent();
-            broadcasetIntent.setAction("setDirection");
-            broadcasetIntent.putExtra("direction", latLng);
+            broadcasetIntent.setAction("DO_SOME_THING");
+            singleTonTemp.planPath.clear();
+
+            Log.v("zzzz", "1"+lat);
+            Log.v("zzzz", "2"+lng);
+
+            LatLng latLng = new LatLng(Double.parseDouble(lat),Double.parseDouble(lng));
+            Log.v("zzzz", "5555"+latLng);
+            Log.v("zzzz", "5555"+latLng.latitude);
+            Log.v("zzzz", "5555"+latLng.longitude);
+            broadcasetIntent.putExtra("LATITUDE", lat);
+            broadcasetIntent.putExtra("LONGITUDE", lng);
+            singleTonTemp.tempstatus = true;
             getActivity().sendBroadcast(broadcasetIntent);
         }
 
@@ -433,11 +445,11 @@ public class BluetoothChatFragment extends Fragment{
         getActivity().registerReceiver(broadcast, intentFilter);
         broadcast = new Broadcast() {
             @Override
-            public void callWeb(String position) {
-                super.callWeb(position);
-                Log.i("WebViewActivity", "UA: " + myWebView.getSettings().getUserAgentString());
-
-                String call = "javascript:NavigationSpeck(landscape, 1)";
+            public void callWeb(String type,String id) {
+                super.callWeb(type,id);
+                Log.v("WebViewActivity", "UA: " + myWebView.getSettings().getUserAgentString());
+                String call = "javascript:NavigationSpeck('"+type+"','"+id+"')";
+//                "javascript:" + JsName + "('" + TotalParam + "')"
                 myWebView.loadUrl(call);     //javascript:[webFunctionName]([parameter])
             }
         };
@@ -539,8 +551,9 @@ public class BluetoothChatFragment extends Fragment{
                 LatLng point = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
                 position(point);
             } else if (action.equals(CallWeb)) {
-                String position = intent.getStringExtra("position");
-                callWeb(position);
+                String type = intent.getStringExtra("type");
+                String id = intent.getStringExtra("id");
+                callWeb(type,id);
             }
         }
 
@@ -548,7 +561,7 @@ public class BluetoothChatFragment extends Fragment{
 
         }
 
-        public void callWeb(String position) {
+        public void callWeb(String type,String id) {
 
         }
 

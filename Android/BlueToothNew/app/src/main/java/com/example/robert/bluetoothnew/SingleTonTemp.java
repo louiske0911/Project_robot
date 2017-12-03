@@ -17,7 +17,7 @@ public class SingleTonTemp {
     public int index =0;
 
     public LatLng Gps,directionPosition = null,lastPosition = null;
-    public boolean status,sourceStatus,directionstatus,filterGps;
+    public boolean status =false,sourceStatus,directionstatus,filterGps,tempstatus =false;
     public List<LatLng> planPath  = new ArrayList<LatLng>();
 
 

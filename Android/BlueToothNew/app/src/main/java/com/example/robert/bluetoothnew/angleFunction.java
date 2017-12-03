@@ -29,7 +29,7 @@ import static java.lang.Math.sqrt;
  * Created by robert on 2017/11/26.
  */
 
-public class angleFunction extends Service implements SensorEventListener, GetLocationListener, TextToSpeech.OnInitListener {
+public class angleFunction extends Service implements SensorEventListener, TextToSpeech.OnInitListener {
 
     public SensorManager sensorManager;
     public float orientationValue = 0;
@@ -48,7 +48,7 @@ public class angleFunction extends Service implements SensorEventListener, GetLo
     public BluetoothChatService bluetoothChatService;
     public CalculateAngleCurrentToGoal calculateAngleCurrentToGoal = new CalculateAngleCurrentToGoal();
     boolean arrivalDirection = false;
-    public String judgeIsSpecialPointResult = "0";
+    public String[] judgeIsSpecialPointResult = {"0","0"} ;
     public LatLng special;
 //    List<LatLng> temp;
 
@@ -75,8 +75,10 @@ public class angleFunction extends Service implements SensorEventListener, GetLo
         SetSensormagnetic();
         SetSensorGyroscope();
         SetSensorOrientation();
+
         initSingleTonTemp();
         initBluetooth();
+
         setAngle();
         initsetTTS();
         handler.postDelayed(position, 500);
@@ -84,11 +86,12 @@ public class angleFunction extends Service implements SensorEventListener, GetLo
         initLocationBroadCast();
     }
 
-    public void callWeb(String position) {
+    public void callWeb(String string[]) {
         Log.v("callWeb", "callWeb");
         Intent broadcasetIntent = new Intent();
         broadcasetIntent.setAction("CallWeb");
-        broadcasetIntent.putExtra("CallPosition", position);
+        broadcasetIntent.putExtra("type", string[0]);
+        broadcasetIntent.putExtra("id", string[1]);
         sendBroadcast(broadcasetIntent);
     }
 
@@ -108,7 +111,7 @@ public class angleFunction extends Service implements SensorEventListener, GetLo
                 handler.removeCallbacks(updateTimer);
                 Log.v("startTime", "" + startTime);
                 //設定Delay的時間
-
+                handler.postDelayed(judgeIsSpecialPoint, 500);
                 handler.postDelayed(stopIfOr, 500);
                 handler.postDelayed(updateTimer, 500);
 
@@ -346,15 +349,19 @@ public class angleFunction extends Service implements SensorEventListener, GetLo
         public void run() {
             boolean arrival = false;
             if (singleTonTemp.index < singleTonTemp.planPath.size()) {
+
+                Log.v("index",""+singleTonTemp.index+" "+singleTonTemp.planPath.size());
+
                 calculateAngleCurrentToGoal.setGoalPosition(singleTonTemp.planPath.get(singleTonTemp.index));
                 arrivalDestination.setDirection(singleTonTemp.planPath.get(singleTonTemp.index));
                 arrival = arrivalDestination.calDistance();
-                arrivalGoal.setDirection(singleTonTemp.planPath.get(singleTonTemp.planPath.size() - 1));
+
+                arrivalGoal.setDirection(singleTonTemp.planPath.get(singleTonTemp.planPath.size() - 1)); //??
+
                 special = singleTonTemp.planPath.get(singleTonTemp.index);
-                Log.v("fuck", "1111111");
+                Log.v("fuck", "1111111"+arrival);
                 if (arrival) {
-                    handler.postDelayed(judgeIsSpecialPoint, 500);
-                    if (!judgeIsSpecialPointResult.equals("0")) {
+                    if (!judgeIsSpecialPointResult[0].equals("0")) {
                         callWeb(judgeIsSpecialPointResult);
                     }
                     singleTonTemp.index++;
@@ -374,139 +381,141 @@ public class angleFunction extends Service implements SensorEventListener, GetLo
         arrivalDirection = arrival;
     }
 
-    public void communicationForjudgeIsSpecialPoint(String string) {
-        judgeIsSpecialPointResult = string;
+    public void communicationForjudgeIsSpecialPoint(String string1,String string2) {
+
+        judgeIsSpecialPointResult[0] = string1;
+        judgeIsSpecialPointResult[1] = string2;
     }
 
     private Runnable judgeIsSpecialPoint = new Runnable() {
         public void run() {
-            communicationForjudgeIsSpecialPoint("0");
+            communicationForjudgeIsSpecialPoint("0","0");
             int i = 0;
             for (i = 0; i < Constants.SPECIAL1.length; i++) {       //育樂館
                 if (Constants.SPECIAL1[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:5}");
+                    communicationForjudgeIsSpecialPoint("building" ,"5");
                 }
             }
             for (i = 0; i < Constants.SPECIAL2.length; i++) {       //語言大樓
                 if (Constants.SPECIAL2[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:7}");
+                    communicationForjudgeIsSpecialPoint("building" ,"7");
 
                 }
             }
             for (i = 0; i < Constants.SPECIAL3.length; i++) {       //忠勤樓&建築
                 if (Constants.SPECIAL3[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:11}");
+                    communicationForjudgeIsSpecialPoint("building" ,"11");
                 }
             }
             for (i = 0; i < Constants.SPECIAL4.length; i++) {       //行政一館
                 if (Constants.SPECIAL4[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:15}");
+                    communicationForjudgeIsSpecialPoint("building","15");
 
                 }
             }
             for (i = 0; i < Constants.SPECIAL5.length; i++) {       //行政二館
                 if (Constants.SPECIAL5[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:16}");
+                    communicationForjudgeIsSpecialPoint("building","16");
                 }
             }
             for (i = 0; i < Constants.SPECIAL6.length; i++) {       //圖書館
                 if (Constants.SPECIAL6[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:14}");
+                    communicationForjudgeIsSpecialPoint("building","14");
                 }
             }
             for (i = 0; i < Constants.SPECIAL7.length; i++) {       //科航管
                 if (Constants.SPECIAL7[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:18}");
+                    communicationForjudgeIsSpecialPoint("building","18");
                 }
             }
             for (i = 0; i < Constants.SPECIAL8.length; i++) {       //商學院
                 if (Constants.SPECIAL8[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:19}");
+                    communicationForjudgeIsSpecialPoint("building","19");
                 }
             }
             for (i = 0; i < Constants.SPECIAL9.length; i++) {       //資電館
                 if (Constants.SPECIAL9[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:13}");
+                    communicationForjudgeIsSpecialPoint("building","13");
                 }
             }
             for (i = 0; i < Constants.SPECIAL10.length; i++) {      //電通館
                 if (Constants.SPECIAL10[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:college ,id:8}");
+                    communicationForjudgeIsSpecialPoint("college","8");
                 }
             }
             for (i = 0; i < Constants.SPECIAL11.length; i++) {      //人言
                 if (Constants.SPECIAL11[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:8}");
+                    communicationForjudgeIsSpecialPoint("building","8");
                 }
             }
             for (i = 0; i < Constants.SPECIAL12.length; i++) {      //工學院
                 if (Constants.SPECIAL12[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:12}");
+                    communicationForjudgeIsSpecialPoint("building","12");
                 }
             }
             for (i = 0; i < Constants.SPECIAL13.length; i++) {      //第一招待所
                 if (Constants.SPECIAL13[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{tpye:landscape ,id:6}");
+                    communicationForjudgeIsSpecialPoint("andscape","6");
                 }
             }
             for (i = 0; i < Constants.SPECIAL14.length; i++) {      //理學院
                 if (Constants.SPECIAL14[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:college ,id:9}");
+                    communicationForjudgeIsSpecialPoint("college","9");
                 }
             }
             for (i = 0; i < Constants.SPECIAL15.length; i++) {      //人社館
                 if (Constants.SPECIAL15[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:9}");
+                    communicationForjudgeIsSpecialPoint("building","9");
                 }
             }
             for (i = 0; i < Constants.SPECIAL16.length; i++) {      //體育館
                 if (Constants.SPECIAL16[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:2}");
+                    communicationForjudgeIsSpecialPoint("building","2");
                 }
             }
             for (i = 0; i < Constants.SPECIAL17.length; i++) {      //丘逢甲紀念館
                 if (Constants.SPECIAL17[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:17}");
+                    communicationForjudgeIsSpecialPoint("building","17");
                 }
             }
             for (i = 0; i < Constants.SPECIAL18.length; i++) {      //分手步道
                 if (Constants.SPECIAL18[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:landscape ,id:4}");
+                    communicationForjudgeIsSpecialPoint("landscape","4");
                 }
             }
             for (i = 0; i < Constants.SPECIAL19.length; i++) {      //水利大樓
                 if (Constants.SPECIAL19[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:3}");
+                    communicationForjudgeIsSpecialPoint("building","3");
                 }
             }
             for (i = 0; i < Constants.SPECIAL20.length; i++) {      //學思樓
                 if (Constants.SPECIAL20[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:building ,id:1}");
+                    communicationForjudgeIsSpecialPoint("building","1");
                 }
             }
             for (i = 0; i < Constants.SPECIAL21.length; i++) {      //文創中心
                 if (Constants.SPECIAL21[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:landscape ,id:3}");
+                    communicationForjudgeIsSpecialPoint("landscape","3");
                 }
             }
             for (i = 0; i < Constants.SPECIAL22.length; i++) {      //學思源
                 if (Constants.SPECIAL22[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:landscape ,id:1}");
+                    communicationForjudgeIsSpecialPoint("landscape","1");
                 }
             }
             for (i = 0; i < Constants.SPECIAL23.length; i++) {      //綜合體育場
                 if (Constants.SPECIAL23[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:landscape ,id:2}");
+                    communicationForjudgeIsSpecialPoint("landscape","2");
                 }
             }
             for (i = 0; i < Constants.SPECIAL24.length; i++) {      //榕榕大道
                 if (Constants.SPECIAL24[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:landscape ,id:7}");
+                    communicationForjudgeIsSpecialPoint("landscape","7");
                 }
             }
             for (i = 0; i < Constants.SPECIAL25.length; i++) {      //21步道
                 if (Constants.SPECIAL25[i].equals(special)) {
-                    communicationForjudgeIsSpecialPoint("{type:landscape ,id:4}");
+                    communicationForjudgeIsSpecialPoint("andscape","4");
                 }
             }
             handler.postDelayed(this, 500);
@@ -521,17 +530,16 @@ public class angleFunction extends Service implements SensorEventListener, GetLo
             @Override
             public void setposition(LatLng latLng) {
                 super.setposition(latLng);
-                Log.v("zzzz", "position333");
+                Log.v("zzzz", "position333 "+latLng);
                 singleTonTemp.directionPosition = latLng;
                 setPathEnd(latLng);
-                new Handler().post(new Runnable() {
-                    @Override
-                    public void run() {
+//                new Handler().post(new Runnable() {
+//                    @Override
+//                    public void run() {
                         singleTonTemp.planPath = path.path();
-                    }
-                });
-
-                Log.v("singleTonTemp.planPath ", "" + singleTonTemp.planPath);
+//                    }
+//                });
+                Log.v("ssss","pp");
                 planPath();
             }
         };
@@ -567,14 +575,14 @@ public class angleFunction extends Service implements SensorEventListener, GetLo
         sendBroadcast(broadcasetIntent);
     }
 
-    @Override
-    public void position(LatLng latLng) {
-        Log.v("zzzz", "position");
-//        singleTonTemp.directionPosition = latLng;
-//        setPathEnd(latLng);
-//        singleTonTemp.planPath = path.path();
-//        planPath();
-    }
+//    @Override
+//    public void position(LatLng latLng) {
+//        Log.v("zzzz", "position");
+////        singleTonTemp.directionPosition = latLng;
+////        setPathEnd(latLng);
+////        singleTonTemp.planPath = path.path();
+////        planPath();
+//    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
