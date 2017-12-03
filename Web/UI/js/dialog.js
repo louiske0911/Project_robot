@@ -1,8 +1,3 @@
-const COLLEGE_DIALOG_URL = "http://localhost:3000/api/fcu/college/";
-const LANDSCAPE_DIALOG_URL = "http://localhost:3000/api/fcu/landscape/";
-const BUILDING_DIALOG_URL = "http://localhost:3000/api/fcu/building/";
-
-
 function dialogShow() {
     document.getElementById("block").style.visibility = "visible";
     document.getElementById("campus_dialog").style.visibility = "visible";

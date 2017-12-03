@@ -1,6 +1,3 @@
-const BUILDING_URL = 'http://localhost:3000/api/fcu/building';
-const COLLEGE_URL = 'http://localhost:3000/api/fcu/college';
-const LANDSCAPE_URL = 'http://localhost:3000/api/fcu/landscape';
 let dialogType = '';
 let rightCarousel;
 let leftCarousel;
@@ -28,6 +25,7 @@ function AddContainer(campusInfo) {
 
     section = SetOuterSection();
     // append inner_bg div for jquery remove and change page
+    // move inner_bg to right
     $('#outer_bg').append('<div id="inner_bg" class="mt-5 ml-5 pl-5 row justify-content-center inner_background"></div>')
 
     $('#inner_bg').prepend(section);
@@ -109,7 +107,7 @@ function SetSubContainer(campusInfo, index) {
         '</div>' +
         '<div class="card-body">' +
         '<img class="d-block img-fluid" src="' + campusInfo[index]['info']['image'][1] + '">' +
-        '<p class="mt-4 card-text">' + campusInfo[index]['info']['introduction'] + '</p>' +
+        '<p class="mt-4 card-text">&emsp;&emsp;' + campusInfo[index]['info']['introduction'] + '</p>' +
         '</div>' +
         '<div class="card-footer">' +
         '<div class="d-md-flex d-lg-flex justify-content-between w-100 mt-auto">' +
@@ -117,7 +115,7 @@ function SetSubContainer(campusInfo, index) {
         ' data-type=' + dialogType +
         ' data-id=' + campusInfo[index]['id'] +
         ' data-loc=' + campusInfo[index]['location']['location'] + ' class="btn btn-outline-secondary button_rwd"' +
-        'onclick="AndroidPlanPath(this)">開始導覽</button>' +
+        'onclick="javascript:AndroidPlanPath(this)">開始導覽</button>' +
         '<button data-id=' + campusInfo[index]['id'] + ' class="btn btn-outline-secondary button_rwd"' +
         'onclick="GetSpecifyInfoById(this,\'' + dialogType + '\')">More..</button>' +
         '</div>' +
@@ -144,6 +142,7 @@ function GetCampusInfo(url) {
     }).then(function (data) {
         campusInfo = data;
         console.log(campusInfo);
+
         AddContainer(campusInfo);
         $('#loader_block').css("display", "none");
         // data 才是實際的 JSON 資料

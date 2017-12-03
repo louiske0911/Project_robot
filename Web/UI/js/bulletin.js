@@ -1,4 +1,3 @@
-const BULLETIN_URL = 'http://localhost:3000/api/fcu/bulletin';
 const bulletin = {
     paragraph: ['校園新聞', '校園公告', '校園活動', '校園演講'],
     type: ['News', 'Announce', 'Activity', 'Lecture']
