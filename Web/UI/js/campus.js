@@ -25,8 +25,7 @@ function AddContainer(campusInfo) {
 
     section = SetOuterSection();
     // append inner_bg div for jquery remove and change page
-    // move inner_bg to right
-    $('#outer_bg').append('<div id="inner_bg" class="mt-5 ml-5 pl-5 row justify-content-center inner_background"></div>')
+    $('#outer_bg').append('<div id="inner_bg" class="mt-5 row justify-content-center inner_background"></div>')
 
     $('#inner_bg').prepend(section);
 
@@ -54,8 +53,8 @@ function AddCard(campusInfo) {
 
         let carouselId = "carouselId_" + pageCount;
         const carousel_item =
-            '<div class="pl-5 sub_container_trans carousel-item">' +
-            '<div id="' + carouselId + '" class="p-3 row main_container_clear justify-content-center rounded"></div></div>';
+            '<div class="sub_container_trans carousel-item">' +
+            '<div id="' + carouselId + '" class="py-3 row main_container_clear justify-content-center rounded"></div></div>';
 
         let cardIndex = campusInfo.length - (carouselCount - pageCount) * 3; //  總Card數 - (總CarouselPage數 - 當下頁數)
 
@@ -156,4 +155,3 @@ function GetCampusInfo(url) {
 function GetSpecifyInfoById(dialogType) {
     AddDialog(dialogType);
 }
-
