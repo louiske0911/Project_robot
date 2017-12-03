@@ -9,8 +9,8 @@
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="300dp"
-        android:layout_height="450dp"
+        android:layout_width="500dp"
+        android:layout_height="850dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 

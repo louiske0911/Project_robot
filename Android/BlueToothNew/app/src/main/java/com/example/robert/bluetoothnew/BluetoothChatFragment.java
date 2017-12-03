@@ -24,10 +24,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -48,15 +51,18 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 /**
  * This fragment controls Bluetooth to communicate with other devices.
  */
-public class BluetoothChatFragment extends Fragment {
+public class BluetoothChatFragment extends Fragment{
 
     private static final String TAG = "BluetoothChatFragment";
     public static final String MAP_ACTION = "MAP_ACTION";
+    public static final String CallWeb = "CallWeb";
+
 
     // Intent request codes
     private static final int REQUEST_CONNECT_DEVICE_SECURE = 1;
@@ -90,19 +96,54 @@ public class BluetoothChatFragment extends Fragment {
     public Broadcast broadcast;
     WebView myWebView;
 
+    SingleTonTemp singleTonTemp;
+    private TextToSpeech tts = null;
+
+    public void initSingleTonTemp() {
+        singleTonTemp = SingleTonTemp.getInstance();
+    }
+
+    String temp[] = {"薩大使的航空聖誕卡聖誕卡哈薩克的機會薩大使大時代薩大使大時代薩大使大時代撒大使大時代薩大使的薩大使的",
+            "薩大使大使大使大時代薩大使大時代我就會開會時看到包括差別吧 v 八位氣候危機好看阿塞德薩的哈斯的機會看",
+            "阿塞德薩及大律師肯德基阿拉山口的基隆市空間男女拘留所多久啊聖誕節"};
+    int count = 0;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         // Get local Bluetooth adapter
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-
+        initSingleTonTemp();
         // If the adapter is null, then Bluetooth is not supported
+        intiCallWeb();
         if (mBluetoothAdapter == null) {
             FragmentActivity activity = getActivity();
             Toast.makeText(activity, "Bluetooth is not available", Toast.LENGTH_LONG).show();
             activity.finish();
         }    // No bluetooth service
+
+
+        tts = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onInit(int status) {
+                Log.v("abasdasd","status 123");
+
+                if (status == TextToSpeech.SUCCESS) {
+
+                    int result = tts.setLanguage(Locale.TAIWAN);
+
+                    if (result == TextToSpeech.LANG_MISSING_DATA
+                            || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        Log.e("TTS", "This Language is not supported");
+                    } else {}
+
+                } else {
+                    Log.e("TTS", "Initilization Failed!");
+                }
+            }
+        });
     }
 
     @Override
@@ -128,22 +169,15 @@ public class BluetoothChatFragment extends Fragment {
         settings.setLoadWithOverviewMode(true);
         myWebView.requestFocus();
         myWebView.setWebViewClient(new MyWebViewClient());
-//        myWebView.loadUrl("http://140.134.26.31/Project_robot/Web/UI/index.html");
+//        myWebView.loadUrl("http://172.20.10.2:3000/index.html");
         myWebView.loadUrl("http://140.134.26.31/Bluetooth/Bluetooth.html");
-//        myWebView.loadUrl("http://1eec6559.ngrok.io/index.html");
-
-//        myWebView.loadUrl("http://06a07494.ngrok.io/BulletinPage_jquery.html");
-//        myWebView.loadUrl("http://ca773b61.ngrok.io/BulletinPage_jquery.html");
         myWebView.addJavascriptInterface(new JavaScriptInterface(getActivity()), "JSInterface");
     }
 
     public void initLocationService() {
         Log.v("initLocationService", "initLocationService");
         Intent intent = new Intent(getActivity(), LocationService.class);
-
-        Intent intent1 = new Intent(getActivity(), angleFunction.class);
         getActivity().startService(intent);
-        getActivity().startService(intent1);
     }
 
     public void intiBroadCast() {
@@ -164,7 +198,13 @@ public class BluetoothChatFragment extends Fragment {
         getActivity().registerReceiver(broadcast, intentFilter);
 
     }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void speakOut(String content) {
+        CharSequence text = content;
+        tts.setPitch(0.5f);
+        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null,content);
 
+    }
     public class JavaScriptInterface {
         private Context context;
 
@@ -176,6 +216,24 @@ public class BluetoothChatFragment extends Fragment {
         public void showToast() {
             Intent i = new Intent(context, Main2Activity.class);
             startActivityForResult(i, CloseMap);
+        }
+
+        @JavascriptInterface
+        public void setDirection(LatLng latLng) {
+            Intent broadcasetIntent = new Intent();
+            broadcasetIntent.setAction("setDirection");
+            broadcasetIntent.putExtra("direction", latLng);
+            getActivity().sendBroadcast(broadcasetIntent);
+        }
+
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+        @JavascriptInterface
+        public void setTTS(String string) {
+            Log.v("zzzz", string);
+//            tts.shutdown();
+            tts.stop();
+
+            speakOut(string);
         }
 
         @JavascriptInterface
@@ -369,6 +427,25 @@ public class BluetoothChatFragment extends Fragment {
         }
     }
 
+    public void intiCallWeb() {
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(CallWeb);
+        getActivity().registerReceiver(broadcast, intentFilter);
+        broadcast = new Broadcast() {
+            @Override
+            public void callWeb(String position) {
+                super.callWeb(position);
+                Log.i("WebViewActivity", "UA: " + myWebView.getSettings().getUserAgentString());
+
+                String call = "javascript:NavigationSpeck(landscape, 1)";
+                myWebView.loadUrl(call);     //javascript:[webFunctionName]([parameter])
+            }
+        };
+        intentFilter.addAction(MAP_ACTION);
+        getActivity().registerReceiver(broadcast, intentFilter);
+
+    }
+
     /**
      * Establish connection with other divice
      *
@@ -461,12 +538,19 @@ public class BluetoothChatFragment extends Fragment {
                 String latitude = intent.getStringExtra("LATITUDE");
                 LatLng point = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
                 position(point);
-
+            } else if (action.equals(CallWeb)) {
+                String position = intent.getStringExtra("position");
+                callWeb(position);
             }
         }
 
         public void position(LatLng latLng) {
 
         }
+
+        public void callWeb(String position) {
+
+        }
+
     }
 }

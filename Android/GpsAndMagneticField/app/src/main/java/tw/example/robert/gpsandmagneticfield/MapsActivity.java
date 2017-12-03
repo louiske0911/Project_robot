@@ -194,103 +194,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
         }
     }
-//
-//    private void getLocation(Location location) {
-//        params.clear();
-//
-//        Log.v("111","3333");
-//
-//        if(accelerometerValue !=null && magnitude != 0) {
-////            params.put("","");
-//            params.put("Lat",""+location.getLatitude());
-//            params.put("Lng",""+location.getLongitude());
-//            params.put("X",""+accelerometerValue[0]);
-//            params.put("Y",""+accelerometerValue[1]);
-//            params.put("Z",""+accelerometerValue[2]);
-//            params.put("magnitude",""+magnitude);
-//            Log.v("111","2222");
-//            Toast.makeText(this, "Date : (" + location.getLatitude() + "," + location.getLongitude() + ")" + "magnitude : " + magnitude + " X :" + accelerometerValue[0] + " Y :" + accelerometerValue[1] + " Z :" + accelerometerValue[2], Toast.LENGTH_SHORT).show();
-//        }
-//        postToServer(httpCallPost);
-//        broadcast = new Broadcast(location, markerOptionses, polylineOptionses) {
-//
-//            public void position(LatLng latLng) {
-//                super.position(latLng);
-//                Log.v("111","3333");
-//
-//
-//                polylineOptionses.add(0, new PolylineOptions()
-//                        .add(sydney, latLng)
-//                        .width(6)
-//                        .color(Color.RED)
-//                        .clickable(false));
-//
-//
-//                googleMap.addPolyline(polylineOptionses.get(0));
-//
-//                sydney = latLng;
-//                Log.v("Position", "longitude:" + latLng.longitude + " latitude:" + latLng.latitude);
-//
-//                googleMap.setOnPolylineClickListener(new GoogleMap.OnPolylineClickListener() {
-//                    @Override
-//                    public void onPolylineClick(Polyline polyline) {
-//                        polyline.setColor(polyline.getColor() ^ 0x00ffffff);
-//                    }
-//                });
-//            }
-//        };
-////        if (location != null) {
-////            Double longitude = location.getLongitude();
-////            Double latitude = location.getLatitude();
-////
-////            LatLng pointl = new LatLng(latitude, longitude);
-////
-////            mMap.addPolyline(new PolylineOptions()
-////                    .add(sydney, pointl)
-////                    .width(2)
-////                    .color(Color.BLUE)
-////                    .clickable(true));
-//////            mMap.clear();
-////            mMap.addMarker(new MarkerOptions().position(pointl).draggable(true));
-////            sydney = pointl;
-////
-////            mMap.setOnPolylineClickListener(new GoogleMap.OnPolylineClickListener() {
-////                @Override
-////                public void onPolylineClick(Polyline polyline) {
-////                    polyline.setColor(polyline.getColor() ^ 0x00ffffff);
-////                }
-////            });
-////
-////
-////        } else {
-////            Toast.makeText(this, "無法定位座標", Toast.LENGTH_LONG).show();
-////
-////        }
-//    }
-//
-
-
-//    public void onLocationChanged(Location location) {
-//
-//        getLocation(location);
-//    }
-//
-//
-//    public void onStatusChanged(String s, int i, Bundle bundle) {
-//
-//    }
-//
-//
-//    public void onProviderEnabled(String s) {
-//
-//    }
-//
-//
-//    public void onProviderDisabled(String s) {
-//
-//    }
-
-
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         if (sensorEvent.sensor.getType() == Sensor.TYPE_ORIENTATION) {
@@ -325,7 +228,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void getArticle() {
         httpCallPost = new HttpCall();
         httpCallPost.setMethodtype(HttpCall.POST);
-        httpCallPost.setUrl("http://1eec6559.ngrok.io/api/fcu/location");
+        httpCallPost.setUrl("http://46f8e12f.ngrok.io/api/fcu/location");
 
         httpCallPost.setParams(params);
     }

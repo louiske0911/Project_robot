@@ -52,7 +52,7 @@ public class Path implements Serializable {
         int j =0;
         double maxValue = Value;
 
-        for(int i=0;i < positionList.size()-1;i++){
+        for(int i=0;i < positionList.size()-1;i++){             //找最近的開始點
             double tempValue = Math.sqrt(Math.pow(positionList.get(i).longitude - end.longitude, 2) + Math.pow(positionList.get(i).latitude - end.latitude, 2));   //計算 startPosition到 endPosition的距離
             if(Value > tempValue){
                 Value = tempValue ;
@@ -72,6 +72,7 @@ public class Path implements Serializable {
 
         int tempPosition = 0;   //預選點的位置
         int tempPosition_v2 = 0;   //預選點的位置
+        int tempPosition_v3 = 0;   //預選點的位置
 
         boolean stop = false;
         while (!stop) {
@@ -79,6 +80,7 @@ public class Path implements Serializable {
             int controlLo1 = 0;
             double tempMaxValue = maxValue;
             double tempMaxValue_v2 = maxValue;
+            double tempMaxValue_v3 = maxValue;
 
 
             for (int i = 0; i < positionList.size() -1; i++) {
@@ -106,28 +108,46 @@ public class Path implements Serializable {
                         tempPosition_v2 = i;
                     }
                 }
+                if (tempMaxValue_v3 >= temp && temp != 0) {  //找出距離參考點最短距離的節點
+                    tempMaxValue_v3 = temp;
+                    tempPosition_v3 = i;
+                }
             }
             if(tempStart.equals(end)){
                 stop = true;
+                result.add(tempStart);
+            }else {
+                int index =0;
+                index = tempPosition;
+
+                if((tempMaxValue * 111100)>3){
+                    index = tempPosition_v2;
+                    Log.v("qqqqqa","1");
+                    if((tempMaxValue_v2 * 111100)>10){
+                        index = tempPosition_v3;
+                        Log.v("qqqqqa","2");
+                        if((tempMaxValue_v3 * 111100)>12){
+                            index = tempPosition;
+                            Log.v("qqqqqa","3");
+                        }
+                    }
+                }
+
+                controlLa = 0;
+                controlLo = 0;
+                if ((positionList.get(index).latitude - end.latitude) < 0) {
+                    controlLa = 1;  //  endPositionLa 在 startPosition在 的北方
+                }
+                if ((positionList.get(index).longitude - end.longitude) < 0) {
+                    controlLo = 1;  //endPositionLa 在 startPosition在 的東方
+                }
+                tempStart = positionList.get(index);
+
+                result.add(tempStart);
+                Log.v("position",""+tempStart+"    "+end);
+                positionList.remove(index);
             }
 
-            if((tempMaxValue * 111100)>10){
-                tempPosition = tempPosition_v2;
-            }
-
-            controlLa = 0;
-            controlLo = 0;
-            if ((positionList.get(tempPosition).latitude - end.latitude) < 0) {
-                controlLa = 1;  //  endPositionLa 在 startPosition在 的北方
-            }
-            if ((positionList.get(tempPosition).longitude - end.longitude) < 0) {
-                controlLo = 1;  //endPositionLa 在 startPosition在 的東方
-            }
-            tempStart = positionList.get(tempPosition);
-
-            result.add(tempStart);
-            Log.v("position",""+tempStart+"    "+end);
-            positionList.remove(tempPosition);
         }
 
         return result;

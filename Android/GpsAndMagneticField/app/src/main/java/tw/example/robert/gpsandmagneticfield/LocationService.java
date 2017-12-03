@@ -29,7 +29,7 @@ public class LocationService extends Service implements
 
     protected static final String TAG = "Service-location";
 
-    private static final long UPDATE_INTERVAL_IN_MILLISECONDS = 5;
+    private static final long UPDATE_INTERVAL_IN_MILLISECONDS = 50;
     private static final long FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS =
             UPDATE_INTERVAL_IN_MILLISECONDS / 2;
 

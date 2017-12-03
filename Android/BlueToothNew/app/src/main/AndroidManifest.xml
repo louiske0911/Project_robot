@@ -48,6 +48,10 @@
             android:name=".LocationService"
             android:enabled="true"
             android:exported="true"></service>
+        <service
+            android:name=".angleFunction"
+            android:enabled="true"
+            android:exported="true"></service>
 
         <activity android:name=".Main3Activity"></activity>
     </application>

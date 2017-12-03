@@ -18,6 +18,7 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.io.Serializable;
 import java.text.DateFormat;
@@ -54,6 +55,12 @@ public class LocationService extends Service implements
     private static final String NAMEFIELD = "NAME";
     boolean first = true;
 
+    SingleTonTemp singleTonTemp;
+
+    public void initSingleTonTemp() {
+        singleTonTemp = SingleTonTemp.getInstance();
+    }
+
     public class Lock {
         String message;
         String latitude;
@@ -68,6 +75,8 @@ public class LocationService extends Service implements
             mCurrentLocation = location;
             mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
             Log.d("abc", String.valueOf(String.valueOf(mCurrentLocation.getLatitude()) + ", " + mCurrentLocation.getLongitude()));
+
+            singleTonTemp.Gps = new LatLng(mCurrentLocation.getLatitude() , mCurrentLocation.getLongitude());
 
             Intent broadcasetIntent = new Intent();
             broadcasetIntent.setAction(Main2Activity.MAP_ACTION);
@@ -84,8 +93,14 @@ public class LocationService extends Service implements
         super.onCreate();
         buildGoogleApiClient();
         mRequestingLocationUpdates = false;
+        initSingleTonTemp();
+        initangleFunction();
     }
-
+    public void initangleFunction() {
+        Log.v("initLocationService", "initLocationService");
+        Intent intent = new Intent(this, angleFunction.class);
+        this.startService(intent);
+    }
     @Override
     public int onStartCommand(Intent intent, int flags, int starId) {
         Log.e(TAG, "onStartCommand");
