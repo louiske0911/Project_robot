@@ -16,7 +16,12 @@ function InitMap() {
 
     var mapOptions = {
         center: FengChia,
-        zoom: 17
+        zoom: 18,
+        mapTypeControlOptions: {
+            mapTypeIds: ['satellite', 'styled_map']
+        }, 
+        scrollwheel: false,
+        disableDoubleClickZoom: true,
     };
 
 
@@ -57,6 +62,27 @@ function InitMap() {
     // + '</ol>'
     // + '<p>本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻，以培育國際企業發展所需之商管專業人才，並以培育學生具備商業資料分析的科技能力與國際企業所愛的移動能力為教學發展特色。</p></div>';
 
+    var styledMapType = new google.maps.StyledMapType(
+        [
+            {
+                "featureType": "poi.business",
+                "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi.park",
+                "elementType": "labels.text",
+                "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                ]
+            }
+        ]);
+
     var map = new google.maps.Map(
         document.getElementById('inner_bg'), mapOptions);
 
@@ -66,6 +92,8 @@ function InitMap() {
         content: contentString
     });
 
+    map.mapTypes.set('styled_map', styledMapType);
+    map.setMapTypeId('styled_map');
 
     var marker = new google.maps.Marker({
         position: FengChia,
