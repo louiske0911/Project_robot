@@ -66,7 +66,7 @@ app.use(function (err, req, res, next) {
 
 var j = schedule.scheduleJob('* */1 * * *', function () {
     console.log('Parser the Bulletin Data ....');
-    var bulletinData = require('./bulletin_parser.js')
+    // var bulletinData = require('./bulletin_parser.js')
 });
 
 
