@@ -13,13 +13,12 @@ function AndroidPlanPath(info) {
     try {
         if (JSInterface) {
             JSInterface.setDirection(lat, lng);
+            NavigationSpeck(info.dataset.type, info.dataset.id);
         }
     } catch (e) {
         if (e instanceof ReferenceError) {
-            console.log(info.dataset.type)
-            console.log(info.dataset.id)
+            console.log("Plan Path: " + info.dataset.type + info.dataset.id)
             NavigationSpeck(info.dataset.type, info.dataset.id);
-
         } else {
             printError(e, false);
         }
@@ -54,7 +53,7 @@ function CloseMap() {
     GOOGLE_STATUS = 0;
 }
 
-function GetHistory(URL, id) {
+function GetHistoryAndSpeak(URL, id) {
     URL = URL + id
     fetch(URL, {
         method: 'GET',
@@ -67,14 +66,7 @@ function GetHistory(URL, id) {
             throw error
         }
     }).then(function (data) {
-        if (data.info.history)
-            speckContent = data.info.history;
-        else
-            speckContent = data.info.introduction;
-
-        speckContent = speckContent.split('\n')[0].replace(' ', '').replace('\n', ',').replace('。', ',').replace('、', ',')
-        console.log(speckContent)
-        Speech(speckContent)
+        InitSpeech(data)
         // data 才是實際的 JSON 資料
     }).catch(function (error) {
         return error.response;
@@ -83,21 +75,36 @@ function GetHistory(URL, id) {
     });
 }
 
-function NavigationSpeck(type, id) {  //Android Webview need call this function to speech
+function NavigationSpeck(type, id) { //Android Webview need call this function to speech
     let url;
     if (type == 'college') url = COLLEGE_DIALOG_URL;
-    else if (type = 'building') url = BUILDING_DIALOG_URL;
+    else if (type == 'building') url = BUILDING_DIALOG_URL;
     else if (type == 'landscape') url = LANDSCAPE_DIALOG_URL;
 
-    GetHistory(url, id)
+    console.log(type)
+    console.log(id)
+    GetHistoryAndSpeak(url, id)
 }
 
+function InitSpeech(data) {
+    if (data.info.history)
+        speakContent = data.info.history;
+    else
+        speakContent = data.info.introduction;
 
-$(document).ready(function () {
-    $('div.nav_bar nav a').click(
-        function (e) {
-            $('div.nav_bar nav a').removeClass('active');
-            $(e.currentTarget).addClass('active');
+    speakContent = speakContent.split('\n')[0].replace(' ', '').replace('\n', ',').replace('。', ',').replace('、', ',')
+    console.log("Get Text" + speakContent)
+
+    try {
+        if (JSInterface) {
+            JSInterface.setTTS(speakContent);
         }
-    );
-});
+    } catch (e) {
+        if (e instanceof ReferenceError) {
+            Speech(speakContent)
+        } else {
+            printError(e, false);
+        }
+    }
+}
+
