@@ -134,10 +134,13 @@ body {
     transform: translate(-50%, -50%);
     padding-bottom: 2.5rem;
 }
+
 .fa-chevron-left,
-.fa-chevron-right{
+.fa-chevron-right {
     color: black;
 }
+
+
 /********************************arrow_box************************************/
 
 .arrow_box {
@@ -264,36 +267,29 @@ body {
 .sidebar {
     background-image: url('../../images/sidebar-1.jpg');
     position: fixed;
-    height: 100%;
+    height: 100vh;
     z-index: 2;
     background-color: rgba(238, 238, 238, .8);
     display: block;
     background-size: cover;
     background-position: center center;
-}
-
-.collapsing.width {
-    -webkit-transition-property: width, visibility;
-    transition-property: width, visibility;
-    width: 0;
-    height: auto;
-    -webkit-transition: all .01s ease-in-out;
-    -o-transition: all .01s ease-in-out;
-    transition: all .01s ease-in-out;
+    transition: all 0.35s;
+    -webkit-transition-duration: 0.35s;
+    transition-duration: 0.35s;
 }
 
 .nav_bar {
     font-family: "Times New Roman", Times, serif;
-    height: 100%;
+    height: 100vh;
     position: relative;
     background-color: rgba(255, 255, 255, .9);
     top: 0;
-    width: 15vw;
+    width: 13vw;
     z-index: 4;
     box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
-.nav_bar>img {
+.nav_bar>input {
     padding-left: 2.5rem !important;
     width: 80%;
     height: auto;
@@ -308,44 +304,49 @@ body {
 .nav_bar .nav-link {
     padding-bottom: 1.3rem;
     color: #3C4858;
+    text-align: center;
 }
 
-nav>a {
+nav>button {
     border-radius: 0.3rem;
     margin-left: 2rem;
-    margin-bottom: 1rem; /*fix for hover width*/
-    
-    margin-right: 1.3rem; /*fix for hover width*/
-    
+    margin-bottom: 1rem;
+    /*fix for hover width*/
+    margin-right: 1.3rem;
+    /*fix for hover width*/
 }
-
-.nav-link>span {
+.nav-link>button {
     padding-right: 2.5rem !important;
     text-align: left;
 }
 
+.nav_bar button{
+    background: #ffffff00
+}
 
-.nav_bar>nav>a:hover {
+.nav_bar>nav>button:hover {
     text-decoration: none;
-    color: black    ;
+    color: black;
     background: rgba(110, 110, 110, 0.2);
 }
 
-.nav_bar>nav>a:focus {
-    color:whitesmoke;
+.nav_bar>nav>button:focus {
+    color: whitesmoke;
     background-color: #4b6dd1;
     box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
     visibility: show;
 }
 
-.nav_bar>nav .active{
-    color:whitesmoke;
+.nav_bar>nav .active {
+    color: whitesmoke;
     background-color: #4b6dd1;
     box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
     visibility: show;
 }
 
-
+#menu{
+    text-align: left;
+}
 
 /********************************Button-Font-RWD************************************/
 
@@ -390,14 +391,13 @@ nav>a {
         min-height: 90vh;
         margin-bottom: 1rem;
     }
-
     .card-text {
         font-size: 1.125rem;
         display: inline-block;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 10; 
+        -webkit-line-clamp: 10;
         -webkit-box-orient: vertical;
     }
 }
@@ -447,9 +447,12 @@ nav>a {
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        line-height: 16px;     /* fallback */
-        max-height: 160px;      /* fallback */
-        -webkit-line-clamp: 10; /* number of lines to show */
+        line-height: 16px;
+        /* fallback */
+        max-height: 160px;
+        /* fallback */
+        -webkit-line-clamp: 10;
+        /* number of lines to show */
         -webkit-box-orient: vertical;
     }
     #bulletin_dialog {
@@ -512,3 +515,52 @@ nav>a {
 .ftr {
     background-color: #fff !important;
 }
+
+/* Shrinking the sidebar from 250px to 80px and center aligining its content*/
+.sidebar.active,
+.sidebar.active .nav_bar{
+    min-width: 5vw;
+    max-width: 5vw;
+    text-align: center;
+}
+
+    /* Toggling the sidebar header content, hide the big heading [h3] and showing the small heading [strong] and vice versa*/
+.sidebar div strong {
+    font-family: 'Poppins', sans-serif;
+    display: none;
+}
+.sidebar.active div input {
+    display: none;
+}
+.sidebar.active div strong {
+    display: block;
+    text-align:center;
+    padding: 15px;
+    background-color:rgba(133, 133, 133, 0.2);
+}
+
+.sidebar.active div nav {
+    margin-top: 0rem;
+}
+
+
+.sidebar.active div nav button{
+    margin:  1rem;
+    margin-right: 0.5rem;
+    display: block;
+    font-size: 1.4em;
+    margin-bottom: 5px;
+}
+
+
+/* Changing the arrow position to bottom center position, 
+   translateX(50%) works with right: 50% 
+   to accurately  center the arrow */
+.sidebar.active a[aria-expanded="false"]::before, .sidebar.active a[aria-expanded="true"]::before {
+    top: auto;
+    bottom: 5px;
+    right: 50%;
+    transform: translateX(50%);
+
+}
+

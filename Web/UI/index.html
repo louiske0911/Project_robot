@@ -21,16 +21,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
 
-    <script src="js/synthesis.js"></script>
+    <script src="js/index.js"></script>
     <script src="js/android.js"></script>
+    <script src="js/config.js"></script>
 
-    <script src="js/bulletin.js" async></script>
-    <script src="js/campus.js" async></script>
+
+    <script src="js/bulletin.js"></script>
+    <script src="js/campus.js"></script>
+    <script src="js/landscape.js"></script>
+    <script src="js/navigation.js"></script>
     <script src="js/dialog.js" async></script>
-    <script src="js/landscape.js" async></script>
-    <script src="js/navigation.js" async></script>
-    <script src="js/offcanvas.js" async></script>
-
+    <script src="js/synthesis.js" async></script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtO6a1R4EPgjltm-QSxGcBaIP0E6mojTs"></script>
 
@@ -41,53 +42,53 @@
         <div class="fetch_loader"></div>
     </div>
     <div class="row" style="margin-right: +15px;">
-        <div class="collapse show width" id="collapseExample">
-            <div class="sidebar">
-                <div class="nav_bar">
-                    <img class="mt-2 p-3" src="images/Feng-Chia.png">
-                    <nav class="nav flex-column">
-                        <a class="nav-link" href="javascript:GoolgeMap()">
-                            <span class="fa fa-map-marker fa-fw"></span>現在位置
-                        </a>
-                        <a class="nav-link" href="javascript:GetGoogleMap()">
-                            <span class="fa fa-car fa-fw"></span>導覽現況
-                        </a>
-                        <a class="nav-link" href="javascript:CampusIntroductionCard('college')">
-                            <span class="fa fa-book fa-fw"></span>學院介紹
-                        </a>
-                        <a class="nav-link" href="javascript:CampusIntroductionCard('building')">
-                            <span class="fa fa-building fa-fw"></span>大樓介紹
-                        </a>
-                        <a class="nav-link" href="javascript:CampusIntroductionCard('landscape')">
-                            <span class="fa fa-institution fa-fw"></span>景點介紹
-                        </a>
-                        <a class="nav-link" href="javascript:getBulletin()">
-                            <span class="fa fa-newspaper-o fa-fw"></span>校園訊息
-                        </a>
-                        <a class="nav-link" href="#">
-                            <span class="fa fa-question-circle-o fa-fw"></span>關於我們</a>
-                    </nav>
-                </div>
+        <!-- <div class="sidebar collapse show width" id="collapseExample"> -->
+        <div class="sidebar" id="collapseExample">
+            <div class="nav_bar">
+                <input type="image" src="images/Feng-Chia.png" class="mt-2 p-3" onclick="GoLeadPage();" />
+                <strong>FCU</strong>
+                <!-- <img class="mt-2 p-3" src="images/Feng-Chia.png"> -->
+                <nav class="nav flex-column">
+                    <button id="menu" class="btn nav-link fa fa-bars" alt=" " data-toggle="collapse" aria-expanded="false"></button>
+                    <button class="btn nav-link fa fa-map-marker" onclick="javascript:GoolgeMap()">
+                        <a>&emsp;現在位置</a>
+                    </button>
+                    <button class="btn nav-link fa fa-car" onclick="javascript:GetGoogleMap()">
+                        <a>&emsp;導覽現況</a>
+                    </button>
+                    <button class="btn nav-link fa fa-book" onclick="javascript:CampusIntroductionCard('college')">
+                        <a>&emsp;學院介绍</a>
+                    </button>
+                    <button class="btn nav-link fa fa-building" onclick="javascript:CampusIntroductionCard('building')">
+                        <a>&emsp;大樓介紹</a>
+                    </button>
+                    <button class="btn nav-link fa fa-institution " onclick="javascript:CampusIntroductionCard('landscape')">
+                        <a>&emsp;景點介紹</a>
+                    </button>
+                    <button class="btn nav-link fa fa-newspaper-o" onclick="javascript:getBulletin()">
+                        <a>&emsp;校園訊息</a>
+                    </button>
+                    <button class="btn nav-link fa fa-question-circle-o" onclick="#">
+                        <a>&emsp;關於我們</a>
+                    </button>
+                </nav>
             </div>
         </div>
     </div>
-    <!-- <div class="px-2 navbar-toggler" id="icon">
-        <a class="icon-menu rounded" alt="" data-off="offcanvas" data-toggle="collapse" href="#collapseExample" aria-expanded="true"
-            aria-controls="collapseExample"></a>
-    </div> -->
-    <div id="outer_bg" class="container fcu_background">
+
+    <div id="outer_bg" class="container fcu_background ">
         <div id="inner_bg" class="row justify-content-center inner_background">
-            <div id="map-canvas"></div>
+            <div id="map-canvas "></div>
         </div>
     </div>
 </body>
 
 </html>
 <script>
-    var textToDisplay = "本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻",
-        $output = $("#456");
+    var textToDisplay = "本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻 ",
+        $output = $("#456 ");
 
-    $("#123").click(function () {
+    $("#123 ").click(function () {
         var displayInt;
         textToDisplay = textToDisplay.split('');
         $output.empty();
