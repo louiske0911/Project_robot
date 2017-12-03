@@ -121,14 +121,27 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.about_dialog {
+#about_block {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    color: #0A0404;
+    background-color: black;
+    visibility: hidden;
+    z-index: 999;
+    opacity: 0.6;
+}
+
+#about_dialog {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 60%;
     height: 85%;
     background-color: rgba(255, 255, 255, 1);
-    opacity: 0.7;
+    z-index: 999;
+    opacity: 1;
+    visibility: hidden;
     transform: translate(-50%, -50%);
     border-radius: 0.4rem;
     box-shadow: 0 5px 16px 0 rgba(0, 0, 0, .6);
@@ -330,12 +343,13 @@ nav>button {
     margin-right: 1.3rem;
     /*fix for hover width*/
 }
+
 .nav-link>button {
     padding-right: 2.5rem !important;
     text-align: left;
 }
 
-.nav_bar button{
+.nav_bar button {
     background: #ffffff00
 }
 
@@ -359,9 +373,10 @@ nav>button {
     visibility: show;
 }
 
-#menu{
+#menu {
     text-align: left;
 }
+
 
 /********************************Button-Font-RWD************************************/
 
@@ -519,41 +534,45 @@ nav>button {
     font-size: 1.2em;
 }
 
-
 .ftr {
     background-color: #fff !important;
 }
 
+
 /* Shrinking the sidebar from 250px to 80px and center aligining its content*/
+
 .sidebar.active,
-.sidebar.active .nav_bar{
+.sidebar.active .nav_bar {
     min-width: 5vw;
     max-width: 5vw;
     text-align: center;
 }
 
+
 /* Toggling the sidebar header content, hide the big heading [h3] and showing the small heading [strong] and vice versa*/
+
 .sidebar div strong {
     font-family: 'Poppins', sans-serif;
     display: none;
 }
+
 .sidebar.active div input {
     display: none;
 }
+
 .sidebar.active div strong {
     display: block;
-    text-align:center;
+    text-align: center;
     padding: 15px;
-    background-color:rgba(133, 133, 133, 0.2);
+    background-color: rgba(133, 133, 133, 0.2);
 }
 
 .sidebar.active div nav {
     margin-top: 0rem;
 }
 
-
-.sidebar.active div nav button{
-    margin:  1rem;
+.sidebar.active div nav button {
+    margin: 1rem;
     margin-right: 0.5rem;
     display: block;
     font-size: 1.4em;
@@ -564,11 +583,11 @@ nav>button {
 /* Changing the arrow position to bottom center position, 
    translateX(50%) works with right: 50% 
    to accurately  center the arrow */
-.sidebar.active a[aria-expanded="false"]::before, .sidebar.active a[aria-expanded="true"]::before {
+
+.sidebar.active a[aria-expanded="false"]::before,
+.sidebar.active a[aria-expanded="true"]::before {
     top: auto;
     bottom: 5px;
     right: 50%;
     transform: translateX(50%);
-
 }
-
