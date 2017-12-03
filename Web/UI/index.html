@@ -77,52 +77,8 @@
     </div>
 
     <div id="outer_bg" class="container fcu_background ">
-        <div id="inner_bg" class="row justify-content-center inner_background">
-            <div id="map-canvas"></div>
-        </div>
-        <div class="about_dialog">
-            <h2 class="list-group-item list-group-item-dark" style="text-align:center">目前版本</h2>
-            <ul class="" style="list-style:none;">
-                <br/>
-                <li class="" style="">
-                    1.1.1
-                </li>
-            </ul>
-            <h2 class="list-group-item list-group-item-dark" style="text-align:center">主要更新</h2>
-
-            <ul class="" style="list-style:none;">
-                <br/>
-                <li class="">
-                    新增校園新聞
-                </li>
-                <li class="">
-                    維修通知
-                </li>
-            </ul>
-            <h2 class="list-group-item list-group-item-dark" style="text-align:center">關於我們</h2>
-            <br/>
-            <br/>
-            <p>&emsp;&emsp;一群瘋狂的資工人</p>
-        </div>
-    </div>
+        <div id="inner_bg" class="row justify-content-center inner_background"></div>
     </div>
 </body>
 
 </html>
-<script>
-    var textToDisplay = "本院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻院致力於成為亞太知名商管學院，旨在提升卓越教學成效及教師智慧貢獻 ",
-        $output = $("#456 ");
-
-    $("#123").click(function () {
-        var displayInt;
-        textToDisplay = textToDisplay.split('');
-        $output.empty();
-        displayInt = setInterval(function () {
-            var word = textToDisplay.shift();
-            if (word == null) {
-                return clearInterval(displayInt);
-            }
-            $output.append(word);
-        }, 50);
-    });
-</script>

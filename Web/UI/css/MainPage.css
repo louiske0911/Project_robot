@@ -520,27 +520,6 @@ nav>button {
 }
 
 
-/* .ctr_1 {
-    background-color: #0275d8 !important;
-  
-    z-index:100;
-    width:50%;
-    height:100%;
-    opacity:0.3;
-}
-
-.ctr_2 {
-    background-color: #d9534f!important;
-}
-
-.ctr_3 {
-    background-color: #5cb85c !important;
-}
-
-.ctr_4 {
-    background-color: #d9534f !important;
-} */
-
 .ftr {
     background-color: #fff !important;
 }
@@ -553,7 +532,7 @@ nav>button {
     text-align: center;
 }
 
-    /* Toggling the sidebar header content, hide the big heading [h3] and showing the small heading [strong] and vice versa*/
+/* Toggling the sidebar header content, hide the big heading [h3] and showing the small heading [strong] and vice versa*/
 .sidebar div strong {
     font-family: 'Poppins', sans-serif;
     display: none;

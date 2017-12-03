@@ -123,7 +123,7 @@ function AddCarousel(imgList) {
 }
 
 function getBulletin() {
-    $('#inner_bg').remove();
+    $('#outer_bg').html("")
     $('#loader_block').css("display", "block");
 
     fetch(BULLETIN_URL, {

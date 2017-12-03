@@ -35,9 +35,6 @@ $(document).ready(function () {
         var active = $('.sidebar')
         if (!active.hasClass('active')) {
             $('.sidebar').toggleClass('active')
-            menulist = $('nav a');
-            console.log(menulist)
-
             $('nav button a').hide()
         } else {
             $('.sidebar').removeClass('active')

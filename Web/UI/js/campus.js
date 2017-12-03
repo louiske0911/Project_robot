@@ -125,7 +125,7 @@ function SetSubContainer(campusInfo, index) {
 }
 
 function GetCampusInfo(url) {
-    $('#inner_bg').remove();
+    $('#outer_bg').html("")
     $('#loader_block').css("display", "block");
 
     fetch(url, {

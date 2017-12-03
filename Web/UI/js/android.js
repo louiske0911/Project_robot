@@ -66,7 +66,8 @@ function GetHistoryAndSpeak(URL, id) {
             throw error
         }
     }).then(function (data) {
-        InitSpeech(data)
+        SendSpeech(data)
+        SendNavigation(data)
         // data 才是實際的 JSON 資料
     }).catch(function (error) {
         return error.response;
@@ -86,14 +87,13 @@ function NavigationSpeck(type, id) { //Android Webview need call this function t
     GetHistoryAndSpeak(url, id)
 }
 
-function InitSpeech(data) {
+function SendSpeech(data) {
     if (data.info.history)
         speakContent = data.info.history;
     else
         speakContent = data.info.introduction;
 
     speakContent = speakContent.split('\n')[0].replace(' ', '').replace('\n', ',').replace('。', ',').replace('、', ',')
-    console.log("Get Text" + speakContent)
 
     try {
         if (JSInterface) {
