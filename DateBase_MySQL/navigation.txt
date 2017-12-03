@@ -1,0 +1,45 @@
+type: college
+id: 1 name:商學院
+id: 2 name:工學院
+id: 3 name:建設學院
+id: 4 name:金融學院。
+id: 5 name:建築專業學院 
+id: 6 name:國際科技與管理學院 
+id: 7 name:資電學院
+id: 8 name:人文社會學院
+id: 9 name:理學院
+id: 10 name:經營管理學院 
+id: 11 name:跨領域設計學院 
+
+type: building 
+id: 1 name:學思樓 
+id: 2 name:體育館
+id: 3 name:土木水利館
+id: 4 name:理學大樓
+id: 5 name:育樂館
+id: 6 name:建築館
+id: 7 name:語文大樓
+id: 8 name:人言大樓
+id: 9 name:人文社會館 
+id: 10 name:電子通訊館 
+id: 11 name:忠勤樓 
+id: 12 name:工學館 
+id: 13 name:資訊電機館 
+id: 14 name:圖書館
+id: 15 name:行政大樓
+id: 16 name:行政二館
+id: 17 name:丘逢甲紀念館 
+id: 18 name:科學與航太館
+id: 19 name:商學大樓 
+
+tpye: landscape
+id: 1 name:學思園
+id: 2 name:綜合體育場
+id: 3 name:文華創意中心
+id: 4 name:二一步道
+id: 5 name:分手步道
+id: 6 name:第一招待所
+id: 7 name:榕榕大道
+
+
+NavigationSpeck(type, id)
