@@ -1,29 +1,27 @@
-const BUILDING_URL = 'http://localhost:3000/api/fcu/building';
-const COLLEGE_URL = 'http://localhost:3000/api/fcu/college';
-const LANDSCAPE_URL = 'http://localhost:3000/api/fcu/landscape';
-var dialogType = '';
-
 function IntoSystem(page) {
     $('#loader_block').css("display", "block");
+    let hash, url
     switch (page) {
         case 'college':
-            GetCampusInfo(COLLEGE_URL);
-            dialogType = 'AddDialog(\'college\')';
+            hash = "#college";
             break;
         case 'building':
-            GetCampusInfo(BUILDING_URL);
-            dialogType = 'AddDialog(\'building\')';
+            hash = "#building";
             break;
         case 'landscape':
-            GetCampusInfo(LANDSCAPE_URL);
-            dialogType = 'AddDialog(\'landscape\')';
+            hash = "#landscape";
             break;
         case 'location':
-
+            hash = "#location";
             break;
         case 'bulletin':
-
+            hash = "#bulletin";
             break;
-
+        case 'login':
+            hash = "#login";
     }
+
+    url = "http://localhost:3000/index.html" + hash
+    window.location.assign(url);
+
 }
