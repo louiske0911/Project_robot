@@ -85,10 +85,10 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
             public void onClick(View view) {
                 singleTonTemp.status = false;
                 sendMessage("900");
-//                String [] a = new String[2];
-//                a[0]="building";
-//                a[1]="1";
-//                 callWeb(a);
+                String [] a = new String[2];
+                a[0]="building";
+                a[1]="1";
+                 callWeb(a);
             }
         });
     }
@@ -209,7 +209,7 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
                     .width(6)
                     .color(Color.RED)
                     .clickable(true));
-//            mMap.addMarker(new MarkerOptions().position(temp.get(i)).draggable(true));    //在google map上畫一個marker
+            mMap.addMarker(new MarkerOptions().position(temp.get(i)).draggable(true));    //在google map上畫一個marker
 
             mMap.setOnPolylineClickListener(new GoogleMap.OnPolylineClickListener() {
                 @Override

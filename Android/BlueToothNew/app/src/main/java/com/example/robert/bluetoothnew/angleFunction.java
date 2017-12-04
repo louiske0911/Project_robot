@@ -86,12 +86,12 @@ public class angleFunction extends Service implements SensorEventListener, TextT
         initLocationBroadCast();
     }
 
-    public void callWeb(String string[]) {
-        Log.v("callWeb", "callWeb");
+    public void callWeb(String string,String string1) {
+        Log.v("@@@@@", "callWeb"+string+string1);
         Intent broadcasetIntent = new Intent();
         broadcasetIntent.setAction("CallWeb");
-        broadcasetIntent.putExtra("type", string[0]);
-        broadcasetIntent.putExtra("id", string[1]);
+        broadcasetIntent.putExtra("type", string);
+        broadcasetIntent.putExtra("id",string1);
         sendBroadcast(broadcasetIntent);
     }
 
@@ -211,6 +211,7 @@ public class angleFunction extends Service implements SensorEventListener, TextT
         if (accelerometerValue != null && tesla != null) {
             SensorManager.getRotationMatrix(R, null, accelerometerValue, tesla);   //計算旋轉矩陣
             SensorManager.getOrientation(R, values);
+            Log.v("AngleValue", "angleValue(current111) ： " +Math.toDegrees(values[0]));//方向感測器的 X 角度
             return (float) Math.toDegrees(values[0]);
         } else {
             return 0;
@@ -293,7 +294,7 @@ public class angleFunction extends Service implements SensorEventListener, TextT
                 Log.v("aaa", "angleValue(1) ： " + String.valueOf(orientationValue));//方向感測器的 X 角度
                 Log.v("aaa", "angleValue(2) ： " + String.valueOf(modifyAngle));//方向感測器的 X 角度
 
-                if (magnitude < 55) {
+//                if (magnitude < 55) {
                     if (orientationValue > 180) {
                         orientationValue = -(orientationValue - 360);       //改成 0 ~-180
                     }
@@ -301,9 +302,9 @@ public class angleFunction extends Service implements SensorEventListener, TextT
 
                     if (singleTonTemp.sourceStatus && singleTonTemp.directionstatus && singleTonTemp.status) {
                         sendMessage(calculateAngleCurrentToGoal.toString());
-                        Log.v("calculateAngle", "calculateAngleCurrentToGoal：" + calculateAngleCurrentToGoal.toString());
+                        Log.v("calculateAngle1", "calculateAngleCurrentToGoal：" + calculateAngleCurrentToGoal.toString());
                     }
-                } else {
+//                } else {
                     modifyAngle = modifyAngleWithMagnetic();
                     if (modifyAngle < 0) {
                         modifyAngle = -(modifyAngle);
@@ -312,19 +313,19 @@ public class angleFunction extends Service implements SensorEventListener, TextT
 
                     if (singleTonTemp.sourceStatus && singleTonTemp.directionstatus && singleTonTemp.status) {
                         sendMessage(calculateAngleCurrentToGoal.toString());
-                        Log.v("modifyAngle", "modifyAngle：" + modifyAngle);
-                        Log.v("calculateAngle", "calculateAngleCurrentToGoal：" + calculateAngleCurrentToGoal.toString());
+                        Log.v("calculateAngleMMM", "modifyAngle：" + modifyAngle);
+                        Log.v("calculateAngle2", "calculateAngleCurrentToGoal：" + calculateAngleCurrentToGoal.toString());
                     }
 
 
-                }
+//                }
             } else if (singleTonTemp.arrivalDirection == singleTonTemp.planPath.size() - 1) {
                 /**
                  *  initial key
                  */
                 singleTonTemp.initStatus();
             }
-            handler.postDelayed(this, 3000);
+            handler.postDelayed(this, 500);
         }
 
         private void sendMessage(String message) {
@@ -350,7 +351,7 @@ public class angleFunction extends Service implements SensorEventListener, TextT
             boolean arrival = false;
             if (singleTonTemp.index < singleTonTemp.planPath.size()) {
 
-                Log.v("index",""+singleTonTemp.index+" "+singleTonTemp.planPath.size());
+                Log.v("@@@@@",""+singleTonTemp.index+" "+singleTonTemp.planPath.size());
 
                 calculateAngleCurrentToGoal.setGoalPosition(singleTonTemp.planPath.get(singleTonTemp.index));
                 arrivalDestination.setDirection(singleTonTemp.planPath.get(singleTonTemp.index));
@@ -358,12 +359,14 @@ public class angleFunction extends Service implements SensorEventListener, TextT
 
                 arrivalGoal.setDirection(singleTonTemp.planPath.get(singleTonTemp.planPath.size() - 1)); //??
 
-                special = singleTonTemp.planPath.get(singleTonTemp.index);
                 Log.v("fuck", "1111111"+arrival);
+                callWeb(judgeIsSpecialPointResult[0],judgeIsSpecialPointResult[1]);
+
                 if (arrival) {
-                    if (!judgeIsSpecialPointResult[0].equals("0")) {
-                        callWeb(judgeIsSpecialPointResult);
-                    }
+//                    if (judgeIsSpecialPointResult[0].equals("0")) {
+//                    }
+                special = singleTonTemp.planPath.get(singleTonTemp.index);
+
                     singleTonTemp.index++;
 
                 } else if (arrivalGoal.calDistance()) {
@@ -380,16 +383,14 @@ public class angleFunction extends Service implements SensorEventListener, TextT
     public void communicationForStopIfOr(boolean arrival) {
         arrivalDirection = arrival;
     }
-
-    public void communicationForjudgeIsSpecialPoint(String string1,String string2) {
-
-        judgeIsSpecialPointResult[0] = string1;
-        judgeIsSpecialPointResult[1] = string2;
-    }
-
     private Runnable judgeIsSpecialPoint = new Runnable() {
+        public void communicationForjudgeIsSpecialPoint(String string1,String string2) {
+            Log.v("@@@@@","____"+string1+"  "+string2);
+            judgeIsSpecialPointResult[0] = string1;
+            judgeIsSpecialPointResult[1] = string2;
+        }
         public void run() {
-            communicationForjudgeIsSpecialPoint("0","0");
+//            communicationForjudgeIsSpecialPoint("0" ,"0");
             int i = 0;
             for (i = 0; i < Constants.SPECIAL1.length; i++) {       //育樂館
                 if (Constants.SPECIAL1[i].equals(special)) {
@@ -446,6 +447,7 @@ public class angleFunction extends Service implements SensorEventListener, TextT
             for (i = 0; i < Constants.SPECIAL11.length; i++) {      //人言
                 if (Constants.SPECIAL11[i].equals(special)) {
                     communicationForjudgeIsSpecialPoint("building","8");
+                    Log.v("@@@@@","\"building\",\"8\"");
                 }
             }
             for (i = 0; i < Constants.SPECIAL12.length; i++) {      //工學院

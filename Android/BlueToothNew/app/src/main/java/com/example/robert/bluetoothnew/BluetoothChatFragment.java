@@ -170,7 +170,8 @@ public class BluetoothChatFragment extends Fragment{
         settings.setLoadWithOverviewMode(true);
         myWebView.requestFocus();
         myWebView.setWebViewClient(new MyWebViewClient());
-        myWebView.loadUrl("http://172.20.10.2:3000/index.html");
+//        myWebView.loadUrl("http://10.21.22.34:3000/index.html");
+        myWebView.loadUrl("http://697a112f.ngrok.io/index.html");
 //        myWebView.loadUrl("http://140.134.26.31/Bluetooth/Bluetooth.html");
         myWebView.addJavascriptInterface(new JavaScriptInterface(getActivity()), "JSInterface");
     }
@@ -241,7 +242,7 @@ public class BluetoothChatFragment extends Fragment{
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @JavascriptInterface
         public void setTTS(String string) {
-            Log.v("zzzz", string);
+            Log.v("@@@@@", string);
 //            tts.shutdown();
             tts.stop();
 
@@ -448,7 +449,7 @@ public class BluetoothChatFragment extends Fragment{
             public void callWeb(String type,String id) {
                 super.callWeb(type,id);
                 Log.v("WebViewActivity", "UA: " + myWebView.getSettings().getUserAgentString());
-                String call = "javascript:NavigationSpeck('"+type+"','"+id+"')";
+                String call = "javascript:Navigation('"+type+"','"+id+"')";
 //                "javascript:" + JsName + "('" + TotalParam + "')"
                 myWebView.loadUrl(call);     //javascript:[webFunctionName]([parameter])
             }
