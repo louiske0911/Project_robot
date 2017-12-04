@@ -55,8 +55,8 @@ function SetDialogContent(info, Type) {
     else if (Type == 'landscape') title = "景點介紹"
 
     const contentTitle =
-        '<div class="p-4">' +
-        '<h2 class="mb-4" style="text-align:center;">' + title + '</h2>' +
+        '<div class="">' +
+        '<h2 class="list-group-item list-group-item-dark" style="text-align:center;">' + title + '</h2>' +
         '</div>';
 
     let STRING = info['introduction'].split('\n')
@@ -107,7 +107,10 @@ function SetDialogCarousel() {
 function Dialog(dialogInfo, Type) {
     const block = '<div id="block" onclick="dialogBack()"></div>';
     const campus_dialog =
-        '<div id="campus_dialog" class="p-4 rounded">' +
+        '<div id="campus_dialog" class="">' +
+        '<i class="fa fa-times-circle-o" aria-hidden="true"></i>' +
+
+        // '</div>';
         '<div id="dialog_inner" class="dialog_inner"></div></div>';
     console.log("123")
     dialogContent = SetDialogContent(dialogInfo['info'], Type);

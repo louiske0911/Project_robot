@@ -82,13 +82,13 @@ function SetPostCarousel() {
     leftCarousel =
         '<div class="text-right align-self-center">' +
         '<a class="btn prev" style="color:black;" href="#postsCarousel" data-slide="prev" title="go back">' +
-        '<i class="fa fa-chevron-circle-left fa-3x"></i>' +
+        '<i class="fa fa-chevron-circle-left fa-2x"></i>' +
         '</a>' +
         '</div>';
     rightCarousel =
         '<div class="text-left align-self-center">' +
         '<a class="btn next" style="color:black;"href="#postsCarousel" data-slide="next" title="more">' +
-        '<i class="fa fa-chevron-circle-right fa-3x"></i>' +
+        '<i class="fa fa-chevron-circle-right fa-2x"></i>' +
         '</a>' +
         '</div>';
 }
