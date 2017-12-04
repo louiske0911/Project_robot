@@ -123,12 +123,14 @@ function AddCarousel(imgList) {
 }
 
 function getBulletin() {
+    mapBlock = 0;
+
     $('#outer_bg').html("")
     $('#loader_block').css("display", "block");
 
     fetch(BULLETIN_URL, {
         method: 'GET',
-    }).then(function (response) {
+    }).then(function(response) {
         if (response.status >= 200 && response.status < 300) {
             return response.json()
         } else {
@@ -136,14 +138,14 @@ function getBulletin() {
             error.response = response
             throw error
         }
-    }).then(function (data) {
+    }).then(function(data) {
         bulletinList = data;
         AddBuletinList(bulletinList);
         // data 才是實際的 JSON 資料
         $('#loader_block').css("display", "none");
-    }).catch(function (error) {
+    }).catch(function(error) {
         return error.response;
-    }).then(function (errorData) {
+    }).then(function(errorData) {
         // errorData 裡面才是實際的 JSON 資料
     });
 }

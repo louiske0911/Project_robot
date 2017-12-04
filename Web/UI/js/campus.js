@@ -125,6 +125,8 @@ function SetSubContainer(campusInfo, index) {
 }
 
 function GetCampusInfo(url) {
+    mapBlock = 0;
+
     $('#outer_bg').html("")
     $('#loader_block').css("display", "block");
 
@@ -140,6 +142,9 @@ function GetCampusInfo(url) {
         }
     }).then(function(data) {
         campusInfo = data;
+        data.forEach(element => {
+            console.log("{name:\"" + element.name + "\",location:\"" + element.location.location + "\",image:\"" + element.info.image[1] + "\"}")
+        });
         console.log(campusInfo);
         AddContainer(campusInfo);
         $('#loader_block').css("display", "none");

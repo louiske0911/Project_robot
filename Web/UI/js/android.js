@@ -1,5 +1,6 @@
 var GOOGLE_STATUS = 0;
 let speckContent = "";
+let mapBlock = 0;
 
 function AndroidPlanPath(info) {
     let lat, lng;
@@ -61,7 +62,7 @@ function CloseMap() {
     GOOGLE_STATUS = 0;
 }
 
-function GetHistoryAndSetInfo(URL, id) {
+function GetHistoryAndSetInfo(URL, id, mapId) {
     URL = URL + id
     fetch(URL, {
         method: 'GET',
@@ -74,7 +75,7 @@ function GetHistoryAndSetInfo(URL, id) {
             throw error
         }
     }).then(function(data) {
-        SetNavigation(data)
+        SetNavigation(data, mapId)
             // data 才是實際的 JSON 資料
     }).catch(function(error) {
         return error.response;
@@ -84,22 +85,31 @@ function GetHistoryAndSetInfo(URL, id) {
 }
 
 function Navigation(type, id) { //Android Webview need call this function to speech
+    let mapId = id - 1
     let url;
-    if (type == 'college') url = COLLEGE_DIALOG_URL;
-    else if (type == 'building') url = BUILDING_DIALOG_URL;
-    else if (type == 'landscape') url = LANDSCAPE_DIALOG_URL;
+    if (type == 'college') {
+        url = COLLEGE_DIALOG_URL;
+    } else if (type == 'building') {
+        mapId += 12
+        url = BUILDING_DIALOG_URL;
+    } else if (type == 'landscape') {
+        mapId = mapId + 12 + 19
+        url = LANDSCAPE_DIALOG_URL;
+    }
 
     console.log(type)
     console.log(id)
 
-    GetGoogleMap();
-    GetHistoryAndSetInfo(url, id)
+    if (mapBlock == 0) {
+        GetGoogleMap();
+    }
+    GetHistoryAndSetInfo(url, id, mapId)
 
 }
 
 
-function SetNavigation(data) {
-    SendNavigationToGoogleMap(data)
+function SetNavigation(data, mapId) {
+    SendNavigationToGoogleMap(data, mapId)
     SendSpeech(data)
 }
 
@@ -109,7 +119,7 @@ function SendSpeech(data) {
     else
         speakContent = data.info.introduction;
 
-    speakContent = speakContent.split('\n')[0].replace(' ', '').replace('\n', ',').replace('。', ',').replace('、', ',')
+    speakContent = speakContent.split('。')[0].replace(' ', '').replace('\n', ',').replace('。', ',').replace('、', ',')
 
     try {
         if (JSInterface) {
@@ -122,4 +132,8 @@ function SendSpeech(data) {
             printError(e, false);
         }
     }
+}
+
+function GetLocation(lat, lng) {
+
 }

@@ -4,6 +4,7 @@ var map;
 var infowindow;
 let navigationImage = []
 let navigationContent
+let mapContent
 
 function NavigationShow() {
     document.getElementById("block").style.visibility = "visible";
@@ -56,21 +57,10 @@ function InitMap() {
 
     var marker, i;
 
-    // InfoWindow content
-    var content = '<div id="iw-container">' +
-        '<div class="iw-title">' +
-        '<img style="display:block;margin:0px;border:0px;width:100%;height:100%" src="../images/ShiueSzYuan.jpg" height="115" width="83">' +
-        '</div>';
-    // '<div class="iw-content">' +
-    // '<div class="iw-subTitle"></div>' +
-    // '<p></p>' +
-    // '</div>';
-
     // A new Info Window is created and set content
     infowindow = new google.maps.InfoWindow({
         maxWidth: 350
     });
-
 
     for (let i = 0; i < markers.length; i++) {
         let location = markers[i].location.split(',')
@@ -87,24 +77,96 @@ function InitMap() {
         });
 
         // Allow each marker to have an info window    
-        var infowindow2 = new google.maps.InfoWindow();
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                // infowindow.setContent('<p id="789">test</p>');
-                infowindow.setContent(content);
+                // InfoWindow content
+                mapContent =
+                    '<div id="iw-container">' +
+                    '<div class="iw-title">' +
+                    '<img style="display:block;margin:0px;border:0px;width:100%;height:100%" src="' + markers[i].image + '" height="115" width="83">' +
+                    '</div>';
 
+                infowindow.setContent(mapContent);
                 infowindow.open(map, marker);
-
             }
         })(marker, i));
         markerList.push(marker)
-        console.log(i)
     }
 
     google.maps.event.addListener(map, 'click', function() {
         infowindow.close();
     });
 
+    CreateInfoWindows();
+}
+
+function GetNavigation() {
+    $('#outer_bg').html("");
+    $('#outer_bg').removeClass('container').addClass('container-fluid');
+}
+
+function GetGoogleMap() {
+    mapBlock = 1;
+    GetNavigation();
+    InitMap();
+    google.maps.event.addDomListener(infowindow, 'load', InitMap);
+}
+
+function SendNavigationToGoogleMap(data, mapId) {
+    navigationContent = ""
+    navigationImage = data.info.image
+
+    if (data.info.history)
+        navigationContent = data.info.history;
+    else
+        navigationContent = data.info.introduction;
+
+    navigationContent = navigationContent.split('\n')[0].replace(' ', '').replace('\n', ',').replace('。', ',').replace('、', ',')
+    mapNavigationEvent = 1;
+
+    markerList.forEach(element => {
+        element.setVisible(false)
+    });
+    // google.maps.event.trigger(markerList[4], 'click');
+    setTimeout(function() {
+        let infowindowHTML =
+            '<div id="iw-container">' +
+            '<div class="iw-title">' +
+            '<img style="display:block;margin:0px;border:0px;width:100%;height:100%" src="' + data.info.image[2] + '" height="115" width="83">' +
+            '</div>' +
+            '<div class="iw-content">' +
+            '<div class="iw-subTitle">' + data.name + '</div>' +
+            '<p id="mapDialogContent">' + navigationContent + '</p>' +
+            '</div>';
+
+        infowindow.setContent(infowindowHTML);
+        console.log(markerList[mapId]);
+        markerList[mapId].setVisible(true)
+        infowindow.open(map, markerList[mapId]);
+        TpyeWriter(navigationContent)
+    }, 500);
+}
+
+function TpyeWriter(text) {
+    let textToDisplay = ""
+    textToDisplay = text
+    console.log(textToDisplay)
+    $output = $("#mapDialogContent");
+    var displayInt;
+    textToDisplay = textToDisplay.split('');
+    $output.empty();
+    displayInt = setInterval(function() {
+        var word = textToDisplay.shift();
+        if (word == null) {
+            return clearInterval(displayInt);
+        }
+        $output.append(word);
+    }, 190);
+    // mapNavigationEvent = 0;
+}
+
+
+function CreateInfoWindows() {
     // *
     // START INFOWINDOW CUSTOMIZE.
     // The google.maps.event.addListener() event expects
@@ -156,59 +218,4 @@ function InitMap() {
             $(this).css({ opacity: '0.5' });
         });
     });
-}
-
-function GetNavigation() {
-    $('#outer_bg').html("");
-    $('#outer_bg').removeClass('container').addClass('container-fluid');
-}
-
-function GetGoogleMap() {
-    GetNavigation();
-    InitMap();
-    google.maps.event.addDomListener(winitializeindow, 'load', InitMap);
-}
-
-function SendNavigationToGoogleMap(data) {
-    navigationContent = ""
-    navigationImage = data.info.image
-
-    if (data.info.history)
-        navigationContent = data.info.history;
-    else
-        navigationContent = data.info.introduction;
-
-    navigationContent = navigationContent.split('。')[0].replace(' ', '').replace('\n', ',').replace('。', ',').replace('、', ',')
-    mapNavigationEvent = 1;
-
-
-    // google.maps.event.trigger(markerList[4], 'click');
-    setTimeout(function() {
-        infowindow.setContent('<p id="123"></p>');
-
-        console.log(markerList[1]);
-        infowindow.open(map, markerList[1]);
-        TpyeWriter(navigationContent)
-    }, 1000);
-
-
-}
-
-
-function TpyeWriter(text) {
-    let textToDisplay = ""
-    textToDisplay = text
-    console.log(textToDisplay)
-    $output = $("#123");
-    var displayInt;
-    textToDisplay = textToDisplay.split('');
-    $output.empty();
-    displayInt = setInterval(function() {
-        var word = textToDisplay.shift();
-        if (word == null) {
-            return clearInterval(displayInt);
-        }
-        $output.append(word);
-    }, 100);
-    // mapNavigationEvent = 0;
 }
