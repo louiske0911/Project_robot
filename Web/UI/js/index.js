@@ -20,7 +20,7 @@ $(document).ready(function () {
     } else if (hash === "bulletin") {
         getBulletin();
     } else if (hash === "login") {
-
+        aboutDialogShow();
     }
 });
 

@@ -7,6 +7,7 @@ function dialogBack() {
     document.getElementById("block").style.visibility = "hidden";
     document.getElementById("campus_dialog").style.visibility = "hidden";
     document.getElementById("campus_dialog").remove();
+    document.getElementById("block").remove();
 }
 
 function GetSpecifyInfoById(cardInfo, Type) {
@@ -132,7 +133,7 @@ function GetDialogInfo(URL, Type, id) {
     URL = URL + id
     fetch(URL, {
         method: 'GET',
-    }).then(function (response) {
+    }).then(function(response) {
         if (response.status >= 200 && response.status < 300) {
             return response.json()
         } else {
@@ -140,15 +141,15 @@ function GetDialogInfo(URL, Type, id) {
             error.response = response
             throw error
         }
-    }).then(function (data) {
+    }).then(function(data) {
         dialogInfo = data;
         console.log(dialogInfo);
         Dialog(dialogInfo, Type);
         dialogShow();
         // data 才是實際的 JSON 資料
-    }).catch(function (error) {
+    }).catch(function(error) {
         return error.response;
-    }).then(function (errorData) {
+    }).then(function(errorData) {
         // errorData 裡面才是實際的 JSON 資料
     });
 }

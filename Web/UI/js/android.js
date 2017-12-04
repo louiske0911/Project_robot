@@ -13,12 +13,12 @@ function AndroidPlanPath(info) {
     try {
         if (JSInterface) {
             JSInterface.setDirection(lat, lng);
-            NavigationSpeck(info.dataset.type, info.dataset.id);
+            Navigation(info.dataset.type, info.dataset.id);
         }
     } catch (e) {
         if (e instanceof ReferenceError) {
             console.log("Plan Path: " + info.dataset.type + info.dataset.id)
-            NavigationSpeck(info.dataset.type, info.dataset.id);
+            Navigation(info.dataset.type, info.dataset.id);
         } else {
             printError(e, false);
         }
@@ -40,11 +40,19 @@ function OpenURL(url) {
     }
 }
 
-function GoolgeMap() {
-    if (JSInterface) {
-        if (GOOGLE_STATUS == 0) {
-            JSInterface.showToast();
-            GOOGLE_STATUS = 1;
+function GoogleMap() {
+    try {
+        if (JSInterface) {
+            if (GOOGLE_STATUS == 0) {
+                JSInterface.showToast();
+                GOOGLE_STATUS = 1;
+            }
+        }
+    } catch (e) {
+        if (e instanceof ReferenceError) {
+            alert("此功能目前只開放現場使用者唷！！")
+        } else {
+            printError(e, false);
         }
     }
 }
@@ -53,11 +61,11 @@ function CloseMap() {
     GOOGLE_STATUS = 0;
 }
 
-function GetHistoryAndSpeak(URL, id) {
+function GetHistoryAndSetInfo(URL, id) {
     URL = URL + id
     fetch(URL, {
         method: 'GET',
-    }).then(function (response) {
+    }).then(function(response) {
         if (response.status >= 200 && response.status < 300) {
             return response.json()
         } else {
@@ -65,18 +73,17 @@ function GetHistoryAndSpeak(URL, id) {
             error.response = response
             throw error
         }
-    }).then(function (data) {
-        SendSpeech(data)
-        SendNavigation(data)
-        // data 才是實際的 JSON 資料
-    }).catch(function (error) {
+    }).then(function(data) {
+        SetNavigation(data)
+            // data 才是實際的 JSON 資料
+    }).catch(function(error) {
         return error.response;
-    }).then(function (errorData) {
+    }).then(function(errorData) {
         // errorData 裡面才是實際的 JSON 資料
     });
 }
 
-function NavigationSpeck(type, id) { //Android Webview need call this function to speech
+function Navigation(type, id) { //Android Webview need call this function to speech
     let url;
     if (type == 'college') url = COLLEGE_DIALOG_URL;
     else if (type == 'building') url = BUILDING_DIALOG_URL;
@@ -84,7 +91,16 @@ function NavigationSpeck(type, id) { //Android Webview need call this function t
 
     console.log(type)
     console.log(id)
-    GetHistoryAndSpeak(url, id)
+
+    GetGoogleMap();
+    GetHistoryAndSetInfo(url, id)
+
+}
+
+
+function SetNavigation(data) {
+    SendNavigationToGoogleMap(data)
+    SendSpeech(data)
 }
 
 function SendSpeech(data) {
@@ -107,4 +123,3 @@ function SendSpeech(data) {
         }
     }
 }
-

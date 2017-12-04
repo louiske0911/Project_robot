@@ -40,14 +40,18 @@
     </div>
     <div id="about_block" onclick="javascript:aboutDialogBack()"></div>
     <div id="about_dialog">
-        <h2 class="list-group-item list-group-item-dark" style="text-align:center">目前版本</h2>
+        <h3 class="list-group-item list-group-item-dark" style="text-align:center">目前版本
+            <span class="fa fa-info-circle fa-fw"></span>
+        </h3>
         <ul class="" style="list-style:none;">
             <br/>
             <li class="" style="">
                 1.1.1
             </li>
         </ul>
-        <h2 class="list-group-item list-group-item-dark" style="text-align:center">主要更新</h2>
+        <h3 class="list-group-item list-group-item-dark" style="text-align:center">主要更新
+            <span class="fa fa-history fa-fw"></span>
+        </h3>
 
         <ul class="" style="list-style:none;">
             <br/>
@@ -58,21 +62,27 @@
                 維修通知
             </li>
         </ul>
-        <h2 class="list-group-item list-group-item-dark" style="text-align:center">關於我們</h2>
+        <h3 class="list-group-item list-group-item-dark" style="text-align:center">關於我們
+            <span class="fa fa-users fa-fw"></span>
+        </h3>
         <br/>
         <br/>
         <p>&emsp;&emsp;一群瘋狂的資工人</p>
+        <h3 class="list-group-item list-group-item-dark" style="text-align:center">使用教學
+            <span class="fa fa-question-circle fa-fw"></span>
+        </h3>
     </div>
     <div class="row" style="margin-right: +15px;">
         <!-- <div class="sidebar collapse show width" id="collapseExample"> -->
         <div class="sidebar" id="collapseExample">
             <div class="nav_bar">
                 <input type="image" src="images/Feng-Chia.png" class="mt-2 p-3" onclick="GoLeadPage();" />
-                <strong>FCU</strong>
-                <!-- <img class="mt-2 p-3" src="images/Feng-Chia.png"> -->
+                <button class="btn" onclick="javascript:SendNavigationToGoogleMap(1)">
+                    <strong>FCU</strong>
+                </button>
                 <nav class="nav flex-column">
                     <button id="menu" class="btn nav-link fa fa-bars" alt=" " data-toggle="collapse" aria-expanded="false"></button>
-                    <button class="btn nav-link fa fa-map-marker" onclick="javascript:GoolgeMap()">
+                    <button class="btn nav-link fa fa-map-marker" onclick="javascript:GoogleMap()">
                         <a>&emsp;現在位置</a>
                     </button>
                     <button class="btn nav-link fa fa-car" onclick="javascript:GetGoogleMap()">

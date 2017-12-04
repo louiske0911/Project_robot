@@ -1,3 +1,4 @@
+button,
 element.style {
     cursor: pointer;
 }
@@ -590,4 +591,41 @@ nav>button {
     bottom: 5px;
     right: 50%;
     transform: translateX(50%);
+}
+
+@media screen and (max-width:1099px) {
+    /* Shrinking the sidebar from 250px to 80px and center aligining its content*/
+    .sidebar.active,
+    .sidebar.active .nav_bar {
+        min-width: 8vw;
+        max-width: 8vw;
+        text-align: center;
+    }
+    /* Toggling the sidebar header content, hide the big heading [h3] and showing the small heading [strong] and vice versa*/
+    .sidebar div strong {
+        font-family: 'Poppins', sans-serif;
+        display: none;
+    }
+    .sidebar.active div input {
+        display: none;
+    }
+    .sidebar.active div strong {
+        display: block;
+        text-align: center;
+        padding: 15px;
+        background-color: rgba(133, 133, 133, 0.2);
+    }
+    .sidebar.active div nav {
+        margin-top: 0rem;
+    }
+    .sidebar.active div nav button {
+        margin: 1rem;
+        margin-right: 0.5rem;
+        display: block;
+        font-size: 1.4em;
+        margin-bottom: 5px;
+    }
+    .nav_bar button {
+        background-color: rgba(133, 133, 133, 0);
+    }
 }

@@ -130,7 +130,7 @@ function GetCampusInfo(url) {
 
     fetch(url, {
         method: 'GET',
-    }).then(function (response) {
+    }).then(function(response) {
         if (response.status >= 200 && response.status < 300) {
             return response.json()
         } else {
@@ -138,16 +138,15 @@ function GetCampusInfo(url) {
             error.response = response
             throw error
         }
-    }).then(function (data) {
+    }).then(function(data) {
         campusInfo = data;
         console.log(campusInfo);
-
         AddContainer(campusInfo);
         $('#loader_block').css("display", "none");
         // data 才是實際的 JSON 資料
-    }).catch(function (error) {
+    }).catch(function(error) {
         return error.response;
-    }).then(function (errorData) {
+    }).then(function(errorData) {
         // errorData 裡面才是實際的 JSON 資料
     });
 }
