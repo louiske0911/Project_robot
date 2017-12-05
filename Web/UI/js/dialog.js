@@ -1,9 +1,15 @@
+let dialogBlock = 0;
+
 function dialogShow() {
-    document.getElementById("block").style.visibility = "visible";
-    document.getElementById("campus_dialog").style.visibility = "visible";
+    if (dialogBlock == 0) {
+        document.getElementById("block").style.visibility = "visible";
+        document.getElementById("campus_dialog").style.visibility = "visible";
+    }
+    dialogBlock = 1;
 }
 
 function dialogBack() {
+    dialogBlock = 0;
     document.getElementById("block").style.visibility = "hidden";
     document.getElementById("campus_dialog").style.visibility = "hidden";
     document.getElementById("campus_dialog").remove();
@@ -30,7 +36,7 @@ function SetDepartment(departmentList) {
 
     for (let i = 0; i < departmentList.length; i++) {
         department +=
-            '<h4 style="text-align:center;">' +
+            '<h4 class="list-group-item list-group-item-dark" style="text-align:center;">' +
             departmentList[i]['department_type'] +
             '</h4>'
         for (let y = 0; y < departmentList[i]['department_list'].length; y++) {
@@ -55,14 +61,16 @@ function SetDialogContent(info, Type) {
     else if (Type == 'landscape') title = "景點介紹"
 
     const contentTitle =
-        '<div class="">' +
-        '<h2 class="list-group-item list-group-item-dark" style="text-align:center;">' + title + '</h2>' +
+        '<div class="p-4 mb-5 list-group-item list-group-item-dark">' +
+        '<div class="" style="text-align:center;"><h3 class="" style="text-align:center;">' + title +
+        '<span class="fa fa-times float-right float-md-right close_icon" onclick="javascript:dialogBack()" aria-hidden="true"></span></h3>' +
+        '</div>' +
         '</div>';
 
     let STRING = info['introduction'].split('\n')
 
     STRING.forEach(element => {
-        content += '<p class="px-5">' + element + '</p>'
+        content += '<p class="px-5">&emsp;&emsp;' + element + '</p>'
     });
     dialogContent += contentTitle + content
 
@@ -107,10 +115,7 @@ function SetDialogCarousel() {
 function Dialog(dialogInfo, Type) {
     const block = '<div id="block" onclick="dialogBack()"></div>';
     const campus_dialog =
-        '<div id="campus_dialog" class="">' +
-        '<i class="fa fa-times-circle-o" aria-hidden="true"></i>' +
-
-        // '</div>';
+        '<div id="campus_dialog" class="rounded">' +
         '<div id="dialog_inner" class="dialog_inner"></div></div>';
     console.log("123")
     dialogContent = SetDialogContent(dialogInfo['info'], Type);

@@ -61,6 +61,24 @@ function InitMap() {
     infowindow = new google.maps.InfoWindow({
         maxWidth: 350
     });
+    var myloc = new google.maps.Marker({
+        clickable: false,
+        icon: new google.maps.MarkerImage('http://maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
+            new google.maps.Size(22, 22),
+            new google.maps.Point(0, 18),
+            new google.maps.Point(11, 11)),
+        shadow: null,
+        zIndex: 999,
+        map: map
+    });
+
+    if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
+        var me = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+        myloc.setPosition(me);
+    }, function(error) {
+        // ...
+    });
+
 
     var pos
     var userMarker
