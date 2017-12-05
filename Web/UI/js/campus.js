@@ -126,7 +126,7 @@ function SetSubContainer(campusInfo, index) {
 
 function GetCampusInfo(url) {
     mapBlock = 0;
-
+    console.log(mapBlock)
     $('#outer_bg').html("")
     $('#loader_block').css("display", "block");
 

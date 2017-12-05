@@ -27,7 +27,7 @@ function InitMap() {
         center: FengChia,
         zoom: 18,
         mapTypeControlOptions: {
-            mapTypeIds: ['satellite', 'styled_map']
+            mapTypeIds: ['satellite', 'styled_map', google.maps.MapTypeId.ROADMAP]
         },
         scrollwheel: false,
         disableDoubleClickZoom: true,
@@ -61,6 +61,38 @@ function InitMap() {
     infowindow = new google.maps.InfoWindow({
         maxWidth: 350
     });
+
+    var pos
+    var userMarker
+    var im = 'http://www.robotwoods.com/dev/misc/bluecircle.png';
+    userMarker = new google.maps.Marker({
+        map: map,
+        icon: im
+    });
+
+
+    console.log(mapBlock)
+    getLocationInterval = setInterval(function() {
+        if (navigator.geolocation && (mapBlock == 1)) {
+
+            navigator.geolocation.getCurrentPosition(function(position) {
+                pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                console.log(pos)
+                userMarker.setPosition(pos)
+                SendtLocation(pos) // Send to Android
+                    // map.setCenter(pos);
+            }, function() {
+                handleLocationError(true, infowindow, map.getCenter());
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infowindow, map.getCenter());
+            clearInterval(getLocationInterval);
+        }
+    }, 1500);
 
     for (let i = 0; i < markers.length; i++) {
         let location = markers[i].location.split(',')
@@ -113,6 +145,8 @@ function GetGoogleMap() {
 }
 
 function SendNavigationToGoogleMap(data, mapId) {
+    CloseMap();
+
     navigationContent = ""
     navigationImage = data.info.image
 
@@ -150,6 +184,7 @@ function SendNavigationToGoogleMap(data, mapId) {
 function TpyeWriter(text) {
     let textToDisplay = ""
     textToDisplay = text
+
     console.log(textToDisplay)
     $output = $("#mapDialogContent");
     var displayInt;
@@ -218,4 +253,11 @@ function CreateInfoWindows() {
             $(this).css({ opacity: '0.5' });
         });
     });
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infowindow.setPosition(pos);
+    infowindow.setContent(browserHasGeolocation ?
+        'Error: The Geolocation service failed.' :
+        'Error: Your browser doesn\'t support geolocation.');
 }

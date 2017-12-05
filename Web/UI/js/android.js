@@ -134,6 +134,16 @@ function SendSpeech(data) {
     }
 }
 
-function GetLocation(lat, lng) {
-
-}
+// function SendtLocation(pos) {
+//     try {
+//         if (JSInterface) {
+//             JSInterface.location(pos);
+//         }
+//     } catch (e) {
+//         if (e instanceof ReferenceError) {
+//             console.log(pos)
+//         } else {
+//             printError(e, false);
+//         }
+//     }
+// }
