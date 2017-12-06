@@ -1,15 +1,15 @@
 var menulist;
 
-$(document).ready(function () {
+$(document).ready(function() {
     $('div.nav_bar nav button').click(
-        function (e) {
+        function(e) {
             $('div.nav_bar nav button').removeClass('active');
             $(e.currentTarget).addClass('active');
         }
     );
 });
 
-$(document).ready(function () {
+$(document).ready(function() {
     let hash = window.location.hash.replace("#", "")
     console.log(hash)
 
@@ -30,8 +30,8 @@ function GoLeadPage() {
 }
 
 
-$(document).ready(function () {
-    $('#menu').on('click', function () {
+$(document).ready(function() {
+    $('#menu').on('click', function() {
         var active = $('.sidebar')
         if (!active.hasClass('active')) {
             $('.sidebar').toggleClass('active')
@@ -43,3 +43,11 @@ $(document).ready(function () {
     });
 });
 
+
+
+$(document).ready(function() {
+    setInterval(function() {
+        if (JSInterface)
+            JSInterface.closeDialog();
+    }, 1000);
+});

@@ -1,13 +1,13 @@
-const BULLETIN_URL = 'http://00efacc5.ngrok.io/api/fcu/bulletin';
+const BULLETIN_URL = ' ttp://47a1907a.ngrok.io/api/fcu/bulletin';
 
-const BUILDING_URL = 'http://00efacc5.ngrok.io/api/fcu/building';
-const BUILDING_DIALOG_URL = "http://00efacc5.ngrok.io/api/fcu/building/";
+const BUILDING_URL = 'http://47a1907a.ngrok.io/api/fcu/building';
+const BUILDING_DIALOG_URL = "http://47a1907a.ngrok.io/api/fcu/building/";
 
-const COLLEGE_URL = 'http://00efacc5.ngrok.io/api/fcu/college';
-const COLLEGE_DIALOG_URL = "http://00efacc5.ngrok.io/api/fcu/college/";
+const COLLEGE_URL = 'http://47a1907a.ngrok.io/api/fcu/college';
+const COLLEGE_DIALOG_URL = " http://47a1907a.ngrok.io/api/fcu/college/";
 
-const LANDSCAPE_URL = 'http://00efacc5.ngrok.io/api/fcu/landscape';
-const LANDSCAPE_DIALOG_URL = "http://00efacc5.ngrok.io/api/fcu/landscape/";
+const LANDSCAPE_URL = ' http://47a1907a.ngrok.io/api/fcu/landscape';
+const LANDSCAPE_DIALOG_URL = "http://47a1907a.ngrok.io/api/fcu/landscape/";
 
 
 const markers = [{

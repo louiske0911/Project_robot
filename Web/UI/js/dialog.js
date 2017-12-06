@@ -36,7 +36,7 @@ function SetDepartment(departmentList) {
 
     for (let i = 0; i < departmentList.length; i++) {
         department +=
-            '<h4 class="list-group-item list-group-item-dark" style="text-align:center;">' +
+            '<h4 class="department_title list-group-item list-group-item-secondary" style="text-align:center;">' +
             departmentList[i]['department_type'] +
             '</h4>'
         for (let y = 0; y < departmentList[i]['department_list'].length; y++) {
@@ -56,16 +56,18 @@ function SetDialogContent(info, Type) {
     var dialogContent = '';
     var content = '';
     let title;
-    if (Type == 'college') title = "學院介紹"
-    else if (Type == 'building') title = "大樓介紹"
-    else if (Type == 'landscape') title = "景點介紹"
+    if (Type == 'college') title = "學&emsp;院&emsp;介&emsp;紹"
+    else if (Type == 'building') title = "大&emsp;樓&emsp;介&emsp;紹"
+    else if (Type == 'landscape') title = "景&emsp;點&emsp;介&emsp;紹"
 
     const contentTitle =
-        '<div class="p-4 mb-5 list-group-item list-group-item-dark">' +
-        '<div class="" style="text-align:center;"><h3 class="" style="text-align:center;">' + title +
-        '<span class="fa fa-times float-right float-md-right close_icon" onclick="javascript:dialogBack()" aria-hidden="true"></span></h3>' +
-        '</div>' +
+        // '<div class="">' +
+        '<div class="mb-5 title1" style="text-align:center;"><h2 class="pt-3" style="text-align:center;">' + title +
+        '<span class="fa fa-times float-right float-md-right close_icon" onclick="javascript:dialogBack()" aria-hidden="true"></span></h2>' +
         '</div>';
+
+
+    // '</div>' +
 
     let STRING = info['introduction'].split('\n')
 

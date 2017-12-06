@@ -23,17 +23,64 @@ body {
     color: #1d2129;
 }
 
+.title1 {
+    /* border-radius: 0.4rem; */
+    box-shadow: 0 5px 16px 0 rgba(0, 0, 0, 0.6);
+    /* background-color: rgb(242, 242, 242); */
+    /* background-image: url('../images/test.jpg'); */
+    /* background-size: cover; */
+    /* background-position: center center; */
+    padding-top: 0px;
+    padding-bottom: 10px;
+    height: 8vh;
+    display: block;
+    position: relative;
+}
 
-/* .gm-style-iw {
-    width: 350px !important;
-    top: 10px !important;
-    right: 0 !important;
-    left: 25px !important;
-    background-color: #fff;
-    box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
-    border: 1px solid rgba(72, 181, 233, 0.6);
-    border-radius: 2px 2px 0 0;
-    margin-bottom: 20px;
+.department_title {
+    box-shadow: 0 5px 16px 0 rgba(0, 0, 0, 0.6);
+}
+
+.title1::before {
+    content: '';
+    /* background: url('../images/test.jpg') no-repeat fixed; */
+    color: black;
+    background-image: url('../images/test.jpg');
+    /* background-color: rgba(255, 255, 255, .5); */
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.6;
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+
+/* .sidebar {
+    background-image: url('../images/sidebar-1.jpg');
+    position: fixed;
+    height: 100vh;
+    z-index: 2;
+    background-color: rgba(238, 238, 238, .8);
+    display: block;
+    background-size: cover;
+    background-position: center center;
+    transition: all 0.35s;
+    -webkit-transition-duration: 0.35s;
+    transition-duration: 0.35s;
+}
+
+.nav_bar {
+    font-family: "Times New Roman", Times, serif;
+    height: 100vh;
+    position: relative;
+    background-color: rgba(255, 255, 255, .9);
+    top: 0;
+    width: 13vw;
+    z-index: 4;
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 } */
 
 .gm-style-iw {
@@ -314,8 +361,9 @@ body {
 /************************************Main-Container************************************/
 
 .dialog_inner {
-    background-color: rgba(235, 235, 227, .4);
-    /* background-color: rgba(255, 255, 255, 1); */
+    /* background-color: rgba(235, 235, 227, .4); */
+    background-color: rgba(255, 255, 255, .4);
+    /* z-index: -999; */
 }
 
 .main_container_inner {
@@ -386,7 +434,7 @@ body {
 /************************************NavBar************************************/
 
 .sidebar {
-    background-image: url('../../images/sidebar-1.jpg');
+    background-image: url('../images/sidebar-1.jpg');
     position: fixed;
     height: 100vh;
     z-index: 2;
@@ -604,6 +652,11 @@ nav>button {
     }
     #inner_bg {
         margin-top: 0 !important;
+    }
+    /********************************Dialog************************************/
+    #campus_dialog {
+        height: 100%;
+        width: 60%;
     }
 }
 
