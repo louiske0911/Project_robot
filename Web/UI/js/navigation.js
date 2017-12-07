@@ -72,27 +72,26 @@ function InitMap() {
 
 
     console.log(mapBlock)
-    getLocationInterval = setInterval(function() {
-        if (navigator.geolocation && (mapBlock == 1)) {
+        // getLocationInterval = setInterval(function() {
+        //     if (navigator.geolocation && (mapBlock == 1)) {
 
-            navigator.geolocation.getCurrentPosition(function(position) {
-                pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-                console.log(pos)
-                userMarker.setPosition(pos)
-                SendtLocation(pos) // Send to Android
-                    // map.setCenter(pos);
-            }, function() {
-                handleLocationError(true, infowindow, map.getCenter());
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infowindow, map.getCenter());
-            clearInterval(getLocationInterval);
-        }
-    }, 1500);
+    //         navigator.geolocation.getCurrentPosition(function(position) {
+    //             pos = {
+    //                 lat: position.coords.latitude,
+    //                 lng: position.coords.longitude
+    //             };
+    //             console.log(pos)
+    //             userMarker.setPosition(pos)
+    //                 // map.setCenter(pos);
+    //         }, function() {
+    //             handleLocationError(true, infowindow, map.getCenter());
+    //         });
+    //     } else {
+    //         // Browser doesn't support Geolocation
+    //         handleLocationError(false, infowindow, map.getCenter());
+    //         clearInterval(getLocationInterval);
+    //     }
+    // }, 1500);
 
     for (let i = 0; i < markers.length; i++) {
         let location = markers[i].location.split(',')
@@ -180,9 +179,11 @@ function SendNavigationToGoogleMap(data, mapId) {
         TpyeWriter(navigationContent)
     }, 500);
 }
+let textToDisplay = ""
 
 function TpyeWriter(text) {
-    let textToDisplay = ""
+
+    textToDisplay = ""
     textToDisplay = text
 
     console.log(textToDisplay)

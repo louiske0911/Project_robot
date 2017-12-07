@@ -109,18 +109,34 @@ function Navigation(type, id) { //Android Webview need call this function to spe
 
 
 function SetNavigation(data, mapId) {
+    try {
+        if (JSInterface) {
+            if (GOOGLE_STATUS == 1) {
+                JSInterface.closeDialog();
+                GOOGLE_STATUS = 0;
+            }
+        }
+    } catch (e) {
+        if (e instanceof ReferenceError) {
+            console.log(e)
+        } else {
+            printError(e, false);
+        }
+    }
     SendNavigationToGoogleMap(data, mapId)
     SendSpeech(data)
 }
 
 function SendSpeech(data) {
+    let Content = ""
     if (data.info.history)
-        speakContent = data.info.history;
+        Content = data.info.history;
     else
-        speakContent = data.info.introduction;
+        Content = data.info.introduction;
 
-    speakContent = speakContent.split('。')[0].replace(' ', '').replace('\n', ',').replace('。', ',').replace('、', ',')
-
+    Content = Content.split('。')
+    speakContent = Content[0] + Content[1] + Content[2] + Content[3]
+    console.log(speakContent)
     try {
         if (JSInterface) {
             JSInterface.setTTS(speakContent);
@@ -134,16 +150,10 @@ function SendSpeech(data) {
     }
 }
 
-// function SendtLocation(pos) {
-//     try {
-//         if (JSInterface) {
-//             JSInterface.location(pos);
-//         }
-//     } catch (e) {
-//         if (e instanceof ReferenceError) {
-//             console.log(pos)
-//         } else {
-//             printError(e, false);
-//         }
-//     }
+// function GettLocation(lat, lng) {
+//     let location = {
+//         lat: lat,
+//         lng: lng
+//     };
+//     userMarker.setPosition(location)
 // }

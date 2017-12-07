@@ -1,7 +1,9 @@
+var t;
+
 function Speech(text) {
     var synth = window.speechSynthesis;
     var voices = synth.getVoices();
-    var t;
+    t = ""
     t = text
     var u = new SpeechSynthesisUtterance(t);
     u.onend = function() { console.log("on end!"); }
