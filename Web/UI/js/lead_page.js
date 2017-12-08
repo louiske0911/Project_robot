@@ -21,7 +21,7 @@ function IntoSystem(page) {
             hash = "#login";
     }
 
-    url = "http://localhost:3000/index.html" + hash
+    url = LEAD_GO_URL + hash
     window.location.assign(url);
 
 }

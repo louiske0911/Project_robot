@@ -25,8 +25,7 @@ $(document).ready(function() {
 });
 
 function GoLeadPage() {
-    let url = "http://localhost:3000/static/lead_page.html"
-    window.location.assign(url);
+    window.location.assign(LEAD_URL);
 }
 
 
@@ -41,13 +40,4 @@ $(document).ready(function() {
             $('nav button a').show()
         }
     });
-});
-
-
-
-$(document).ready(function() {
-    setInterval(function() {
-        if (JSInterface)
-            JSInterface.closeDialog();
-    }, 1000);
 });

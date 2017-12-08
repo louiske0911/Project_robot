@@ -135,7 +135,7 @@ function SendSpeech(data) {
         Content = data.info.introduction;
 
     Content = Content.split('。')
-    speakContent = Content[0] + Content[1] + Content[2] + Content[3]
+    speakContent = Content[0] + Content[1] + Content[2]
     console.log(speakContent)
     try {
         if (JSInterface) {
