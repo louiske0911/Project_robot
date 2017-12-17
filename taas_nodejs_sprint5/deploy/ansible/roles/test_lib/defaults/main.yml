@@ -1,3 +1,0 @@
----
-
-test_lib_dir: "{{ ansible_env.HOME }}/{{ slave_lib_path.test_lib }}"

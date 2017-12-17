@@ -1,8 +1,0 @@
-{
-  "main_db": "mongodb://localhost:8700/TaaS",
-  "unit_test": true,
-  "jenkins_master": "http://localhost:8090",
-  "archive_file_server": "http://localhost:8500",
-  "archive_file_listing_server": "http://localhost:8501",
-  "host_address": "http://localhost:8082"
-}

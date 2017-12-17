@@ -1,9 +1,0 @@
-#!/bin/bash
-
-WEBPORTAL_INSTALL_BASE=/usr/local/lib/taas-webportal
-DOCKER_COMPOSE_FILE=$WEBPORTAL_INSTALL_BASE/deploy/docker-compose.release.yml
-
-sudo -E docker-compose -f ${DOCKER_COMPOSE_FILE} stop
-
-# delete volume
-sudo -E docker-compose -f ${DOCKER_COMPOSE_FILE} rm -f -v

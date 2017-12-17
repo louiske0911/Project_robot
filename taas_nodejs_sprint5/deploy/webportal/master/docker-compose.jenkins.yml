@@ -1,9 +1,0 @@
-jenkins:
-  container_name: jenkins_itp4
-  build: .
-  dockerfile: Dockerfile.jenkins
-  volumes:
-    - ~/docker/vol/jenkins:/var/jenkins_home
-  ports:
-    - "8080:8080"
-    - "50000:50000"

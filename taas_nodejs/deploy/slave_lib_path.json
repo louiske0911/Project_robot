@@ -1,6 +1,0 @@
-{
-    "deployment_lib": "bin/deploy",
-    "selenium_lib": "selenium_lib",
-    "test_lib": "test_lib",
-    "test_mgmt_lib": "bin/test_mgmt"
-}

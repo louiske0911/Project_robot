@@ -1,6 +1,0 @@
-TestLink-API-Python-client==0.6.2
-beautifulsoup4==4.4.1
-coverage
-packaging==16.8
-sphinx
-underscore.py==0.1.6

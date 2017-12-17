@@ -1,8 +1,0 @@
-{
-  "main_db": "mongodb://mongodb/TaaS",
-  "jenkins_master": "http://140.96.27.78:8090",
-  "archive_file_server": "http://140.96.27.78:8500",
-  "archive_file_listing_server": "http://140.96.27.78:8501",
-  "resource_management_server": "http://localhost:3000",
-  "host_address": "http://140.96.27.78:81"
-}
