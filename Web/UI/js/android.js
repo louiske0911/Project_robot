@@ -9,8 +9,6 @@ function AndroidPlanPath(info) {
 
     lat = location[0];
     lng = location[1];
-    console.log(lat)
-    console.log(lng)
     try {
         if (JSInterface) {
             JSInterface.setDirection(lat, lng);
@@ -149,11 +147,3 @@ function SendSpeech(data) {
         }
     }
 }
-
-// function GettLocation(lat, lng) {
-//     let location = {
-//         lat: lat,
-//         lng: lng
-//     };
-//     userMarker.setPosition(location)
-// }
