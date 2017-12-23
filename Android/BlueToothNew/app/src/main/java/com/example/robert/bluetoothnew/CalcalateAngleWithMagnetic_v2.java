@@ -3,7 +3,11 @@ package com.example.robert.bluetoothnew;
 import com.google.android.gms.maps.model.LatLng;
 
 /**
- * Created by robert on 2017/11/11.
+ *  作者： 邱皇旗
+ *  e-mail : a0983080692@gmail.com
+ *  Date : 2017/12/5
+ *  Note: 利用直角坐標系 L（當下座標 & 下一個座標），先算出垂直於L的線性方程式（未成功）
+ *  problem: 行進過程中會有偏差
  */
 
 public class CalcalateAngleWithMagnetic_v2 {
@@ -27,12 +31,6 @@ public class CalcalateAngleWithMagnetic_v2 {
         double constant_V2 = currentPosition.longitude - (slope_v2 * currentPosition.latitude);
         double x= (constant_V2 - constant_V1)/(slope_v1 - slope_v2);
         y = (x * slope_v2) + constant_V2;
-
-//        LatLng tempVector = new LatLng(directionPosition.latitude - currentPosition.latitude , directionPosition.longitude - currentPosition.longitude);
-//        double constant1 = (tempVector.latitude * lastPosition.latitude) + (tempVector.longitude * lastPosition.longitude);
-//        double constant2 = (tempVector.longitude * currentPosition.latitude) - (tempVector.latitude * currentPosition.longitude);
-//        xVector = ((constant1 * tempVector.latitude) + (constant2 * tempVector.longitude))/((tempVector.latitude * tempVector.latitude)+(tempVector.longitude * tempVector.longitude));
-//        yVector = ((tempVector.latitude * constant2) - (tempVector.longitude * constant1))/((tempVector.latitude * tempVector.latitude)+(tempVector.longitude * tempVector.longitude));
     }
     public int direction(){
         if(y - currentPosition.longitude < 0){

@@ -1,3 +1,8 @@
+/**
+ *  作者： 邱皇旗
+ *  e-mail : a0983080692@gmail.com
+ *  Date : 2017/12/5
+ */
 package com.example.robert.bluetoothnew;
 
 import android.content.BroadcastReceiver;
@@ -62,6 +67,7 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
     }
 
     protected void onCreate(Bundle savedInstanceState) {
+//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         initImageButton();
@@ -69,6 +75,7 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
         initWindow();
         initSingleTonTemp();
         resultPlanPath();
+        initCloseDialog();
 //        initangleFunction();
         imgbtnRun.setOnClickListener(new ImageButton.OnClickListener() {
             @Override
@@ -87,7 +94,7 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
                 sendMessage("900");
                 String [] a = new String[2];
                 a[0]="building";
-                a[1]="1";
+                a[1]="7";
                  callWeb(a);
             }
         });
@@ -100,14 +107,9 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
         broadcasetIntent.putExtra("id", string[1]);
         sendBroadcast(broadcasetIntent);
     }
-//    public void initangleFunction() {
-//        Log.v("initLocationService", "initLocationService");
-//        Intent intent = new Intent(this, angleFunction.class);
-//        this.startService(intent);
-//    }
+
     public void startToService(){
         Intent broadcasetIntent = new Intent();
-        Log.v("zzzz","position11");
         broadcasetIntent.setAction("run");
         sendBroadcast(broadcasetIntent);
     }
@@ -116,13 +118,6 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
         imgbtnRun = (ImageView) findViewById(R.id.run);
         imageStop = (ImageButton) findViewById(R.id.imageButton);
     }
-
-//    public void setAngle() {
-//        startTime = System.currentTimeMillis();
-//        handler.removeCallbacks(updateTimer);
-//        //設定Delay的時間
-//        handler.postDelayed(updateTimer, 500);
-//    }
 
     public void initBluetooth() {
         bluetoothChatService = BluetoothChatService.getInstance(this);
@@ -209,7 +204,7 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
                     .width(6)
                     .color(Color.RED)
                     .clickable(true));
-            mMap.addMarker(new MarkerOptions().position(temp.get(i)).draggable(true));    //在google map上畫一個marker
+//            mMap.addMarker(new MarkerOptions().position(temp.get(i)).draggable(true));    //在google map上畫一個marker
 
             mMap.setOnPolylineClickListener(new GoogleMap.OnPolylineClickListener() {
                 @Override
@@ -256,6 +251,18 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
             public void resultPlanPath() {
                 super.resultPlanPath();
                 planPath();
+            }
+        };
+        registerReceiver(broadcast, intentFilter);
+    }
+    public void initCloseDialog(){
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("close");
+        broadcast = new Broadcast() {
+            @Override
+            public void closeDialog() {
+                super.closeDialog();
+                finish();
             }
         };
         registerReceiver(broadcast, intentFilter);
@@ -315,153 +322,7 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
             }
         });
     }
-//    private Runnable updateTimer = new Runnable() {
-//        public void run() {
-//            if(!arrivalDirection){
-//                modifyAngle = modifyAngleWithMagnetic();
-//
-//                if(orientationValue >180){
-//                    orientationValue = -(orientationValue -360);       //改成 0 ~-180
-//                }
-//
-//                if(modifyAngle < 0){
-//                    modifyAngle = -(modifyAngle);
-//                }
-//
-//                Log.v("aaa", "angleValue(1) ： " + String.valueOf(orientationValue));//方向感測器的 X 角度
-//                Log.v("aaa", "angleValue(2) ： " + String.valueOf(modifyAngle));//方向感測器的 X 角度
-//
-//                if(magnitude < 55){
-//                    if(orientationValue >180){
-//                        orientationValue = -(orientationValue -360);       //改成 0 ~-180
-//                    }
-//                    calculateAngleCurrentToGoal.setCurrentAngle(orientationValue);
-//
-//                    if (singleTonTemp.sourceStatus && singleTonTemp.directionstatus && singleTonTemp.status) {
-//                        getMessage(calculateAngleCurrentToGoal.toString());
-//                        Log.v("calculateAngle", "calculateAngleCurrentToGoal：" + calculateAngleCurrentToGoal.toString());
-//                    }
-//                }else{
-//                    modifyAngle = modifyAngleWithMagnetic();
-//                    if(modifyAngle < 0){
-//                        modifyAngle = -(modifyAngle);
-//                    }
-//                    calculateAngleCurrentToGoal.setCurrentAngle(modifyAngle);
-//
-//                    if (singleTonTemp.sourceStatus && singleTonTemp.directionstatus && singleTonTemp.status) {
-//                        getMessage(calculateAngleCurrentToGoal.toString());
-//                        Log.v("modifyAngle", "modifyAngle：" + modifyAngle);
-//                        Log.v("calculateAngle", "calculateAngleCurrentToGoal：" + calculateAngleCurrentToGoal.toString());
-//                    }
-//
-//
-//                }
-//            }else if(singleTonTemp.arrivalDirection == temp.size()-1){
-//                /**
-//                 *  initial key
-//                 */
-//                initKeyVariable();
-//            }
-//            handler.postDelayed(this, 6000);
-//        }
-//    };
 
-    //    private Runnable stopIfOr = new Runnable() {
-//        public void run() {
-//            boolean arrival = false ;
-//            if(j<temp.size()){
-//                calculateAngleCurrentToGoal.setGoalPosition(temp.get(j));
-//                arrivalDestination.setDirection(temp.get(j));
-//                arrival = arrivalDestination.calDistance();
-//                arrivalGoal.setDirection(temp.get(temp.size()-1));
-//                if(judgeIsSpecialPoint(temp.get(j)).equals("1")){}
-//                if(arrival){
-//                    j++;
-//                }else if(arrivalGoal.calDistance()){
-//                    j = temp.size();
-//                    arrival = true;
-//                }
-//            }
-//            communicationForStopIfOr(arrival);
-//            handler.postDelayed(this, 500);
-//
-//        }
-//    };
-//    private String judgeIsSpecialPoint(LatLng point){
-//        int i=0;
-//        for(i=0 ;i< Constants.SPECIAL1.length; i++){
-//            if(Constants.SPECIAL1[i].equals(point)){
-//                return "1";
-//            }
-//        }
-//        for(i=0 ;i< Constants.SPECIAL2.length; i++){
-//            if(Constants.SPECIAL2[i].equals(point)){
-//                return "1";
-//            }
-//        }
-//        for(i=0 ;i< Constants.SPECIAL3.length; i++){
-//            if(Constants.SPECIAL3[i].equals(point)){
-//                return "1";
-//            }
-//        }
-//        for(i=0 ;i< Constants.SPECIAL4.length; i++){
-//            if(Constants.SPECIAL4[i].equals(point)){
-//                return "1";
-//            }
-//        }
-//        for(i=0 ;i< Constants.SPECIAL5.length; i++){
-//            if(Constants.SPECIAL5[i].equals(point)){
-//                return "1";
-//            }
-//        }
-//        for(i=0 ;i< Constants.SPECIAL6.length; i++){
-//            if(Constants.SPECIAL6[i].equals(point)){
-//                return "1";
-//            }
-//        }
-//        for(i=0 ;i< Constants.SPECIAL7.length; i++){
-//            if(Constants.SPECIAL7[i].equals(point)){
-//                return "1";
-//            }
-//        }
-//        for(i=0 ;i< Constants.SPECIAL8.length; i++){
-//            if(Constants.SPECIAL8[i].equals(point)){
-//                return "1";
-//            }
-//        }
-//        for(i=0 ;i< Constants.SPECIAL9.length; i++){
-//            if(Constants.SPECIAL9[i].equals(point)){
-//                return "1";
-//            }
-//        }
-//        for(i=0 ;i< Constants.SPECIAL10.length; i++){
-//            if(Constants.SPECIAL10[i].equals(point)){
-//                return "1";
-//            }
-//        }
-//        for(i=0 ;i< Constants.SPECIAL11.length; i++){
-//            if(Constants.SPECIAL11[i].equals(point)){
-//                return "1";
-//            }
-//        }
-//        for(i=0 ;i< Constants.SPECIAL12.length; i++){
-//            if(Constants.SPECIAL12[i].equals(point)){
-//                return "1";
-//            }
-//        }
-//        for(i=0 ;i< Constants.SPECIAL13.length; i++){
-//            if(Constants.SPECIAL13[i].equals(point)){
-//                return "1";
-//            }
-//        }
-//        for(i=0 ;i< Constants.SPECIAL14.length; i++){
-//            if(Constants.SPECIAL14[i].equals(point)){
-//                return "1";
-//            }
-//        }
-//        return null;
-//    }
-//
     public static class Broadcast extends BroadcastReceiver {
 
         public Broadcast() {
@@ -474,8 +335,11 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
                 Log.v("resultPlanPath","resultPlanPath");
                 String latitude = intent.getStringExtra("OK");
                 resultPlanPath();
+            }else if(action.equals("close")){
+                closeDialog();
             }
         }
         public void resultPlanPath(){}
+        public void closeDialog(){}
     }
 }

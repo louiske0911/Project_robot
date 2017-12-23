@@ -1,3 +1,7 @@
+/**
+ *  作者： 邱皇旗
+ *  e-mail : a0983080692@gmail.com
+ */
 package com.example.robert.bluetoothnew;
 
 import android.util.Log;
@@ -28,7 +32,7 @@ public class ArrivalGoal {
     public boolean calDistance(){
         double temp = sqrt(pow(direction.latitude-source.latitude,2)+pow(direction.longitude - source.longitude,2)) * 111100;    // 緯經度差一度差， 111.1公里
         Log.v("Direction","Direction :"+temp);
-        if(temp < 10) {
+        if(temp < 10) {    //相差10 m 以內，視為抵達
             return true;
         }
         return false;

@@ -3,7 +3,10 @@ package com.example.robert.bluetoothnew;
 import com.google.android.gms.maps.model.LatLng;
 
 /**
- * Created by robert on 2017/9/24.
+ *  作者： 邱皇旗
+ *  e-mail : a0983080692@gmail.com
+ *  Date : 2017/12/5
+ *  Note:詳細請看文件
  */
 
 public class CalculateAngleCurrentToGoal {
@@ -58,7 +61,7 @@ public class CalculateAngleCurrentToGoal {
 
         if(positiveX == 1){
             if (templeAngle > currentAngle) {       //右轉
-                if (((templeAngle - currentAngle) > 0) && ((templeAngle - currentAngle) < 5)) {
+                if (((templeAngle - currentAngle) > 0) && ((templeAngle - currentAngle) < 15)) {
                     result = "999";
 
                 } else {
@@ -66,7 +69,7 @@ public class CalculateAngleCurrentToGoal {
                 }
             } else if (templeAngle < currentAngle) { //左轉
 
-                if (((templeAngle - currentAngle) < 0) && ((templeAngle - currentAngle) > -5)) {
+                if (((templeAngle - currentAngle) < 0) && ((templeAngle - currentAngle) > -15)) {
                     result = "999";
 
                 } else {
@@ -78,7 +81,7 @@ public class CalculateAngleCurrentToGoal {
             }
         }else{
             if (templeAngle < currentAngle) {       //右轉
-                if (((templeAngle - currentAngle) < 0) && ((templeAngle - currentAngle) > -5)) {
+                if (((templeAngle - currentAngle) < 0) && ((templeAngle - currentAngle) > -15)) {
                     result = "999";
 
                 } else {
@@ -86,7 +89,7 @@ public class CalculateAngleCurrentToGoal {
                 }
             } else if (templeAngle > currentAngle) { //左轉
 
-                if (((templeAngle - currentAngle) > 0) && ((templeAngle - currentAngle) < 5)) {
+                if (((templeAngle - currentAngle) > 0) && ((templeAngle - currentAngle) < 15)) {
                     result = "999";
 
                 } else {

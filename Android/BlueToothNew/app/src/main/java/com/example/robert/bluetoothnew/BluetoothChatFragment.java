@@ -13,7 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+/**
+ *  作者： 邱皇旗
+ *  e-mail : a0983080692@gmail.com
+ */
 package com.example.robert.bluetoothnew;
 
 import android.app.ActionBar;
@@ -103,10 +106,9 @@ public class BluetoothChatFragment extends Fragment{
         singleTonTemp = SingleTonTemp.getInstance();
     }
 
-    String temp[] = {"薩大使的航空聖誕卡聖誕卡哈薩克的機會薩大使大時代薩大使大時代薩大使大時代撒大使大時代薩大使的薩大使的",
-            "薩大使大使大使大時代薩大使大時代我就會開會時看到包括差別吧 v 八位氣候危機好看阿塞德薩的哈斯的機會看",
-            "阿塞德薩及大律師肯德基阿拉山口的基隆市空間男女拘留所多久啊聖誕節"};
     int count = 0;
+    private Handler handler = new Handler();
+    private Long startTime;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -117,6 +119,7 @@ public class BluetoothChatFragment extends Fragment{
         initSingleTonTemp();
         // If the adapter is null, then Bluetooth is not supported
         intiCallWeb();
+        toWebPosition();
         if (mBluetoothAdapter == null) {
             FragmentActivity activity = getActivity();
             Toast.makeText(activity, "Bluetooth is not available", Toast.LENGTH_LONG).show();
@@ -147,6 +150,24 @@ public class BluetoothChatFragment extends Fragment{
             }
         });
     }
+    public void toWebPosition(){
+        startTime = System.currentTimeMillis();
+        handler.removeCallbacks(WebPosition);
+        Log.v("startTime", "" + startTime);
+        //設定Delay的時間
+        handler.postDelayed(WebPosition, 500);
+    }
+    private Runnable WebPosition = new Runnable() {
+        public void run() {
+//            Log.v("222233","11111"+singleTonTemp.Gps);
+//            if(singleTonTemp.Gps!=null){
+//                myWebView.loadUrl("javascript: GetLocation('"+singleTonTemp.Gps.latitude+"','"+singleTonTemp.Gps.longitude+"')");
+//            }
+            handler.postDelayed(this, 500);
+
+        }
+    };
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -171,7 +192,8 @@ public class BluetoothChatFragment extends Fragment{
         myWebView.requestFocus();
         myWebView.setWebViewClient(new MyWebViewClient());
 //        myWebView.loadUrl("http://10.21.22.34:3000/index.html");
-        myWebView.loadUrl("http://697a112f.ngrok.io/index.html");
+//        myWebView.loadUrl("http://00efacc5.ngrok.io/index.html");
+        myWebView.loadUrl("http://172.20.10.8:3000/index.html");
 //        myWebView.loadUrl("http://140.134.26.31/Bluetooth/Bluetooth.html");
         myWebView.addJavascriptInterface(new JavaScriptInterface(getActivity()), "JSInterface");
     }
@@ -225,14 +247,7 @@ public class BluetoothChatFragment extends Fragment{
             Intent broadcasetIntent = new Intent();
             broadcasetIntent.setAction("DO_SOME_THING");
             singleTonTemp.planPath.clear();
-
-            Log.v("zzzz", "1"+lat);
-            Log.v("zzzz", "2"+lng);
-
             LatLng latLng = new LatLng(Double.parseDouble(lat),Double.parseDouble(lng));
-            Log.v("zzzz", "5555"+latLng);
-            Log.v("zzzz", "5555"+latLng.latitude);
-            Log.v("zzzz", "5555"+latLng.longitude);
             broadcasetIntent.putExtra("LATITUDE", lat);
             broadcasetIntent.putExtra("LONGITUDE", lng);
             singleTonTemp.tempstatus = true;
@@ -255,6 +270,13 @@ public class BluetoothChatFragment extends Fragment{
             Log.v("111", "222222");
             i.putExtra("URL", url);
             context.startActivity(i);
+        }
+        @JavascriptInterface
+        public void closeDialog() {
+            Log.v("444444","kr g8");
+            Intent broadcasetIntent = new Intent();
+            broadcasetIntent.setAction("close");
+            getActivity().sendBroadcast(broadcasetIntent);
         }
     }
 
@@ -449,9 +471,10 @@ public class BluetoothChatFragment extends Fragment{
             public void callWeb(String type,String id) {
                 super.callWeb(type,id);
                 Log.v("WebViewActivity", "UA: " + myWebView.getSettings().getUserAgentString());
-                String call = "javascript:Navigation('"+type+"','"+id+"')";
-//                "javascript:" + JsName + "('" + TotalParam + "')"
-                myWebView.loadUrl(call);     //javascript:[webFunctionName]([parameter])
+                if(!type.equals("0")){
+                    String call = "javascript:Navigation('"+type+"','"+id+"')";
+                    myWebView.loadUrl(call);     //javascript:[webFunctionName]([parameter])
+                }
             }
         };
         intentFilter.addAction(MAP_ACTION);

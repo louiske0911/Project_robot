@@ -13,7 +13,11 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-
+/**
+ *  作者： 邱皇旗
+ *  e-mail : a0983080692@gmail.com
+ *  Date : 2017/12/5
+ */
 
 package com.example.robert.bluetoothnew;
 

@@ -1,3 +1,7 @@
+/**
+ *  作者： 邱皇旗
+ *  e-mail : a0983080692@gmail.com
+ */
 package com.example.robert.bluetoothnew;
 
 import android.location.Location;
@@ -25,10 +29,9 @@ public class ArrivalDestination {
     }
     public boolean calDistance(){
         float [] temp = new float[1];
-        Location.distanceBetween(direction.latitude,direction.longitude,source.latitude,source.longitude,temp);
-//        double temp = sqrt(pow(direction.latitude-source.latitude,2)+pow(direction.longitude - source.longitude,2)) * 111100;    // 緯經度差一度差， 111.1公里
+        Location.distanceBetween(direction.latitude,direction.longitude,source.latitude,source.longitude,temp);     //計算出距離，單位公尺
         Log.v("Direction","Direction :"+temp[0]+" source "+source+" direction "+direction);
-        if(temp[0] < 5) {
+        if(temp[0] < 15 ) {     //相差15 m 以內，視為抵達
             return true;
         }
         return false;

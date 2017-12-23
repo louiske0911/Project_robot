@@ -33,9 +33,9 @@ public interface Constants {
     // Key names received from the BluetoothChatService Handler
     public static final String DEVICE_NAME = "device_name";
     public static final String TOAST = "toast";
-    public static final LatLng[] SPECIAL1 = {new LatLng(24.18069, 120.64671),new LatLng(24.18069, 120.64671),new LatLng(24.18072, 120.64718), new LatLng(24.18066, 120.64728),new LatLng(24.17993, 120.64657)};        //育樂館
-    public static final LatLng[] SPECIAL2 = {new LatLng(24.17991, 120.64674) ,new LatLng(24.17986, 120.64657),new LatLng(24.17992, 120.64725),new LatLng(24.17987, 120.64732),new LatLng(24.17967, 120.64733),new LatLng(24.17958, 120.64728)};    //語言大樓
-    public static final LatLng[] SPECIAL3 = {new LatLng(24.17953, 120.64733), new LatLng(24.17904, 120.64734), new LatLng(24.17897, 120.64729),new LatLng(24.17893, 120.64671),new LatLng(24.17896, 120.64663),new LatLng(24.1794, 120.6466)};     //忠勤樓
+    public static final LatLng[] SPECIAL1 = {new LatLng(24.1806998,120.6467137),new LatLng(24.1807295,120.6471814), new LatLng(24.1806668, 120.6472823),new LatLng(24.1799308,120.6465794),new LatLng(24.1799144,120.6470436)};        //育樂館
+    public static final LatLng[] SPECIAL2 = {new LatLng(24.1799107,120.6467445) ,new LatLng(24.1798679,120.6465729),new LatLng(24.1799217,120.6472535),new LatLng(24.1798746,120.6473286),new LatLng(24.1796764,120.6473323),new LatLng(24.17958, 120.64728)};    //語言大樓
+    public static final LatLng[] SPECIAL3 = {new LatLng(24.1795302,120.6473359), new LatLng(24.1790482,120.6473487), new LatLng(24.1789751,120.6472964),new LatLng(24.1789338,120.6467143),new LatLng(24.1789671,120.6466385),new LatLng(24.1794005,120.646603)};     //忠勤樓
     public static final LatLng[] SPECIAL4 = {new LatLng(24.17872, 120.64669),new LatLng(24.17872, 120.64705),new LatLng(24.17873, 120.64729)};     //行政一館
     public static final LatLng[] SPECIAL5 = {new LatLng(24.17873, 120.64745), new LatLng(24.17874, 120.64789)};   //行政二館
     public static final LatLng[] SPECIAL6 = {new LatLng(24.1789, 120.6484),new LatLng(24.179, 120.64863),new LatLng(24.179, 120.64897),new LatLng(24.17895, 120.6493),new LatLng(24.17846, 120.64929)};       //圖書館
@@ -43,9 +43,9 @@ public interface Constants {
     public static final LatLng[] SPECIAL8 = {new LatLng(24.17848, 120.64943),new LatLng(24.17851, 120.65007)};   //商學院
     public static final LatLng[] SPECIAL9 = {new LatLng(24.17901, 120.65008),new LatLng(24.17912, 120.65013),new LatLng(24.17955, 120.65012),new LatLng(24.17957, 120.65002),new LatLng(24.17956, 120.64904),new LatLng(24.17907, 120.64901),new LatLng(24.179, 120.64905)};   //資電館
     public static final LatLng[] SPECIAL10 = {new LatLng(24.17971, 120.65006),new LatLng(24.17978, 120.65013)};   //電通館
-    public static final LatLng[] SPECIAL11 = {new LatLng(24.17971, 120.649),new LatLng(24.17993, 120.64893),new LatLng(24.17994, 120.64832),new LatLng(24.17991, 120.64827), new LatLng(24.17967, 120.64828)};   //人言
-    public static final LatLng[] SPECIAL12 = {new LatLng(24.17954, 120.64828),new LatLng(24.17961, 120.64818),new LatLng(24.17905, 120.6483),new LatLng(24.179, 120.64825),new LatLng(24.17898, 120.64744),new LatLng(24.17904, 120.64734),new LatLng(24.17953, 120.64733),new LatLng(24.17962, 120.64741)};   //工學院
-    public static final LatLng[] SPECIAL13 = {new LatLng(24.17962, 120.64751)};     //第一招待所
+    public static final LatLng[] SPECIAL11 = {new LatLng(24.17971, 120.649),new LatLng(24.17993, 120.64893),new LatLng(24.17994, 120.64832),new LatLng(24.17991, 120.64827), new LatLng(24.17967, 120.64828),new LatLng(24.17991, 120.64899)};   //人言
+    public static final LatLng[] SPECIAL12 = {new LatLng(24.17954, 120.64828),new LatLng(24.17961, 120.64818),new LatLng(24.17905, 120.6483),new LatLng(24.179, 120.64825),new LatLng(24.17898, 120.64744),new LatLng(24.17904, 120.64734),new LatLng(24.17953, 120.64733),new LatLng(24.17962, 120.64741),new LatLng(24.17935, 120.64829)};   //工學院
+    public static final LatLng[] SPECIAL13 = {new LatLng(24.1796208,120.6475157)};     //第一招待所
     public static final LatLng[] SPECIAL14 = {new LatLng(24.18076, 120.6478),new LatLng(24.18075, 120.64739),new LatLng(24.18129, 120.64725),new LatLng(24.18132, 120.64732)};     //理學院
     public static final LatLng[] SPECIAL15 = {new LatLng(24.17995, 120.64911),new LatLng(24.17968, 120.64907)};  //人社館
     public static final LatLng[] SPECIAL16 = {new LatLng(24.18144, 120.64817)};   //體育館
@@ -58,8 +58,10 @@ public interface Constants {
     public static final LatLng[] SPECIAL23 = {new LatLng(24.18092, 120.64824)};   //綜合體育場
     public static final LatLng[] SPECIAL24 = {new LatLng(24.17899, 120.64809),new LatLng(24.17896, 120.6471)};   //榕榕大道
     public static final LatLng[] SPECIAL25 = {new LatLng(24.17887, 120.64799)};   //21步道
+//    public static final LatLng[] test = {new LatLng(24.179283, 120.649483),new LatLng(24.17919, 120.64959)};   //21步道
 
-    public static final LatLng[] position = {new LatLng(24.1812269,120.646596)
+    public static final LatLng[] position = {new LatLng(24.17958, 120.64728),
+            new LatLng(24.1812269,120.646596)
             , new LatLng(24.1813098,120.6469661)
             , new LatLng(24.1812436,120.6469701)
             , new LatLng(24.1813155,120.647261)

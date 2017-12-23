@@ -1,3 +1,9 @@
+/**
+ *  作者： 邱皇旗
+ *  e-mail : a0983080692@gmail.com
+ *  Date : 2017/12/5
+ *  Note : 給web用的，為了避免在webview 的其他頁面，按到返回，而直接離開app
+ */
 package com.example.robert.bluetoothnew;
 
 import android.os.Bundle;

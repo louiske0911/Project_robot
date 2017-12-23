@@ -3,7 +3,11 @@ package com.example.robert.bluetoothnew;
 import com.google.android.gms.maps.model.LatLng;
 
 /**
- * Created by robert on 2017/11/6.
+ *  作者： 邱皇旗
+ *  e-mail : a0983080692@gmail.com
+ *  Date : 2017/12/
+ *  Note: 前一個座標，當下座標，下一個座標，計算轉彎的角度（未成功）
+ *  problem：如果沒有校正後，此方法可行性低
  */
 
 public class CalcalateAngleWithMagnetic_v1 {

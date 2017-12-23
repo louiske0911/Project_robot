@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by robert on 2017/11/26.
+ *  作者： 邱皇旗
+ *  e-mail : a0983080692@gmail.com
+ *  Date : 2017/12/5
  */
 
 public class SingleTonTemp {
@@ -16,7 +18,7 @@ public class SingleTonTemp {
     public int arrivalDirection = 0;
     public int index =0;
 
-    public LatLng Gps,directionPosition = null,lastPosition = null;
+    public LatLng Gps=null,directionPosition = null,lastPosition = null;
     public boolean status =false,sourceStatus,directionstatus,filterGps,tempstatus =false;
     public List<LatLng> planPath  = new ArrayList<LatLng>();
 

@@ -1,3 +1,9 @@
+/**
+ *  作者： 邱皇旗
+ *  e-mail : a0983080692@gmail.com
+ *  Date : 2017/12/5
+ *
+ */
 package com.example.robert.bluetoothnew;
 
 import android.util.Log;
@@ -125,16 +131,15 @@ public class Path implements Serializable {
             }else {
                 int index =0;
                 index = tempPosition;
-
+                /**
+                 * 詳細看文件的三個規則
+                 */
                 if((tempMaxValue * 111100)>3){
                     index = tempPosition_v2;
-                    Log.v("qqqqqa","1");
                     if((tempMaxValue_v2 * 111100)>10){
                         index = tempPosition_v3;
-                        Log.v("qqqqqa","2");
                         if((tempMaxValue_v3 * 111100)>12){
                             index = tempPosition;
-                            Log.v("qqqqqa","3");
                         }
                     }
                 }
