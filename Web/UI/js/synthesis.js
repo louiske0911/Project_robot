@@ -1,5 +1,9 @@
 var t;
 
+/**
+ * 
+ * @param {*} text: text to speech  
+ */
 function Speech(text) {
     var synth = window.speechSynthesis;
     var voices = synth.getVoices();

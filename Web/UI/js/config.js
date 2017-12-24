@@ -1,16 +1,17 @@
-const LEAD_URL = "http://172.20.10.2:3000/static/lead_page.html"
-const LEAD_GO_URL = "http://172.20.10.2:3000/index.html"
+// Backend API list
+const LEAD_URL = "http://localhost:3000/static/lead_page.html"
+const LEAD_GO_URL = "http://localhost:3000/index.html"
 
-const BULLETIN_URL = 'http://172.20.10.2:3000/api/fcu/bulletin';
+const BULLETIN_URL = 'http://localhost:3000/api/fcu/bulletin';
 
-const BUILDING_URL = 'http://172.20.10.2:3000/api/fcu/building';
-const BUILDING_DIALOG_URL = "http://172.20.10.2:3000/api/fcu/building/";
+const BUILDING_URL = 'http://localhost:3000/api/fcu/building';
+const BUILDING_DIALOG_URL = "http://localhost:3000/api/fcu/building/";
 
-const COLLEGE_URL = 'http://172.20.10.2:3000/api/fcu/college';
-const COLLEGE_DIALOG_URL = "http://172.20.10.2:3000/api/fcu/college/";
+const COLLEGE_URL = 'http://localhost:3000/api/fcu/college';
+const COLLEGE_DIALOG_URL = "http://localhost:3000/api/fcu/college/";
 
-const LANDSCAPE_URL = ' http://172.20.10.2:3000/api/fcu/landscape';
-const LANDSCAPE_DIALOG_URL = "http://172.20.10.2:3000/api/fcu/landscape/";
+const LANDSCAPE_URL = ' http://localhost:3000/api/fcu/landscape';
+const LANDSCAPE_DIALOG_URL = "http://localhost:3000/api/fcu/landscape/";
 
 
 const markers = [{

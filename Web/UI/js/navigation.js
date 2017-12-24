@@ -79,6 +79,27 @@ function InitMap() {
         // ...
     });
 
+    // get current location on browser
+    getLocationInterval = setInterval(function() {
+        if (navigator.geolocation && (mapBlock == 1)) {
+
+            navigator.geolocation.getCurrentPosition(function(position) {
+                pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                console.log(pos)
+                userMarker.setPosition(pos)
+                    // map.setCenter(pos);
+            }, function() {
+                handleLocationError(true, infowindow, map.getCenter());
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infowindow, map.getCenter());
+            clearInterval(getLocationInterval);
+        }
+    }, 1500);
 
     var pos
     var userMarker
@@ -88,29 +109,7 @@ function InitMap() {
         icon: im
     });
 
-
-    console.log(mapBlock)
-        // getLocationInterval = setInterval(function() {
-        //     if (navigator.geolocation && (mapBlock == 1)) {
-
-    //         navigator.geolocation.getCurrentPosition(function(position) {
-    //             pos = {
-    //                 lat: position.coords.latitude,
-    //                 lng: position.coords.longitude
-    //             };
-    //             console.log(pos)
-    //             userMarker.setPosition(pos)
-    //                 // map.setCenter(pos);
-    //         }, function() {
-    //             handleLocationError(true, infowindow, map.getCenter());
-    //         });
-    //     } else {
-    //         // Browser doesn't support Geolocation
-    //         handleLocationError(false, infowindow, map.getCenter());
-    //         clearInterval(getLocationInterval);
-    //     }
-    // }, 1500);
-
+    // Show all markers of capmus location and self images
     for (let i = 0; i < markers.length; i++) {
         let location = markers[i].location.split(',')
 
@@ -161,6 +160,11 @@ function GetGoogleMap() {
     google.maps.event.addDomListener(infowindow, 'load', InitMap);
 }
 
+/**
+ * 
+ * @param {*} data Specify Card info
+ * @param {*} mapId mapid of specify card
+ */
 function SendNavigationToGoogleMap(data, mapId) {
     CloseMap();
 
@@ -197,6 +201,7 @@ function SendNavigationToGoogleMap(data, mapId) {
         TpyeWriter(navigationContent)
     }, 500);
 }
+
 let textToDisplay = ""
 
 function TpyeWriter(text) {

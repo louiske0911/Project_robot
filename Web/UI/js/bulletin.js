@@ -1,3 +1,7 @@
+/**
+ * Create Buleltin Page
+ */
+
 const bulletin = {
     paragraph: ['校園新聞', '校園公告', '校園活動', '校園演講'],
     type: ['News', 'Announce', 'Activity', 'Lecture']
@@ -18,14 +22,34 @@ let titleList = {
     Lecture: []
 }
 
-function bulletinDialogShow() {
-    document.getElementById("block").style.visibility = "visible";
-    document.getElementById("bulletin_dialog").style.visibility = "visible";
-}
+function getBulletin() {
 
-function bulletinDialogBack() {
-    document.getElementById("block").style.visibility = "hidden";
-    document.getElementById("bulletin_dialog").style.visibility = "hidden";
+    // unblock Web Google map Page, can open map dialog from other page
+    mapBlock = 0;
+
+    $('#outer_bg').html("")
+    $('#loader_block').css("display", "block");
+
+    fetch(BULLETIN_URL, {
+        method: 'GET',
+    }).then(function(response) {
+        if (response.status >= 200 && response.status < 300) {
+            return response.json()
+        } else {
+            var error = new Error(response.statusText)
+            error.response = response
+            throw error
+        }
+    }).then(function(data) {
+        bulletinList = data;
+        AddBuletinList(bulletinList);
+        // data 才是實際的 JSON 資料
+        $('#loader_block').css("display", "none");
+    }).catch(function(error) {
+        return error.response;
+    }).then(function(errorData) {
+        // errorData 裡面才是實際的 JSON 資料
+    });
 }
 
 function AddBuletinList(bulletinList) {
@@ -85,6 +109,10 @@ function AddBuletinList(bulletinList) {
     }
 }
 
+/**
+ * 
+ * @param {*} imgList: image list of carousel from fcu bulletin page 
+ */
 function AddCarousel(imgList) {
     let carousel_inner =
         '<div class="carousel slide" id="carouselExampleControls_mainpage" data-ride="carousel">' +
@@ -122,34 +150,6 @@ function AddCarousel(imgList) {
     $('#carousel').carousel();
 }
 
-function getBulletin() {
-    mapBlock = 0;
-
-    $('#outer_bg').html("")
-    $('#loader_block').css("display", "block");
-
-    fetch(BULLETIN_URL, {
-        method: 'GET',
-    }).then(function(response) {
-        if (response.status >= 200 && response.status < 300) {
-            return response.json()
-        } else {
-            var error = new Error(response.statusText)
-            error.response = response
-            throw error
-        }
-    }).then(function(data) {
-        bulletinList = data;
-        AddBuletinList(bulletinList);
-        // data 才是實際的 JSON 資料
-        $('#loader_block').css("display", "none");
-    }).catch(function(error) {
-        return error.response;
-    }).then(function(errorData) {
-        // errorData 裡面才是實際的 JSON 資料
-    });
-}
-
 function GetSpecificBulletin(bulletinType) {
     let bulletinLink = "";
     const block = '<div id="block" onclick="bulletinDialogBack()"></div>';
@@ -176,5 +176,16 @@ function GetSpecificBulletin(bulletinType) {
         '</div>' +
         '</div>' +
         '</div>').prependTo('#inner_bg');
+
     bulletinDialogShow();
+}
+
+function bulletinDialogShow() {
+    document.getElementById("block").style.visibility = "visible";
+    document.getElementById("bulletin_dialog").style.visibility = "visible";
+}
+
+function bulletinDialogBack() {
+    document.getElementById("block").style.visibility = "hidden";
+    document.getElementById("bulletin_dialog").style.visibility = "hidden";
 }

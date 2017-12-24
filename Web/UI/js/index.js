@@ -1,5 +1,3 @@
-var menulist;
-
 $(document).ready(function() {
     $('div.nav_bar nav button').click(
         function(e) {

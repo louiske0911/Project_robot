@@ -1,3 +1,9 @@
+/**
+ * This file is all Call Android Webview communicate with Android 
+ * or By Call from Android Webview to do something on Web Frontend
+ */
+
+// Android Google Map dialog lock variable
 var GOOGLE_STATUS = 0;
 let speckContent = "";
 let mapBlock = 0;
@@ -82,7 +88,8 @@ function GetHistoryAndSetInfo(URL, id, mapId) {
     });
 }
 
-function Navigation(type, id) { //Android Webview need call this function to speech
+//Android Webview need call this function to speech
+function Navigation(type, id) {
     let mapId = id - 1
     let url;
     if (type == 'college') {
@@ -95,14 +102,12 @@ function Navigation(type, id) { //Android Webview need call this function to spe
         url = LANDSCAPE_DIALOG_URL;
     }
 
-    console.log(type)
-    console.log(id)
-
     if (mapBlock == 0) {
         GetGoogleMap();
     }
-    GetHistoryAndSetInfo(url, id, mapId)
 
+    // Get navigation card info from API
+    GetHistoryAndSetInfo(url, id, mapId)
 }
 
 

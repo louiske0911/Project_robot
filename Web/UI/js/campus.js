@@ -1,7 +1,16 @@
+/**
+ * Create Campus Page
+ * Campus includes College, Landscape and building Page
+ */
+
 let dialogType = '';
 let rightCarousel;
 let leftCarousel;
 
+/**
+ * 
+ * @param {*} Type college, landscape, building
+ */
 function CampusIntroductionCard(Type) {
     switch (Type) {
         case 'college':
@@ -19,17 +28,50 @@ function CampusIntroductionCard(Type) {
     }
 }
 
-function AddContainer(campusInfo) {
+/**
+ * 
+ * @param {*} url One type of Campus API (reference to config.js)
+ */
+function GetCampusInfo(url) {
 
+    // unblock Web Google map Page, can open map dialog from other page
+    mapBlock = 0;
+
+    $('#outer_bg').html("")
+    $('#loader_block').css("display", "block");
+
+    fetch(url, {
+        method: 'GET',
+    }).then(function(response) {
+        if (response.status >= 200 && response.status < 300) {
+            return response.json()
+        } else {
+            var error = new Error(response.statusText)
+            error.response = response
+            throw error
+        }
+    }).then(function(data) {
+        campusInfo = data;
+        console.log(campusInfo);
+        AddContainer(campusInfo);
+        $('#loader_block').css("display", "none");
+        // data 才是實際的 JSON 資料
+    }).catch(function(error) {
+        return error.response;
+    }).then(function(errorData) {
+        // errorData 裡面才是實際的 JSON 資料
+    });
+}
+
+function AddContainer(campusInfo) {
     SetPostCarousel();
 
     section = SetOuterSection();
     // append inner_bg div for jquery remove and change page
     $('#outer_bg').append('<div id="inner_bg" class="mt-5 row justify-content-center inner_background"></div>')
-
     $('#inner_bg').prepend(section);
 
-
+    // Create Card Css for all campus info
     AddCard(campusInfo);
     $('.carousel-item').first().addClass('active');
 
@@ -39,43 +81,6 @@ function AddContainer(campusInfo) {
     */
     $('#outer_bg').removeClass('container').addClass('container-fluid');
 
-}
-
-function AddCard(campusInfo) {
-    var index = 0; // Index equals to Card amount
-    let carouselCount = Math.floor(campusInfo.length / 3); // Carousel Only Show 3 Cards on every page
-
-    if (campusInfo.length % 3 != 0) {
-        carouselCount += 1;
-    }
-
-    for (var pageCount = 1; pageCount <= carouselCount; pageCount++) { // count means how much page
-
-        let carouselId = "carouselId_" + pageCount;
-        const carousel_item =
-            '<div class="sub_container_trans carousel-item">' +
-            '<div id="' + carouselId + '" class="py-3 row main_container_clear justify-content-center rounded"></div></div>';
-
-        let cardIndex = campusInfo.length - (carouselCount - pageCount) * 3; //  總Card數 - (總CarouselPage數 - 當下頁數)
-
-        $('#carousel_inner').prepend(carousel_item);
-
-        $('#' + carouselId).append(leftCarousel);
-
-        for (index; index < cardIndex; index++) {
-            let info_index = campusInfo.length - index - 1
-            subContainer = SetSubContainer(campusInfo, info_index);
-            $('#' + carouselId).append(subContainer);
-        }
-        $('#' + carouselId).append(rightCarousel);
-
-    }
-}
-
-function SetOuterSection() {
-    const section = '<section class="carousel slide" data-ride="carousel" id="postsCarousel">' +
-        '<div id="carousel_inner" class="carousel-inner"></div></div>';
-    return section;
 }
 
 function SetPostCarousel() {
@@ -93,6 +98,49 @@ function SetPostCarousel() {
         '</div>';
 }
 
+function SetOuterSection() {
+    const section = '<section class="carousel slide" data-ride="carousel" id="postsCarousel">' +
+        '<div id="carousel_inner" class="carousel-inner"></div></div>';
+    return section;
+}
+
+// Add all cards to container
+function AddCard(campusInfo) {
+    // Index equals to Card amount
+    var index = 0;
+
+    // Carousel Only Show 3 Cards on every page
+    let carouselCount = Math.floor(campusInfo.length / 3);
+
+    if (campusInfo.length % 3 != 0)
+        carouselCount += 1;
+
+    // count means how much page
+    for (var pageCount = 1; pageCount <= carouselCount; pageCount++) {
+
+        let carouselId = "carouselId_" + pageCount;
+        const carousel_item =
+            '<div class="sub_container_trans carousel-item">' +
+            '<div id="' + carouselId + '" class="py-3 row main_container_clear justify-content-center rounded"></div></div>';
+
+        //  總Card數 - (總CarouselPage數 - 當下頁數)
+        let cardIndex = campusInfo.length - (carouselCount - pageCount) * 3;
+
+        $('#carousel_inner').prepend(carousel_item);
+
+        $('#' + carouselId).append(leftCarousel);
+
+        for (index; index < cardIndex; index++) {
+            let info_index = campusInfo.length - index - 1
+            subContainer = SetSubContainer(campusInfo, info_index);
+            $('#' + carouselId).append(subContainer);
+        }
+        $('#' + carouselId).append(rightCarousel);
+
+    }
+}
+
+// Set every card info to subcontainer
 function SetSubContainer(campusInfo, index) {
     if (campusInfo[index]['location']['building'] == undefined)
         campusInfo[index]['location']['building'] = ""
@@ -122,38 +170,6 @@ function SetSubContainer(campusInfo, index) {
         '</div>' +
         '</div>';
     return subContainer;
-}
-
-function GetCampusInfo(url) {
-    mapBlock = 0;
-    console.log(mapBlock)
-    $('#outer_bg').html("")
-    $('#loader_block').css("display", "block");
-
-    fetch(url, {
-        method: 'GET',
-    }).then(function(response) {
-        if (response.status >= 200 && response.status < 300) {
-            return response.json()
-        } else {
-            var error = new Error(response.statusText)
-            error.response = response
-            throw error
-        }
-    }).then(function(data) {
-        campusInfo = data;
-        data.forEach(element => {
-            console.log("{name:\"" + element.name + "\",location:\"" + element.location.location + "\",image:\"" + element.info.image[1] + "\"}")
-        });
-        console.log(campusInfo);
-        AddContainer(campusInfo);
-        $('#loader_block').css("display", "none");
-        // data 才是實際的 JSON 資料
-    }).catch(function(error) {
-        return error.response;
-    }).then(function(errorData) {
-        // errorData 裡面才是實際的 JSON 資料
-    });
 }
 
 function GetSpecifyInfoById(dialogType) {
