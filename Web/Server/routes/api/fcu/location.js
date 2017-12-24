@@ -28,10 +28,6 @@ router.post('/', function(req, res, next) {
     data['magnitude'] = req.body['magnitude'];
     data['Lat'] = req.body['Lat']
     data['Lng'] = req.body['Lng']
-        // data['acceleration'] = {}
-        // data['acceleration']['X'] = req.body['X']
-        // data['acceleration']['Y'] = req.body['Y']
-        // data['acceleration']['Z'] = req.body['Z']
     console.log(data)
     console.log(config['data'].length)
     config['data'].push(data)
@@ -41,5 +37,3 @@ router.post('/', function(req, res, next) {
 });
 
 module.exports = router;
-
-//mongodb -> ensureIndex({})
