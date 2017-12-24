@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var fs = require('fs');
-var config = require('../../../location2.json');
+// var config = require('../../../location2.json');
 var data = JSON.parse('{}')
 
 /* POST */
