@@ -102,11 +102,14 @@ int connect_bluetooth() {
 	struct sockaddr_rc addr = { 0 };
 	int status, len, rfcommsock;
 	char rfcommbuffer[255];
+
+	/*	Android Device's Bluetooth Number List	*/
 //	char dest[18] = "4C:21:D0:F0:37:48"; // Sony
 //	char dest[18] = "5C:3C:27:47:E8:47"; // Samsung tablet
 	char dest[18] = "30:5A:3A:95:EF:0C"; // ASUS Tablet
 //	char dest[18] = "2C:8A:72:6D:B9:3B"; // HTC
-//	char dest[18] = "B4:3A:28:0D:22:C4"; // kr lee
+//	char dest[18] = "B4:3A:28:0D:22:C4"; // Samsung
+
 	// allocate a socket
 	rfcommsock = socket(AF_BLUETOOTH, SOCK_STREAM, BTPROTO_RFCOMM);
 
@@ -166,8 +169,6 @@ int connect_bluetooth() {
 						correction_Angle(correctionAngle);
 					}
 				}
-
-//				status = send(rfcommsock, "ATOK\r\n", 6, 0);
 				if (status < 0) {
 					perror("rfcomm send ");
 					break;
@@ -205,6 +206,7 @@ void *thread_Avoid(int direction_index) {
 //	如果Thread內容都跑完了，就呼叫這個函式結束這個Thread     pthread_exit(NULL);
 }
 
+/* Sensor Avoid Function*/
 int car_avoid(double distance_right, double distance_left) {
 	pthread_t thread_2;
 
@@ -252,13 +254,17 @@ int main(int argc, char **argv) {
 	if (wiringPiSetup() == -1) {
 		printf("Setup error");
 	}
-	softPwmCreate(2, INITIAL_VALUE, RANGE); //create the softPwm and set the Range for Max Speed
+
+	/*	Create the softPwm and set the Range for Max Speed */
+	/*	Can Set 2, 3 for Front tire or Back tire */
+	softPwmCreate(2, INITIAL_VALUE, RANGE); 
 	softPwmCreate(3, INITIAL_VALUE, RANGE);
 
+	/*	Can Set 0, 1 for Front tire or Back tire */
 	softPwmCreate(0, INITIAL_VALUE, RANGE);
 	softPwmCreate(1, INITIAL_VALUE, RANGE);
 
-	//Right and Left
+	/*	Right and Left */
 	softPwmCreate(24, INITIAL_VALUE, RANGE);
 	softPwmCreate(25, INITIAL_VALUE, RANGE);
 
@@ -281,7 +287,6 @@ int main(int argc, char **argv) {
 			Permission = 0;
 		} else if (temp == 900) {
 			stop();
-			stop();
 		} else if (temp == 888) {
 			forwardIndex = 1;
 			printf("forwardIndex = 1");
@@ -296,6 +301,8 @@ int main(int argc, char **argv) {
 	//等待thread執行結束，否則就一直等著
 
 }
+
+
 void correction_Angle(int correctionAngle) {
 	if (correctionAngle == 999) {
 		forward(450, 1000);
