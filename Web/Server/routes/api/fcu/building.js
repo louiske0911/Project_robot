@@ -5,7 +5,8 @@ var Building = require('../../../modules/schema/Building.js');
 var config = require('../../../building.json');
 
 /* GET */
-router.get('/', function (req, res, next) {
+// get all building info from db
+router.get('/', function(req, res, next) {
     let data = [];
     for (var index = 0; index < config.length; index++) {
         let introduction = config[index]['info']['introduction']
@@ -26,7 +27,8 @@ router.get('/', function (req, res, next) {
     res.json(data)
 });
 
-router.get('/:id', function (req, res, next) {
+// get specify building id info from db
+router.get('/:id', function(req, res, next) {
     let data
     config.forEach(element => {
         if (req.params.id == element._id) {
@@ -43,8 +45,9 @@ router.get('/:id', function (req, res, next) {
 });
 
 /* POST */
-router.post('/', function (req, res, next) {
-    Building.create(req.body, function (err, post) {
+//TODO
+router.post('/', function(req, res, next) {
+    Building.create(req.body, function(err, post) {
         if (err) {
             console.log(err);
             return next(err);

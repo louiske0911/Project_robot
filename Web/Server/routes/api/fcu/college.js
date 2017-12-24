@@ -5,15 +5,8 @@ var College = require('../../../modules/schema/College.js');
 var config = require('../../../college.json');
 
 /* GET */
-router.get('/', function (req, res, next) {
-    // College.find({}, function (err, colleges) {
-    //     if (err) {
-    //         console.log(err);
-    //         return next(err);
-    //     }
-    //     console.log(colleges);
-    //     res.json(colleges);
-    // });
+// get all college info from db
+router.get('/', function(req, res, next) {
     let data = [];
     for (var index = 0; index < config.length; index++) {
         let introduction = config[index]['info']['introduction']
@@ -34,7 +27,8 @@ router.get('/', function (req, res, next) {
     res.json(data)
 });
 
-router.get('/:id', function (req, res, next) {
+// get specify college id info from db
+router.get('/:id', function(req, res, next) {
     let data
     config.forEach(element => {
         if (req.params.id == element._id) {
@@ -51,13 +45,13 @@ router.get('/:id', function (req, res, next) {
 });
 
 /* POST */
-router.post('/', function (req, res, next) {
+router.post('/', function(req, res, next) {
     var college_test;
 
     for (var i = 0; i < config.length; i++) {
         college_test = new College(config[i]);
 
-        College.create(college_test, function (err, post) {
+        College.create(college_test, function(err, post) {
             if (err) {
                 console.log(err);
                 return next(err);
