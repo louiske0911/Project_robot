@@ -31,14 +31,28 @@ int static forwardIndex = 0;
 int static dist_right_count = 0;
 int static dist_left_count = 0;
 
-
+/** 
+ * @brief  Call by Android Bluetooth or Car Avoid function
+ * @note   
+ * @param  correctionAngle: right or left = ( -359 ~ 360 ), forward = 999, stop = 900
+ */
 void correction_Angle(int correctionAngle);
 void forward(int speed, int delay_time);
 void backward(int speed, int delay_time);
 void right();
 void left();
 void stop();
+/** 
+ * @brief Pass angle to correct right 
+ * @note   
+ * @param  correctionAngle: 0 ~ 180
+ */
 void rightCorrect(int correctionAngle);
+/** 
+ * @brief Pass angle to correct left 
+ * @note   
+ * @param  correctionAngle: 0 ~ 180
+ */
 void leftCorrect(int correctionAngle);
 /** 
  * @brief  Calculate the Car and obstacle distance
@@ -240,16 +254,18 @@ int main(int argc, char **argv) {
 		printf("Setup error");
 	}
 
-	/*	Create the softPwm and set the Range for Max Speed */
-	/*	Can Set 2, 3 for Front tire or Back tire */
+/** 
+ * Create the softPwm and set the Range for Max Speed 
+ * Set 2, 3 for Front tire or Back tire
+ * Set 0, 1 for Front tire or Back tire
+ */
 	softPwmCreate(2, INITIAL_VALUE, RANGE); 
 	softPwmCreate(3, INITIAL_VALUE, RANGE);
 
-	/*	Can Set 0, 1 for Front tire or Back tire */
 	softPwmCreate(0, INITIAL_VALUE, RANGE);
 	softPwmCreate(1, INITIAL_VALUE, RANGE);
 
-	/*	Right and Left */
+/*	Right and Left */
 	softPwmCreate(24, INITIAL_VALUE, RANGE);
 	softPwmCreate(25, INITIAL_VALUE, RANGE);
 
@@ -269,9 +285,7 @@ int main(int argc, char **argv) {
 		car_avoid(distance_right, distance_left);
 	}
 	//等待thread執行結束，否則就一直等著
-
 }
-
 
 void correction_Angle(int correctionAngle) {
 	if (correctionAngle == 999) {
