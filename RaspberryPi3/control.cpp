@@ -31,15 +31,31 @@ int static forwardIndex = 0;
 int static dist_right_count = 0;
 int static dist_left_count = 0;
 
-void correction_Angle();
-void forward();
-void backward();
+
+void correction_Angle(int correctionAngle);
+void forward(int speed, int delay_time);
+void backward(int speed, int delay_time);
 void right();
 void left();
 void stop();
-void rightCorrect();
-void leftCorrect();
-double distanceSensor();
+void rightCorrect(int correctionAngle);
+void leftCorrect(int correctionAngle);
+/** 
+ * @brief  Calculate the Car and obstacle distance
+ * @note   Need to provide your trig and echo pin of sensor first
+ * @param  Pin_Trig: Trig腳位
+ * @param  Pin_Echo: Echo腳位
+ * @param  duration: 超音波發送間隔
+ * @return  distance: 計算後障礙物距離
+*/
+double distanceSensor(int Pin_Trig, int Pin_Echo, int duration);
+/** 
+ * @brief  Sensor Avoid Function
+ * @note   Pass right and left distance to function
+ * @param  distance_right: 右側超音波感測器所得距離
+ * @param  distance_left: 左側超音波感測器所得距離  
+ */
+void car_avoid(double distance_right, double distance_left);
 //
 ////-- 搜尋遠端 SPP Server 所使用的 RFCOMM Port Number
 // 回傳 RFCOMM Port Number
@@ -103,7 +119,11 @@ int connect_bluetooth() {
 	int status, len, rfcommsock;
 	char rfcommbuffer[255];
 
-	/*	Android Device's Bluetooth Number List	*/
+/**
+ *	Android Bleutooth Number list
+ *	Need to specify one Bluetooth Number before connect blue sokcet
+ */
+
 //	char dest[18] = "4C:21:D0:F0:37:48"; // Sony
 //	char dest[18] = "5C:3C:27:47:E8:47"; // Samsung tablet
 	char dest[18] = "30:5A:3A:95:EF:0C"; // ASUS Tablet
@@ -130,7 +150,7 @@ int connect_bluetooth() {
 	if (status == 0) {
 
 		// say hello to client side
-//		status = send(rfcommsock, "hello!", 6, 0);
+		status = send(rfcommsock, "hello!", 6, 0);
 
 		if (status < 0) {
 			perror("rfcomm send ");
@@ -184,12 +204,12 @@ int connect_bluetooth() {
 
 void *thread_Fcn(void *parm) {
 	/*
-	 你的Thread要執行的程式寫在這裡
+	 Thread要執行的程式寫在這裡
 	 */
 	int status;
 	status = connect_bluetooth();
-//	pthread_exit(NULL);
-	//如果Thread內容都跑完了，就呼叫這個函式結束這個Thread     pthread_exit(NULL);
+	pthread_exit(NULL);
+	//如果Thread內容都跑完了，就呼叫這個函式結束這個Thread
 }
 
 void *thread_Avoid(int direction_index) {
@@ -204,41 +224,6 @@ void *thread_Avoid(int direction_index) {
 		pthread_exit(NULL);
 	}
 //	如果Thread內容都跑完了，就呼叫這個函式結束這個Thread     pthread_exit(NULL);
-}
-
-/* Sensor Avoid Function*/
-int car_avoid(double distance_right, double distance_left) {
-	pthread_t thread_2;
-
-	if ((distance_right < 150) && (distance_left < 150)) {
-		dist_right_count += 1;
-		dist_left_count += 1;
-	} else if (distance_right < 150) {
-		dist_right_count += 1;
-	} else if (distance_left < 150) {
-		dist_left_count += 1;
-	} else {
-		dist_right_count = 0;
-		dist_left_count = 0;
-	}
-
-	if ((dist_right_count >= 3) && (dist_left_count >= 3)) {
-		Permission = 1;
-		correction_Angle(90);
-		dist_right_count = 0;
-		dist_left_count = 0;
-	} else if (dist_right_count >= 3) {
-		Permission = 1;
-		correction_Angle(-90);
-		pthread_create(&thread_2, NULL, thread_Avoid(0), NULL);
-		dist_right_count = 0;
-	} else if (dist_left_count >= 3) {
-		Permission = 1;
-		correction_Angle(90);
-		pthread_create(&thread_2, NULL, thread_Avoid(1), NULL);
-		dist_left_count = 0;
-	}
-	Permission = 0; 
 }
 
 int main(int argc, char **argv) {
@@ -279,21 +264,6 @@ int main(int argc, char **argv) {
 	}
 
 	while (1) {
-		printf("input speed:\n");
-		scanf("%d", &temp);
-		Permission = 1;
-		if (temp == 999) {
-			forward(450, 1000);
-			Permission = 0;
-		} else if (temp == 900) {
-			stop();
-		} else if (temp == 888) {
-			forwardIndex = 1;
-			printf("forwardIndex = 1");
-		} else {
-			correction_Angle(temp);
-			Permission = 0;
-		}
 		distance_left = distanceSensor(GPIO_TRIG, GPIO_ECHO,  1000);
 		distance_right = distanceSensor(GPIO_TRIG2, GPIO_ECHO2, 1000);
 		car_avoid(distance_right, distance_left);
@@ -405,7 +375,7 @@ void sensorSetup() {
 }
 
 double distanceSensor(int Pin_Trig, int Pin_Echo, int duration) {
-
+	
 	double distance;
 	digitalWrite(Pin_Trig, HIGH);
 	delayMicroseconds(10);
@@ -431,3 +401,39 @@ double distanceSensor(int Pin_Trig, int Pin_Echo, int duration) {
 	delay(duration);
 	return distance;
 }
+
+ void car_avoid(double distance_right, double distance_left) {
+	pthread_t thread_2;
+
+	if ((distance_right < 150) && (distance_left < 150)) {
+		dist_right_count += 1;
+		dist_left_count += 1;
+	} else if (distance_right < 150) {
+		dist_right_count += 1;
+	} else if (distance_left < 150) {
+		dist_left_count += 1;
+	} else {
+		dist_right_count = 0;
+		dist_left_count = 0;
+	}
+
+	if ((dist_right_count >= 3) && (dist_left_count >= 3)) {
+		Permission = 1;
+		correction_Angle(90);
+		dist_right_count = 0;
+		dist_left_count = 0;
+	} else if (dist_right_count >= 3) {
+		Permission = 1;
+		correction_Angle(-90);
+		pthread_create(&thread_2, NULL, thread_Avoid(0), NULL);
+		dist_right_count = 0;
+	} else if (dist_left_count >= 3) {
+		Permission = 1;
+		correction_Angle(90);
+		pthread_create(&thread_2, NULL, thread_Avoid(1), NULL);
+		dist_left_count = 0;
+	}
+	Permission = 0; 
+}
+
+
